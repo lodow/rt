@@ -5,9 +5,10 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 17:22:40 2013 luc sinet
-** Last update Wed Mar 20 22:54:29 2013 luc sinet
+** Last update Wed Mar 20 23:24:11 2013 luc sinet
 */
 
+#include <math.h>
 #include "main.h"
 #include "pars.h"
 
@@ -47,5 +48,24 @@ void    init_elem(t_obj *tab, t_pars *opt)
       tab[i].rayon = 0;
       tab[i].bright = 1.0;
       i++;
+    }
+}
+
+void	init_cos(t_obj *obj)
+{
+  int	i;
+  int	x;
+
+  i = 0;
+  while (obj[i].type != -1)
+    {
+      x = 0;
+      while (x < 3)
+	{
+	  obj[i].ocos[x] = cos(-RAD(obj[i].angle[x]));
+	  obj[i].osin[x] = sin(-RAD(obj[i].angle[x]));
+	  ++x;
+	}
+      ++i;
     }
 }

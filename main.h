@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Wed Mar 20 23:03:57 2013 luc sinet
+** Last update Wed Mar 20 23:15:15 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -44,6 +44,8 @@ typedef struct	s_obj
   unsigned int	color;
   double	rayon;
   double	bright;
+  double	ocos[3];
+  double	osin[3];
 }		t_obj;
 
 typedef struct	s_lig
@@ -78,5 +80,6 @@ void	calc_inter(t_rt *rpt, double *kmin, unsigned int *color);
 void	calc_pixel(t_rt *rpt, t_par *ppt);
 int	merror(char *msg, int ret);
 double	move_cam(t_rt *rpt, t_vec *vpt, int nb);
+void	init_cos(t_obj *tab);
 
 #endif
