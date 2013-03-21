@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Wed Mar 20 23:15:15 2013 luc sinet
+** Last update Thu Mar 21 17:22:48 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -76,10 +76,14 @@ typedef struct	s_rt
   double	(*eptr[4])(t_cam *cpt, t_vec *vpt, t_obj *opt);
 }		t_rt;
 
-void	calc_inter(t_rt *rpt, double *kmin, unsigned int *color);
-void	calc_pixel(t_rt *rpt, t_par *ppt);
-int	merror(char *msg, int ret);
-double	move_cam(t_rt *rpt, t_vec *vpt, int nb);
-void	init_cos(t_obj *tab);
+void		calc_inter(t_rt *rpt, double *kmin, unsigned int *color);
+void		calc_pixel(t_rt *rpt, t_par *ppt);
+int		merror(char *msg, int ret);
+double		move_cam(t_rt *rpt, t_vec *vpt, int nb);
+void		init_cos(t_obj *tab);
+void		rotate_x(double *z, double *y, double cosin, double sinus);
+void		rotate_y(double *z, double *x, double cosin, double sinus);
+void		rotate_z(double *x, double *y, double cosin, double sinus);
+unsigned int	get_light(t_rt *rpt, double k, unsigned int color);
 
 #endif

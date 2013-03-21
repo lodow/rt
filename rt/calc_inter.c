@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Wed Mar 20 23:29:04 2013 luc sinet
+** Last update Thu Mar 21 15:36:59 2013 luc sinet
 */
 
 #include "main.h"
@@ -58,7 +58,7 @@ int		get_color(t_rt *rpt, int x, int y)
   calc_inter(rpt, &k, &color);
   if (k != -1 && rpt->light[0].on == 1)
     {
-      /* color = get_light(rpt, k, type, color); */
+      color = get_light(rpt, k, color);
       /* color = shadow(rpt, &rpt->light[0], color); */
     }
   return (color);

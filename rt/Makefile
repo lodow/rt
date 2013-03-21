@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Thu Mar 21 11:20:53 2013 luc sinet
+## Last update Thu Mar 21 16:59:35 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -23,6 +23,8 @@ SRCS	= main.c \
 	  inter.c \
 	  move_cam.c \
 	  error.c \
+	  light.c \
+	  change_color.c \
 	  init.c
 
 OBJS	= $(SRCS:.c=.o)
