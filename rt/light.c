@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Thu Mar 21 17:19:52 2013 luc sinet
+** Last update Thu Mar 21 17:47:28 2013 adrien dellamaggiora
 */
 
 #include <math.h>
@@ -53,6 +53,9 @@ void	get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
     assign_normal1(lpt, rpt->obj[rpt->obj_num].type);
   else
     assign_normal2(lpt, rpt->obj[rpt->obj_num].type);
+  lpt->nvec[0] = lpt->nvec[0] - rpt->obj[rpt->obj_num].pos[0];
+  lpt->nvec[1] = lpt->nvec[1] - rpt->obj[rpt->obj_num].pos[1];
+  lpt->nvec[2] = lpt->nvec[2] - rpt->obj[rpt->obj_num].pos[2];
   rotate_x(&lpt->nvec[2], &lpt->nvec[1], rpt->obj[rpt->obj_num].ocos[0],
 	   rpt->obj[rpt->obj_num].osin[0]);
   rotate_y(&lpt->nvec[2], &lpt->nvec[0], rpt->obj[rpt->obj_num].ocos[1],
@@ -66,9 +69,9 @@ double		get_light_vector(t_rt *rpt, t_vec *vpt, t_lco *lpt, t_lig *spot)
   double	bnorme;
   double	cosa;
 
-  vpt->vx = lpt->obj_coor[0] - spot->pos[0];
-  vpt->vy = lpt->obj_coor[1] - spot->pos[1];
-  vpt->vz = lpt->obj_coor[2] - spot->pos[2];
+  vpt->vx = spot->pos[0] - lpt->obj_coor[0];
+  vpt->vy = spot->pos[1] - lpt->obj_coor[1];
+  vpt->vz = spot->pos[2] - lpt->obj_coor[2];
   bnorme = (sqrt(pow(lpt->nvec[0], 2) + pow(lpt->nvec[1], 2)
 		 + pow(lpt->nvec[2], 2))
 	    * sqrt(pow(vpt->vx, 2) + pow(vpt->vy, 2)
