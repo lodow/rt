@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Thu Mar 21 17:47:28 2013 adrien dellamaggiora
+** Last update Fri Mar 22 00:52:33 2013 etienne debas
 */
 
 #include <math.h>
@@ -34,7 +34,7 @@ void	assign_normal2(t_lco *lpt, int type)
     {
       lpt->nvec[0] = lpt->obj_coor[0];
       lpt->nvec[1] = lpt->obj_coor[1];
-      lpt->nvec[2] = -0.5 * lpt->obj_coor[2];
+      lpt->nvec[2] = -0.6 * lpt->obj_coor[2];
     }
   else if (type == 3)
     {
@@ -44,24 +44,21 @@ void	assign_normal2(t_lco *lpt, int type)
     }
 }
 
-void	get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
+void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
 {
-  lpt->obj_coor[0] = rpt->cpt->cx + k * vpt->vx;
-  lpt->obj_coor[1] = rpt->cpt->cy + k * vpt->vy;
-  lpt->obj_coor[2] = rpt->cpt->cz + k * vpt->vz;
+  t_cam		cam_tmp;
+  t_vec		vec_tmp;
+
+  cam_tmp = modif_cam(rpt->cpt, rpt->obj[rpt->obj_num]);
+  cam_tmp = rotate_cam(&cam_tmp, rpt->obj[rpt->obj_num]);
+  vec_tmp = rotate_vec(vpt, rpt->obj[rpt->obj_num]);
+  lpt->obj_coor[0] = cam_tmp.cx + k * vec_tmp.vx;
+  lpt->obj_coor[1] = cam_tmp.cy + k * vec_tmp.vy;
+  lpt->obj_coor[2] = cam_tmp.cz + k * vec_tmp.vz;
   if (rpt->obj[rpt->obj_num].type < 2)
     assign_normal1(lpt, rpt->obj[rpt->obj_num].type);
   else
     assign_normal2(lpt, rpt->obj[rpt->obj_num].type);
-  lpt->nvec[0] = lpt->nvec[0] - rpt->obj[rpt->obj_num].pos[0];
-  lpt->nvec[1] = lpt->nvec[1] - rpt->obj[rpt->obj_num].pos[1];
-  lpt->nvec[2] = lpt->nvec[2] - rpt->obj[rpt->obj_num].pos[2];
-  rotate_x(&lpt->nvec[2], &lpt->nvec[1], rpt->obj[rpt->obj_num].ocos[0],
-	   rpt->obj[rpt->obj_num].osin[0]);
-  rotate_y(&lpt->nvec[2], &lpt->nvec[0], rpt->obj[rpt->obj_num].ocos[1],
-	   rpt->obj[rpt->obj_num].osin[1]);
-  rotate_z(&lpt->nvec[2], &lpt->nvec[1], rpt->obj[rpt->obj_num].ocos[2],
-	   rpt->obj[rpt->obj_num].osin[2]);
 }
 
 double		get_light_vector(t_rt *rpt, t_vec *vpt, t_lco *lpt, t_lig *spot)
