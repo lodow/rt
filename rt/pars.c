@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 18:33:58 2013 luc sinet
-** Last update Wed Mar 20 21:27:58 2013 luc sinet
+** Last update Thu Mar 21 23:45:35 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -18,7 +18,7 @@
 int	check_shape(char *line, int *accol, int nb_line)
 {
   int	i;
-  char	*shape[6];
+  char	*shape[7];
 
   i = 0;
   shape[0] = "Sphere";
