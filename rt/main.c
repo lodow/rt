@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Mon Mar 25 19:54:14 2013 luc sinet
+** Last update Mon Mar 25 20:23:35 2013 luc sinet
 */
 
 #include "main.h"
@@ -58,7 +58,7 @@ int		main(int ac, char **av)
   /* 	printf("pos: %f\n", rpt.obj[i].pos[x]); */
   /*   } */
   calc_pixel(&rpt, &cpt, &vpt, &ppt);
-  exit(0);
+  /* exit(0); */
   mlx_key_hook(ppt.win_ptr, key_event, &rpt);
   mlx_expose_hook(ppt.win_ptr, print_i, &ppt);
   mlx_key_hook(ppt.win_ptr, key_event, &rpt);

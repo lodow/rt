@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Mar 12 20:29:28 2013 luc sinet
-** Last update Mon Mar 25 19:50:33 2013 luc sinet
+** Last update Mon Mar 25 20:22:45 2013 luc sinet
 */
 
 #include <math.h>
@@ -45,29 +45,22 @@ void		rotate_z(double *x, double *y, double cosin, double sinus)
   *x = nvx;
 }
 
-double		move_cam(t_rt *rpt, t_vec *vpt, t_cam *cpt, int nb)
+double		move_cam(t_rt *rpt, t_vec *vpt, t_cam *cpt, t_obj obj)
 {
-  double	sv[3];
   double	cam[3];
   double	vec[3];
   double	k;
 
-  sv[0] = vpt->vx;
-  sv[1] = vpt->vy;
-  sv[2] = vpt->vz;
-  cpt->tx = cpt->cx - rpt->obj[nb].pos[0];
-  cpt->ty = cpt->cy - rpt->obj[nb].pos[1];
-  cpt->tz = cpt->cz - rpt->obj[nb].pos[2];
-  rotate_x(&vpt->vz, &vpt->vy, rpt->obj[nb].ocos[0], rpt->obj[nb].osin[0]);
-  rotate_y(&vpt->vz, &vpt->vx, rpt->obj[nb].ocos[1], rpt->obj[nb].osin[1]);
-  rotate_z(&vpt->vx, &vpt->vy, rpt->obj[nb].ocos[2], rpt->obj[nb].osin[2]);
-  rotate_x(&cpt->tz, &cpt->ty, rpt->obj[nb].ocos[0], rpt->obj[nb].osin[0]);
-  rotate_y(&cpt->tz, &cpt->tx, rpt->obj[nb].ocos[1], rpt->obj[nb].osin[1]);
-  rotate_z(&cpt->tx, &cpt->ty, rpt->obj[nb].ocos[2], rpt->obj[nb].osin[2]);
-  k = rpt->eptr[rpt->obj[nb].type](deref_cam(cpt, cam),
-				   deref_vec(vpt, vec), &rpt->obj[nb]);
-  vpt->vx = sv[0];
-  vpt->vy = sv[1];
-  vpt->vz = sv[2];
+  deref_vec(vpt, vec);
+  cam[0] = cpt->cx - obj.pos[0];
+  cam[1] = cpt->cy - obj.pos[1];
+  cam[2] = cpt->cz - obj.pos[2];
+  rotate_x(&vec[2], &vec[1], obj.ocos[0], obj.osin[0]);
+  rotate_y(&vec[2], &vec[0], obj.ocos[1], obj.osin[1]);
+  rotate_z(&vec[0], &vec[1], obj.ocos[2], obj.osin[2]);
+  rotate_x(&cam[2], &cam[1], obj.ocos[0], obj.osin[0]);
+  rotate_y(&cam[2], &cam[0], obj.ocos[1], obj.osin[1]);
+  rotate_z(&cam[0], &cam[1], obj.ocos[2], obj.osin[2]);
+  k = rpt->eptr[obj.type](cam, vec, &obj);
   return (k);
 }

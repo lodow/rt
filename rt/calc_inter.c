@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Mon Mar 25 20:00:16 2013 luc sinet
+** Last update Mon Mar 25 20:13:24 2013 luc sinet
 */
 
 #include "main.h"
@@ -29,7 +29,7 @@ void		calc_inter(t_rt *rpt, double *kmin, unsigned int *color)
   *color = 0x000000;
   while (rpt->obj[i].type != -1)
     {
-      k = move_cam(rpt, rpt->vpt, rpt->cpt, i);
+      k = move_cam(rpt, rpt->vpt, rpt->cpt, rpt->obj[i]);
       if (k >= ZERO && (k < *kmin || *kmin == -1))
 	{
 	  *kmin = k;
