@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Thu Mar 21 23:58:50 2013 etienne debas
+## Last update Mon Mar 25 19:56:19 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -26,6 +26,7 @@ SRCS	= main.c \
 	  light.c \
 	  change_color.c \
 	  init.c \
+	  deref.c \
 	  modif_cam.c \
 
 OBJS	= $(SRCS:.c=.o)
@@ -36,7 +37,7 @@ CC	= gcc -g -Wall -Wmissing-include-dirs
 
 RM	= rm -f
 
-NAME	= rtv1
+NAME	= rt
 
 $(NAME): 	$(OBJS)
 	$(CC) $(SRCS) -o $(NAME) $(OPT)

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Feb 26 04:22:07 2013 luc sinet
-** Last update Wed Mar 20 22:48:27 2013 luc sinet
+** Last update Mon Mar 25 19:43:22 2013 luc sinet
 */
 
 #include <math.h>
@@ -22,17 +22,17 @@ double	get_min(double k1, double k2)
   return (-1.0);
 }
 
-double		sphere(t_cam *cpt, t_vec *vpt, t_obj *ept)
+double		sphere(double *cam, double *vec, t_obj *ept)
 {
   double	a;
   double	b;
   double	c;
   double	delta;
 
-  a = vpt->vx * vpt->vx + vpt->vy * vpt->vy + vpt->vz * vpt->vz;
-  b = 2.0 * (cpt->tx * vpt->vx + cpt->ty * vpt->vy + cpt->tz * vpt->vz);
-  c = cpt->tx * cpt->tx + cpt->ty * cpt->ty + cpt->tz
-    * cpt->tz - ept->rayon * ept->rayon;
+  a = vec[0] * vec[0] + vec[1] * vec[1] + vec[2] * vec[2];
+  b = 2.0 * (cam[0] * vec[0] + cam[1] * vec[1] + cam[2] * vec[2]);
+  c = cam[0] * cam[0] + cam[1] * cam[1] + cam[2]
+    * cam[2] - ept->rayon * ept->rayon;
   delta = b * b - (4.0 * a * c);
   if (delta < ZERO || a == ZERO)
     return (-1);
@@ -42,7 +42,7 @@ double		sphere(t_cam *cpt, t_vec *vpt, t_obj *ept)
 		  ((-b - sqrt(delta)) / (2 * a))));
 }
 
-double		cone(t_cam *cpt, t_vec *vpt, t_obj *ept)
+double		cone(double *cam, double *vec, t_obj *ept)
 {
   double	a;
   double	b;
@@ -50,13 +50,13 @@ double		cone(t_cam *cpt, t_vec *vpt, t_obj *ept)
   double	delta;
   double	tan_pow;
 
-  tan_pow = tan(RAD(ept->angle[3])) * tan(RAD(ept->angle[3]));
-  a = vpt->vx * vpt->vx * tan_pow + vpt->vy * vpt->vy * tan_pow -
-    vpt->vz * vpt->vz;
-  b = 2.0 * (cpt->tx * vpt->vx * tan_pow + cpt->ty * vpt->vy * tan_pow
-       - cpt->tz * vpt->vz);
-  c = cpt->tx * cpt->tx * tan_pow + cpt->ty * cpt->ty * tan_pow -
-    cpt->tz * cpt->tz;
+  tan_pow = pow(ept->osin[3] / ept->ocos[3], 2);
+  a = vec[0] * vec[0] * tan_pow + vec[1] * vec[1] * tan_pow -
+    vec[2] * vec[2];
+  b = 2.0 * (cam[0] * vec[0] * tan_pow + cam[1] * vec[1] * tan_pow
+       - cam[2] * vec[2]);
+  c = cam[0] * cam[0] * tan_pow + cam[1] * cam[1] * tan_pow -
+    cam[2] * cam[2];
   delta = b * b - (4.0 * a * c);
   if (delta < ZERO || a == ZERO)
     return (-1);
@@ -66,21 +66,21 @@ double		cone(t_cam *cpt, t_vec *vpt, t_obj *ept)
 		  ((-b - sqrt(delta)) / (2 * a))));
 }
 
-double		plan(t_cam *cpt, t_vec *vpt, t_obj *ept)
+double		plan(double *cam, double *vec, t_obj *ept)
 {
-  return ((vpt->vz == ZERO) ? -1.0 : -(cpt->tz / vpt->vz));
+  return ((vec[2] == ZERO) ? -1.0 : -(cam[2] / vec[2]));
 }
 
-double		cylinder(t_cam *cpt, t_vec *vpt, t_obj *ept)
+double		cylinder(double *cam, double *vec, t_obj *ept)
 {
   double	a;
   double	b;
   double	c;
   double	delta;
 
-  a = vpt->vx * vpt->vx + vpt->vy * vpt->vy;
-  b = 2.0 * (cpt->tx * vpt->vx + cpt->ty * vpt->vy);
-  c = cpt->tx * cpt->tx + cpt->ty * cpt->ty - ept->rayon * ept->rayon;
+  a = vec[0] * vec[0] + vec[1] * vec[1];
+  b = 2.0 * (cam[0] * vec[0] + cam[1] * vec[1]);
+  c = cam[0] * cam[0] + cam[1] * cam[1] - ept->rayon * ept->rayon;
   delta = b * b - (4.0 * a * c);
   if (delta < ZERO || a == ZERO)
     return (-1);

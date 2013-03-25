@@ -5,15 +5,17 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Wed Mar 20 23:16:31 2013 luc sinet
+** Last update Mon Mar 25 19:54:14 2013 luc sinet
 */
 
 #include "main.h"
 #include "pars.h"
 #include "mlx.h"
 
-int	key_event(int key, void *param)
+int	key_event(int key, t_rt *rpt)
 {
+  if (key == K_ESC)
+    exit (0);
   return (0);
 }
 
@@ -55,10 +57,11 @@ int		main(int ac, char **av)
   /*     for(x=0;x<3;x++) */
   /* 	printf("pos: %f\n", rpt.obj[i].pos[x]); */
   /*   } */
-  /* exit(0); */
-  calc_pixel(&rpt, &ppt);
+  calc_pixel(&rpt, &cpt, &vpt, &ppt);
+  exit(0);
   mlx_key_hook(ppt.win_ptr, key_event, &rpt);
   mlx_expose_hook(ppt.win_ptr, print_i, &ppt);
+  mlx_key_hook(ppt.win_ptr, key_event, &rpt);
   mlx_loop(ppt.mlx_ptr);
   return (0);
 }

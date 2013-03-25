@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 17:22:40 2013 luc sinet
-** Last update Wed Mar 20 23:24:11 2013 luc sinet
+** Last update Mon Mar 25 13:14:32 2013 luc sinet
 */
 
 #include <math.h>
@@ -65,6 +65,11 @@ void	init_cos(t_obj *obj)
 	  obj[i].ocos[x] = cos(-RAD(obj[i].angle[x]));
 	  obj[i].osin[x] = sin(-RAD(obj[i].angle[x]));
 	  ++x;
+	}
+      if (obj[i].type == 2)
+	{
+	  obj[i].ocos[x] = cos(RAD(obj[i].angle[x]));
+	  obj[i].osin[x] = sin(RAD(obj[i].angle[x]));
 	}
       ++i;
     }

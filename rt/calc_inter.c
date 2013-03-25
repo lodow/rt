@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Thu Mar 21 15:36:59 2013 luc sinet
+** Last update Mon Mar 25 20:00:16 2013 luc sinet
 */
 
 #include "main.h"
@@ -29,7 +29,7 @@ void		calc_inter(t_rt *rpt, double *kmin, unsigned int *color)
   *color = 0x000000;
   while (rpt->obj[i].type != -1)
     {
-      k = move_cam(rpt, rpt->vpt, i);
+      k = move_cam(rpt, rpt->vpt, rpt->cpt, i);
       if (k >= ZERO && (k < *kmin || *kmin == -1))
 	{
 	  *kmin = k;
@@ -64,7 +64,7 @@ int		get_color(t_rt *rpt, int x, int y)
   return (color);
 }
 
-void		calc_pixel(t_rt *rpt, t_par *ppt)
+void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
 {
   int		x;
   int		y;
@@ -77,7 +77,7 @@ void		calc_pixel(t_rt *rpt, t_par *ppt)
       x = 0;
       while (x < WINX)
 	{
-	  new_coor(rpt->vpt, rpt->cpt, x , y);
+	  new_coor(vpt, cpt, x , y);
 	  if ((color = get_color(rpt, x, y)) != 0x000000)
 	    my_pixel_put_to_image(x, y, ppt, color);
 	  ++x;
