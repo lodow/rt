@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Wed Mar 27 17:16:10 2013 luc sinet
+** Last update Wed Mar 27 19:44:47 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
@@ -63,37 +63,30 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
 
 double		get_light_vector(t_rt *rpt, t_vec *vpt, t_lco *lpt, t_lig *spot)
 {
-  double	bnorme;
-  double	cosa;
+  double	lamb;
 
   vpt->vx = spot->pos[0] - lpt->obj_coor[0];
   vpt->vy = spot->pos[1] - lpt->obj_coor[1];
   vpt->vz = spot->pos[2] - lpt->obj_coor[2];
-  bnorme = (sqrt(pow(lpt->nvec[0], 2) + pow(lpt->nvec[1], 2)
-		 + pow(lpt->nvec[2], 2))
-	    * sqrt(pow(vpt->vx, 2) + pow(vpt->vy, 2)
-		   + pow(vpt->vz, 2)));
-  if (bnorme < ZERO && bnorme > -ZERO)
-    return (0);
-  cosa = (lpt->nvec[0] * vpt->vx
+  lamb = (lpt->nvec[0] * vpt->vx
 	  + lpt->nvec[1] * vpt->vy
-	  + lpt->nvec[2] * vpt->vz) / bnorme;
-  return (cosa);
+	  + lpt->nvec[2] * vpt->vz) * spot->intensity;
+  return (lamb);
 }
 
 unsigned int	get_light(t_rt *rpt, double k, unsigned int color)
 {
   t_lco		lpt;
-  double	cosa;
+  double	lamb;
   int		i;
 
   i = 0;
   get_inter_normal(rpt, rpt->vpt, k, &lpt);
   while (rpt->light[i].on == 1)
     {
-      if ((cosa = get_light_vector(rpt, rpt->vpt, &lpt, &rpt->light[i])) < ZERO)
+      if ((lamb = get_light_vector(rpt, rpt->vpt, &lpt, &rpt->light[i])) < ZERO)
 	return (0x000000);
-      color = apply_light(color, cosa, &rpt->light[i++]);
+      color = apply_light(color, lamb, &rpt->light[i++]);
     }
   return (color);
 }
