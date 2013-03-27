@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Wed Mar 27 17:58:04 2013 luc sinet
+** Last update Wed Mar 27 19:05:41 2013 Adrien Della Maggiora
 */
 
 #include "main.h"
@@ -49,15 +49,16 @@ void		new_coor(t_vec *vpt, t_cam *cpt, int x, int y)
   vpt->vz = (WINY / 2.0 - y) - cpt->cz;
 }
 
-int		get_pixel_color(t_rt *rpt, int x, int y)
+unsigned int	get_pixel_color(t_rt *rpt, int x, int y)
 {
   double	k;
   unsigned int	color;
 
+  color = 0;
   calc_inter(rpt, &k);
-  color = recomp_color(rpt->obj[rpt->obj_num].color);
-    if (k != -1 && rpt->light[0].on == 1)
+  if (k != -1 && rpt->light[0].on == 1)
     {
+      color = recomp_color(rpt->obj[rpt->obj_num].color);
       color = get_light(rpt, k, color);
       /* color = shadow(rpt, &rpt->light[0], color); */
     }
