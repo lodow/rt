@@ -5,25 +5,32 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 16:50:09 2013 luc sinet
-** Last update Wed Mar 27 19:54:33 2013 Adrien Della Maggiora
+** Last update Wed Mar 27 20:34:58 2013 luc sinet
 */
 
 #include "main.h"
 #include "light.h"
 
+unsigned char	min(double x)
+{
+  if (x > 255.0)
+    return (255);
+  return (x);
+}
+
 unsigned int	apply_light(unsigned int color, double lamb, t_lig *lpt)
 {
   unsigned int	ncolor;
-  unsigned char	r;
-  unsigned char	g;
-  unsigned char	b;
+  double	r;
+  double	g;
+  double	b;
 
   b = lamb * ((double)lpt->lcolor[2] / 255.0) * ((double)(color & 0xFF) / 255.0);
   g = lamb * ((double)lpt->lcolor[1] / 255.0) * ((double)((color >> 8) & 0xFF) / 255.0);
   r = lamb * ((double)lpt->lcolor[0] / 255.0) * ((double)((color >> 16) & 0xFF) / 255.0);
-  ncolor = r << 8;
-  ncolor = (ncolor | g) << 8;
-  ncolor = (ncolor | b);
+  ncolor = min(r * 255.0) << 8;
+  ncolor = (ncolor | min(g * 255.0)) << 8;
+  ncolor = (ncolor | min(b * 255.0));
   return (ncolor);
 }
 
