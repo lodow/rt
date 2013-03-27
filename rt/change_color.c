@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 16:50:09 2013 luc sinet
-** Last update Wed Mar 27 17:54:47 2013 luc sinet
+** Last update Wed Mar 27 19:02:09 2013 luc sinet
 */
 
 #include "main.h"
@@ -38,8 +38,8 @@ unsigned int	recomp_color(unsigned char *color)
 {
   unsigned int	ncolor;
 
-  ncolor = color[0];
-  ncolor = (ncolor << 8) | color[1];
-  ncolor = (ncolor << 16) | color[2];
+  ncolor = color[0] << 8;
+  ncolor = (ncolor | color[1]) << 8;
+  ncolor = ncolor | color[2];
   return (ncolor);
 }
