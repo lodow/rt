@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 20:12:16 2013 luc sinet
-** Last update Wed Mar 20 21:09:35 2013 luc sinet
+** Last update Wed Mar 27 17:19:16 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -55,7 +55,7 @@ int	get_value(t_lig *ltab, int i, int fd)
 	ltab[i].intensity = my_fgetnbr(&line[s + 12]);
       else if (my_strncmp("Color = ", &line[s], 8) == 0 &&
 	       my_strlen(&line[s + 8]) > 3)
-	ltab[i].lcolor = my_getnbr_base(&line[s + 10], "0123456789ABCDEF");
+	get_color(&line[s + 10], ltab->lcolor);
       else
 	return (merror("Unknown argument\n", -1));
       free(line);

@@ -5,11 +5,12 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Mon Mar 25 20:25:05 2013 luc sinet
+## Last update Wed Mar 27 18:02:08 2013 luc sinet
 ##
 
 SRCS	= main.c \
 	  pars.c \
+	  fill_obj_color.c \
 	  fill_elem.c \
 	  fill_light.c \
 	  get_carac.c \
@@ -27,13 +28,13 @@ SRCS	= main.c \
 	  change_color.c \
 	  init.c \
 	  deref.c \
-	  modif_cam.c \
+	  modif_cam.c
 
 OBJS	= $(SRCS:.c=.o)
 
 OPT     = -L/usr/lib64 -lmlx_x86_64-linux -L/usr/lib64/X11 -lXext -lX11 -lm
 
-CC	= gcc -g -Wall -Wmissing-include-dirs
+CC	= gcc -g -Wall -Wmissing-include-dirs -pg
 
 RM	= rm -f
 

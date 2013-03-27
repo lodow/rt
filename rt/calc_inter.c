@@ -5,11 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Mon Mar 25 20:13:24 2013 luc sinet
+** Last update Wed Mar 27 17:58:04 2013 luc sinet
 */
 
 #include "main.h"
 #include "inter.h"
+#include "change_color.h"
 
 void	assign_function(t_rt *rpt)
 {
@@ -19,21 +20,19 @@ void	assign_function(t_rt *rpt)
   rpt->eptr[3] = &cylinder;
 }
 
-void		calc_inter(t_rt *rpt, double *kmin, unsigned int *color)
+void		calc_inter(t_rt *rpt, double *kmin)
 {
   double	k;
   int		i;
 
   i = 0;
   *kmin = -1;
-  *color = 0x000000;
   while (rpt->obj[i].type != -1)
     {
       k = move_cam(rpt, rpt->vpt, rpt->cpt, rpt->obj[i]);
       if (k >= ZERO && (k < *kmin || *kmin == -1))
 	{
 	  *kmin = k;
-	  *color = rpt->obj[i].color;
 	  rpt->obj_num = i;
 	}
       ++i;
@@ -50,13 +49,14 @@ void		new_coor(t_vec *vpt, t_cam *cpt, int x, int y)
   vpt->vz = (WINY / 2.0 - y) - cpt->cz;
 }
 
-int		get_color(t_rt *rpt, int x, int y)
+int		get_pixel_color(t_rt *rpt, int x, int y)
 {
-  unsigned int	color;
   double	k;
+  unsigned int	color;
 
-  calc_inter(rpt, &k, &color);
-  if (k != -1 && rpt->light[0].on == 1)
+  calc_inter(rpt, &k);
+  color = recomp_color(rpt->obj[rpt->obj_num].color);
+    if (k != -1 && rpt->light[0].on == 1)
     {
       color = get_light(rpt, k, color);
       /* color = shadow(rpt, &rpt->light[0], color); */
@@ -78,7 +78,7 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
       while (x < WINX)
 	{
 	  new_coor(vpt, cpt, x , y);
-	  if ((color = get_color(rpt, x, y)) != 0x000000)
+	  if ((color = get_pixel_color(rpt, x, y)) != 0x000000)
 	    my_pixel_put_to_image(x, y, ppt, color);
 	  ++x;
 	}

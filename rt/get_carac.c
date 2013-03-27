@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Mar 16 23:19:04 2013 luc sinet
-** Last update Wed Mar 20 21:40:35 2013 luc sinet
+** Last update Wed Mar 27 17:30:54 2013 luc sinet
 */
 
 #include "main.h"
@@ -64,7 +64,7 @@ int	other_opt(char *line, t_obj *ept)
     ept->rayon = my_getnbr(&line[7]);
   else if (my_strncmp("Color = ", line, 8) == 0 &&
 	   my_strlen(line) > 10)
-    ept->color = my_getnbr_base(&line[10], "0123456789ABCDEF");
+    get_color(&line[10], ept->color);
   else if (my_strncmp("Brightness = ", line, 13) == 0)
     ept->bright = my_fgetnbr(&line[13]);
   else

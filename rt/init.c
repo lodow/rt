@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 17:22:40 2013 luc sinet
-** Last update Mon Mar 25 13:14:32 2013 luc sinet
+** Last update Wed Mar 27 17:29:41 2013 luc sinet
 */
 
 #include <math.h>
@@ -40,11 +40,13 @@ void    init_elem(t_obj *tab, t_pars *opt)
       x = 0;
       tab[i].type = -1;
       while (x < 3)
-	tab[i].pos[x++] = IVAL;
+	{
+	  tab[i].pos[x] = IVAL;
+	  tab[i].color[x++] = 0;
+	}
       x = 0;
       while (x < 4)
 	tab[i].angle[x++] = IVAL;
-      tab[i].color = 0x000000;
       tab[i].rayon = 0;
       tab[i].bright = 1.0;
       i++;

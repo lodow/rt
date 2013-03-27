@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 16:50:09 2013 luc sinet
-** Last update Thu Mar 21 17:21:38 2013 luc sinet
+** Last update Wed Mar 27 17:54:47 2013 luc sinet
 */
 
 #include "main.h"
@@ -24,5 +24,22 @@ unsigned int	apply_light(unsigned int color, double cosa, t_lig *lpt)
   ncolor = r << 8;
   ncolor = (ncolor | g) << 8;
   ncolor = (ncolor | b);
+  return (ncolor);
+}
+
+void   	decomp_color(unsigned int color, unsigned char *ncolor)
+{
+  ncolor[2] = color & 0xFF;
+  ncolor[1] = (color >> 8) & 0xFF;
+  ncolor[0] = (color >> 16) & 0xFF;
+}
+
+unsigned int	recomp_color(unsigned char *color)
+{
+  unsigned int	ncolor;
+
+  ncolor = color[0];
+  ncolor = (ncolor << 8) | color[1];
+  ncolor = (ncolor << 16) | color[2];
   return (ncolor);
 }

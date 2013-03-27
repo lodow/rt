@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 18:33:58 2013 luc sinet
-** Last update Thu Mar 21 23:45:35 2013 luc sinet
+** Last update Wed Mar 27 17:30:36 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -81,8 +81,6 @@ int	check_size(t_obj *tab)
 	return (merror("Missing angle info for the Cone\n", -1));
       if (tab[obj].type != 1 && tab[obj].type == IVAL)
 	return (merror("Missing size's information\n", -1));
-      if (tab[obj].color == -1)
-	tab[obj].color = 0xFFFFFF;
       obj++;
     }
   return (0);

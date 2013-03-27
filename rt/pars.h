@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Thu Mar 21 11:34:58 2013 luc sinet
+** Last update Wed Mar 27 17:56:35 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -33,5 +33,6 @@ void	init_elem(t_obj *tab, t_pars *opt);
 int	fill_tab(t_pars *opt, t_obj *tab, char *name);
 int	fill_light(t_pars *opt, t_lig *ltab, char *name);
 int	pars(t_rt *rpt, char *fname);
+void	get_color(char *line, unsigned char *color);
 
 #endif
