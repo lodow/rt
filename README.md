@@ -9,3 +9,6 @@ http://bbs.demoscene.fr/code/premiers-pas-dans-le-monde-du-raytracing/
 
 
 http://forum.hardware.fr/hfr/Programmation/Algo/raytracer-article-base-sujet_40224_1.htm
+
+http://www.flipcode.com/archives/Raytracing_Topics_Techniques-Part_1_Introduction.shtml
+
