@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 18:33:58 2013 luc sinet
-** Last update Wed Mar 27 17:30:36 2013 luc sinet
+** Last update Thu Mar 28 17:05:04 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -18,16 +18,10 @@
 int	check_shape(char *line, int *accol, int nb_line)
 {
   int	i;
-  char	*shape[7];
+  char	*shape[8];
 
   i = 0;
-  shape[0] = "Sphere";
-  shape[1] = "Cone";
-  shape[2] = "Cylinder";
-  shape[3] = "Plan";
-  shape[4] = "Light";
-  shape[5] = "{";
-  shape[6] = "}";
+  init_shapes(shape);
   while (i < 7 && my_strcmp(shape[i], line) != 0)
     i++;
   if (i == 5)

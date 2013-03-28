@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 17:22:40 2013 luc sinet
-** Last update Wed Mar 27 17:29:41 2013 luc sinet
+** Last update Thu Mar 28 17:05:50 2013 luc sinet
 */
 
 #include <math.h>
@@ -25,6 +25,7 @@ void	init_light(t_lig *ltab, t_pars *opt)
       while (x < 3)
 	ltab[i].pos[x++] = IVAL;
       ltab[i].intensity = 1.0;
+      ltab[i].ambiant = 0;
       i++;
     }
 }
@@ -75,4 +76,15 @@ void	init_cos(t_obj *obj)
 	}
       ++i;
     }
+}
+
+void	init_shapes(char **shape)
+{
+  shape[0] = "Sphere";
+  shape[1] = "Cone";
+  shape[2] = "Cylinder";
+  shape[3] = "Plan";
+  shape[4] = "Light";
+  shape[5] = "{";
+  shape[6] = "}";
 }

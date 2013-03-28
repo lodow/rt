@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Wed Mar 27 23:20:39 2013 luc sinet
+## Last update Thu Mar 28 17:16:32 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -13,6 +13,7 @@ SRCS	= main.c \
 	  fill_obj_color.c \
 	  fill_elem.c \
 	  fill_light.c \
+	  light_carac.c \
 	  get_carac.c \
 	  get_next_line.c \
 	  my_getnbr_base.c \
