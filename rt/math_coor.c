@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 23:14:34 2013 luc sinet
-** Last update Wed Mar 27 23:40:55 2013 luc sinet
+** Last update Thu Mar 28 16:29:57 2013 luc sinet
 */
 
 #include <math.h>
@@ -27,6 +27,6 @@ double		apply_distance(t_lco *lpt, t_lig *obj, double cosa)
   if (dist < DISTM)
     dist = DISTM;
   ratio_d = 1 / (dist / DISTM);
-  cosa *= ratio_d;
+  cosa *= pow(ratio_d, AMBP);
   return (cosa);
 }
