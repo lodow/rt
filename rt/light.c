@@ -5,11 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Thu Mar 28 16:31:49 2013 luc sinet
+** Last update Thu Mar 28 17:54:52 2013 luc sinet
 */
 
 #include <math.h>
 #include "main.h"
+#include "change_color.h"
 #include "light.h"
 
 void	assign_normal1(t_lco *lpt, int type)
@@ -95,8 +96,9 @@ unsigned int	get_light(t_rt *rpt, double k, unsigned int color)
       if ((cosa = get_light_vector(rpt, rpt->vpt, &lpt, &rpt->light[i])) < ZERO)
       	cosa = 0.0;
       if (cosa > ZERO)
-	cosa = apply_distance(&lpt, &rpt->light[i], cosa);
-      color = apply_light(color, cosa, &rpt->light[i++]);
+      	cosa = apply_distance(&lpt, &rpt->light[i], cosa);
+      color = apply_light(color, cosa, &rpt->light[i++],
+			  &rpt->obj[rpt->obj_num]);
     }
   return (color);
 }

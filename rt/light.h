@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Thu Mar 28 16:35:25 2013 luc sinet
+** Last update Thu Mar 28 23:11:47 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -25,7 +25,6 @@ typedef struct	s_lco
 }		t_lco;
 
 unsigned int	get_light(t_rt *rpt, double k, unsigned int color);
-unsigned int    apply_light(unsigned int color, double cosa, t_lig *lpt);
 long int	point_distance(double *p1, double *p2);
 double		apply_distance(t_lco *lpt, t_lig *obj, double cosa);
 
