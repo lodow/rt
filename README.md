@@ -12,3 +12,5 @@ http://forum.hardware.fr/hfr/Programmation/Algo/raytracer-article-base-sujet_402
 
 http://www.flipcode.com/archives/Raytracing_Topics_Techniques-Part_1_Introduction.shtml
 
+https://code.google.com/p/raytraceplusplus/source/browse/trunk/src/Formes/Tore.cpp?r=11
+
