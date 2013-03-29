@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 16:50:09 2013 luc sinet
-** Last update Fri Mar 29 14:54:29 2013 luc sinet
+** Last update Fri Mar 29 15:30:34 2013 luc sinet
 */
 
 #include "main.h"
@@ -31,6 +31,7 @@ unsigned int	apply_light(unsigned int color, double cosa,
 
   decomp_color(color, c);
   apply_brightness(c, lpt->lcolor, lpt->intensity, ept->bright);
+  /* Have to apply light intensity here*/
   c[0] = (double)c[0] * cosa;
   c[1] = (double)c[1] * cosa;
   c[2] = (double)c[2] * cosa;
