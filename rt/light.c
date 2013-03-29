@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Thu Mar 28 17:54:52 2013 luc sinet
+** Last update Fri Mar 29 09:34:08 2013 luc sinet
 */
 
 #include <math.h>
@@ -87,16 +87,22 @@ unsigned int	get_light(t_rt *rpt, double k, unsigned int color)
   t_lco		lpt;
   double	cosa;
   int		i;
+  int		light;
 
   i = 0;
   get_inter_normal(rpt, rpt->vpt, k, &lpt);
   cosa = 1.0;
   while (rpt->light[i].on == 1)
     {
+      light = rpt->light[i].intensity;
       if ((cosa = get_light_vector(rpt, rpt->vpt, &lpt, &rpt->light[i])) < ZERO)
       	cosa = 0.0;
       if (cosa > ZERO)
-      	cosa = apply_distance(&lpt, &rpt->light[i], cosa);
+	{
+	  cosa = apply_distance(&lpt, &rpt->light[i], cosa);
+	  rpt->light[i].intensity = apply_distance(&lpt, &rpt->light[i], rpt->light[i].intensity);
+	}
+      rpt->light[i].intensity = light;
       color = apply_light(color, cosa, &rpt->light[i++],
 			  &rpt->obj[rpt->obj_num]);
     }
