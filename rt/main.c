@@ -5,27 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Mon Mar 25 22:18:53 2013 luc sinet
+** Last update Fri Mar 29 15:27:01 2013 luc sinet
 */
 
 #include "main.h"
 #include "pars.h"
 #include "mlx.h"
-
-float msqrt( float number ){
-  long i;
-  float x2, y;
-  const float threehalfs = 1.5F;
-
-  x2 = number * 0.5F;
-  y  = number;
-  i  = * ( long * ) &y;  // evil floating point bit level hacking
-  i  = 0x5f3759df - ( i >> 1 ); // what the fuck?
-  y  = * ( float * ) &i;
-  y  = y * ( threehalfs - ( x2 * y * y ) ); // 1st iteration
-  // y  = y * ( threehalfs - ( x2 * y * y ) ); // 2nd iteration, this can be removed
-  return y;
-}
 
 int	key_event(int key, t_rt *rpt)
 {
