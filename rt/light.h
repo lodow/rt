@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Thu Mar 28 23:11:47 2013 luc sinet
+** Last update Fri Mar 29 14:36:41 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -15,8 +15,7 @@
 # define NY(type, yp) (type == 1) ? 0.0 : yp;
 # define NZ(t, c, zp) (t == 1) ? 100 : (t == 2) ? (-c * zp) : (t == 3) ? 0 : zp
 
-# define DISTM 700000.0
-# define AMBP 2
+# define DISTM 100000.0
 
 typedef struct	s_lco
 {

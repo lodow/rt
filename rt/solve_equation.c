@@ -5,10 +5,8 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri Mar 29 10:47:30 2013 luc sinet
-** Last update Fri Mar 29 12:50:33 2013 luc sinet
+** Last update Fri Mar 29 13:32:55 2013 luc sinet
 */
-
-
 
 void	fourth(double *c, double *p)
 {
