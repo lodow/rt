@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sun Mar 31 00:18:21 2013 luc sinet
+## Last update Sun Mar 31 13:32:22 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -31,6 +31,7 @@ SRCS	= main.c \
 	  init.c \
 	  deref.c \
 	  math_coor.c \
+	  normals.c \
 	  modif_cam.c
 
 OBJS	= $(SRCS:.c=.o)
