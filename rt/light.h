@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Mon Apr  1 19:22:54 2013 luc sinet
+** Last update Mon Apr  1 23:00:52 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -24,7 +24,7 @@ typedef struct	s_lco
   double	nvec[3];
   double	lvec[3];
   double	max_cos;
-  unsigned char	*c_color;
+  unsigned char	c_color[3];
 }		t_lco;
 
 long int	point_distance(double *p1, double *p2);
