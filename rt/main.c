@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Fri Mar 29 15:27:01 2013 luc sinet
+** Last update Mon Apr  1 21:36:16 2013 luc sinet
 */
 
 #include "main.h"
@@ -49,7 +49,7 @@ int		main(int ac, char **av)
   rpt.cpt = &cpt;
   if (ac == 1)
     return (merror("You need to specifie a config file in argument\n", -1));
-  if (pars(&rpt, av[1]) < 0 || creat_win(&rpt, &ppt) == -1)
+  if (pars(&rpt, av[1], &cpt) < 0 || creat_win(&rpt, &ppt) == -1)
     return (-1);
   init_cos(rpt.obj);
   /* for(i=0;rpt.obj[i].type != -1;i++) */

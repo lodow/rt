@@ -5,13 +5,20 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Mon Apr  1 19:21:15 2013 luc sinet
+** Last update Mon Apr  1 22:43:36 2013 luc sinet
 */
 
 #include <math.h>
 #include "main.h"
 #include "change_color.h"
 #include "light.h"
+
+void	copy_color(unsigned char *color1, unsigned char *color2)
+{
+  color1[0] = color2[0];
+  color1[1] = color2[1];
+  color1[2] = color2[2];
+}
 
 void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
 {
@@ -50,15 +57,16 @@ double		get_light_vector(t_rt *rpt, t_vec *vpt, t_lco *lpt, t_lig *spot)
   return (cosa < ZERO ? 0.0 : cosa);
 }
 
-unsigned int	get_light(t_rt *rpt, double k, unsigned int color, t_obj *obj)
+unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
 {
   t_lco		lpt;
+  unsigned int	color;
   double	cosa;
   int		i;
 
   i = 0;
   get_inter_normal(rpt, rpt->vpt, k, &lpt);
-  decomp_color(color, lpt.c_color);
+  copy_color(lpt.c_color, obj->color);
   lpt.max_cos = 0.0;
   while (rpt->light[i].on == 1)
     {

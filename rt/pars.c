@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 18:33:58 2013 luc sinet
-** Last update Thu Mar 28 17:05:04 2013 luc sinet
+** Last update Mon Apr  1 21:59:38 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -22,19 +22,16 @@ int	check_shape(char *line, int *accol, int nb_line)
 
   i = 0;
   init_shapes(shape);
-  while (i < 7 && my_strcmp(shape[i], line) != 0)
+  while (i < 8 && my_strcmp(shape[i], line) != 0)
     i++;
-  if (i == 5)
-    *accol += 1;
-  else if (i == 6)
-    *accol -= 1;
-  if (*accol > 1 || *accol < 0 || (i < 5 && *accol != 0))
+  *accol += T_ACCOL(i);
+  if (*accol > 1 || *accol < 0 || (i < 6 && *accol != 0))
     {
       my_putstr("line ", 2);
       my_put_nbr(nb_line, 2);
       return (merror(", file is incorectly formatted\n", -1));
     }
-  return (i < 4 ? 1 : (i == 4) ? 2 : 0);
+  return (i < 4 ? 1 : (i == 4) ? 2 : (i == 5) ? 3 : 0);
 }
 
 int	get_size(char *name, t_pars *opt)
@@ -50,6 +47,8 @@ int	get_size(char *name, t_pars *opt)
 	++opt->nb_shape;
       else if (opt->rv == 2)
 	++opt->nb_light;
+      else if (opt->rv == 3)
+	++opt->nb_cam;
       free(opt->line);
     }
   close(opt->fd);
@@ -80,17 +79,17 @@ int	check_size(t_obj *tab)
   return (0);
 }
 
-int		pars(t_rt *rpt, char *fname)
+int		pars(t_rt *rpt, char *fname, t_cam *cpt)
 {
   t_pars	opt;
   int		size;
 
-  opt.accol = 0;
-  opt.nb_line = 0;
-  opt.nb_shape = 0;
-  opt.nb_light = 0;
+  init_nb_obj(&opt);
+  init_cam(cpt);
   if ((size = get_size(fname, &opt)) < 0)
     return (size == -2 ? -2 : merror("Enter at least one shape\n", -1));
+  if (opt.nb_cam != 1)
+    return (merror("You must have (only / at least) one camera\n", -1));
   opt.nb_shape += 1;
   opt.nb_light += 1;
   if ((rpt->obj = malloc(sizeof(t_obj) * opt.nb_shape)) == NULL ||
@@ -99,7 +98,8 @@ int		pars(t_rt *rpt, char *fname)
   init_elem(rpt->obj, &opt);
   init_light(rpt->light, &opt);
   if ((fill_tab(&opt, rpt->obj, fname) == -1) ||
-      fill_light(&opt, rpt->light, fname) == -1)
+      fill_light(&opt, rpt->light, fname) == -1 ||
+      fill_cam(cpt, fname) == -1)
     return (-1);
   return (check_size(rpt->obj));
 }

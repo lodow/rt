@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Mon Apr  1 19:22:36 2013 luc sinet
+** Last update Mon Apr  1 22:44:30 2013 luc sinet
 */
 
 #include "main.h"
@@ -30,7 +30,7 @@ void		calc_inter(t_rt *rpt, double *kmin)
   while (rpt->obj[i].type != -1)
     {
       k = move_cam(rpt, rpt->vpt, rpt->cpt, rpt->obj[i]);
-      if (k >= ZERO && (k < *kmin || *kmin == -1))
+      if (k > ZERO && (k < *kmin || *kmin == -1))
 	{
 	  *kmin = k;
 	  rpt->obj_num = i;
@@ -41,9 +41,6 @@ void		calc_inter(t_rt *rpt, double *kmin)
 
 void		new_coor(t_vec *vpt, t_cam *cpt, int x, int y)
 {
-  cpt->cx = -400;
-  cpt->cy = 0.0;
-  cpt->cz = 100.0;
   vpt->vx = DIST - cpt->cx;
   vpt->vy = (WINX / 2.0 - x) - cpt->cy;
   vpt->vz = (WINY / 2.0 - y) - cpt->cz;
@@ -54,12 +51,11 @@ unsigned int	get_pixel_color(t_rt *rpt, int x, int y)
   double	k;
   unsigned int	color;
 
-  color = 0;
+  color = 0x000000;
   calc_inter(rpt, &k);
   if (k != -1 && rpt->light[0].on == 1)
     {
-      color = recomp_color(rpt->obj[rpt->obj_num].color);
-      color = get_light(rpt, k, color, &rpt->obj[rpt->obj_num]);
+      color = get_light(rpt, k, &rpt->obj[rpt->obj_num]);
       /* color = shadow(rpt, &rpt->light[0], color); */
     }
   return (color);

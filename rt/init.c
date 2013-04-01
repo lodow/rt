@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 17:22:40 2013 luc sinet
-** Last update Fri Mar 29 15:29:14 2013 Adrien Della Maggiora
+** Last update Mon Apr  1 21:28:52 2013 luc sinet
 */
 
 #include <math.h>
@@ -80,6 +80,15 @@ void	init_cos(t_obj *obj)
     }
 }
 
+void	init_nb_obj(t_pars *opt)
+{
+  opt->accol = 0;
+  opt->nb_line = 0;
+  opt->nb_shape = 0;
+  opt->nb_light = 0;
+  opt->nb_cam = 0;
+}
+
 void	init_shapes(char **shape)
 {
   shape[0] = "Sphere";
@@ -87,6 +96,7 @@ void	init_shapes(char **shape)
   shape[2] = "Cylinder";
   shape[3] = "Plan";
   shape[4] = "Light";
-  shape[5] = "{";
-  shape[6] = "}";
+  shape[5] = "Cam";
+  shape[6] = "{";
+  shape[7] = "}";
 }

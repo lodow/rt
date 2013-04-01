@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Mon Apr  1 19:22:10 2013 luc sinet
+** Last update Mon Apr  1 22:31:59 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -87,7 +87,7 @@ void		init_cos(t_obj *tab);
 void		rotate_x(double *z, double *y, double cosin, double sinus);
 void		rotate_y(double *z, double *x, double cosin, double sinus);
 void		rotate_z(double *x, double *y, double cosin, double sinus);
-unsigned int	get_light(t_rt *rpt, double k, unsigned int color, t_obj *obj);
+unsigned int	get_light(t_rt *rpt, double k, t_obj *obj);
 t_cam		modif_cam(t_cam *cam, t_obj obj);
 t_vec		rotate_vec(t_vec *vec, t_obj obj);
 t_cam		rotate_cam(t_cam *cam, t_obj obj);
