@@ -5,22 +5,27 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 16:50:09 2013 luc sinet
-** Last update Sun Mar 31 13:26:26 2013 luc sinet
+** Last update Mon Apr  1 13:24:52 2013 luc sinet
 */
 
 #include "main.h"
 #include "light.h"
 #include "change_color.h"
 
-void	apply_brightness(unsigned char *col_i, unsigned char *col_l,
+void		apply_brightness(unsigned char *col_i, unsigned char *col_l,
 			 double intensity, double brighto)
 {
-  col_i[0] = ((double)col_i[0] * brighto
-	      * (double)col_l[0] * intensity) / 255.0;
-  col_i[1] = ((double)col_i[1] * brighto
-	      * (double)col_l[1] * intensity) / 255.0;
-  col_i[2] = ((double)col_i[2] * brighto
-	      * (double)col_l[2] * intensity) / 255.0;
+  double	a;
+  double	b;
+
+  a = (2.0 / 3.0);
+  b = 2 - a;
+  col_i[0] = (a * (double)col_i[0] * brighto
+	      * b * (double)col_l[0] * intensity) / 255.0;
+  col_i[1] = (a * (double)col_i[1] * brighto
+	      * b * (double)col_l[1] * intensity) / 255.0;
+  col_i[2] = (a * (double)col_i[2] * brighto
+	      * b * (double)col_l[2] * intensity) / 255.0;
 }
 
 
@@ -30,7 +35,7 @@ unsigned int	apply_light(unsigned int color, double cosa,
   unsigned char	c[3];
 
   decomp_color(color, c);
-  /* apply_brightness(c, lpt->lcolor, lpt->intensity, ept->bright); */
+  apply_brightness(c, lpt->lcolor, lpt->intensity, ept->bright);
   c[0] = (double)c[0] * cosa;
   c[1] = (double)c[1] * cosa;
   c[2] = (double)c[2] * cosa;
