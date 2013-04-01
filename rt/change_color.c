@@ -5,14 +5,14 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 16:50:09 2013 luc sinet
-** Last update Mon Apr  1 17:53:59 2013 luc sinet
+** Last update Mon Apr  1 19:05:58 2013 luc sinet
 */
 
 #include "main.h"
 #include "light.h"
 #include "change_color.h"
 
-void		apply_brightness(unsigned char *col_o, unsigned char *col_l,
+void		apply_light_color(unsigned char *col_o, unsigned char *col_l,
 				 double lg_i)
 {
   double	a;
@@ -26,13 +26,8 @@ void		apply_brightness(unsigned char *col_o, unsigned char *col_l,
 }
 
 
-unsigned int	apply_light(unsigned int color, double cosa,
-			    t_lig *lpt, t_obj *ept)
+unsigned int	apply_light(unsigned char *c, double cosa, t_obj *ept)
 {
-  unsigned char	c[3];
-
-  decomp_color(color, c);
-  apply_brightness(c, lpt->lcolor, cosa);
   c[0] = (double)c[0] * cosa * ept->bright;
   c[1] = (double)c[1] * cosa * ept->bright;
   c[2] = (double)c[2] * cosa * ept->bright;

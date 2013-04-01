@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Sun Mar 31 15:45:25 2013 luc sinet
+** Last update Mon Apr  1 19:21:15 2013 luc sinet
 */
 
 #include <math.h>
@@ -50,7 +50,7 @@ double		get_light_vector(t_rt *rpt, t_vec *vpt, t_lco *lpt, t_lig *spot)
   return (cosa < ZERO ? 0.0 : cosa);
 }
 
-unsigned int	get_light(t_rt *rpt, double k, unsigned int color)
+unsigned int	get_light(t_rt *rpt, double k, unsigned int color, t_obj *obj)
 {
   t_lco		lpt;
   double	cosa;
@@ -58,12 +58,16 @@ unsigned int	get_light(t_rt *rpt, double k, unsigned int color)
 
   i = 0;
   get_inter_normal(rpt, rpt->vpt, k, &lpt);
+  decomp_color(color, lpt.c_color);
+  lpt.max_cos = 0.0;
   while (rpt->light[i].on == 1)
     {
       if ((cosa = get_light_vector(rpt, rpt->vpt, &lpt, &rpt->light[i])) > ZERO)
 	cosa = apply_distance(&lpt, &rpt->light[i], cosa);
-      color = apply_light(color, cosa, &rpt->light[i], &rpt->obj[rpt->obj_num]);
+      lpt.max_cos = MAX(lpt.max_cos, cosa);
+      apply_light_color(lpt.c_color, rpt->light[i].lcolor, cosa);
       ++i;
     }
+  color = apply_light(lpt.c_color, lpt.max_cos, obj);
   return (color);
 }
