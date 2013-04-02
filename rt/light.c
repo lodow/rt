@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Sun Mar 31 15:45:25 2013 luc sinet
+** Last update Tue Apr  2 19:39:27 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
@@ -19,7 +19,7 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
   t_vec		vec_tmp;
 
   cam_tmp = modif_cam(rpt->cpt, rpt->obj[rpt->obj_num]);
-  cam_tmp = rotate_cam(&cam_tmp, rpt->obj[rpt->obj_num]);
+  rotate_cam(&cam_tmp, rpt->obj[rpt->obj_num]);
   vec_tmp = rotate_vec(vpt, rpt->obj[rpt->obj_num]);
   lpt->obj_coor[0] = cam_tmp.cx + k * vec_tmp.vx;
   lpt->obj_coor[1] = cam_tmp.cy + k * vec_tmp.vy;
@@ -63,6 +63,7 @@ unsigned int	get_light(t_rt *rpt, double k, unsigned int color)
       if ((cosa = get_light_vector(rpt, rpt->vpt, &lpt, &rpt->light[i])) > ZERO)
 	cosa = apply_distance(&lpt, &rpt->light[i], cosa);
       color = apply_light(color, cosa, &rpt->light[i], &rpt->obj[rpt->obj_num]);
+      color = refrac(rpt, rpt->cpt, &lpt, color);
       ++i;
     }
   return (color);
