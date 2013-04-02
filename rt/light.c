@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Tue Apr  2 19:55:45 2013 Adrien Della Maggiora
+** Last update Tue Apr  2 20:53:27 2013 etienne debas
 */
 
 #include <math.h>
@@ -93,6 +93,7 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
 	}
       else
 	cosa = rpt->light[i].intensity / 2.0;
+      printf ("angle = %f\n", get_angle_specular(tmp_light.pos, lpt.nvec, &lpt));
       apply_light_color(lpt.c_color, rpt->light[i].lcolor, cosa);
       lpt.max_cos = MAX(lpt.max_cos, cosa);
       ++i;
