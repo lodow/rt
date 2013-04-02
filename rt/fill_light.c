@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 20:12:16 2013 luc sinet
-** Last update Tue Apr  2 14:47:46 2013 luc sinet
+** Last update Tue Apr  2 15:59:07 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -52,7 +52,10 @@ int	get_value(t_lig *ltab, int i, int fd)
       if (my_strncmp("Center = ", &line[s], 9) == 0)
 	fill_lcenter(ltab, i, &line[s + 9]);
       else if (light_carac(&line[s], ltab, i) == -1)
-	return (merror("Unknown argument\n", -1));
+	{
+	  my_putstr(&line[s], 2);
+	  return (merror(" is invalid\n", -1));
+	}
       free(line);
     }
   ltab[i].on = 1;
