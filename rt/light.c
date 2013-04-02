@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Mon Apr  1 23:01:31 2013 luc sinet
+** Last update Tue Apr  2 15:13:32 2013 etienne debas
 */
 
 #include <math.h>
@@ -57,12 +57,27 @@ double		get_light_vector(t_rt *rpt, t_vec *vpt, t_lco *lpt, t_lig *spot)
   return (cosa < ZERO ? 0.0 : cosa);
 }
 
+t_lig		move_light(t_lig *spot, t_rt *rpt)
+{
+  t_lig		new_ligth;
+
+  new_ligth.pos[0] = spot->pos[0] - rpt->obj[rpt->obj_num].pos[0];
+  new_ligth.pos[1] = spot->pos[1] - rpt->obj[rpt->obj_num].pos[1];
+  new_ligth.pos[2] = spot->pos[2] - rpt->obj[rpt->obj_num].pos[2];
+  new_ligth.intensity = spot->intensity;
+  new_ligth.lcolor[0] = spot->lcolor[0];
+  new_ligth.lcolor[1] = spot->lcolor[1];
+  new_ligth.lcolor[2] = spot->lcolor[2];
+  return (new_ligth);
+}
+
 unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
 {
   t_lco		lpt;
   unsigned int	color;
   double	cosa;
   int		i;
+  t_lig		tmp_light;
 
   i = 0;
   get_inter_normal(rpt, rpt->vpt, k, &lpt);
@@ -70,8 +85,9 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
   lpt.max_cos = 0.0;
   while (rpt->light[i].on == 1)
     {
-      if ((cosa = get_light_vector(rpt, rpt->vpt, &lpt, &rpt->light[i])) > ZERO)
-	cosa = apply_distance(&lpt, &rpt->light[i], cosa);
+      tmp_light = move_light(&rpt->light[i], rpt);
+      if ((cosa = get_light_vector(rpt, rpt->vpt, &lpt, &tmp_light)) > ZERO)
+	cosa = apply_distance(&lpt, &tmp_light, cosa);
       lpt.max_cos = MAX(lpt.max_cos, cosa);
       apply_light_color(lpt.c_color, rpt->light[i].lcolor, cosa);
       ++i;
