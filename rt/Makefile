@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sun Mar 31 13:32:22 2013 luc sinet
+## Last update Tue Apr  2 17:51:36 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -13,6 +13,7 @@ SRCS	= main.c \
 	  fill_obj_color.c \
 	  fill_elem.c \
 	  fill_light.c \
+	  fill_cam.c \
 	  light_carac.c \
 	  get_carac.c \
 	  get_next_line.c \
@@ -29,6 +30,7 @@ SRCS	= main.c \
 	  light.c \
 	  change_color.c \
 	  init.c \
+	  init_cam.c \
 	  deref.c \
 	  math_coor.c \
 	  normals.c \

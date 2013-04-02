@@ -15,3 +15,7 @@ http://www.flipcode.com/archives/Raytracing_Topics_Techniques-Part_1_Introductio
 https://code.google.com/p/raytraceplusplus/source/browse/trunk/src/Formes/Tore.cpp?r=11
 
 https://code.google.com/p/raytraceplusplus/source/browse/trunk/src/Formes/?r=11
+
+Check if threads are un conflict with each others
+
+http://www.yosefk.com/blog/checkedthreads-bug-free-shared-memory-parallelism.html
