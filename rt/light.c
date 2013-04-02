@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Mon Apr  1 23:01:31 2013 luc sinet
+** Last update Tue Apr  2 15:28:02 2013 luc sinet
 */
 
 #include <math.h>
@@ -60,7 +60,6 @@ double		get_light_vector(t_rt *rpt, t_vec *vpt, t_lco *lpt, t_lig *spot)
 unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
 {
   t_lco		lpt;
-  unsigned int	color;
   double	cosa;
   int		i;
 
@@ -70,12 +69,16 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
   lpt.max_cos = 0.0;
   while (rpt->light[i].on == 1)
     {
-      if ((cosa = get_light_vector(rpt, rpt->vpt, &lpt, &rpt->light[i])) > ZERO)
-	cosa = apply_distance(&lpt, &rpt->light[i], cosa);
-      lpt.max_cos = MAX(lpt.max_cos, cosa);
+      if (rpt->light[i].ambient == 0)
+	{
+	  if ((cosa = get_light_vector(rpt, rpt->vpt, &lpt, &rpt->light[i])) > ZERO)
+	    cosa = apply_distance(&lpt, &rpt->light[i], cosa);
+	}
+      else
+	cosa = rpt->light[i].intensity / 2.0;
       apply_light_color(lpt.c_color, rpt->light[i].lcolor, cosa);
+      lpt.max_cos = MAX(lpt.max_cos, cosa);
       ++i;
     }
-  color = apply_light(lpt.c_color, lpt.max_cos, obj);
-  return (color);
+  return (apply_light(lpt.c_color, lpt.max_cos, obj));
 }

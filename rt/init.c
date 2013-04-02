@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 17:22:40 2013 luc sinet
-** Last update Mon Apr  1 21:28:52 2013 luc sinet
+** Last update Tue Apr  2 14:22:54 2013 luc sinet
 */
 
 #include <math.h>
@@ -25,7 +25,7 @@ void	init_light(t_lig *ltab, t_pars *opt)
       while (x < 3)
 	ltab[i].pos[x++] = IVAL;
       ltab[i].intensity = 1.0;
-      ltab[i].ambiant = 0;
+      ltab[i].ambient = 0;
       i++;
     }
 }
