@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 17:22:40 2013 luc sinet
-** Last update Tue Apr  2 14:22:54 2013 luc sinet
+** Last update Tue Apr  2 19:56:06 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
@@ -51,7 +51,7 @@ void    init_elem(t_obj *tab, t_pars *opt)
       tab[i].rayon = 0;
       tab[i].bright = 1.0;
       tab[i].alpha = 0;
-      tab[i].n = 0;
+      tab[i].n = 1;
       i++;
     }
 }

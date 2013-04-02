@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Tue Apr  2 20:43:27 2013 etienne debas
+** Last update Tue Apr  2 20:53:27 2013 etienne debas
 */
 
 #include <math.h>
@@ -26,7 +26,7 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
   t_vec		vec_tmp;
 
   cam_tmp = modif_cam(rpt->cpt, rpt->obj[rpt->obj_num]);
-  cam_tmp = rotate_cam(&cam_tmp, rpt->obj[rpt->obj_num]);
+  rotate_cam(&cam_tmp, rpt->obj[rpt->obj_num]);
   vec_tmp = rotate_vec(vpt, rpt->obj[rpt->obj_num]);
   lpt->obj_coor[0] = cam_tmp.cx + k * vec_tmp.vx;
   lpt->obj_coor[1] = cam_tmp.cy + k * vec_tmp.vy;
@@ -98,5 +98,6 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
       lpt.max_cos = MAX(lpt.max_cos, cosa);
       ++i;
     }
-  return (apply_light(lpt.c_color, lpt.max_cos, obj));
+  return (refrac(rpt, rpt->cpt, &lpt,
+		 apply_light(lpt.c_color, lpt.max_cos, obj)));
 }
