@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Tue Apr  2 16:41:13 2013 maxime lavandier
+## Last update Tue Apr  2 17:51:36 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -38,7 +38,7 @@ SRCS	= main.c \
 
 OBJS	= $(SRCS:.c=.o)
 
-OPT     = -I /usr/X11/include/ -L /usr/X11/lib -lmlx -lXext -lX11 -lm
+OPT     = -L/usr/lib64 -lmlx_x86_64-linux -L/usr/lib64/X11 -lXext -lX11 -lm
 
 CC	= gcc -g -Wall -Wmissing-include-dirs
 
