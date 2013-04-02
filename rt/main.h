@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Mon Apr  1 22:31:59 2013 luc sinet
+** Last update Tue Apr  2 14:20:23 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -53,7 +53,7 @@ typedef struct	s_obj
 typedef struct	s_lig
 {
   int		on;
-  int		ambiant;
+  int		ambient;
   double	pos[3];
   double	intensity;
   unsigned char	lcolor[3];

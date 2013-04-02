@@ -5,7 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
+<<<<<<< HEAD
 ** Last update Tue Apr  2 15:13:32 2013 etienne debas
+=======
+** Last update Tue Apr  2 15:28:02 2013 luc sinet
+>>>>>>> 32bb0bd65d65470658f7b07de3579c4c54c09c3c
 */
 
 #include <math.h>
@@ -74,7 +78,6 @@ t_lig		move_light(t_lig *spot, t_rt *rpt)
 unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
 {
   t_lco		lpt;
-  unsigned int	color;
   double	cosa;
   int		i;
   t_lig		tmp_light;
@@ -85,13 +88,23 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
   lpt.max_cos = 0.0;
   while (rpt->light[i].on == 1)
     {
+<<<<<<< HEAD
       tmp_light = move_light(&rpt->light[i], rpt);
       if ((cosa = get_light_vector(rpt, rpt->vpt, &lpt, &tmp_light)) > ZERO)
 	cosa = apply_distance(&lpt, &tmp_light, cosa);
       lpt.max_cos = MAX(lpt.max_cos, cosa);
+=======
+      if (rpt->light[i].ambient == 0)
+	{
+	  if ((cosa = get_light_vector(rpt, rpt->vpt, &lpt, &rpt->light[i])) > ZERO)
+	    cosa = apply_distance(&lpt, &rpt->light[i], cosa);
+	}
+      else
+	cosa = rpt->light[i].intensity / 2.0;
+>>>>>>> 32bb0bd65d65470658f7b07de3579c4c54c09c3c
       apply_light_color(lpt.c_color, rpt->light[i].lcolor, cosa);
+      lpt.max_cos = MAX(lpt.max_cos, cosa);
       ++i;
     }
-  color = apply_light(lpt.c_color, lpt.max_cos, obj);
-  return (color);
+  return (apply_light(lpt.c_color, lpt.max_cos, obj));
 }

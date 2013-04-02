@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 28 17:07:41 2013 luc sinet
-** Last update Mon Apr  1 20:48:48 2013 luc sinet
+** Last update Tue Apr  2 15:13:09 2013 luc sinet
 */
 
 #include "main.h"
@@ -18,9 +18,9 @@ int	light_carac(char *line, t_lig *ltab, int i)
     ltab[i].intensity = LIMIT(my_fgetnbr(&line[12]), 0, 1);
   else if (my_strncmp("Color = ", line, 8) == 0 &&
 	   my_strlen(&line[8]) > 3)
-    get_color(&line[10], ltab->lcolor);
-  else if (my_strncmp("Ambiant = ", line, 10) == 0)
-    ltab[i].ambiant = BOOL(my_getnbr(&line[10]));
+    get_color(&line[10], ltab[i].lcolor);
+  else if (my_strncmp("Ambient = ", line, 10) == 0)
+    ltab[i].ambient = BOOL(my_getnbr(&line[10]));
   else
     return (-1);
   return (0);

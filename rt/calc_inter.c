@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Mon Apr  1 22:58:00 2013 luc sinet
+** Last update Mon Apr  1 23:44:50 2013 luc sinet
 */
 
 #include "main.h"
@@ -55,6 +55,7 @@ unsigned int	get_pixel_color(t_rt *rpt, int x, int y)
   calc_inter(rpt, &k);
   if (k != -1 && rpt->light[0].on == 1)
     {
+      color = recomp_color(rpt->obj[rpt->obj_num].color);
       color = get_light(rpt, k, &rpt->obj[rpt->obj_num]);
       /* color = shadow(rpt, &rpt->light[0], color); */
     }
