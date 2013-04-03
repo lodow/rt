@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Tue Apr  2 15:38:50 2013 luc sinet
+** Last update Wed Apr  3 14:17:24 2013 Adrien Della Maggiora
 */
 
 #ifndef LIG_H_
@@ -31,6 +31,7 @@ long int	point_distance(double *p1, double *p2);
 double		apply_distance(t_lco *lpt, t_lig *obj, double cosa);
 void		assign_normal1(t_lco *lpt, int type);
 void		assign_normal2(t_lco *lpt, int type);
-void		apply_light_color(unsigned char *col_o, unsigned char *col_l, double lg_i);
-
+void		apply_light_color(unsigned char *col_o, unsigned char *col_l,
+				  double lg_i);
+double		get_angle_specular(double lvec[3], double nvec[3], t_lco *lpt);
 #endif
