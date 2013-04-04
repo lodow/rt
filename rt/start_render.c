@@ -1,11 +1,11 @@
-B1;3001;0c/*
+/*
 ** render.c for render in /home/sinet_l//rtv1
 **
 ** Made by luc sinet
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 18:24:34 2013 luc sinet
-** Last update Wed Mar 20 19:41:45 2013 luc sinet
+** Last update Thu Apr  4 16:43:31 2013 Adrien Della Maggiora
 */
 
 #include <math.h>

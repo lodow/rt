@@ -5,12 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Apr  1 21:38:56 2013 luc sinet
-** Last update Mon Apr  1 22:12:24 2013 luc sinet
+** Last update Thu Apr  4 17:03:51 2013 Adrien Della Maggiora
 */
 
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <math.h>
 #include "main.h"
 #include "pars.h"
 #include "get_next_line.h"
@@ -19,6 +20,25 @@ void	skip_adds(char *line, int *i)
 {
   while (line[*i] == ',' || line[*i] == ';' || line[*i] == ' ')
     ++(*i);
+}
+
+void		get_cam_rot(t_cam *cpt, char *line)
+{
+  int		i;
+  double	angle[3];
+
+  i = 0;
+  angle[0] = my_sgetnbr(line, &i);
+  skip_adds(line, &i);
+  angle[1] = my_sgetnbr(line, &i);
+  skip_adds(line, &i);
+  angle[2] = my_sgetnbr(line, &i);
+  cpt->ccos[0] = cos(angle[0] * M_PI / 180);
+  cpt->ccos[1] = cos(angle[1] * M_PI / 180);
+  cpt->ccos[2] = cos(angle[2] * M_PI / 180);
+  cpt->csin[0] = sin(angle[0] * M_PI / 180);
+  cpt->csin[1] = sin(angle[1] * M_PI / 180);
+  cpt->csin[2] = sin(angle[2] * M_PI / 180);
 }
 
 void	get_cam_coor(t_cam *cpt, char *line)
@@ -46,6 +66,8 @@ int	get_cam_carac(t_cam *cpt, int fd)
 	++i;
       if (my_strncmp(&line[i], "Center = ", 9) == 0)
 	get_cam_coor(cpt, &line[i + 9]);
+      else if (my_strncmp(&line[i], "Angle = ", 8) == 0)
+	get_cam_rot(cpt, &line[i + 8]);
       else
 	{
 	  my_putstr("Line ", 2);

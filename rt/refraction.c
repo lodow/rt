@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Mon Apr  1 12:31:29 2013 Adrien Della Maggiora
-** Last update Tue Apr  2 19:46:52 2013 Adrien Della Maggiora
+** Last update Thu Apr  4 10:58:06 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
@@ -21,9 +21,9 @@ unsigned int	apply_refrac(unsigned int color1, double n, double alpha,
 
   decomp_color(color1, c1);
   decomp_color(color2, c2);
-  c1[0] = ((1 - alpha) * c2[0]) + (alpha * c1[0]);
-  c1[1] = ((1 - alpha) * c2[1]) + (alpha * c1[1]);
-  c1[2] = ((1 - alpha) * c2[2]) + (alpha * c1[2]);
+  c1[0] = (alpha * c2[0]) + ((1 - alpha) * c1[0]);
+  c1[1] = (alpha * c2[1]) + ((1 - alpha) * c1[1]);
+  c1[2] = (alpha * c2[2]) + ((1 - alpha) * c1[2]);
   return (recomp_color(c1));
 }
 
@@ -51,6 +51,7 @@ void		get_new_vec(t_vec *vec, t_lco *lpt, double n1, double n2)
   vec->vx = n * lpt->lvec[0] - (n + sqrt(1.0 - sina) * lpt->nvec[0]);
   vec->vy = n * lpt->lvec[1] - (n + sqrt(1.0 - sina) * lpt->nvec[1]);
   vec->vz = n * lpt->lvec[2] - (n + sqrt(1.0 - sina) * lpt->nvec[2]);
+  //printf("Incident -> %f, %f, %f\nNew Vec -> %f, %f, %f\n", lpt->lvec[0], lpt->lvec[1], lpt->lvec[2], vec->vx, vec->vy, vec->vz);
 }
 
 unsigned int	get_new_color(t_rt *rpt, t_cam *cpt, t_lco *lpt, double n)
@@ -83,14 +84,21 @@ unsigned int	refrac(t_rt *rpt, t_cam *cpt, t_lco *lpt, unsigned int color)
 {
   double	alpha;
   double	n;
+  int		obj_num;
   unsigned int	color2;
 
   n = 1;
-  while (rpt->obj[rpt->obj_num].alpha != 0)
+  obj_num = -1;
+  while (rpt->obj[rpt->obj_num].alpha > 0.0000001 && obj_num != rpt->obj_num)
     {
+      obj_num = rpt->obj_num;
       color2 = get_new_color(rpt, cpt, lpt, n);
       alpha = rpt->obj[rpt->obj_num].alpha;
-      color = apply_refrac(color, n, alpha, color2);
+      if (obj_num != rpt->obj_num)
+	{
+	  printf("Color > %X\nAlpha > %f\n", color2, alpha);
+	  color = apply_refrac(color, n, alpha, color2);
+	}
       n = rpt->obj[rpt->obj_num].n;
     }
   return (color);

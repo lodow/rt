@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Mon Apr  1 23:44:50 2013 luc sinet
+** Last update Thu Apr  4 17:02:19 2013 Adrien Della Maggiora
 */
 
 #include "main.h"
@@ -44,6 +44,7 @@ void		new_coor(t_vec *vpt, t_cam *cpt, int x, int y)
   vpt->vx = DIST - cpt->cx;
   vpt->vy = (WINX / 2.0 - x) - cpt->cy;
   vpt->vz = (WINY / 2.0 - y) - cpt->cz;
+  rotate_veccam(vpt, cpt->ccos, cpt->csin);
 }
 
 unsigned int	get_pixel_color(t_rt *rpt, int x, int y)
