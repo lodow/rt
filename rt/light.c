@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Thu Apr  4 17:02:27 2013 luc sinet
+** Last update Thu Apr  4 18:17:31 2013 luc sinet
 */
 
 #include <math.h>
@@ -87,7 +87,7 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
       tmp_light = move_light(&rpt->light[i], rpt);
       if (rpt->light[i].ambient == 0)
 	{
-	  if ((cosa = get_light_vector(rpt, rpt->vpt, &lpt, &tmp_light)) > ZERO);
+	  if ((cosa = get_light_vector(rpt, rpt->vpt, &lpt, &tmp_light)) > ZERO)
 	    cosa = apply_distance(&lpt, &tmp_light, cosa);
 	}
       else
