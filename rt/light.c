@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Thu Apr  4 19:45:18 2013 Adrien Della Maggiora
+** Last update Thu Apr  4 19:56:43 2013 Adrien Della Maggiora
 ** Last update Thu Apr  4 18:17:31 2013 luc sinet
 */
 
@@ -36,12 +36,6 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
     assign_normal1(lpt, rpt->obj[rpt->obj_num].type);
   else
     assign_normal2(lpt, rpt->obj[rpt->obj_num].type);
-  rotate_x(&lpt->nvec[2], &lpt->nvec[1],
-	   rpt->obj[rpt->obj_num].ocos[0], rpt->obj[rpt->obj_num].osin[0]);
-  rotate_y(&lpt->nvec[2], &lpt->nvec[0],
-	   rpt->obj[rpt->obj_num].ocos[1], rpt->obj[rpt->obj_num].osin[1]);
-  rotate_z(&lpt->nvec[0], &lpt->nvec[1],
-	   rpt->obj[rpt->obj_num].ocos[2], rpt->obj[rpt->obj_num].osin[2]);
 }
 
 double		get_light_vector(t_vec *vpt, t_lco *lpt, t_lig *spot)
