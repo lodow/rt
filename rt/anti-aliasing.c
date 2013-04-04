@@ -5,13 +5,14 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Apr  2 19:51:46 2013 luc sinet
-** Last update Wed Apr  3 14:45:55 2013 luc sinet
+** Last update Wed Apr  3 15:05:13 2013 luc sinet
 */
 
 #include "mlx.h"
 #include "pp_image.h"
+#include "aliasing.h"
 
-void		get_pixel_color(unsigned char *col, t_par *ppt, int x, int y)
+void		get_p_color(unsigned char *col, t_par *ppt, int x, int y)
 {
   unsigned int	pos;
 
@@ -24,15 +25,13 @@ void		get_pixel_color(unsigned char *col, t_par *ppt, int x, int y)
 int	comp_diff(unsigned char *icomp, unsigned char *tcomp)
 {
   int	diff;
-  int	ratio;
   int	i;
 
   i = 0;
   diff = 0;
-  ratio = (255.0 * 2.55);
   while (i < 3)
     {
-      diff += (icomp[i] * tcomp[i]) / ratio;
+      diff += (icomp[i] + tcomp[i]) / (2.0 * 2.55);
       ++i;
     }
   return (diff / 3);
@@ -55,19 +54,16 @@ void	apply_aliasing(int diff, unsigned char *icomp, unsigned char *fcomp)
 
 unsigned int	mix_colors(t_par *ppt, t_ali *pal)
 {
-  int		diff;
-
-  diff = 0;
-  get_pixel_color(pal->icomp, ppt, pal->x, pal->y);
-  get_pixel_color(pal->fcomp, ppt, pal->x, pal->y);
-  get_pixel_color(pal->tcomp, ppt, pal->x - 1, pal->y - 1);
-  apply_aliasing(comp_diff(pal->icomp, pal->tcomp), pal->fcomp, pal->tcomp);
-  get_pixel_color(pal->tcomp, ppt, pal->x - 1, pal->y + 1);
-  apply_aliasing(comp_diff(pal->icomp, pal->tcomp), pal->fcomp, pal->tcomp);
-  get_pixel_color(pal->tcomp, ppt, pal->x + 1, pal->y - 1);
-  apply_aliasing(comp_diff(pal->icomp, pal->tcomp), pal->fcomp, pal->tcomp);
-  get_pixel_color(pal->tcomp, ppt, pal->x + 1, pal->y + 1);
-  apply_aliasing(comp_diff(pal->icomp, pal->tcomp), pal->fcomp, pal->tcomp);
+  get_p_color(pal->icomp, ppt, pal->x, pal->y);
+  get_p_color(pal->fcomp, ppt, pal->x, pal->y);
+  get_p_color(pal->tcomp, ppt, pal->x - 1, pal->y - 1);
+  apply_aliasing(comp_diff(pal->fcomp, pal->tcomp), pal->fcomp, pal->tcomp);
+  get_p_color(pal->tcomp, ppt, pal->x - 1, pal->y + 1);
+  apply_aliasing(comp_diff(pal->fcomp, pal->tcomp), pal->fcomp, pal->tcomp);
+  get_p_color(pal->tcomp, ppt, pal->x + 1, pal->y - 1);
+  apply_aliasing(comp_diff(pal->fcomp, pal->tcomp), pal->fcomp, pal->tcomp);
+  get_p_color(pal->tcomp, ppt, pal->x + 1, pal->y + 1);
+  apply_aliasing(comp_diff(pal->fcomp, pal->tcomp), pal->fcomp, pal->tcomp);
   return (recomp_color(pal->fcomp));
 }
 

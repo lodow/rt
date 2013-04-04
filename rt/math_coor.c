@@ -5,14 +5,14 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 23:14:34 2013 luc sinet
-** Last update Sun Mar 31 15:45:54 2013 luc sinet
+** Last update Thu Apr  4 17:27:03 2013 luc sinet
 */
 
 #include <math.h>
 #include "main.h"
 #include "light.h"
 
-long int	point_distance(double *p1, double *p2)
+double	point_distance(double *p1, double *p2)
 {
   return (pow(p1[0] - p2[0], 2) + pow(p1[1] - p2[1], 2)
 	  + pow(p1[2] - p2[2], 2));
@@ -20,13 +20,13 @@ long int	point_distance(double *p1, double *p2)
 
 double		apply_distance(t_lco *lpt, t_lig *obj, double ratio_a)
 {
-  unsigned int	dist;
+  double	dist;
   double	ratio_d;
 
   dist = point_distance(lpt->obj_coor, obj->pos);
   if (dist < DISTM)
     dist = DISTM;
-  ratio_d = 1 / (dist / DISTM);
-  ratio_a = ratio_a * ratio_d * obj->intensity;
+  ratio_d = 1.0 / (dist / DISTM);
+  ratio_a = (0.2 * ratio_a + 0.8 * ratio_d) * obj->intensity;
   return (ratio_a);
 }
