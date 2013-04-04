@@ -5,7 +5,8 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Thu Apr  4 19:39:11 2013 Adrien Della Maggiora
+** Last update Thu Apr  4 19:45:18 2013 Adrien Della Maggiora
+** Last update Thu Apr  4 18:17:31 2013 luc sinet
 */
 
 #include <math.h>
@@ -97,10 +98,9 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
 	    cosa = apply_distance(&lpt, &tmp_light, cosa);
 	}
       else
-	cosa = rpt->light[i].intensity / 2.0;
-      /* printf ("angle = %f\n", get_angle_specular(tmp_light.pos, lpt.nvec, &lpt)); */
-      lpt.max_cos = MAX(lpt.max_cos, cosa);
+	cosa = rpt->light[i].intensity / 1.2;
       apply_light_color(lpt.c_color, rpt->light[i++].lcolor, cosa);
+      lpt.max_cos = MAX(lpt.max_cos, cosa);
     }
   /* int color = refrac(rpt, rpt->cpt, &lpt, apply_light(lpt.c_color, lpt.max_cos, obj)); */
   return (apply_light(lpt.c_color, lpt.max_cos, obj));

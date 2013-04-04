@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Wed Apr  3 14:17:24 2013 Adrien Della Maggiora
+** Last update Thu Apr  4 18:19:27 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -15,8 +15,8 @@
 # define NY(type, yp) (type == 1) ? 0.0 : yp;
 # define NZ(t, c, zp) (t == 1) ? 100 : (t == 2) ? (-c * zp) : (t == 3) ? 0 : zp
 # define MAX(x, y) (x > y) ? x : y
-
-# define DISTM 50000.0
+# define LIMIT(x, n1, n2) (x < n1) ? n1 : (x > n2) ? n2 : x
+# define DISTM 10000.0
 
 typedef struct	s_lco
 {
@@ -27,7 +27,7 @@ typedef struct	s_lco
   unsigned char	c_color[3];
 }		t_lco;
 
-long int	point_distance(double *p1, double *p2);
+double		point_distance(double *p1, double *p2);
 double		apply_distance(t_lco *lpt, t_lig *obj, double cosa);
 void		assign_normal1(t_lco *lpt, int type);
 void		assign_normal2(t_lco *lpt, int type);
