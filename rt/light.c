@@ -5,6 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
+** Last update Thu Apr  4 19:56:43 2013 Adrien Della Maggiora
 ** Last update Thu Apr  4 18:17:31 2013 luc sinet
 */
 
@@ -37,7 +38,7 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
     assign_normal2(lpt, rpt->obj[rpt->obj_num].type);
 }
 
-double		get_light_vector(t_rt *rpt, t_vec *vpt, t_lco *lpt, t_lig *spot)
+double		get_light_vector(t_vec *vpt, t_lco *lpt, t_lig *spot)
 {
   double	bnorme;
   double	cosa;
@@ -87,7 +88,7 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
       tmp_light = move_light(&rpt->light[i], rpt);
       if (rpt->light[i].ambient == 0)
 	{
-	  if ((cosa = get_light_vector(rpt, rpt->vpt, &lpt, &tmp_light)) > ZERO)
+	  if ((cosa = get_light_vector(rpt->vpt, &lpt, &tmp_light)) > ZERO)
 	    cosa = apply_distance(&lpt, &tmp_light, cosa);
 	}
       else
@@ -95,6 +96,6 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
       apply_light_color(lpt.c_color, rpt->light[i++].lcolor, cosa);
       lpt.max_cos = MAX(lpt.max_cos, cosa);
     }
-  //  int color = refrac(rpt, rpt->cpt, &lpt, apply_light(lpt.c_color, lpt.max_cos, obj));
+  /* int color = refrac(rpt, rpt->cpt, &lpt, apply_light(lpt.c_color, lpt.max_cos, obj)); */
   return (apply_light(lpt.c_color, lpt.max_cos, obj));
 }
