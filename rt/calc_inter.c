@@ -5,12 +5,14 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Thu Apr  4 17:02:19 2013 Adrien Della Maggiora
+** Last update Sat Apr  6 11:21:00 2013 luc sinet
 */
 
+#include <math.h>
 #include "main.h"
 #include "inter.h"
 #include "change_color.h"
+#include "supersampling.h"
 
 void	assign_function(t_rt *rpt)
 {
@@ -39,7 +41,7 @@ void		calc_inter(t_rt *rpt, double *kmin)
     }
 }
 
-void		new_coor(t_vec *vpt, t_cam *cpt, int x, int y)
+void		new_coor(t_vec *vpt, t_cam *cpt, double x, double y)
 {
   vpt->vx = DIST - cpt->cx;
   vpt->vy = (WINX / 2.0 - x) - cpt->cy;
@@ -47,7 +49,7 @@ void		new_coor(t_vec *vpt, t_cam *cpt, int x, int y)
   rotate_veccam(vpt, cpt->ccos, cpt->csin);
 }
 
-unsigned int	get_pixel_color(t_rt *rpt, int x, int y)
+unsigned int	get_pixel_color(t_rt *rpt)
 {
   double	k;
   unsigned int	color;
@@ -65,19 +67,23 @@ unsigned int	get_pixel_color(t_rt *rpt, int x, int y)
 
 void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
 {
+  t_samp	spt;
   int		x;
   int		y;
   unsigned int	color;
 
   y = 0;
   assign_function(rpt);
+  spt.square = sqrt(SSP);
+  spt.spacing = 1 / spt.square;
+  if ((spt.pixel = malloc(sizeof(unsigned int) * SSP)) == NULL)
+    return ;
   while (y < WINY)
     {
       x = 0;
       while (x < WINX)
 	{
-	  new_coor(vpt, cpt, x , y);
-	  if ((color = get_pixel_color(rpt, x, y)) != 0x000000)
+	  if ((color = supersampling(rpt, &spt, x, y)) != 0x000000)
 	    my_pixel_put_to_image(x, y, ppt, color);
 	  ++x;
 	}

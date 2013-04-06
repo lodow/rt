@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Thu Apr  4 17:02:50 2013 Adrien Della Maggiora
+** Last update Sat Apr  6 11:12:08 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -94,7 +94,9 @@ t_cam		modif_cam(t_cam *cam, t_obj obj);
 t_vec		rotate_vec(t_vec *vec, t_obj obj);
 void		rotate_cam(t_cam *cam, t_obj obj);
 void		rotate_veccam(t_vec *vec, double ccos[3], double csin[3]);
+void		new_coor(t_vec *vpt, t_cam *cpt, double x, double y);
 double		*deref_cam(t_cam *cpt, double *cam);
 double		*deref_vec(t_vec *vpt, double *vec);
+unsigned int	get_pixel_color(t_rt *rpt);
 
 #endif
