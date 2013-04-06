@@ -19,3 +19,6 @@ https://code.google.com/p/raytraceplusplus/source/browse/trunk/src/Formes/?r=11
 Check if threads are un conflict with each others
 
 http://www.yosefk.com/blog/checkedthreads-bug-free-shared-memory-parallelism.html
+
+
+! PDF super cool -> http://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=10&ved=0CGQQFjAJ&url=http%3A%2F%2Fgregory.corgie.free.fr%2Fdotclear%2Fimages%2FRaytracing%2FRapport_Raytracing.pdf&ei=kWBgUcyeEYq1PY2igYAO&usg=AFQjCNExtNTopPrSJflPzjGV0q0sTQ92eA&bvm=bv.44770516,d.ZWU
