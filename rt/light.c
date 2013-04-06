@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Sat Apr  6 11:14:50 2013 luc sinet
+** Last update Sat Apr  6 12:34:13 2013 luc sinet
 ** Last update Thu Apr  4 18:17:31 2013 luc sinet
 */
 
@@ -38,14 +38,14 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
     assign_normal2(lpt, rpt->obj[rpt->obj_num].type);
 }
 
-double		get_light_vector(t_vec *vpt, t_lco *lpt, t_lig *spot)
+double		get_light_vector(t_vec *vpt, t_lco *lpt, double *spot_pos)
 {
   double	bnorme;
   double	cosa;
 
-  lpt->lvec[0] = spot->pos[0] - lpt->obj_coor[0];
-  lpt->lvec[1] = spot->pos[1] - lpt->obj_coor[1];
-  lpt->lvec[2] = spot->pos[2] - lpt->obj_coor[2];
+  lpt->lvec[0] = spot_pos[0] - lpt->obj_coor[0];
+  lpt->lvec[1] = spot_pos[1] - lpt->obj_coor[1];
+  lpt->lvec[2] = spot_pos[2] - lpt->obj_coor[2];
   bnorme = (sqrt(pow(lpt->nvec[0], 2) + pow(lpt->nvec[1], 2)
 		 + pow(lpt->nvec[2], 2))
 	    * sqrt(pow(lpt->lvec[0], 2) + pow(lpt->lvec[1], 2)
@@ -58,17 +58,18 @@ double		get_light_vector(t_vec *vpt, t_lco *lpt, t_lig *spot)
   return (cosa < ZERO ? 0.0 : cosa);
 }
 
-t_lig		move_light(t_lig *spot, t_rt *rpt)
+t_lig		move_light(double *pos, double intensity,
+			   unsigned char *lcolor, double *obj_pos)
 {
   t_lig		new_ligth;
 
-  new_ligth.pos[0] = spot->pos[0] - rpt->obj[rpt->obj_num].pos[0];
-  new_ligth.pos[1] = spot->pos[1] - rpt->obj[rpt->obj_num].pos[1];
-  new_ligth.pos[2] = spot->pos[2] - rpt->obj[rpt->obj_num].pos[2];
-  new_ligth.intensity = spot->intensity;
-  new_ligth.lcolor[0] = spot->lcolor[0];
-  new_ligth.lcolor[1] = spot->lcolor[1];
-  new_ligth.lcolor[2] = spot->lcolor[2];
+  new_ligth.pos[0] = pos[0] - obj_pos[0];
+  new_ligth.pos[1] = pos[1] - obj_pos[1];
+  new_ligth.pos[2] = pos[2] - obj_pos[2];
+  new_ligth.intensity = intensity;
+  new_ligth.lcolor[0] = lcolor[0];
+  new_ligth.lcolor[1] = lcolor[1];
+  new_ligth.lcolor[2] = lcolor[2];
   return (new_ligth);
 }
 
@@ -85,10 +86,11 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
   lpt.max_cos = 0.0;
   while (rpt->light[i].on == 1)
     {
-      tmp_light = move_light(&rpt->light[i], rpt);
+      tmp_light = move_light(rpt->light[i].pos, rpt->light[i].intensity,
+			     rpt->light[i].lcolor, rpt->obj[rpt->obj_num].pos);
       if (rpt->light[i].ambient == 0)
 	{
-	  if ((cosa = get_light_vector(rpt->vpt, &lpt, &tmp_light)) > ZERO)
+	  if ((cosa = get_light_vector(rpt->vpt, &lpt, tmp_light.pos)) > ZERO)
 	    cosa = apply_distance(&lpt, &tmp_light, cosa);
 	}
       else
