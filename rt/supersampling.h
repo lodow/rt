@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri Apr  5 11:07:49 2013 luc sinet
-** Last update Sat Apr  6 12:35:54 2013 luc sinet
+** Last update Sun Apr  7 18:34:13 2013 luc sinet
 */
 
 #ifndef SUPERSAMPLING_H_

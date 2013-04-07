@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 16:50:09 2013 luc sinet
-** Last update Wed Apr  3 17:11:28 2013 luc sinet
+** Last update Sun Apr  7 20:06:30 2013 luc sinet
 */
 
 #include "main.h"
@@ -18,7 +18,7 @@ void		apply_light_color(unsigned char *col_o, unsigned char *col_l,
   double	a;
   double	b;
 
-  a = ((4.0 / 10.0) * lg_i);
+  a = 0.2 * lg_i;
   b = 1.0 - a;
   col_o[0] = b * (double)col_o[0] + a * (double)col_l[0];
   col_o[1] = b * (double)col_o[1] + a * (double)col_l[1];

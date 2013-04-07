@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Thu Apr  4 18:19:27 2013 luc sinet
+** Last update Sun Apr  7 23:27:43 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -16,14 +16,14 @@
 # define NZ(t, c, zp) (t == 1) ? 100 : (t == 2) ? (-c * zp) : (t == 3) ? 0 : zp
 # define MAX(x, y) (x > y) ? x : y
 # define LIMIT(x, n1, n2) (x < n1) ? n1 : (x > n2) ? n2 : x
-# define DISTM 10000.0
+# define DISTM 30000.0
 
 typedef struct	s_lco
 {
   double	obj_coor[3];
   double	nvec[3];
   double	lvec[3];
-  double	max_cos;
+  double	mx_cos;
   unsigned char	c_color[3];
 }		t_lco;
 
@@ -34,4 +34,12 @@ void		assign_normal2(t_lco *lpt, int type);
 void		apply_light_color(unsigned char *col_o, unsigned char *col_l,
 				  double lg_i);
 double		get_angle_specular(double lvec[3], double nvec[3], t_lco *lpt);
+void		*apply_ambient(t_lig *light, unsigned char *color,
+			       double *max_cos);
+double		get_light_vector(t_vec *vpt, t_lco *lpt, double *spot_p);
+t_lig		move_light(double *pos, double intensity,
+			   unsigned char *lcolor, double *obj_pos);
+double		get_light_color(t_lig *light, double *obj_pos, t_lco *lpt,
+				t_vec *vpt);
+
 #endif

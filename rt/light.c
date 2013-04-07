@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Sat Apr  6 12:34:13 2013 luc sinet
+** Last update Sun Apr  7 23:27:18 2013 luc sinet
 ** Last update Thu Apr  4 18:17:31 2013 luc sinet
 */
 
@@ -76,28 +76,20 @@ t_lig		move_light(double *pos, double intensity,
 unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
 {
   t_lco		lpt;
-  double	cosa;
+  double	*obj_pos;
   int		i;
-  t_lig		tmp_light;
 
   i = 0;
+  obj_pos = rpt->obj[rpt->obj_num].pos;
   get_inter_normal(rpt, rpt->vpt, k, &lpt);
   copy_color(lpt.c_color, obj->color);
-  lpt.max_cos = 0.0;
+  apply_ambient(rpt->light, lpt.c_color, &lpt.mx_cos);
   while (rpt->light[i].on == 1)
     {
-      tmp_light = move_light(rpt->light[i].pos, rpt->light[i].intensity,
-			     rpt->light[i].lcolor, rpt->obj[rpt->obj_num].pos);
       if (rpt->light[i].ambient == 0)
-	{
-	  if ((cosa = get_light_vector(rpt->vpt, &lpt, tmp_light.pos)) > ZERO)
-	    cosa = apply_distance(&lpt, &tmp_light, cosa);
-	}
-      else
-	cosa = rpt->light[i].intensity / 1.2;
-      apply_light_color(lpt.c_color, rpt->light[i++].lcolor, cosa);
-      lpt.max_cos = MAX(lpt.max_cos, cosa);
+	lpt.mx_cos = get_light_color(&rpt->light[i], obj_pos, &lpt, rpt->vpt);
+      ++i;
     }
   /* int color = refrac(rpt, rpt->cpt, &lpt, apply_light(lpt.c_color, lpt.max_cos, obj)); */
-  return (apply_light(lpt.c_color, lpt.max_cos, obj));
+  return (apply_light(lpt.c_color, lpt.mx_cos, obj));
 }

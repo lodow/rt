@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sat Apr  6 12:36:16 2013 luc sinet
+## Last update Sun Apr  7 19:14:47 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -38,6 +38,7 @@ SRCS	= main.c \
 	  refraction.c \
 	  reflection.c \
 	  anti-aliasing.c \
+	  ambient_light.c \
 	  supersampling.c
 
 OBJS	= $(SRCS:.c=.o)

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 23:14:34 2013 luc sinet
-** Last update Fri Apr  5 11:01:31 2013 luc sinet
+** Last update Sun Apr  7 19:02:32 2013 luc sinet
 */
 
 #include <math.h>
@@ -27,6 +27,6 @@ double		apply_distance(t_lco *lpt, t_lig *obj, double ratio_a)
   if (dist < DISTM)
     dist = DISTM;
   ratio_d = 1.0 / (dist / DISTM);
-  ratio_a = ((1 - ratio_a) * ratio_a + (ratio_a * ratio_d)) * obj->intensity;
+  ratio_a = ((1.0 - ratio_a) * ratio_a + (ratio_a * ratio_d)) * obj->intensity;
   return (ratio_a);
 }
