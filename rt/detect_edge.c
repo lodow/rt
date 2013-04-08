@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Apr  8 17:01:54 2013 luc sinet
-** Last update Mon Apr  8 19:42:10 2013 luc sinet
+** Last update Mon Apr  8 21:30:37 2013 luc sinet
 */
 
 #include "main.h"
@@ -47,12 +47,14 @@ void	detect_edge(t_rt *rpt, t_samp *spt, t_par *ppt)
   img = ppt->img_obj;
   timg = ppt->timg_obj;
   pos[1] = 0;
+  print_i(ppt);
   while (pos[1] < WINY - 1)
     {
       pos[0] = 0;
       while (pos[0] < WINX - 1)
 	{
 	  compare_img_val(pos, img, timg, 0);
+	  compare_img_val(pos, img, timg, 1);
 	  ++pos[0];
 	}
       ++pos[1];

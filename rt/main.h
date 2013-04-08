@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Mon Apr  8 19:35:33 2013 luc sinet
+** Last update Mon Apr  8 21:25:41 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -85,6 +85,7 @@ typedef struct	s_rt
 
 void		calc_inter(t_rt *rpt, double *kmin);
 void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt);
+int		print_i(t_par *ppt);
 int		merror(char *msg, int ret);
 double		move_cam(t_rt *rpt, t_vec *vpt, t_cam *cpt, t_obj obj);
 void		init_cos(t_obj *tab);
@@ -101,5 +102,6 @@ double		*deref_cam(t_cam *cpt, double *cam);
 double		*deref_vec(t_vec *vpt, double *vec);
 unsigned int	get_pixel_color(t_rt *rpt);
 void		detect_edge(t_rt *rpt, t_samp *spt, t_par *ppt);
+void		apply_supersampling(t_rt *rpt, t_samp *spt, t_par *ppt);
 
 #endif
