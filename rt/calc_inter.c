@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Sun Apr  7 18:40:35 2013 luc sinet
+** Last update Mon Apr  8 19:34:18 2013 luc sinet
 */
 
 #include <math.h>
@@ -85,8 +85,11 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
 	{
 	  if ((color = supersampling(rpt, &spt, x, y)) != 0x000000)
 	    my_pixel_put_to_image(x, y, ppt, color);
+	  ppt->img_obj[y][x] = rpt->obj_num;
+	  ppt->timg_obj[y][x] = rpt->obj_num;
 	  ++x;
 	}
       ++y;
     }
+  detect_edge(rpt, &spt, ppt);
 }

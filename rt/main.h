@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Sat Apr  6 11:12:08 2013 luc sinet
+** Last update Mon Apr  8 19:35:33 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -25,6 +25,8 @@
 # define ABS(val) (val < 0) ? -(val) : val
 # define DIST 1000
 # define K_ESC 65307
+
+typedef struct	s_samp	t_samp;
 
 typedef struct	s_cam
 {
@@ -98,5 +100,6 @@ void		new_coor(t_vec *vpt, t_cam *cpt, double x, double y);
 double		*deref_cam(t_cam *cpt, double *cam);
 double		*deref_vec(t_vec *vpt, double *vec);
 unsigned int	get_pixel_color(t_rt *rpt);
+void		detect_edge(t_rt *rpt, t_samp *spt, t_par *ppt);
 
 #endif

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Mon Apr  1 21:36:16 2013 luc sinet
+** Last update Mon Apr  8 19:38:03 2013 luc sinet
 */
 
 #include "main.h"
@@ -27,8 +27,21 @@ int	print_i(t_par *ppt)
 
 int	creat_win(t_rt *rpt, t_par *ppt)
 {
+  int	y;
+
+  y = 0;
   if ((ppt->mlx_ptr = mlx_init()) == NULL)
     return (merror("Couldn't init mlx\n", -1));
+  else if ((ppt->img_obj = malloc(sizeof(int *) * WINY)) == NULL ||
+	   (ppt->timg_obj = malloc(sizeof(int *) * WINY)) == NULL)
+    return (merror("Malloc error\n", -1));
+  while (y < WINY)
+    {
+      if ((ppt->img_obj[y] = malloc(sizeof(int) * WINX)) == NULL ||
+	  (ppt->timg_obj[y] = malloc(sizeof(int) * WINX)) == NULL)
+	return (merror("Malloc error\n", -1));
+      ++y;
+    }
   ppt->win_ptr =  mlx_new_window(ppt->mlx_ptr, WINX, WINY, " rtv1 ");
   ppt->img_ptr = mlx_new_image(ppt->mlx_ptr, WINX, WINY);
   ppt->data = mlx_get_data_addr(ppt->img_ptr,

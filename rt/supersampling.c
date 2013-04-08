@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri Apr  5 11:07:42 2013 luc sinet
-** Last update Sat Apr  6 20:15:01 2013 luc sinet
+** Last update Mon Apr  8 16:13:23 2013 luc sinet
 */
 
 #include "main.h"
@@ -49,7 +49,6 @@ unsigned int   	supersampling(t_rt *rpt, t_samp *spt, int x, int y)
 	  spt->pixel[i] = get_pixel_color(rpt);
 	  pos[0] += spacing;
 	  ++i;
-	  /* printf("spacing %f  x %f  y %f\n", spacing, pos[0], pos[1]); */
 	}
       pos[1] += spacing;
     }

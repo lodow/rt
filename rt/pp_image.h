@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Nov 14 20:45:42 2012 luc sinet
-** Last update Wed Mar 20 22:59:50 2013 luc sinet
+** Last update Mon Apr  8 19:18:50 2013 luc sinet
 */
 
 #ifndef PP_H_
@@ -20,6 +20,8 @@ typedef struct	s_par
   void		*mlx_ptr;
   void		*img_ptr;
   char		*data;
+  int		**img_obj;
+  int		**timg_obj;
   int		bpp;
   int		sizeline;
   int		endian;
