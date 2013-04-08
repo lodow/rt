@@ -5,12 +5,29 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Mon Apr  8 19:38:03 2013 luc sinet
+** Last update Mon Apr  8 19:58:15 2013 luc sinet
 */
 
 #include "main.h"
 #include "pars.h"
 #include "mlx.h"
+
+void	free_all(t_rt *rpt, t_par *ppt)
+{
+  int	i;
+
+  i = 0;
+  free(rpt->obj);
+  free(rpt->light);
+  while (i < WINY)
+    {
+      free(ppt->img_obj[i]);
+      free(ppt->timg_obj[i]);
+      ++i;
+    }
+  free(ppt->img_obj);
+  free(ppt->timg_obj);
+}
 
 int	key_event(int key, t_rt *rpt)
 {
@@ -55,8 +72,6 @@ int		main(int ac, char **av)
   t_par		ppt;
   t_vec		vpt;
   t_cam		cpt;
-  /* int		i; */
-  /* int		x; */
 
   rpt.vpt = &vpt;
   rpt.cpt = &cpt;
@@ -65,13 +80,8 @@ int		main(int ac, char **av)
   if (pars(&rpt, av[1], &cpt) < 0 || creat_win(&rpt, &ppt) == -1)
     return (-1);
   init_cos(rpt.obj);
-  /* for(i=0;rpt.obj[i].type != -1;i++) */
-  /*   { */
-  /*     for(x=0;x<3;x++) */
-  /* 	printf("pos: %f\n", rpt.obj[i].pos[x]); */
-  /*   } */
   calc_pixel(&rpt, &cpt, &vpt, &ppt);
-  /* exit(0); */
+  free_all(&rpt, &ppt);
   mlx_key_hook(ppt.win_ptr, key_event, &rpt);
   mlx_expose_hook(ppt.win_ptr, print_i, &ppt);
   mlx_key_hook(ppt.win_ptr, key_event, &rpt);
