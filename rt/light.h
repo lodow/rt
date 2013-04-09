@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Sun Apr  7 23:41:53 2013 luc sinet
+** Last update Tue Apr  9 18:29:52 2013 Adrien Della Maggiora
 */
 
 #ifndef LIG_H_
@@ -41,5 +41,6 @@ t_lig		move_light(double *pos, double intensity,
 			   unsigned char *lcolor, double *obj_pos);
 double		get_light_color(t_lig *light, double *obj_pos, t_lco *lpt,
 				t_vec *vpt);
+int		shadows(t_rt *rpt, t_cam *cpt, t_lig *spot, t_lco *lpt);
 
 #endif

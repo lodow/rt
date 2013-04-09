@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Sun Apr  7 23:27:18 2013 luc sinet
+** Last update Tue Apr  9 14:02:28 2013 Adrien Della Maggiora
 ** Last update Thu Apr  4 18:17:31 2013 luc sinet
 */
 
@@ -43,18 +43,18 @@ double		get_light_vector(t_vec *vpt, t_lco *lpt, double *spot_pos)
   double	bnorme;
   double	cosa;
 
-  lpt->lvec[0] = spot_pos[0] - lpt->obj_coor[0];
-  lpt->lvec[1] = spot_pos[1] - lpt->obj_coor[1];
-  lpt->lvec[2] = spot_pos[2] - lpt->obj_coor[2];
+  vpt->vx = spot_pos[0] - lpt->obj_coor[0];
+  vpt->vy = spot_pos[1] - lpt->obj_coor[1];
+  vpt->vz = spot_pos[2] - lpt->obj_coor[2];
   bnorme = (sqrt(pow(lpt->nvec[0], 2) + pow(lpt->nvec[1], 2)
 		 + pow(lpt->nvec[2], 2))
-	    * sqrt(pow(lpt->lvec[0], 2) + pow(lpt->lvec[1], 2)
-		   + pow(lpt->lvec[2], 2)));
+	    * sqrt(pow(vpt->vx, 2) + pow(vpt->vy, 2)
+		   + pow(vpt->vz, 2)));
   if (bnorme < ZERO && bnorme > -ZERO)
     return (0);
-  cosa = (lpt->nvec[0] * lpt->lvec[0]
-	  + lpt->nvec[1] * lpt->lvec[1]
-	  + lpt->nvec[2] * lpt->lvec[2]) / bnorme;
+  cosa = (lpt->nvec[0] * vpt->vx
+	  + lpt->nvec[1] * vpt->vy
+	  + lpt->nvec[2] * vpt->vz) / bnorme;
   return (cosa < ZERO ? 0.0 : cosa);
 }
 
@@ -78,8 +78,10 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
   t_lco		lpt;
   double	*obj_pos;
   int		i;
+  int		shadow;
 
   i = 0;
+  shadow = 0;
   obj_pos = rpt->obj[rpt->obj_num].pos;
   get_inter_normal(rpt, rpt->vpt, k, &lpt);
   copy_color(lpt.c_color, obj->color);
@@ -87,9 +89,13 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
   while (rpt->light[i].on == 1)
     {
       if (rpt->light[i].ambient == 0)
-	lpt.mx_cos = get_light_color(&rpt->light[i], obj_pos, &lpt, rpt->vpt);
+	{
+	  lpt.mx_cos = get_light_color(&rpt->light[i], obj_pos, &lpt, rpt->vpt);
+	  shadow += shadows(rpt, rpt->cpt, &rpt->light[i], &lpt);
+	}
+      else
+	++shadow;
       ++i;
     }
-  /* int color = refrac(rpt, rpt->cpt, &lpt, apply_light(lpt.c_color, lpt.max_cos, obj)); */
-  return (apply_light(lpt.c_color, lpt.mx_cos, obj));
+  return (apply_light(lpt.c_color, lpt.mx_cos * ((double)shadow / (double)i), obj));
 }
