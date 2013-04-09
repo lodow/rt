@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Feb 26 04:22:07 2013 luc sinet
-** Last update Tue Apr  9 19:06:59 2013 luc sinet
+** Last update Wed Apr 10 01:09:16 2013 luc sinet
 */
 
 #include <math.h>
@@ -45,6 +45,7 @@ double		cone(double *cam, double *vec, t_obj *ept)
 
 double		plan(double *cam, double *vec, t_obj *ept)
 {
+  (void)(*ept);
   return ((vec[2] == ZERO) ? -1.0 : -(cam[2] / vec[2]));
 }
 

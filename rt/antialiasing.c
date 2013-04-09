@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Apr  8 21:05:59 2013 luc sinet
-** Last update Mon Apr  8 22:11:33 2013 luc sinet
+** Last update Wed Apr 10 01:24:23 2013 luc sinet
 */
 
 #include <unistd.h>
@@ -23,7 +23,7 @@ void	emphasize_edges(int **img, t_par *ppt)
       x = 0;
       while (x < WINX)
 	{
-	  if (img[y][x] == -1)
+	  if (img[y * WINX + x][0] == -1)
 	    my_pixel_put_to_image(x, y, ppt, 0x000000);
 	  ++x;
 	}
@@ -49,7 +49,7 @@ void		apply_supersampling(t_rt *rpt, t_samp *spt, t_par *ppt)
       x = 0;
       while (x < WINX)
 	{
-	  if (img[y][x] == -1)
+	  if (img[y * WINX + x][0] == -1)
 	    my_pixel_put_to_image(x, y, ppt, supersampling(rpt, spt, x, y));
 	  ++x;
 	}

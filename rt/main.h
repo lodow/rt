@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Tue Apr  9 19:04:25 2013 luc sinet
+** Last update Wed Apr 10 01:43:41 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -109,7 +109,8 @@ int		solve_second(double *a, double *k);
 double		test_limit(double *cam, double *vec, double *k, double *limit);
 unsigned int	get_pixel_color(t_rt *rpt);
 void		get_inter(double *cam, double *vec, double k, double *inter);
-void		detect_edge(t_rt *rpt, t_samp *spt, t_par *ppt);
+void		detect_edge(t_rt *rpt, t_par *ppt);
 void		apply_supersampling(t_rt *rpt, t_samp *spt, t_par *ppt);
+void		fill_img_param(int x, int y, t_rt *rpt, t_par *ppt);
 
 #endif

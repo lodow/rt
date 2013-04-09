@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Tue Apr  9 18:30:43 2013 Adrien Della Maggiora
+** Last update Wed Apr 10 01:19:51 2013 luc sinet
 */
 
 #include "main.h"
@@ -19,7 +19,7 @@ void	free_all(t_rt *rpt, t_par *ppt)
   i = 0;
   free(rpt->obj);
   free(rpt->light);
-  while (i < WINY)
+  while (i < WINX * WINY)
     {
       free(ppt->img_obj[i]);
       free(ppt->timg_obj[i]);
@@ -31,6 +31,7 @@ void	free_all(t_rt *rpt, t_par *ppt)
 
 int	key_event(int key, t_rt *rpt)
 {
+  (void)rpt;
   if (key == K_ESC)
     exit (0);
   return (0);
@@ -42,20 +43,20 @@ int	print_i(t_par *ppt)
   return (0);
 }
 
-int	creat_win(t_rt *rpt, t_par *ppt)
+int	creat_win(t_par *ppt)
 {
   int	y;
 
   y = 0;
   if ((ppt->mlx_ptr = mlx_init()) == NULL)
     return (merror("Couldn't init mlx\n", -1));
-  else if ((ppt->img_obj = malloc(sizeof(int *) * WINY)) == NULL ||
-	   (ppt->timg_obj = malloc(sizeof(int *) * WINY)) == NULL)
+  else if ((ppt->img_obj = malloc(sizeof(int *) * (WINY * WINX))) == NULL ||
+	   (ppt->timg_obj = malloc(sizeof(int *) * (WINY * WINX))) == NULL)
     return (merror("Malloc error\n", -1));
-  while (y < WINY)
+  while (y < WINY * WINX)
     {
-      if ((ppt->img_obj[y] = malloc(sizeof(int) * WINX)) == NULL ||
-	  (ppt->timg_obj[y] = malloc(sizeof(int) * WINX)) == NULL)
+      if ((ppt->img_obj[y] = malloc(sizeof(int) * 3)) == NULL ||
+	  (ppt->timg_obj[y] = malloc(sizeof(int) * 3)) == NULL)
 	return (merror("Malloc error\n", -1));
       ++y;
     }
@@ -77,7 +78,7 @@ int		main(int ac, char **av)
   rpt.cpt = &cpt;
   if (ac == 1)
     return (merror("You need to specifie a config file in argument\n", -1));
-  if (pars(&rpt, av[1], &cpt) < 0 || creat_win(&rpt, &ppt) == -1)
+  if (pars(&rpt, av[1], &cpt) < 0 || creat_win(&ppt) == -1)
     return (-1);
   init_cos(rpt.obj);
   calc_pixel(&rpt, &cpt, &vpt, &ppt);
