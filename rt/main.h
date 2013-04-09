@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Sat Apr  6 11:12:08 2013 luc sinet
+** Last update Tue Apr  9 15:00:17 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -25,6 +25,8 @@
 # define ABS(val) (val < 0) ? -(val) : val
 # define DIST 1000
 # define K_ESC 65307
+
+typedef struct	s_samp	t_samp;
 
 typedef struct	s_cam
 {
@@ -48,6 +50,9 @@ typedef struct	s_obj
   double	bright;
   double	ocos[4];
   double	osin[4];
+  double	acos[3];
+  double	asin[3];
+  double	limit[2];
   double	alpha;
   double	n;
 }		t_obj;
@@ -83,6 +88,7 @@ typedef struct	s_rt
 
 void		calc_inter(t_rt *rpt, double *kmin);
 void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt);
+int		print_i(t_par *ppt);
 int		merror(char *msg, int ret);
 double		move_cam(t_rt *rpt, t_vec *vpt, t_cam *cpt, t_obj obj);
 void		init_cos(t_obj *tab);
@@ -97,6 +103,10 @@ void		rotate_veccam(t_vec *vec, double ccos[3], double csin[3]);
 void		new_coor(t_vec *vpt, t_cam *cpt, double x, double y);
 double		*deref_cam(t_cam *cpt, double *cam);
 double		*deref_vec(t_vec *vpt, double *vec);
+double		get_min(double k1, double k2);
+double		solve_second(double *a);
 unsigned int	get_pixel_color(t_rt *rpt);
+void		detect_edge(t_rt *rpt, t_samp *spt, t_par *ppt);
+void		apply_supersampling(t_rt *rpt, t_samp *spt, t_par *ppt);
 
 #endif

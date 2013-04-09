@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Mar 16 23:19:04 2013 luc sinet
-** Last update Mon Apr  1 20:46:09 2013 luc sinet
+** Last update Tue Apr  9 11:39:46 2013 luc sinet
 */
 
 #include "main.h"
@@ -58,6 +58,21 @@ void	fill_angle(t_obj *ept, char *line)
     }
 }
 
+void	fill_limits(char *line, double *limit)
+{
+  int	i;
+  int	x;
+
+  i = 0;
+  x = 0;
+  while (i < 2)
+    {
+      skip_adds(line, &x);
+      limit[i] = my_sgetnbr(line, &x);
+      ++i;
+    }
+}
+
 int	other_opt(char *line, t_obj *ept)
 {
   if (my_strncmp("Size = ", line, 7) == 0)
@@ -71,6 +86,8 @@ int	other_opt(char *line, t_obj *ept)
     ept->alpha = LIMIT(my_fgetnbr(&line[8]), 0, 1);
   else if (my_strncmp("N = ", line, 4) == 0)
     ept->n = LIMIT(my_fgetnbr(&line[4]), 0, 1);
+  else if (my_strncmp("Limit = ", line, 8) == 0)
+    fill_limits(&line[8], ept->limit);
   else
     return (-1);
   return (0);

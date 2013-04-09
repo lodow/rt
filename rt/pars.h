@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Mon Apr  1 22:11:44 2013 luc sinet
+** Last update Tue Apr  9 11:40:30 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -44,6 +44,7 @@ int	pars(t_rt *rpt, char *fname, t_cam *cpt);
 void	get_color(char *line, unsigned char *color);
 void	init_shapes(char **shape);
 void	init_cam(t_cam *cpt);
+void	skip_adds(char *line, int *i);
 int	light_carac(char *line, t_lig *ltab, int i);
 
 #endif

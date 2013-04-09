@@ -5,12 +5,29 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Mon Apr  8 12:25:31 2013 Adrien Della Maggiora
+** Last update Tue Apr  9 18:30:43 2013 Adrien Della Maggiora
 */
 
 #include "main.h"
 #include "pars.h"
 #include "mlx.h"
+
+void	free_all(t_rt *rpt, t_par *ppt)
+{
+  int	i;
+
+  i = 0;
+  free(rpt->obj);
+  free(rpt->light);
+  while (i < WINY)
+    {
+      free(ppt->img_obj[i]);
+      free(ppt->timg_obj[i]);
+      ++i;
+    }
+  free(ppt->img_obj);
+  free(ppt->timg_obj);
+}
 
 int	key_event(int key, t_rt *rpt)
 {
@@ -27,8 +44,21 @@ int	print_i(t_par *ppt)
 
 int	creat_win(t_rt *rpt, t_par *ppt)
 {
+  int	y;
+
+  y = 0;
   if ((ppt->mlx_ptr = mlx_init()) == NULL)
     return (merror("Couldn't init mlx\n", -1));
+  else if ((ppt->img_obj = malloc(sizeof(int *) * WINY)) == NULL ||
+	   (ppt->timg_obj = malloc(sizeof(int *) * WINY)) == NULL)
+    return (merror("Malloc error\n", -1));
+  while (y < WINY)
+    {
+      if ((ppt->img_obj[y] = malloc(sizeof(int) * WINX)) == NULL ||
+	  (ppt->timg_obj[y] = malloc(sizeof(int) * WINX)) == NULL)
+	return (merror("Malloc error\n", -1));
+      ++y;
+    }
   ppt->win_ptr =  mlx_new_window(ppt->mlx_ptr, WINX, WINY, " rt ");
   ppt->img_ptr = mlx_new_image(ppt->mlx_ptr, WINX, WINY);
   ppt->data = mlx_get_data_addr(ppt->img_ptr,
@@ -42,8 +72,6 @@ int		main(int ac, char **av)
   t_par		ppt;
   t_vec		vpt;
   t_cam		cpt;
-  /* int		i; */
-  /* int		x; */
 
   rpt.vpt = &vpt;
   rpt.cpt = &cpt;
@@ -52,13 +80,8 @@ int		main(int ac, char **av)
   if (pars(&rpt, av[1], &cpt) < 0 || creat_win(&rpt, &ppt) == -1)
     return (-1);
   init_cos(rpt.obj);
-  /* for(i=0;rpt.obj[i].type != -1;i++) */
-  /*   { */
-  /*     for(x=0;x<3;x++) */
-  /* 	printf("pos: %f\n", rpt.obj[i].pos[x]); */
-  /*   } */
   calc_pixel(&rpt, &cpt, &vpt, &ppt);
-  /* exit(0); */
+  free_all(&rpt, &ppt);
   mlx_key_hook(ppt.win_ptr, key_event, &rpt);
   mlx_expose_hook(ppt.win_ptr, print_i, &ppt);
   mlx_key_hook(ppt.win_ptr, key_event, &rpt);

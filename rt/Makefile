@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Tue Apr  9 14:19:18 2013 Adrien Della Maggiora
+## Last update Tue Apr  9 18:28:03 2013 Adrien Della Maggiora
 ##
 
 SRCS	= main.c \
@@ -37,16 +37,18 @@ SRCS	= main.c \
 	  modif_cam.c \
 	  refraction.c \
 	  reflection.c \
-	  anti-aliasing.c \
+	  antialiasing.c \
 	  ambient_light.c \
-	  supersampling.c \
 	  shadows.c
+	  detect_edge.c \
+	  solve_second.c \
+	  supersampling.c
 
 OBJS	= $(SRCS:.c=.o)
 
 OPT     = -L/usr/lib64 -lmlx_x86_64-linux -L/usr/lib64/X11 -lXext -lX11 -lm
 
-CC	= gcc -o2 -march=native -g -Wall -Wextra
+CC	= gcc -O2 -march=native -g -Wall -Wextra
 
 RM	= rm -f
 
