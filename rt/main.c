@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Mon Apr  1 21:36:16 2013 luc sinet
+** Last update Mon Apr  8 12:25:31 2013 Adrien Della Maggiora
 */
 
 #include "main.h"
@@ -29,7 +29,7 @@ int	creat_win(t_rt *rpt, t_par *ppt)
 {
   if ((ppt->mlx_ptr = mlx_init()) == NULL)
     return (merror("Couldn't init mlx\n", -1));
-  ppt->win_ptr =  mlx_new_window(ppt->mlx_ptr, WINX, WINY, " rtv1 ");
+  ppt->win_ptr =  mlx_new_window(ppt->mlx_ptr, WINX, WINY, " rt ");
   ppt->img_ptr = mlx_new_image(ppt->mlx_ptr, WINX, WINY);
   ppt->data = mlx_get_data_addr(ppt->img_ptr,
 				&ppt->bpp, &ppt->sizeline, &ppt->endian);
