@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 17:22:40 2013 luc sinet
-** Last update Tue Apr  2 19:56:06 2013 Adrien Della Maggiora
+** Last update Tue Apr  9 17:29:15 2013 luc sinet
 */
 
 #include <math.h>
@@ -42,6 +42,8 @@ void    init_elem(t_obj *tab, t_pars *opt)
       tab[i].type = -1;
       while (x < 3)
 	{
+	  if (x < 2)
+	    tab[i].limit[x] = -1;
 	  tab[i].pos[x] = IVAL;
 	  tab[i].color[x++] = 0;
 	}

@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Tue Apr  9 15:04:48 2013 luc sinet
+## Last update Tue Apr  9 18:57:33 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -41,6 +41,7 @@ SRCS	= main.c \
 	  ambient_light.c \
 	  detect_edge.c \
 	  solve_second.c \
+	  limit.c \
 	  supersampling.c
 
 OBJS	= $(SRCS:.c=.o)

@@ -5,24 +5,59 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Apr  9 14:49:14 2013 luc sinet
-** Last update Tue Apr  9 15:06:52 2013 luc sinet
+** Last update Tue Apr  9 19:09:57 2013 luc sinet
 */
 
 #include <math.h>
 #include "main.h"
 
-double	get_min(double k1, double k2)
+void	get_inter(double *cam, double *vec, double k, double *inter)
 {
-  if (k1 < ZERO && k2 < ZERO)
-    return (-1.0);
-  if (k1 < k2)
-    return (k1 < ZERO ? k2 : k1);
-  else if (k2 < k1)
-    return (k2 < ZERO ? k1 : k2);
-  return (-1.0);
+  inter[0] = cam[0] + k * vec[0];
+  inter[1] = cam[1] + k * vec[1];
+  inter[2] = cam[2] + k * vec[2];
 }
 
-double		solve_second(double *a)
+double		get_max(double *k, int size)
+{
+  int		i;
+  double	max;
+
+  i = 1;
+  max = k[0];
+  while (i < size)
+    {
+      if (k[i] > size)
+	max = k[i];
+      ++i;
+    }
+  return (max);
+}
+
+double		get_min(double *k, int size)
+{
+  int		i;
+  double	smallest;
+
+  i = 1;
+  smallest = k[0];
+  while (i < size)
+    {
+      if (k[i] >= ZERO && k[i] < smallest)
+	smallest = k[i];
+      ++i;
+    }
+  return (smallest);
+}
+
+double		get_smallest(double a, double b)
+{
+  if (a >= ZERO && a > b)
+    return (a);
+  return (b);
+}
+
+int		solve_second(double *a, double *k)
 {
   double	delta;
 
@@ -30,7 +65,8 @@ double		solve_second(double *a)
   if (delta < ZERO || a[0] == ZERO)
     return (-1);
   if (delta == ZERO)
-    return (get_min((-a[1] / (2.0 * a[0])), -1.0));
-  return (get_min(((-a[1] + sqrt(delta)) / (2 * a[0])),
-		  ((-a[1] - sqrt(delta)) / (2 * a[0]))));
+    return (get_smallest((-a[1] / (2.0 * a[0])), -1.0));
+  k[0] = ((-a[1] + sqrt(delta)) / (2 * a[0]));
+  k[1] = ((-a[1] - sqrt(delta)) / (2 * a[0]));
+  return (1);
 }

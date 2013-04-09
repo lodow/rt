@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Feb 26 04:22:07 2013 luc sinet
-** Last update Tue Apr  9 15:32:35 2013 luc sinet
+** Last update Tue Apr  9 19:06:59 2013 luc sinet
 */
 
 #include <math.h>
@@ -13,17 +13,21 @@
 
 double		sphere(double *cam, double *vec, t_obj *ept)
 {
+  double	k[2];
   double	a[3];
 
   a[0] = vec[0] * vec[0] + vec[1] * vec[1] + vec[2] * vec[2];
   a[1] = 2.0 * (cam[0] * vec[0] + cam[1] * vec[1] + cam[2] * vec[2]);
   a[2] = cam[0] * cam[0] + cam[1] * cam[1] + cam[2]
     * cam[2] - ept->rayon * ept->rayon;
-  return (solve_second(a));
+  if (solve_second(a, k) == -1)
+    return (-1);
+  return (test_limit(cam, vec, k, ept->limit));
 }
 
 double		cone(double *cam, double *vec, t_obj *ept)
 {
+  double	k[2];
   double	a[3];
   double	tan_pow;
 
@@ -34,7 +38,9 @@ double		cone(double *cam, double *vec, t_obj *ept)
        - cam[2] * vec[2]);
   a[2] = cam[0] * cam[0] * tan_pow + cam[1] * cam[1] * tan_pow -
     cam[2] * cam[2];
-  return (solve_second(a));
+  if (solve_second(a, k) == -1)
+    return (-1);
+  return (test_limit(cam, vec, k, ept->limit));
 }
 
 double		plan(double *cam, double *vec, t_obj *ept)
@@ -44,10 +50,13 @@ double		plan(double *cam, double *vec, t_obj *ept)
 
 double		cylinder(double *cam, double *vec, t_obj *ept)
 {
+  double	k[2];
   double	a[3];
 
   a[0] = vec[0] * vec[0] + vec[1] * vec[1];
   a[1] = 2.0 * (cam[0] * vec[0] + cam[1] * vec[1]);
   a[2] = cam[0] * cam[0] + cam[1] * cam[1] - ept->rayon * ept->rayon;
-  return (solve_second(a));
+  if (solve_second(a, k) == -1)
+    return (-1);
+  return (test_limit(cam, vec, k, ept->limit));
 }

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Tue Apr  9 15:00:17 2013 luc sinet
+** Last update Tue Apr  9 19:04:25 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -103,9 +103,12 @@ void		rotate_veccam(t_vec *vec, double ccos[3], double csin[3]);
 void		new_coor(t_vec *vpt, t_cam *cpt, double x, double y);
 double		*deref_cam(t_cam *cpt, double *cam);
 double		*deref_vec(t_vec *vpt, double *vec);
-double		get_min(double k1, double k2);
-double		solve_second(double *a);
+double		get_min(double *k, int size);
+double		get_max(double *k, int size);
+int		solve_second(double *a, double *k);
+double		test_limit(double *cam, double *vec, double *k, double *limit);
 unsigned int	get_pixel_color(t_rt *rpt);
+void		get_inter(double *cam, double *vec, double k, double *inter);
 void		detect_edge(t_rt *rpt, t_samp *spt, t_par *ppt);
 void		apply_supersampling(t_rt *rpt, t_samp *spt, t_par *ppt);
 

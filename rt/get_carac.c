@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Mar 16 23:19:04 2013 luc sinet
-** Last update Tue Apr  9 11:39:46 2013 luc sinet
+** Last update Tue Apr  9 19:24:07 2013 luc sinet
 */
 
 #include "main.h"
@@ -49,7 +49,7 @@ void	fill_angle(t_obj *ept, char *line)
       if (line[pl] == ',' || line[pl] == ';')
 	return ;
       ang = my_sgetnbr(line, &pl);
-      ept->angle[x] = RANG(ang);
+      ept->angle[x] = ang;
       if (line[pl])
 	pl++;
       if (!line[pl])
