@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Tue Apr  9 14:02:28 2013 Adrien Della Maggiora
+** Last update Tue Apr  9 19:36:45 2013 luc sinet
 ** Last update Thu Apr  4 18:17:31 2013 luc sinet
 */
 
@@ -91,11 +91,11 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
       if (rpt->light[i].ambient == 0)
 	{
 	  lpt.mx_cos = get_light_color(&rpt->light[i], obj_pos, &lpt, rpt->vpt);
-	  shadow += shadows(rpt, rpt->cpt, &rpt->light[i], &lpt);
+	  /* shadow += shadows(rpt, rpt->cpt, &rpt->light[i], &lpt); */
 	}
       else
 	++shadow;
       ++i;
     }
-  return (apply_light(lpt.c_color, lpt.mx_cos * ((double)shadow / (double)i), obj));
+  return (apply_light(lpt.c_color, lpt.mx_cos /* * ((double)shadow / (double)i) */, obj));
 }
