@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Mon Apr  8 21:18:56 2013 luc sinet
+## Last update Tue Apr  9 15:04:48 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -40,13 +40,14 @@ SRCS	= main.c \
 	  antialiasing.c \
 	  ambient_light.c \
 	  detect_edge.c \
+	  solve_second.c \
 	  supersampling.c
 
 OBJS	= $(SRCS:.c=.o)
 
 OPT     = -L/usr/lib64 -lmlx_x86_64-linux -L/usr/lib64/X11 -lXext -lX11 -lm
 
-CC	= gcc -g -Wall -Wmissing-include-dirs
+CC	= gcc -O2 -march=native -g -Wall -Wmissing-include-dirs
 
 RM	= rm -f
 
