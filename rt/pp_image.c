@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Nov 12 11:23:01 2012 luc sinet
-** Last update Wed Mar 20 16:30:51 2013 luc sinet
+** Last update Wed Apr 10 12:56:17 2013 luc sinet
 */
 
 #include "mlx.h"
@@ -18,7 +18,7 @@ int		my_pixel_put_to_image(int x, int y, t_par *par, unsigned int color)
 
   x_pos = y * par->sizeline / 4 + x;
   color_val = mlx_get_color_value(par->mlx_ptr, color);
-  if ((x >= 0 && y >= 0) && (x <= WINX && y <= WINY) && x_pos >= 0)
+  if ((x >= 0 && y >= 0) && (x <= WINX && y <= WINY))
     ((int*)par->data)[x_pos] = color_val;
   return (0);
 }
