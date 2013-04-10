@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 17:22:40 2013 luc sinet
-** Last update Tue Apr  9 17:29:15 2013 luc sinet
+** Last update Wed Apr 10 23:03:52 2013 luc sinet
 */
 
 #include <math.h>
@@ -26,34 +26,6 @@ void	init_light(t_lig *ltab, t_pars *opt)
 	ltab[i].pos[x++] = IVAL;
       ltab[i].intensity = 1.0;
       ltab[i].ambient = 0;
-      i++;
-    }
-}
-
-void    init_elem(t_obj *tab, t_pars *opt)
-{
-  int   i;
-  int   x;
-
-  i = 0;
-  while (i < opt->nb_shape)
-    {
-      x = 0;
-      tab[i].type = -1;
-      while (x < 3)
-	{
-	  if (x < 2)
-	    tab[i].limit[x] = -1;
-	  tab[i].pos[x] = IVAL;
-	  tab[i].color[x++] = 0;
-	}
-      x = 0;
-      while (x < 4)
-	tab[i].angle[x++] = IVAL;
-      tab[i].rayon = 0;
-      tab[i].bright = 1.0;
-      tab[i].alpha = 0;
-      tab[i].n = 1;
       i++;
     }
 }

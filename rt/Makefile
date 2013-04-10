@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Wed Apr 10 13:26:14 2013 luc sinet
+## Last update Wed Apr 10 23:05:38 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -30,6 +30,7 @@ SRCS	= main.c \
 	  light.c \
 	  change_color.c \
 	  init.c \
+	  init_elem.c \
 	  init_cam.c \
 	  deref.c \
 	  math_coor.c \
@@ -44,6 +45,7 @@ SRCS	= main.c \
 	  detect_shadows.c \
 	  solve_second.c \
 	  limit.c \
+	  limit_sides.c \
 	  supersampling.c
 
 OBJS	= $(SRCS:.c=.o)

@@ -5,9 +5,10 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 16:50:09 2013 luc sinet
-** Last update Wed Apr 10 15:01:28 2013 luc sinet
+** Last update Wed Apr 10 23:10:07 2013 luc sinet
 */
 
+#include <math.h>
 #include "main.h"
 #include "light.h"
 #include "change_color.h"

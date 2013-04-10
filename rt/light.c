@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Wed Apr 10 14:31:18 2013 luc sinet
+** Last update Wed Apr 10 23:10:33 2013 luc sinet
 ** Last update Thu Apr  4 18:17:31 2013 luc sinet
 */
 
@@ -94,7 +94,7 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
 	{
 	  /* if ((state = shadows(rpt, rpt->cpt, &rpt->light[i], &lpt)) == 1) */
 	    lpt.mx_cos = get_light_color(&rpt->light[i], obj_pos, &lpt, rpt->vpt);
-	  shadow += state;
+	  /* shadow += state; */
 	}
       else
 	++shadow;
