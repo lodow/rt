@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Wed Apr 10 02:30:53 2013 luc sinet
+** Last update Wed Apr 10 03:58:38 2013 luc sinet
 */
 
 #include <math.h>
@@ -35,7 +35,6 @@ void		calc_inter(t_rt *rpt, double *kmin)
       if (k > ZERO && (k < *kmin || *kmin == -1))
 	{
 	  *kmin = k;
-	  rpt->old_k = k;
 	  rpt->obj_num = i;
 	}
       ++i;
@@ -69,26 +68,27 @@ unsigned int	get_pixel_color(t_rt *rpt)
 void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
 {
   t_samp	spt;
-  int		x;
-  int		y;
+  unsigned int	color;
+  int		pos[2];
 
-  y = 0;
+  pos[1] = 0;
   assign_function(rpt);
   spt.square = sqrt(SSP);
   spt.spacing = 1 / spt.square;
   if ((spt.pixel = malloc(sizeof(unsigned int) * SSP)) == NULL)
     return ;
-  while (y < WINY)
+  while (pos[1] < WINY)
     {
-      x = 0;
-      while (x < WINX)
+      pos[0] = 0;
+      while (pos[0] < WINX)
 	{
-	  new_coor(vpt, cpt, x, y);
-	  my_pixel_put_to_image(x, y, ppt, get_pixel_color(rpt));
-	  fill_img_param(x, y, rpt, ppt);
-	  ++x;
+	  new_coor(vpt, cpt, pos[0], pos[1]);
+	  color = get_pixel_color(rpt);
+	  my_pixel_put_to_image(pos[0], pos[1], ppt, color);
+	  fill_img_param(pos, color, rpt, ppt);
+	  ++pos[0];
 	}
-      ++y;
+      ++pos[1];
     }
   detect_edge(rpt, ppt);
   apply_supersampling(rpt, &spt, ppt);

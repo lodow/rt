@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Wed Apr 10 01:19:51 2013 luc sinet
+** Last update Wed Apr 10 02:22:47 2013 luc sinet
 */
 
 #include "main.h"
@@ -22,7 +22,6 @@ void	free_all(t_rt *rpt, t_par *ppt)
   while (i < WINX * WINY)
     {
       free(ppt->img_obj[i]);
-      free(ppt->timg_obj[i]);
       ++i;
     }
   free(ppt->img_obj);
@@ -50,13 +49,12 @@ int	creat_win(t_par *ppt)
   y = 0;
   if ((ppt->mlx_ptr = mlx_init()) == NULL)
     return (merror("Couldn't init mlx\n", -1));
-  else if ((ppt->img_obj = malloc(sizeof(int *) * (WINY * WINX))) == NULL ||
-	   (ppt->timg_obj = malloc(sizeof(int *) * (WINY * WINX))) == NULL)
+  else if ((ppt->img_obj = malloc(sizeof(double *) * (WINY * WINX))) == NULL ||
+	   (ppt->timg_obj = malloc(sizeof(int) * (WINY * WINX))) == NULL)
     return (merror("Malloc error\n", -1));
   while (y < WINY * WINX)
     {
-      if ((ppt->img_obj[y] = malloc(sizeof(int) * 3)) == NULL ||
-	  (ppt->timg_obj[y] = malloc(sizeof(int) * 3)) == NULL)
+      if ((ppt->img_obj[y] = malloc(sizeof(double) * 3)) == NULL)
 	return (merror("Malloc error\n", -1));
       ++y;
     }

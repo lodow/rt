@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Wed Apr 10 01:43:41 2013 luc sinet
+** Last update Wed Apr 10 04:11:50 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -22,7 +22,7 @@
 # define IVAL -1000000
 # define RANG(ang) (ang < 0) ? (ang * -1) : ang
 # define RAD(ang) (ang * 3.1415926 / 180)
-# define ABS(val) (val < 0) ? -(val) : val
+# define ABS(val) ((val) < 0) ? -(val) : val
 # define DIST 1000
 # define K_ESC 65307
 
@@ -106,11 +106,13 @@ double		*deref_vec(t_vec *vpt, double *vec);
 double		get_min(double *k, int size);
 double		get_max(double *k, int size);
 int		solve_second(double *a, double *k);
+double		point_distance(double *p1, double *p2);
 double		test_limit(double *cam, double *vec, double *k, double *limit);
 unsigned int	get_pixel_color(t_rt *rpt);
 void		get_inter(double *cam, double *vec, double k, double *inter);
 void		detect_edge(t_rt *rpt, t_par *ppt);
 void		apply_supersampling(t_rt *rpt, t_samp *spt, t_par *ppt);
-void		fill_img_param(int x, int y, t_rt *rpt, t_par *ppt);
+void		fill_img_param(int *pos, unsigned int color,
+			       t_rt *rpt, t_par *ppt);
 
 #endif
