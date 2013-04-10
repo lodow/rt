@@ -5,11 +5,16 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 17:42:09 2013 luc sinet
-** Last update Tue Apr  2 19:56:21 2013 Adrien Della Maggiora
+** Last update Wed Apr 10 15:12:48 2013 luc sinet
 */
 
 #ifndef CHANGE_COLOR_H_
 # define CHANGE_COLOR_H_
+
+# define FOG_DIST 4000000.0
+# define FOG_COLOR1 255.0
+# define FOG_COLOR2 255.0
+# define FOG_COLOR3 255.0
 
 typedef	struct s_lco	t_lco;
 

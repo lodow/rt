@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 23:14:34 2013 luc sinet
-** Last update Wed Apr 10 02:06:59 2013 luc sinet
+** Last update Wed Apr 10 14:31:06 2013 luc sinet
 */
 
 #include <math.h>
@@ -29,4 +29,14 @@ double		apply_distance(t_lco *lpt, t_lig *obj, double ratio_a)
   ratio_d = 1.0 / (dist / DISTM);
   ratio_a = ((1.0 - ratio_a) * ratio_a + (ratio_a * ratio_d)) * obj->intensity;
   return (ratio_a);
+}
+
+void		get_obj_distance(t_obj *obj, t_cam *cpt, double *hit)
+{
+  double	cam[3];
+
+  cam[0] = cpt->cx;
+  cam[1] = cpt->cy;
+  cam[2] = cpt->cz;
+  obj->dist = point_distance(cam, hit);
 }

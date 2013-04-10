@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 16:50:09 2013 luc sinet
-** Last update Mon Apr  8 12:11:39 2013 luc sinet
+** Last update Wed Apr 10 15:01:28 2013 luc sinet
 */
 
 #include "main.h"
@@ -28,10 +28,19 @@ void		apply_light_color(unsigned char *col_o, unsigned char *col_l,
 
 unsigned int	apply_light(unsigned char *c, double cosa, t_obj *ept)
 {
+  unsigned int	color;
+
   c[0] = (double)c[0] * cosa * ept->bright;
   c[1] = (double)c[1] * cosa * ept->bright;
   c[2] = (double)c[2] * cosa * ept->bright;
-  return (recomp_color(c));
+  c[0] = FOG_COLOR1 * (1.0 - exp(-(ept->dist / FOG_DIST)))
+    + c[0] * exp(-(ept->dist / FOG_DIST));
+  c[1] = FOG_COLOR2 * (1.0 - exp(-(ept->dist / FOG_DIST)))
+    + c[1] * exp(-(ept->dist / FOG_DIST));
+  c[2] = FOG_COLOR3 * (1.0 - exp(-(ept->dist / FOG_DIST)))
+    + c[2] * exp(-(ept->dist / FOG_DIST));
+  color = recomp_color(c);
+  return (color);
 }
 
 void   	decomp_color(unsigned int color, unsigned char *ncolor)

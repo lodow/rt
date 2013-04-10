@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Wed Apr 10 13:32:46 2013 luc sinet
+** Last update Wed Apr 10 14:31:18 2013 luc sinet
 ** Last update Thu Apr  4 18:17:31 2013 luc sinet
 */
 
@@ -32,6 +32,7 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
   lpt->obj_coor[0] = cam_tmp.cx + k * vec_tmp.vx;
   lpt->obj_coor[1] = cam_tmp.cy + k * vec_tmp.vy;
   lpt->obj_coor[2] = cam_tmp.cz + k * vec_tmp.vz;
+  get_obj_distance(&rpt->obj[rpt->obj_num], &cam_tmp, lpt->obj_coor);
   if (rpt->obj[rpt->obj_num].type < 2)
     assign_normal1(lpt, rpt->obj[rpt->obj_num].type);
   else
@@ -91,7 +92,7 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
     {
       if (rpt->light[i].ambient == 0)
 	{
-	  if ((state = shadows(rpt, rpt->cpt, &rpt->light[i], &lpt)) == 1)
+	  /* if ((state = shadows(rpt, rpt->cpt, &rpt->light[i], &lpt)) == 1) */
 	    lpt.mx_cos = get_light_color(&rpt->light[i], obj_pos, &lpt, rpt->vpt);
 	  shadow += state;
 	}
@@ -99,5 +100,5 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj)
 	++shadow;
       ++i;
     }
-  return (apply_light(lpt.c_color, lpt.mx_cos * ((double)shadow / (double)i), obj));
+  return (apply_light(lpt.c_color, lpt.mx_cos /* * ((double)shadow / (double)i) */, obj));
 }

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Tue Apr  9 18:29:52 2013 Adrien Della Maggiora
+** Last update Wed Apr 10 14:30:54 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -33,6 +33,7 @@ void		assign_normal1(t_lco *lpt, int type);
 void		assign_normal2(t_lco *lpt, int type);
 void		apply_light_color(unsigned char *col_o, unsigned char *col_l,
 				  double lg_i);
+void		get_obj_distance(t_obj *obj, t_cam *cpt, double *hit);
 double		get_angle_specular(double lvec[3], double nvec[3], t_lco *lpt);
 void		*apply_ambient(t_lig *light, unsigned char *color,
 			       double *max_cos);
