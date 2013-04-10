@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Apr  9 18:33:23 2013 luc sinet
-** Last update Tue Apr  9 19:02:24 2013 luc sinet
+** Last update Wed Apr 10 03:00:04 2013 luc sinet
 */
 
 #include "main.h"
@@ -16,7 +16,7 @@ double		test_up_limit(double *cam, double *vec,
   double	inter[3];
 
   get_inter(cam, vec, k, inter);
-  if (inter[2] > limit[1])
+  if (inter[2] > limit[1] || inter[2] < limit[0])
     return (-1);
   return (k);
 }
@@ -27,7 +27,7 @@ double		test_down_limit(double *cam, double *vec,
   double	inter[3];
 
   get_inter(cam, vec, k, inter);
-  if (inter[2] < limit[0])
+  if (inter[2] < limit[0] || inter[2] > limit[1])
     return (-1);
   return (k);
 }

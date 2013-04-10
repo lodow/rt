@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Wed Apr 10 01:43:13 2013 luc sinet
+** Last update Wed Apr 10 02:30:53 2013 luc sinet
 */
 
 #include <math.h>
@@ -35,6 +35,7 @@ void		calc_inter(t_rt *rpt, double *kmin)
       if (k > ZERO && (k < *kmin || *kmin == -1))
 	{
 	  *kmin = k;
+	  rpt->old_k = k;
 	  rpt->obj_num = i;
 	}
       ++i;
