@@ -5,26 +5,19 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Apr  8 17:01:54 2013 luc sinet
-** Last update Wed Apr 10 04:11:01 2013 luc sinet
+** Last update Wed Apr 10 10:37:53 2013 luc sinet
 */
 
 #include "main.h"
 #include "supersampling.h"
 #include "pp_image.h"
-#include "change_color.h"
 
-void		check_x_value(double **img, int *timg)
+void	check_x_value(double **img, int *timg)
 {
-  unsigned char	cola[3];
-  unsigned char	colb[3];
-  int		diff;
+  int	diff;
 
-  decomp_color((unsigned int)img[0][1], cola);
-  decomp_color((unsigned int)img[1][1], colb);
-  diff = ABS(cola[0] - colb[0]);
-  diff += ABS(cola[1] - colb[1]);
-  diff += ABS(cola[2] - colb[2]);
-  if (img[0][0] != img[1][0] || diff > 1)
+  diff = get_color_diff(img[0][1], img[WINX][1]);
+  if (img[0][0] != img[1][0] || diff > 20)
     {
       timg[0] = -1;
       timg[1] = -1;
@@ -33,16 +26,10 @@ void		check_x_value(double **img, int *timg)
 
 void	check_y_value(double **img, int *timg)
 {
-  unsigned char	cola[3];
-  unsigned char	colb[3];
-  int		diff;
+  int	diff;
 
-  decomp_color((unsigned int)img[0][1], cola);
-  decomp_color((unsigned int)img[1][1], colb);
-  diff = ABS(cola[0] - colb[0]);
-  diff += ABS(cola[1] - colb[1]);
-  diff += ABS(cola[2] - colb[2]);
-  if (img[0][0] != img[WINX][0] || diff > 1)
+  diff = get_color_diff(img[0][1], img[WINX][1]);
+  if (img[0][0] != img[WINX][0] || diff > 20)
     {
       timg[0] = -1;
       timg[WINX] = -1;
