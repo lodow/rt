@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Mar 16 23:19:04 2013 luc sinet
-** Last update Tue Apr  9 19:24:07 2013 luc sinet
+** Last update Thu Apr 11 13:48:18 2013 luc sinet
 */
 
 #include "main.h"
@@ -65,11 +65,11 @@ void	fill_limits(char *line, double *limit)
 
   i = 0;
   x = 0;
-  while (i < 2)
+  while (line[x] && i < 6)
     {
-      skip_adds(line, &x);
       limit[i] = my_sgetnbr(line, &x);
       ++i;
+      skip_adds(line, &x);
     }
 }
 

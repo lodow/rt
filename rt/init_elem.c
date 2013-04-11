@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Wed Apr 10 23:11:43 2013 luc sinet
+** Last update Thu Apr 11 13:44:52 2013 luc sinet
 */
 
 #include "main.h"
@@ -18,7 +18,7 @@ void	init_limit_angle(double *limit, double *angle)
   i = 0;
   while (i < 6)
     {
-      limit[i] = -1;
+      limit[i] = IVAL;
       if (i < 4)
 	angle[i] = IVAL;
       ++i;
