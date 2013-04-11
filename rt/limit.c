@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Apr  9 18:33:23 2013 luc sinet
-** Last update Thu Apr 11 15:59:31 2013 luc sinet
+** Last update Thu Apr 11 17:29:26 2013 luc sinet
 */
 
 #include "main.h"
@@ -59,8 +59,11 @@ double		test_limit(double *cam, double *vec, double *k, double *limit)
   max = get_min(k , 2);
   if ((curent = test_heigh_limit(cam, vec, limit, k)) > max || curent == -1)
     max = curent;
-  /* if (max != -1 && ((curent = test_side_limit(cam, vec, limit, k)) > max || */
-  /* 		    curent == -1)) */
-  /*   max = curent; */
+  if (max != -1 && ((curent = test_side_limit(cam, vec, limit, k)) > max ||
+  		    curent == -1))
+    max = curent;
+  if (max != -1 && ((curent = test_depth_limit(cam, vec, limit, k)) > max ||
+  		    curent == -1))
+    max = curent;
   return (max);
 }

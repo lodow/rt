@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Wed Apr 10 23:05:38 2013 luc sinet
+## Last update Thu Apr 11 17:30:17 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -46,6 +46,7 @@ SRCS	= main.c \
 	  solve_second.c \
 	  limit.c \
 	  limit_sides.c \
+	  limit_depth.c \
 	  supersampling.c
 
 OBJS	= $(SRCS:.c=.o)
