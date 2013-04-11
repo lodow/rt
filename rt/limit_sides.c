@@ -5,42 +5,48 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 22:20:26 2013 luc sinet
-** Last update Thu Apr 11 00:17:03 2013 luc sinet
+** Last update Thu Apr 11 16:46:27 2013 luc sinet
 */
 
 #include "main.h"
 
-double		test_r_limit(double *cam, double *vec,
+double		test_left_limit(double *cam, double *vec,
 			      double k, double *limit)
 {
   double	inter[3];
 
   get_inter(cam, vec, k, inter);
-  if (inter[1] > limit[3] || inter[1] < limit[2])
+  if (inter[1] < limit[2])
+    return (-1);
+  if (limit[3] != IVAL && inter[1] > limit[3])
     return (-1);
   return (k);
 }
 
-double		test_l_limit(double *cam, double *vec,
+double		test_right_limit(double *cam, double *vec,
 				double k, double *limit)
 {
   double	inter[3];
 
   get_inter(cam, vec, k, inter);
-  if (inter[1] < limit[2] || inter[1] > limit[1])
+  if (inter[1] > limit[3])
+    return (-1);
+  if (limit[2] != IVAL && inter[1] < limit[2])
     return (-1);
   return (k);
 }
 
 double		test_side_limit(double *cam, double *vec,
-				 double *limit, double k)
+				 double *limit, double *k)
 {
+  double	min;
   double	inter[3];
 
-  get_inter(cam, vec, k, inter);
-  if (limit[2] != -1 && inter[1] < limit[2])
-    return (test_l_limit(cam, vec, k, limit));
-  else if (limit[3] != -1 && inter[1] > limit[3])
-    return (test_r_limit(cam, vec, k, limit));
-  return (k);
+  min = get_min(k, 2);
+  get_inter(cam, vec, min, inter);
+  if (limit[2] != IVAL && inter[1] < limit[2])
+    return (test_left_limit(cam, vec, get_max(k, 2), limit));
+  else if (limit[3] != IVAL && inter[1] > limit[3])
+    return (test_right_limit(cam, vec, get_max(k, 2), limit));
+  return (min);
 }
