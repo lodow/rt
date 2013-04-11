@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Thu Apr 11 00:17:33 2013 luc sinet
+** Last update Thu Apr 11 17:29:47 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -52,7 +52,7 @@ typedef struct	s_obj
   double	osin[4];
   double	acos[3];
   double	asin[3];
-  double	limit[2];
+  double	limit[6];
   double	dist;
   double	alpha;
   double	n;
@@ -111,7 +111,9 @@ int		get_color_diff(unsigned int pixel1, unsigned int pixel2);
 double		point_distance(double *p1, double *p2);
 double		test_limit(double *cam, double *vec, double *k, double *limit);
 double		test_side_limit(double *cam, double *vec,
-				double *limit, double k);
+				double *limit, double *k);
+double		test_depth_limit(double *cam, double *vec,
+				double *limit, double *k);
 unsigned int	get_pixel_color(t_rt *rpt);
 void		get_inter(double *cam, double *vec, double k, double *inter);
 void		detect_edge(t_rt *rpt, t_par *ppt);
