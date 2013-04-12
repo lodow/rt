@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Fri Apr 12 15:19:01 2013 luc sinet
+** Last update Fri Apr 12 15:41:11 2013 luc sinet
 ** Last update Thu Apr  4 18:17:31 2013 luc sinet
 */
 
@@ -23,10 +23,15 @@ void	copy_color(unsigned char *color1, unsigned char *color2)
 
 void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
 {
+  void		(*nptr[4])(double *nvec, double *obj_coor, double *pert);
   t_cam		cam_tmp;
   t_vec		vec_tmp;
   int		obj;
 
+  nptr[0] = &sphere_normal;
+  nptr[1] = &plan_normal;
+  nptr[2] = &cone_normal;
+  nptr[3] = &cylinder_normal;
   obj = rpt->obj_num;
   cam_tmp = modif_cam(rpt->cpt, rpt->obj[obj]);
   rotate_cam(&cam_tmp, rpt->obj[obj]);
@@ -35,10 +40,7 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
   lpt->obj_coor[1] = cam_tmp.cy + k * vec_tmp.vy;
   lpt->obj_coor[2] = cam_tmp.cz + k * vec_tmp.vz;
   get_obj_distance(&rpt->obj[obj], &cam_tmp, lpt->obj_coor);
-  if (rpt->obj[obj].type < 2)
-    assign_normal1(lpt, rpt->obj[obj].type);
-  else
-    assign_normal2(lpt, rpt->obj[obj].type);
+  nptr[rpt->obj[obj].type](lpt->nvec, rpt->obj[obj].pos, rpt->obj[obj].pert);
 }
 
 double		get_light_vector(t_vec *vpt, t_lco *lpt, double *spot_pos)
