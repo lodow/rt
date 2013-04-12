@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Fri Apr 12 14:42:23 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 19:02:13 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
@@ -74,9 +74,9 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
   pos[1] = 0;
   assign_function(rpt);
   rpt->obj_num = 0;
-  spt.square = sqrt(SSP);
+  spt.square = sqrt(rpt->opt->aa);
   spt.spacing = 1 / spt.square;
-  if ((spt.pixel = malloc(sizeof(unsigned int) * SSP)) == NULL)
+  if ((spt.pixel = malloc(sizeof(unsigned int) * rpt->opt->aa)) == NULL)
     return ;
   while (pos[1] < WINY)
     {
