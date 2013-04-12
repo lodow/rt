@@ -5,9 +5,10 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Mar 31 13:20:23 2013 luc sinet
-** Last update Sun Mar 31 13:22:20 2013 luc sinet
+** Last update Fri Apr 12 11:58:18 2013 luc sinet
 */
 
+#include <math.h>
 #include "main.h"
 #include "light.h"
 
@@ -18,6 +19,7 @@ void	assign_normal1(t_lco *lpt, int type)
       lpt->nvec[0] = lpt->obj_coor[0];
       lpt->nvec[1] = lpt->obj_coor[1];
       lpt->nvec[2] = lpt->obj_coor[2];
+      lpt->nvec[1] = lpt->nvec[1] + cos(lpt->obj_coor[1] / 1.0) * (vec_norme(lpt->nvec) / 1.0);
     }
   else if (type == 1)
     {
