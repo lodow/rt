@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Mar 31 13:20:23 2013 luc sinet
-** Last update Fri Apr 12 16:34:25 2013 luc sinet
+** Last update Fri Apr 12 19:17:56 2013 luc sinet
 */
 
 #include <math.h>
@@ -14,13 +14,13 @@
 
 void	perturb_normal(double *nvec, double *obj_coor, double *pert)
 {
-  if (pert[0] == 1)
+  if ((int)pert[0] == 1)
     nvec[0] = nvec[0] + cos(obj_coor[0] / pert[1])
       * (vec_norme(nvec) / pert[1]);
-  if (pert[2] == 1)
+  if ((int)pert[2] == 1)
     nvec[1] = nvec[1] + cos(obj_coor[1] / pert[3])
       * (vec_norme(nvec) / pert[3]);
-  if (pert[4] == 1)
+  if ((int)pert[4] == 1)
     nvec[2] = nvec[2] + cos(obj_coor[2] / pert[5])
       * (vec_norme(nvec) / pert[5]);
 }

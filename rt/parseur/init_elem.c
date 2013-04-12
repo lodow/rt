@@ -5,13 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Fri Apr 12 14:28:23 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 19:11:03 2013 luc sinet
 */
 
 #include "../include/main.h"
 #include "../include/pars.h"
 
-void	init_limit_angle(double *limit, double *angle)
+void	init_limit_angle(double *limit, double *pert, double *angle)
 {
   int	i;
 
@@ -19,6 +19,10 @@ void	init_limit_angle(double *limit, double *angle)
   while (i < 6)
     {
       limit[i] = IVAL;
+      if (i % 2 == 0)
+	pert[i] = -1;
+      else
+	pert[i] = 5;
       if (i < 4)
 	angle[i] = IVAL;
       ++i;
@@ -40,7 +44,7 @@ void    init_elem(t_obj *tab, t_pars *opt)
 	  tab[i].pos[x] = IVAL;
 	  tab[i].color[x++] = 0;
 	}
-      init_limit_angle(tab[i].limit, tab[i].angle);
+      init_limit_angle(tab[i].limit, tab[i].pert, tab[i].angle);
       tab[i].rayon = 0;
       tab[i].bright = 1.0;
       tab[i].alpha = 0;
