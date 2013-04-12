@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Fri Apr 12 15:16:41 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 17:13:51 2013 Adrien Della Maggiora
 */
 
 #ifndef PARS_H_
@@ -13,7 +13,7 @@
 
 # define LIMIT(x, n1, n2) (x < n1) ? n1 : (x > n2) ? n2 : x
 # define BOOL(x) (x >= 1) ? 1 : 0
-# define T_ACCOL(x) (x == 6) ? 1 : (x == 7) ? -1 : 0
+# define T_ACCOL(x) (x == 7) ? 1 : (x == 8) ? -1 : 0
 
 typedef struct	s_obj	t_obj;
 typedef struct	s_lig	t_lig;
@@ -41,6 +41,7 @@ void	init_nb_obj(t_pars *opt);
 int	fill_tab(t_pars *opt, t_obj *tab, char *name);
 int	fill_light(t_pars *opt, t_lig *ltab, char *name);
 int	fill_cam(t_cam *cpt, char *name);
+int	fill_opt(t_rt *rpt, char *fname);
 int	pars(t_rt *rpt, char *fname, t_cam *cpt);
 void	get_color(char *line, unsigned char *color);
 void	init_shapes(char **shape);

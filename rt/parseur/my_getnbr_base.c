@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Nov 11 17:23:02 2012 luc sinet
-** Last update Fri Apr 12 14:28:10 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 17:16:23 2013 Adrien Della Maggiora
 */
 
 #include "../include/str.h"
@@ -20,6 +20,24 @@ int	my_power_rec(int nb, int power)
     return (0);
 }
 
+int	my_strlen_base(char *str, char *base)
+{
+  int	i;
+  int	j;
+
+  i = 0;
+  while (str[i] != 0)
+    {
+      j = 0;
+      while (j < my_strlen(base) && str[i] != base[j])
+	++j;
+      if (j == my_strlen(base))
+	return (i);
+      ++i;
+    }
+  return (i);
+}
+
 int	my_getnbr_base(char *calc, char *base)
 {
   int	pic;
@@ -31,7 +49,7 @@ int	my_getnbr_base(char *calc, char *base)
   pic = 0;
   res = 0;
   lenb = my_strlen(base);
-  lenc = my_strlen(calc) - 1;
+  lenc = my_strlen_base(calc, base) - 1;
   while (calc[pic])
     {
       if (res * 10 / 10 != res)

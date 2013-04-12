@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Fri Apr 12 14:24:32 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 17:22:21 2013 Adrien Della Maggiora
 */
 
 #include "include/main.h"
@@ -71,9 +71,11 @@ int		main(int ac, char **av)
   t_par		ppt;
   t_vec		vpt;
   t_cam		cpt;
+  t_opt		opt;
 
   rpt.vpt = &vpt;
   rpt.cpt = &cpt;
+  rpt.opt = &opt;
   if (ac == 1)
     return (merror("You need to specifie a config file in argument\n", -1));
   if (pars(&rpt, av[1], &cpt) < 0 || creat_win(&ppt) == -1)
