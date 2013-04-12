@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri Apr 12 16:59:39 2013 luc sinet
-** Last update Fri Apr 12 19:12:35 2013 luc sinet
+** Last update Fri Apr 12 21:38:32 2013 luc sinet
 */
 
 #include "../include/main.h"
@@ -23,7 +23,7 @@ void	check_space_arg(char *line, double *pert, int *i)
     return ;
   (*i) += 2;
   x = 1;
-  while (line[x] >= '0' && line[x] <= '9')
+  while ((line[x] >= '0' && line[x] <= '9') || line[x] == '.')
     {
       ++(*i);
       ++x;

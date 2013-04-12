@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Fri Apr 12 17:44:17 2013 luc sinet
+** Last update Fri Apr 12 21:21:09 2013 luc sinet
 */
 
 #include <math.h>
@@ -39,7 +39,7 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
   lpt->obj_coor[1] = cam_tmp.cy + k * vec_tmp.vy;
   lpt->obj_coor[2] = cam_tmp.cz + k * vec_tmp.vz;
   get_obj_distance(&rpt->obj[obj], &cam_tmp, lpt->obj_coor);
-  nptr[rpt->obj[obj].type](lpt->nvec, rpt->obj[obj].pos, rpt->obj[obj].pert);
+  nptr[rpt->obj[obj].type](lpt->nvec, lpt->obj_coor, rpt->obj[obj].pert);
 }
 
 double		get_light_vector(t_vec *vpt, t_lco *lpt, double *spot_pos)
