@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Fri Apr 12 17:29:22 2013 luc sinet
+## Last update Fri Apr 12 17:42:51 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -14,6 +14,7 @@ SRCS	= main.c \
 	  parseur/fill_elem.c \
 	  parseur/fill_light.c \
 	  parseur/fill_cam.c \
+	  parseur/fill_opt.c \
 	  parseur/init.c \
 	  parseur/init_elem.c \
 	  parseur/init_cam.c \

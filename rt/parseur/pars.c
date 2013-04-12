@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 18:33:58 2013 luc sinet
-** Last update Fri Apr 12 15:16:23 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 17:14:32 2013 Adrien Della Maggiora
 */
 
 #include <sys/types.h>
@@ -92,6 +92,8 @@ int		pars(t_rt *rpt, char *fname, t_cam *cpt)
     return (size == -2 ? -2 : merror("Enter at least one shape\n", -1));
   if (opt.nb_cam != 1)
     return (merror("You must have (only / at least) one camera\n", -1));
+  if (opt.nb_opt != 1)
+    return (merror("You must have one option bloc\n", -1));
   opt.nb_shape += 1;
   opt.nb_light += 1;
   if ((rpt->obj = malloc(sizeof(t_obj) * opt.nb_shape)) == NULL ||
@@ -101,7 +103,8 @@ int		pars(t_rt *rpt, char *fname, t_cam *cpt)
   init_light(rpt->light, &opt);
   if ((fill_tab(&opt, rpt->obj, fname) == -1) ||
       fill_light(&opt, rpt->light, fname) == -1 ||
-      fill_cam(cpt, fname) == -1)
+      fill_cam(cpt, fname) == -1 ||
+      fill_opt(rpt, fname) == -1)
     return (-1);
   return (check_size(rpt->obj));
 }

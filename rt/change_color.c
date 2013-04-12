@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 16:50:09 2013 luc sinet
-** Last update Fri Apr 12 14:52:46 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 17:33:28 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
@@ -27,19 +27,25 @@ void		apply_light_color(unsigned char *col_o, unsigned char *col_l,
 }
 
 
-unsigned int	apply_light(unsigned char *c, double cosa, t_obj *ept)
+unsigned int	apply_light(unsigned char *c, double cosa, t_obj *ept,
+			    double *fog)
 {
   unsigned int	color;
+  unsigned char	fog_color[3];
 
   c[0] = (double)c[0] * cosa * ept->bright;
   c[1] = (double)c[1] * cosa * ept->bright;
   c[2] = (double)c[2] * cosa * ept->bright;
-  c[0] = FOG_COLOR1 * (1.0 - exp(-(ept->dist / FOG_DIST)))
-    + c[0] * exp(-(ept->dist / FOG_DIST));
-  c[1] = FOG_COLOR2 * (1.0 - exp(-(ept->dist / FOG_DIST)))
-    + c[1] * exp(-(ept->dist / FOG_DIST));
-  c[2] = FOG_COLOR3 * (1.0 - exp(-(ept->dist / FOG_DIST)))
-    + c[2] * exp(-(ept->dist / FOG_DIST));
+  if (fog[1] > ZERO)
+    {
+      decomp_color((int)(fog[0]), fog_color);
+      c[0] = fog_color[0] * (1.0 - exp(-(ept->dist / fog[1])))
+	+ c[0] * exp(-(ept->dist / fog[1]));
+      c[1] = fog_color[1] * (1.0 - exp(-(ept->dist / fog[1])))
+	+ c[1] * exp(-(ept->dist / fog[1]));
+      c[2] = fog_color[2] * (1.0 - exp(-(ept->dist / fog[1])))
+	+ c[2] * exp(-(ept->dist / fog[1]));
+    }
   color = recomp_color(c);
   return (color);
 }
