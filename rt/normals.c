@@ -5,12 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Mar 31 13:20:23 2013 luc sinet
-** Last update Fri Apr 12 15:44:26 2013 luc sinet
+** Last update Fri Apr 12 16:34:25 2013 luc sinet
 */
 
 #include <math.h>
-#include "main.h"
-#include "light.h"
+#include "include/main.h"
+#include "include/light.h"
 
 void	perturb_normal(double *nvec, double *obj_coor, double *pert)
 {

@@ -5,13 +5,13 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Mon Apr  1 12:31:29 2013 Adrien Della Maggiora
-** Last update Thu Apr 11 10:04:10 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 14:51:11 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "main.h"
-#include "light.h"
-#include "change_color.h"
+#include "include/main.h"
+#include "include/light.h"
+#include "include/change_color.h"
 
 unsigned int	apply_refrac(unsigned int color1, double alpha,
 			     unsigned int color2)

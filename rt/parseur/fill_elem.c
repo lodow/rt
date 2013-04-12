@@ -5,15 +5,15 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 23:15:31 2013 luc sinet
-** Last update Mon Apr  1 22:00:29 2013 luc sinet
+** Last update Fri Apr 12 15:12:36 2013 Adrien Della Maggiora
 */
 
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "main.h"
-#include "pars.h"
-#include "get_next_line.h"
+#include "../include/main.h"
+#include "../include/pars.h"
+#include "../include/get_next_line.h"
 
 int	get_args(t_obj *tab, int i, int shape, int fd)
 {

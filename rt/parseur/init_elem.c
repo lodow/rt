@@ -5,11 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Thu Apr 11 13:44:52 2013 luc sinet
+** Last update Fri Apr 12 14:28:23 2013 Adrien Della Maggiora
 */
 
-#include "main.h"
-#include "pars.h"
+#include "../include/main.h"
+#include "../include/pars.h"
 
 void	init_limit_angle(double *limit, double *angle)
 {

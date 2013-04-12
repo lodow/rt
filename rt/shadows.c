@@ -5,12 +5,12 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Fri Apr 12 12:56:49 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 14:41:23 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "main.h"
-#include "light.h"
+#include "include/main.h"
+#include "include/light.h"
 
 int		shadows(t_rt *rpt, t_cam *cpt, t_lig *spot, t_lco *lpt)
 {

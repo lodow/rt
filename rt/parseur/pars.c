@@ -5,33 +5,33 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 18:33:58 2013 luc sinet
-** Last update Tue Apr  2 14:07:25 2013 luc sinet
+** Last update Fri Apr 12 15:16:23 2013 Adrien Della Maggiora
 */
 
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "main.h"
-#include "pars.h"
-#include "get_next_line.h"
+#include "../include/main.h"
+#include "../include/pars.h"
+#include "../include/get_next_line.h"
 
 int	check_shape(char *line, int *accol, int nb_line)
 {
   int	i;
-  char	*shape[8];
+  char	*shape[9];
 
   i = 0;
   init_shapes(shape);
-  while (i < 8 && my_strcmp(shape[i], line) != 0)
+  while (i < 9 && my_strcmp(shape[i], line) != 0)
     i++;
   *accol += T_ACCOL(i);
-  if (*accol > 1 || *accol < 0 || (i < 6 && *accol != 0))
+  if (*accol > 1 || *accol < 0 || (i < 7 && *accol != 0))
     {
       my_putstr("line ", 2);
       my_put_nbr(nb_line, 2);
       return (merror(", file is incorectly formatted\n", -1));
     }
-  return (i < 4 ? 1 : (i == 4) ? 2 : (i == 5) ? 3 : 0);
+  return (i < 4 ? 1 : (i == 4) ? 2 : (i == 5) ? 3 : (i == 6) ? 4 : 0);
 }
 
 int	get_size(char *name, t_pars *opt)
@@ -49,6 +49,8 @@ int	get_size(char *name, t_pars *opt)
 	++opt->nb_light;
       else if (opt->rv == 3)
 	++opt->nb_cam;
+      else if (opt->rv == 4)
+	++opt->nb_opt;
       free(opt->line);
     }
   close(opt->fd);

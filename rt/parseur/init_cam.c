@@ -5,10 +5,10 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Apr  1 21:31:16 2013 luc sinet
-** Last update Thu Apr  4 16:58:33 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 14:43:44 2013 Adrien Della Maggiora
 */
 
-#include "main.h"
+#include "../include/main.h"
 
 void	init_cam(t_cam *cpt)
 {

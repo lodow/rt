@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Mar 31 00:07:15 2013 luc sinet
-** Last update Sun Mar 31 00:35:28 2013 luc sinet
+** Last update Fri Apr 12 17:06:14 2013 luc sinet
 */
 
 double		get_deci(char *s1)
@@ -45,7 +45,7 @@ double		my_fgetnbr(char *s1)
 	return (0);
       nb = nb * 10 + (s1[i++] - 48);
     }
-  if (s1[i] == ',' || s1[i] == '.')
+  if (s1[i] == '.')
     nb += get_deci(&s1[i + 1]);
   return (nb * sign);
 }

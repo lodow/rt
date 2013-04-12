@@ -5,10 +5,10 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 17:19:47 2013 luc sinet
-** Last update Wed Mar 27 19:09:37 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 14:43:53 2013 Adrien Della Maggiora
 */
 
-#include "nb.h"
+#include "../include/nb.h"
 
 void	get_color(char *line, unsigned char *color)
 {

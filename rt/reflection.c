@@ -5,13 +5,13 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Tue Apr  2 18:25:49 2013 etienne debas
-** Last update Tue Apr  2 20:47:12 2013 etienne debas
+** Last update Fri Apr 12 14:41:31 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "main.h"
-#include "change_color.h"
-#include "light.h"
+#include "include/main.h"
+#include "include/change_color.h"
+#include "include/light.h"
 
 t_vec		get_vec_reflection(double lvec[3], double nvec[3], double scalar)
 {

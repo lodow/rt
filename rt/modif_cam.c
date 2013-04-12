@@ -5,11 +5,11 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Thu Mar 21 23:31:20 2013 etienne debas
-** Last update Thu Apr  4 17:03:13 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 14:41:43 2013 Adrien Della Maggiora
 */
 
-#include "main.h"
-#include "light.h"
+#include "include/main.h"
+#include "include/light.h"
 
 t_cam		modif_cam(t_cam *cam, t_obj obj)
 {

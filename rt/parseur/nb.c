@@ -5,12 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Oct 20 11:27:34 2012 luc sinet
-** Last update Sun Mar 31 00:10:38 2013 luc sinet
+** Last update Fri Apr 12 14:54:26 2013 Adrien Della Maggiora
 */
 
 #include <stdlib.h>
 #include <unistd.h>
-#include "str.h"
+#include "../include/str.h"
 
 int	my_sgetnbr(char *s1, int *i)
 {

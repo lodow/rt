@@ -5,11 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Feb 26 04:22:07 2013 luc sinet
-** Last update Wed Apr 10 01:09:16 2013 luc sinet
+** Last update Fri Apr 12 14:42:02 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "main.h"
+#include "include/main.h"
 
 double		sphere(double *cam, double *vec, t_obj *ept)
 {
