@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Fri Apr 12 15:50:58 2013 Adrien Della Maggiora
-** Last update Fri Apr 12 17:38:59 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 18:59:41 2013 Adrien Della Maggiora
 */
 
 #include <sys/types.h>
@@ -27,11 +27,13 @@ void	get_opt_fog(t_opt *opt, char *line)
   int	i;
 
   i = 0;
-  opt->fog[0] = my_getnbr_base(line, "0123456789ABCDEF");
-  printf("%s | %X\n", line, (int)opt->fog[0]);
+  if (my_strncmp(line, "0x", 2) == 0)
+    i += 2;
+  opt->fog[0] = my_getnbr_base(&line[i], "0123456789ABCDEF");
+  while (line[i] != 0 && (line[i] != ','))
+    ++i;
   skip_adds(line, &i);
   opt->fog[1] = my_fgetnbr(&line[i]);
-  printf("%s | %f\n", &line[i], opt->fog[1]);
 }
 
 int	get_opt_carac(t_opt *opt, int fd)
@@ -46,8 +48,11 @@ int	get_opt_carac(t_opt *opt, int fd)
       while (line[i] == ' ')
         ++i;
       if (my_strncmp(&line[i], "AA = ", 5) == 0)
-	opt->aa = my_getnbr(line);
-      else if (my_strncmp(&line[i], "FOG = ", 6) == 0)
+	{
+	  opt->aa = my_getnbr(&line[i + 5]);
+	}
+      else if (my_strncmp(&line[i], "FOG = ", 6) == 0
+	       && my_strlen(&line[i]) > 11)
 	get_opt_fog(opt, &line[i + 6]);
       else
 	{

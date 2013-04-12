@@ -5,14 +5,14 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri Apr  5 11:07:42 2013 luc sinet
-** Last update Fri Apr 12 14:41:11 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 19:03:03 2013 Adrien Della Maggiora
 */
 
 #include "include/main.h"
 #include "include/change_color.h"
 #include "include/supersampling.h"
 
-unsigned int	mix_color(unsigned int *tab)
+unsigned int	mix_color(unsigned int *tab, int ssp)
 {
   unsigned char	final_comp[3];
   unsigned char	temp_comp[3];
@@ -20,7 +20,7 @@ unsigned int	mix_color(unsigned int *tab)
 
   i = 1;
   decomp_color(tab[0], final_comp);
-  while (i < SSP)
+  while (i < ssp)
     {
       decomp_color(tab[i], temp_comp);
       final_comp[0] = (final_comp[0] + temp_comp[0]) / 2.0;
@@ -36,14 +36,16 @@ unsigned int   	supersampling(t_rt *rpt, t_samp *spt, int x, int y)
   double	spacing;
   double	pos[2];
   int		i;
+  int		ssp;
 
   spacing = spt->spacing;
   pos[1] = y;
   i = 0;
-  while (i < SSP)
+  ssp = rpt->opt->aa;
+  while (i < ssp)
     {
       pos[0] = x;
-      while (i < SSP && pos[0] < x + 1)
+      while (i < ssp && pos[0] < x + 1)
 	{
 	  new_coor(rpt->vpt, rpt->cpt, pos[0], pos[1]);
 	  spt->pixel[i] = get_pixel_color(rpt);
@@ -52,5 +54,5 @@ unsigned int   	supersampling(t_rt *rpt, t_samp *spt, int x, int y)
 	}
       pos[1] += spacing;
     }
-  return (mix_color(spt->pixel));
+  return (mix_color(spt->pixel, ssp));
 }
