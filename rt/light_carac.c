@@ -5,12 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 28 17:07:41 2013 luc sinet
-** Last update Tue Apr  2 15:13:09 2013 luc sinet
+** Last update Fri Apr 12 14:41:58 2013 Adrien Della Maggiora
 */
 
-#include "main.h"
-#include "pars.h"
-#include "nb.h"
+#include "include/main.h"
+#include "include/pars.h"
+#include "include/nb.h"
 
 int	light_carac(char *line, t_lig *ltab, int i)
 {

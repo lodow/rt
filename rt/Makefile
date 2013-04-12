@@ -5,33 +5,33 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Thu Apr 11 17:30:17 2013 luc sinet
+## Last update Fri Apr 12 14:54:09 2013 Adrien Della Maggiora
 ##
 
 SRCS	= main.c \
-	  pars.c \
-	  fill_obj_color.c \
-	  fill_elem.c \
-	  fill_light.c \
-	  fill_cam.c \
+	  parseur/pars.c \
+	  parseur/fill_obj_color.c \
+	  parseur/fill_elem.c \
+	  parseur/fill_light.c \
+	  parseur/fill_cam.c \
+	  parseur/init.c \
+	  parseur/init_elem.c \
+	  parseur/init_cam.c \
+	  parseur/get_carac.c \
+	  parseur/get_next_line.c \
+	  parseur/my_getnbr_base.c \
+	  parseur/error.c \
+	  parseur/strfunc.c \
+	  parseur/str.c \
+	  parseur/nb.c \
+	  parseur/my_atof.c \
 	  light_carac.c \
-	  get_carac.c \
-	  get_next_line.c \
-	  my_getnbr_base.c \
 	  calc_inter.c \
 	  pp_image.c \
-	  strfunc.c \
-	  str.c \
-	  nb.c \
-	  my_atof.c \
 	  inter.c \
 	  move_cam.c \
-	  error.c \
 	  light.c \
 	  change_color.c \
-	  init.c \
-	  init_elem.c \
-	  init_cam.c \
 	  deref.c \
 	  math_coor.c \
 	  normals.c \

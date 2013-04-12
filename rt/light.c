@@ -5,14 +5,14 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Fri Apr 12 12:58:22 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 14:51:51 2013 Adrien Della Maggiora
 ** Last update Thu Apr  4 18:17:31 2013 luc sinet
 */
 
 #include <math.h>
-#include "main.h"
-#include "change_color.h"
-#include "light.h"
+#include "include/main.h"
+#include "include/change_color.h"
+#include "include/light.h"
 
 void	copy_color(unsigned char *color1, unsigned char *color2)
 {

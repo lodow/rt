@@ -5,11 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Wed Apr 10 02:22:47 2013 luc sinet
+** Last update Fri Apr 12 14:24:32 2013 Adrien Della Maggiora
 */
 
-#include "main.h"
-#include "pars.h"
+#include "include/main.h"
+#include "include/pars.h"
 #include "mlx.h"
 
 void	free_all(t_rt *rpt, t_par *ppt)

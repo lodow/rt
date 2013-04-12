@@ -5,11 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:02:44 2013 luc sinet
-** Last update Tue Mar 12 03:21:42 2013 luc sinet
+** Last update Fri Apr 12 14:52:06 2013 Adrien Della Maggiora
 */
 
-#include "main.h"
-#include "str.h"
+#include "../include/main.h"
+#include "../include/str.h"
 
 int	merror(char *error, int val)
 {

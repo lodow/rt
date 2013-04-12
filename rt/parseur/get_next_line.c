@@ -5,10 +5,10 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Feb 19 11:20:55 2013 luc sinet
-** Last update Sun Mar 17 11:41:08 2013 luc sinet
+** Last update Fri Apr 12 14:43:48 2013 Adrien Della Maggiora
 */
 
-#include "get_next_line.h"
+#include "../include/get_next_line.h"
 
 char	*spe_strcat(char *dest, char *src, char opt)
 {

@@ -5,12 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Apr  8 17:01:54 2013 luc sinet
-** Last update Wed Apr 10 13:24:54 2013 luc sinet
+** Last update Fri Apr 12 14:52:35 2013 Adrien Della Maggiora
 */
 
-#include "main.h"
-#include "supersampling.h"
-#include "pp_image.h"
+#include "include/main.h"
+#include "include/supersampling.h"
+#include "include/pp_image.h"
 
 void	check_x_value(double **img, int *timg)
 {

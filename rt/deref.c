@@ -5,10 +5,10 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 25 19:33:13 2013 luc sinet
-** Last update Mon Mar 25 19:51:17 2013 luc sinet
+** Last update Fri Apr 12 14:42:13 2013 Adrien Della Maggiora
 */
 
-#include "main.h"
+#include "include/main.h"
 
 double		*deref_cam(t_cam *cpt, double *cam)
 {

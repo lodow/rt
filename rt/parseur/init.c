@@ -5,12 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 17:22:40 2013 luc sinet
-** Last update Thu Apr 11 10:01:49 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 15:13:42 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "main.h"
-#include "pars.h"
+#include "../include/main.h"
+#include "../include/pars.h"
 
 void	init_light(t_lig *ltab, t_pars *opt)
 {
@@ -73,6 +73,7 @@ void	init_shapes(char **shape)
   shape[3] = "Plan";
   shape[4] = "Light";
   shape[5] = "Cam";
-  shape[6] = "{";
-  shape[7] = "}";
+  shape[6] = "Option";
+  shape[7] = "{";
+  shape[8] = "}";
 }

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Thu Apr 11 17:29:47 2013 luc sinet
+** Last update Fri Apr 12 15:19:16 2013 Adrien Della Maggiora
 */
 
 #ifndef MAIN_H_
@@ -67,6 +67,12 @@ typedef struct	s_lig
   unsigned char	lcolor[3];
 }		t_lig;
 
+typedef struct	s_opt
+{
+  int		aa;
+  double	fog[2];
+}		t_opt;
+
 typedef struct	s_vec
 {
   double	nx;
@@ -84,6 +90,7 @@ typedef struct	s_rt
   t_cam		*cpt;
   t_obj		*obj;
   t_lig		*light;
+  t_opt		*opt;
   double	(*eptr[4])(double *cam, double *vec, t_obj *opt);
 }		t_rt;
 

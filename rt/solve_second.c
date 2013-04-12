@@ -5,11 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Apr  9 14:49:14 2013 luc sinet
-** Last update Tue Apr  9 19:09:57 2013 luc sinet
+** Last update Fri Apr 12 14:41:17 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "main.h"
+#include "include/main.h"
 
 void	get_inter(double *cam, double *vec, double k, double *inter)
 {

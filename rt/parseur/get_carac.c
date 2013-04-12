@@ -5,12 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Mar 16 23:19:04 2013 luc sinet
-** Last update Thu Apr 11 13:48:18 2013 luc sinet
+** Last update Fri Apr 12 14:28:52 2013 Adrien Della Maggiora
 */
 
-#include "main.h"
-#include "pars.h"
-#include "nb.h"
+#include "../include/main.h"
+#include "../include/pars.h"
+#include "../include/nb.h"
 
 void	fill_center(t_obj *ept, char *line)
 {

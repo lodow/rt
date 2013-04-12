@@ -5,12 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Mar 31 13:20:23 2013 luc sinet
-** Last update Fri Apr 12 11:58:18 2013 luc sinet
+** Last update Fri Apr 12 14:41:37 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "main.h"
-#include "light.h"
+#include "include/main.h"
+#include "include/light.h"
 
 void	assign_normal1(t_lco *lpt, int type)
 {

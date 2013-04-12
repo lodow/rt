@@ -5,11 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 10:30:07 2013 luc sinet
-** Last update Wed Apr 10 10:34:13 2013 luc sinet
+** Last update Fri Apr 12 14:42:08 2013 Adrien Della Maggiora
 */
 
-#include "main.h"
-#include "change_color.h"
+#include "include/main.h"
+#include "include/change_color.h"
 
 int		get_color_diff(unsigned int pixel1, unsigned int pixel2)
 {

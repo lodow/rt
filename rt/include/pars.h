@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Tue Apr  9 11:40:30 2013 luc sinet
+** Last update Fri Apr 12 15:16:41 2013 Adrien Della Maggiora
 */
 
 #ifndef PARS_H_
@@ -29,6 +29,7 @@ typedef struct	s_pars
   int		nb_shape;
   int		nb_light;
   int		nb_cam;
+  int		nb_opt;
 }		t_pars;
 
 int	other_opt(char *line, t_obj *ept);

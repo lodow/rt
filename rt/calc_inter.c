@@ -5,14 +5,14 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Wed Apr 10 13:07:32 2013 luc sinet
+** Last update Fri Apr 12 14:42:23 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "main.h"
-#include "inter.h"
-#include "change_color.h"
-#include "supersampling.h"
+#include "include/main.h"
+#include "include/inter.h"
+#include "include/change_color.h"
+#include "include/supersampling.h"
 
 void	assign_function(t_rt *rpt)
 {

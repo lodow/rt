@@ -5,11 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri Feb 15 12:36:24 2013 luc sinet
-** Last update Wed Mar 13 22:28:24 2013 luc sinet
+** Last update Fri Apr 12 14:50:07 2013 Adrien Della Maggiora
 */
 
 #include <stdlib.h>
-#include "str.h"
+#include "../include/str.h"
 
 int	my_strncmp(char *s1, char *s2, int n)
 {
