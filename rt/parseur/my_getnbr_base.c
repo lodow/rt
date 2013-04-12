@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Nov 11 17:23:02 2012 luc sinet
-** Last update Fri Apr 12 17:16:23 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 18:24:37 2013 Adrien Della Maggiora
 */
 
 #include "../include/str.h"
@@ -50,7 +50,7 @@ int	my_getnbr_base(char *calc, char *base)
   res = 0;
   lenb = my_strlen(base);
   lenc = my_strlen_base(calc, base) - 1;
-  while (calc[pic])
+  while (pic <= lenc)
     {
       if (res * 10 / 10 != res)
 	return (0);
