@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Mon Apr  1 12:31:29 2013 Adrien Della Maggiora
-** Last update Thu Apr  4 19:29:04 2013 Adrien Della Maggiora
+** Last update Thu Apr 11 10:04:10 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
@@ -13,7 +13,7 @@
 #include "light.h"
 #include "change_color.h"
 
-unsigned int	apply_refrac(unsigned int color1, double n, double alpha,
+unsigned int	apply_refrac(unsigned int color1, double alpha,
 			     unsigned int color2)
 {
   unsigned char	c1[3];
@@ -91,7 +91,7 @@ unsigned int	transparency(t_rt *rpt, t_cam *cpt, t_lco *lpt,
       color2 = get_new_color(rpt, cpt, lpt, n);
       alpha = rpt->obj[rpt->obj_num].alpha;
       if (color2 != color_obj || obj_num != rpt->obj_num)
-	color = apply_refrac(color, n, alpha, color2);
+	color = apply_refrac(color, alpha, color2);
       n = rpt->obj[rpt->obj_num].n;
       obj_num = rpt->obj_num;
     }
