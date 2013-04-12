@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Fri Apr 12 14:54:09 2013 Adrien Della Maggiora
+## Last update Fri Apr 12 17:29:22 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -18,6 +18,7 @@ SRCS	= main.c \
 	  parseur/init_elem.c \
 	  parseur/init_cam.c \
 	  parseur/get_carac.c \
+	  parseur/get_pert.c \
 	  parseur/get_next_line.c \
 	  parseur/my_getnbr_base.c \
 	  parseur/error.c \

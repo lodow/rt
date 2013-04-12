@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Apr  1 21:38:56 2013 luc sinet
-** Last update Fri Apr 12 14:29:11 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 17:36:11 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -85,7 +85,7 @@ int	fill_cam(t_cam *cpt, char *name)
   char	*line;
 
   if ((fd = open(name, O_RDONLY)) == -1)
-    return (merror("Could open the file", -1));
+    return (merror("Couldn't open the file", -1));
   while ((line = get_next_line(fd)))
     {
       if (my_strcmp(line, "Cam") == 0 && get_cam_carac(cpt, fd) == -1)

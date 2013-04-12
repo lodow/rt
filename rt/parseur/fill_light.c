@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 20:12:16 2013 luc sinet
-** Last update Fri Apr 12 14:29:03 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 17:36:28 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -85,7 +85,7 @@ int	fill_light(t_pars *opt, t_lig *ltab, char *name)
   int	i;
 
   if ((fd = open(name, O_RDONLY)) == -1)
-    return (merror("Could open the file\n", -1));
+    return (merror("Couldn't open the file\n", -1));
   i = 0;
   while (i < opt->nb_light)
     {

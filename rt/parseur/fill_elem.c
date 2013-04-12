@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 23:15:31 2013 luc sinet
-** Last update Fri Apr 12 15:12:36 2013 Adrien Della Maggiora
+** Last update Fri Apr 12 17:35:56 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -68,7 +68,7 @@ int	fill_tab(t_pars *opt, t_obj *tab, char *name)
   int	i;
 
   if ((fd = open(name, O_RDONLY)) == -1)
-    return (merror("Could open the file", -1));
+    return (merror("Couldn't open the file", -1));
   i = 0;
   while (i < opt->nb_shape)
     {
