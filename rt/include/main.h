@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Sat Apr 13 23:09:17 2013 luc sinet
+** Last update Sun Apr 14 12:42:00 2013 Adrien Della Maggiora
 */
 
 #ifndef MAIN_H_
@@ -27,6 +27,7 @@
 # define K_ESC 65307
 
 typedef struct	s_samp	t_samp;
+typedef struct	s_lco	t_lco;
 
 typedef struct	s_cam
 {
@@ -55,6 +56,7 @@ typedef struct	s_obj
   double	limit[9];
   double	pert[6];
   double	dist;
+  double	reflec;
   double	alpha;
   double	n;
 }		t_obj;
@@ -104,7 +106,7 @@ void		init_cos(t_obj *tab);
 void		rotate_x(double *z, double *y, double cosin, double sinus);
 void		rotate_y(double *z, double *x, double cosin, double sinus);
 void		rotate_z(double *x, double *y, double cosin, double sinus);
-unsigned int	get_light(t_rt *rpt, double k, t_obj *obj);
+unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt);
 t_cam		modif_cam(t_cam *cam, t_obj obj);
 t_vec		rotate_vec(t_vec *vec, t_obj obj);
 void		rotate_cam(t_cam *cam, t_obj obj);

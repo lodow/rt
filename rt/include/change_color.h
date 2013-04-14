@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 17:42:09 2013 luc sinet
-** Last update Fri Apr 12 17:30:20 2013 Adrien Della Maggiora
+** Last update Sat Apr 13 17:07:55 2013 Adrien Della Maggiora
 */
 
 #ifndef CHANGE_COLOR_H_
@@ -15,6 +15,7 @@
 # define FOG_COLOR1 180.0
 # define FOG_COLOR2 180.0
 # define FOG_COLOR3 180.0
+# define MAX_R 10
 
 typedef	struct s_lco	t_lco;
 
@@ -23,5 +24,6 @@ unsigned int	apply_light(unsigned char *c, double cosa, t_obj *ept,
 void	   	decomp_color(unsigned int color, unsigned char *ncolor);
 unsigned int   	recomp_color(unsigned char *color);
 unsigned int	refrac(t_rt *rpt, t_cam *cpt, t_lco *lpt, unsigned int color);
+unsigned int	reflection(t_rt *rpt, t_lco *lpt, unsigned int color);
 
 #endif

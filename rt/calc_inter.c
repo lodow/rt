@@ -5,13 +5,14 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Sat Apr 13 23:11:15 2013 luc sinet
+** Last update Sun Apr 14 12:41:38 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
 #include "include/main.h"
 #include "include/inter.h"
 #include "include/change_color.h"
+#include "include/light.h"
 #include "include/supersampling.h"
 
 void	assign_function(t_rt *rpt)
@@ -52,6 +53,7 @@ void		new_coor(t_vec *vpt, t_cam *cpt, double x, double y)
 unsigned int	get_pixel_color(t_rt *rpt)
 {
   double	k;
+  t_lco		lpt;
   unsigned int	color;
 
   color = 0x000000;
@@ -59,8 +61,8 @@ unsigned int	get_pixel_color(t_rt *rpt)
   if (k != -1 && rpt->light[0].on == 1)
     {
       color = recomp_color(rpt->obj[rpt->obj_num].color);
-      color = get_light(rpt, k, &rpt->obj[rpt->obj_num]);
-      /* color = shadow(rpt, &rpt->light[0], color); */
+      color = get_light(rpt, k, &rpt->obj[rpt->obj_num], &lpt);
+      color = reflection(rpt, &lpt, color);
     }
   return (color);
 }
