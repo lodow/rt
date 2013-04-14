@@ -5,13 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri Apr  5 11:07:49 2013 luc sinet
-** Last update Mon Apr  8 23:32:44 2013 luc sinet
+** Last update Sat Apr 13 23:08:36 2013 luc sinet
 */
 
 #ifndef SUPERSAMPLING_H_
 # define SUPERSAMPLING_H_
-
-# define SSP 3
 
 typedef struct	s_samp
 {

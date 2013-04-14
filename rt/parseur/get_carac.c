@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Mar 16 23:19:04 2013 luc sinet
-** Last update Sat Apr 13 15:46:43 2013 Adrien Della Maggiora
+** Last update Sun Apr 14 12:43:42 2013 Adrien Della Maggiora
 */
 
 #include "../include/main.h"
@@ -55,21 +55,6 @@ void	fill_angle(t_obj *ept, char *line)
       if (!line[pl])
 	return ;
       x++;
-    }
-}
-
-void	fill_limits(char *line, double *limit)
-{
-  int	i;
-  int	x;
-
-  i = 0;
-  x = 0;
-  while (line[x] && i < 6)
-    {
-      limit[i] = my_sgetnbr(line, &x);
-      ++i;
-      skip_adds(line, &x);
     }
 }
 

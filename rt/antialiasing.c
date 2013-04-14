@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Apr  8 21:05:59 2013 luc sinet
-** Last update Fri Apr 12 14:52:52 2013 Adrien Della Maggiora
+** Last update Sat Apr 13 23:08:57 2013 luc sinet
 */
 
 #include <unistd.h>
@@ -34,7 +34,7 @@ void	emphasize_edges(int *img, t_par *ppt)
   print_i(ppt);
 }
 
-void		apply_supersampling(t_rt *rpt, t_samp *spt, t_par *ppt)
+void		apply_supersampling(t_rt *rpt, t_par *ppt, t_samp *spt)
 {
   int		*img;
   int		x;

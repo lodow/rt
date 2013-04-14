@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Sat Apr 13 16:04:49 2013 Adrien Della Maggiora
+** Last update Sun Apr 14 12:41:38 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
@@ -75,11 +75,9 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
 
   pos[1] = 0;
   assign_function(rpt);
-  rpt->obj_num = 0;
-  spt.square = sqrt(rpt->opt->aa);
-  spt.spacing = 1 / spt.square;
-  if ((spt.pixel = malloc(sizeof(unsigned int) * rpt->opt->aa)) == NULL)
+  if ((spt.pixel = malloc(sizeof(int) * rpt->opt->aa)) == NULL)
     return ;
+  rpt->obj_num = 0;
   while (pos[1] < WINY)
     {
       pos[0] = 0;
@@ -94,5 +92,5 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
       ++pos[1];
     }
   detect_edge(rpt, ppt);
-  apply_supersampling(rpt, &spt, ppt);
+  apply_supersampling(rpt, ppt, &spt);
 }

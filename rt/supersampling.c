@@ -5,9 +5,10 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri Apr  5 11:07:42 2013 luc sinet
-** Last update Fri Apr 12 19:03:03 2013 Adrien Della Maggiora
+** Last update Sat Apr 13 23:11:44 2013 luc sinet
 */
 
+#include <math.h>
 #include "include/main.h"
 #include "include/change_color.h"
 #include "include/supersampling.h"
@@ -31,24 +32,49 @@ unsigned int	mix_color(unsigned int *tab, int ssp)
   return (recomp_color(final_comp));
 }
 
+int	get_int(double space, int *virg)
+{
+
+  *virg = 0;
+  while ((space - (int)space) > ZERO && *virg < 10)
+    {
+      ++(*virg);
+      space *= 10;
+    }
+  return (space);
+}
+
+void	get_rand_pos(double *pos, double *new_pos, double spacing)
+{
+  int	virg;
+  int	nspace;
+
+  nspace = get_int(spacing, &virg);
+  new_pos[0] = pos[0] + (double)((rand() % nspace)) / (double)pow(10, virg);
+  new_pos[1] = pos[1] + (double)((rand() % nspace)) / (double)pow(10, virg);
+}
+
 unsigned int   	supersampling(t_rt *rpt, t_samp *spt, int x, int y)
 {
   double	spacing;
   double	pos[2];
+  double	r_pos[2];
   int		i;
   int		ssp;
 
-  spacing = spt->spacing;
+  spacing = 1.0 / sqrt(rpt->opt->aa);
+  ssp = rpt->opt->aa;
   pos[1] = y;
   i = 0;
-  ssp = rpt->opt->aa;
-  while (i < ssp)
+  while (i < ssp && pos[1] < y + 1)
     {
       pos[0] = x;
       while (i < ssp && pos[0] < x + 1)
 	{
-	  new_coor(rpt->vpt, rpt->cpt, pos[0], pos[1]);
+	  get_rand_pos(pos, r_pos, spacing);
+	  new_coor(rpt->vpt, rpt->cpt, r_pos[0], r_pos[1]);
 	  spt->pixel[i] = get_pixel_color(rpt);
+	  /* printf("y %f  x %f\n", r_pos[1], r_pos[0]); */
 	  pos[0] += spacing;
 	  ++i;
 	}
