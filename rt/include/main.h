@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Fri Apr 12 19:12:05 2013 luc sinet
+** Last update Sat Apr 13 23:09:17 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -52,7 +52,7 @@ typedef struct	s_obj
   double	osin[4];
   double	acos[3];
   double	asin[3];
-  double	limit[6];
+  double	limit[9];
   double	pert[6];
   double	dist;
   double	alpha;
@@ -125,7 +125,7 @@ double		test_depth_limit(double *cam, double *vec,
 unsigned int	get_pixel_color(t_rt *rpt);
 void		get_inter(double *cam, double *vec, double k, double *inter);
 void		detect_edge(t_rt *rpt, t_par *ppt);
-void		apply_supersampling(t_rt *rpt, t_samp *spt, t_par *ppt);
+void		apply_supersampling(t_rt *rpt, t_par *ppt, t_samp *spt);
 void		fill_img_param(int *pos, unsigned int color,
 			       t_rt *rpt, t_par *ppt);
 
