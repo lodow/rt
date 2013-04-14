@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Fri Apr 12 21:21:09 2013 luc sinet
+** Last update Sat Apr 13 15:00:36 2013 luc sinet
 */
 
 #include <math.h>
@@ -38,6 +38,15 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
   lpt->obj_coor[0] = cam_tmp.cx + k * vec_tmp.vx;
   lpt->obj_coor[1] = cam_tmp.cy + k * vec_tmp.vy;
   lpt->obj_coor[2] = cam_tmp.cz + k * vec_tmp.vz;
+  /* rotate_z(&lpt->nvec[0], &lpt->nvec[1], rpt->obj[obj].acos[2], rpt->obj[obj].asin[2]); */
+  /* rotate_y(&lpt->nvec[2], &lpt->nvec[0], rpt->obj[obj].acos[1], rpt->obj[obj].asin[1]); */
+  /* rotate_x(&lpt->nvec[2], &lpt->nvec[1], rpt->obj[obj].acos[0], rpt->obj[obj].asin[0]); */
+  /* rotate_z(&lpt->obj_coor[0], &lpt->obj_coor[1], rpt->obj[obj].acos[2], rpt->obj[obj].asin[2]); */
+  /* rotate_y(&lpt->obj_coor[2], &lpt->obj_coor[0], rpt->obj[obj].acos[1], rpt->obj[obj].asin[1]); */
+  /* rotate_x(&lpt->obj_coor[2], &lpt->obj_coor[1], rpt->obj[obj].acos[0], rpt->obj[obj].asin[0]); */
+  /* lpt->obj_coor[0] -= rpt->obj[obj].pos[0]; */
+  /* lpt->obj_coor[1] -= rpt->obj[obj].pos[1]; */
+  /* lpt->obj_coor[2] -= rpt->obj[obj].pos[2]; */
   get_obj_distance(&rpt->obj[obj], &cam_tmp, lpt->obj_coor);
   nptr[rpt->obj[obj].type](lpt->nvec, lpt->obj_coor, rpt->obj[obj].pert);
 }

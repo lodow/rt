@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 16:50:09 2013 luc sinet
-** Last update Fri Apr 12 17:33:28 2013 Adrien Della Maggiora
+** Last update Sat Apr 13 08:34:43 2013 luc sinet
 */
 
 #include <math.h>
@@ -25,7 +25,6 @@ void		apply_light_color(unsigned char *col_o, unsigned char *col_l,
   col_o[1] = b * (double)col_o[1] + a * (double)col_l[1];
   col_o[2] = b * (double)col_o[2] + a * (double)col_l[2];
 }
-
 
 unsigned int	apply_light(unsigned char *c, double cosa, t_obj *ept,
 			    double *fog)
