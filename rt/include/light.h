@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Fri Apr 12 15:44:26 2013 luc sinet
+** Last update Sat Apr 13 15:07:19 2013 Adrien Della Maggiora
 */
 
 #ifndef LIG_H_
@@ -24,6 +24,7 @@ typedef struct	s_lco
   double	nvec[3];
   double	lvec[3];
   double	mx_cos;
+  double	spec;
   unsigned char	c_color[3];
 }		t_lco;
 

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Mar 16 23:19:04 2013 luc sinet
-** Last update Fri Apr 12 18:00:59 2013 luc sinet
+** Last update Sat Apr 13 15:46:43 2013 Adrien Della Maggiora
 */
 
 #include "../include/main.h"
@@ -88,6 +88,8 @@ int	other_opt(char *line, t_obj *ept)
     ept->n = LIMIT(my_fgetnbr(&line[4]), 0, 1);
   else if (my_strncmp("Limit = ", line, 8) == 0)
     fill_limits(&line[8], ept->limit);
+  else if (my_strncmp("Reflexion = ", line, 12) == 0)
+    ept->reflec = LIMIT(my_fgetnbr(&line[12]), 0, 1);
   else if (my_strncmp("Ondulation = ", line, 13) == 0)
     fill_pert(&line[13], ept->pert);
   else

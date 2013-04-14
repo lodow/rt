@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Fri Apr 12 19:11:03 2013 luc sinet
+** Last update Sat Apr 13 15:43:09 2013 Adrien Della Maggiora
 */
 
 #include "../include/main.h"
@@ -49,6 +49,7 @@ void    init_elem(t_obj *tab, t_pars *opt)
       tab[i].bright = 1.0;
       tab[i].alpha = 0;
       tab[i].n = 1;
+      tab[i].reflec = 0;
       i++;
     }
 }
