@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Sun Apr 14 12:21:57 2013 luc sinet
+** Last update Sun Apr 14 12:34:30 2013 luc sinet
 */
 
 #include "../include/main.h"
@@ -35,10 +35,7 @@ void	init_limits(double *limit)
   i = 0;
   while (i < 9)
     {
-      if (i % 3 == 0)
-	limit[i] = -1;
-      else
-	limit[i] = IVAL;
+      limit[i] = IVAL;
       ++i;
     }
 }
