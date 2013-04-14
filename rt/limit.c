@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Apr  9 18:33:23 2013 luc sinet
-** Last update Fri Apr 12 14:51:43 2013 Adrien Della Maggiora
+** Last update Sun Apr 14 12:36:30 2013 luc sinet
 */
 
 #include "include/main.h"
@@ -16,9 +16,9 @@ double		test_up_limit(double *cam, double *vec,
   double	inter[3];
 
   get_inter(cam, vec, k, inter);
-  if (inter[2] > limit[1])
+  if (inter[2] > limit[2])
     return (-1);
-  if (limit[0] != IVAL && inter[2] < limit[0])
+  if (limit[1] != IVAL && inter[2] < limit[1])
     return (-1);
   return (k);
 }
@@ -29,9 +29,9 @@ double		test_down_limit(double *cam, double *vec,
   double	inter[3];
 
   get_inter(cam, vec, k, inter);
-  if (inter[2] < limit[0])
+  if (inter[2] < limit[1])
     return (-1);
-  if (limit[1] != IVAL && inter[2] > limit[1])
+  if (limit[2] != IVAL && inter[2] > limit[2])
     return (-1);
   return (k);
 }
@@ -44,9 +44,9 @@ double		test_heigh_limit(double *cam, double *vec,
 
   min = get_min(k, 2);
   get_inter(cam, vec, min, inter);
-  if (limit[0] != IVAL && inter[2] < limit[0])
+  if (limit[2] != IVAL && inter[2] < limit[1])
     return (test_down_limit(cam, vec, get_max(k, 2), limit));
-  else if (limit[1] != IVAL && inter[2] > limit[1])
+  else if (limit[1] != IVAL && inter[2] > limit[2])
     return (test_up_limit(cam, vec, get_max(k, 2), limit));
   return (min);
 }
