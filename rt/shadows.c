@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Mon Apr 15 22:44:16 2013 luc sinet
+** Last update Mon Apr 15 23:12:04 2013 luc sinet
 */
 
 #include <math.h>
@@ -25,9 +25,9 @@ int		shadows(t_rt *rpt, t_cam *cpt, t_lig *spot, t_lco *lpt)
   cpt->pos[0] = lpt->obj_coor[0];
   cpt->pos[1] = lpt->obj_coor[1];
   cpt->pos[2] = lpt->obj_coor[2];
-  rpt->vpt->vx = spot->pos[0] - lpt->obj_coor[0];
-  rpt->vpt->vy = spot->pos[1] - lpt->obj_coor[1];
-  rpt->vpt->vz = spot->pos[2] - lpt->obj_coor[2];
+  rpt->vpt->vec[0] = spot->pos[0] - lpt->obj_coor[0];
+  rpt->vpt->vec[1] = spot->pos[1] - lpt->obj_coor[1];
+  rpt->vpt->vec[2] = spot->pos[2] - lpt->obj_coor[2];
   calc_inter(rpt, &k);
   cpt->pos[0] = cam[0];
   cpt->pos[1] = cam[1];

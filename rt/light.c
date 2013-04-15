@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Mon Apr 15 22:38:21 2013 luc sinet
+** Last update Mon Apr 15 23:04:49 2013 luc sinet
 */
 
 #include <math.h>
@@ -35,9 +35,9 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
   cam_tmp = modif_cam(rpt->cpt, rpt->obj[obj]);
   rotate_cam(&cam_tmp, rpt->obj[obj]);
   vec_tmp = rotate_vec(vpt, rpt->obj[obj]);
-  lpt->obj_coor[0] = rpt->cpt->pos[0] + k * rpt->vpt->vx;
-  lpt->obj_coor[1] = rpt->cpt->pos[1] + k * rpt->vpt->vy;
-  lpt->obj_coor[2] = rpt->cpt->pos[2] + k * rpt->vpt->vz;
+  lpt->obj_coor[0] = rpt->cpt->pos[0] + k * rpt->vpt->vec[0];
+  lpt->obj_coor[1] = rpt->cpt->pos[1] + k * rpt->vpt->vec[1];
+  lpt->obj_coor[2] = rpt->cpt->pos[2] + k * rpt->vpt->vec[2];
   nptr[rpt->obj[obj].type](lpt->nvec, lpt->obj_coor, rpt->obj[obj].pert);
   rotate_z(&lpt->nvec[0], &lpt->nvec[1], rpt->obj[obj].acos[2], rpt->obj[obj].asin[2]);
   rotate_y(&lpt->nvec[2], &lpt->nvec[0], rpt->obj[obj].acos[1], rpt->obj[obj].asin[1]);
@@ -56,18 +56,18 @@ double		get_light_vector(t_vec *vpt, t_lco *lpt, double *spot_pos)
   double	bnorme;
   double	cosa;
 
-  vpt->vx = spot_pos[0] - lpt->obj_coor[0];
-  vpt->vy = spot_pos[1] - lpt->obj_coor[1];
-  vpt->vz = spot_pos[2] - lpt->obj_coor[2];
+  vpt->vec[0] = spot_pos[0] - lpt->obj_coor[0];
+  vpt->vec[1] = spot_pos[1] - lpt->obj_coor[1];
+  vpt->vec[2] = spot_pos[2] - lpt->obj_coor[2];
   bnorme = (sqrt(pow(lpt->nvec[0], 2) + pow(lpt->nvec[1], 2)
 		 + pow(lpt->nvec[2], 2))
-	    * sqrt(pow(vpt->vx, 2) + pow(vpt->vy, 2)
-		   + pow(vpt->vz, 2)));
+	    * sqrt(pow(vpt->vec[0], 2) + pow(vpt->vec[1], 2)
+		   + pow(vpt->vec[2], 2)));
   if (bnorme < ZERO && bnorme > -ZERO)
     return (0);
-  cosa = (lpt->nvec[0] * vpt->vx
-	  + lpt->nvec[1] * vpt->vy
-	  + lpt->nvec[2] * vpt->vz) / bnorme;
+  cosa = (lpt->nvec[0] * vpt->vec[0]
+	  + lpt->nvec[1] * vpt->vec[1]
+	  + lpt->nvec[2] * vpt->vec[2]) / bnorme;
   return (cosa < ZERO ? 0.0 : cosa);
 }
 

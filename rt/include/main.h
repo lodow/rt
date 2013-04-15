@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Mon Apr 15 22:11:10 2013 luc sinet
+** Last update Mon Apr 15 23:03:12 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -79,9 +79,7 @@ typedef struct	s_vec
   double	nx;
   double	ny;
   double	nz;
-  double	vx;
-  double	vy;
-  double	vz;
+  double	vec[3];
 }		t_vec;
 
 typedef struct	s_rt

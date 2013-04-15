@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Mon Apr  1 12:31:29 2013 Adrien Della Maggiora
-** Last update Mon Apr 15 22:42:38 2013 luc sinet
+** Last update Mon Apr 15 23:09:58 2013 luc sinet
 */
 
 #include <math.h>
@@ -41,9 +41,9 @@ void		get_new_vec(t_vec *res, double *nor, double *vec, double n)
   sina = pow(n, 2)  * (1.0 - pow(cosa, 2));
   if (sina > 1.0)
     return ;
-  res->vx = n * vec[0] - (n + sqrt(1.0 - sina) * nor[0]);
-  res->vy = n * vec[1] - (n + sqrt(1.0 - sina) * nor[1]);
-  res->vz = n * vec[2] - (n + sqrt(1.0 - sina) * nor[2]);
+  res->vec[0] = n * vec[0] - (n + sqrt(1.0 - sina) * nor[0]);
+  res->vec[1] = n * vec[1] - (n + sqrt(1.0 - sina) * nor[1]);
+  res->vec[2] = n * vec[2] - (n + sqrt(1.0 - sina) * nor[2]);
 }
 
 unsigned int	get_new_color(t_rt *rpt, t_cam *cpt, t_lco *lpt, double n)
@@ -59,9 +59,9 @@ unsigned int	get_new_color(t_rt *rpt, t_cam *cpt, t_lco *lpt, double n)
   cam_tmp = modif_cam(rpt->cpt, rpt->obj[rpt->obj_num]);
   rotate_cam(&cam_tmp, rpt->obj[rpt->obj_num]);
   vec_tmp = rotate_vec(rpt->vpt, rpt->obj[rpt->obj_num]);
-  cpt->pos[0] = cam_tmp.pos[0] + k * vec_tmp.vx;
-  cpt->pos[1] = cam_tmp.pos[1] + k * vec_tmp.vy;
-  cpt->pos[2] = cam_tmp.pos[2] + k * vec_tmp.vz;
+  cpt->pos[0] = cam_tmp.pos[0] + k * vec_tmp.vec[0];
+  cpt->pos[1] = cam_tmp.pos[1] + k * vec_tmp.vec[1];
+  cpt->pos[2] = cam_tmp.pos[2] + k * vec_tmp.vec[2];
   if (rpt->obj[rpt->obj_num].n > 0.000001)
     get_new_vec(&vec_tmp, lpt->nvec, lpt->lvec, n / rpt->obj[rpt->obj_num].n);
   calc_inter(rpt, &k);

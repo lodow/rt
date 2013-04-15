@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Tue Apr  2 18:25:49 2013 etienne debas
-** Last update Mon Apr 15 22:43:37 2013 luc sinet
+** Last update Mon Apr 15 23:11:41 2013 luc sinet
 */
 
 #include <math.h>
@@ -17,9 +17,9 @@ t_vec		get_vec_reflection(double lvec[3], double nvec[3], double scalar)
 {
   t_vec		vec_reflection;
 
-  vec_reflection.vx = lvec[0] - 2 * scalar * nvec[0];
-  vec_reflection.vx = lvec[1] - 2 * scalar * nvec[1];
-  vec_reflection.vx = lvec[2] - 2 * scalar * nvec[2];
+  vec_reflection.vec[0] = lvec[0] - 2 * scalar * nvec[0];
+  vec_reflection.vec[0] = lvec[1] - 2 * scalar * nvec[1];
+  vec_reflection.vec[0] = lvec[2] - 2 * scalar * nvec[2];
   return (vec_reflection);
 }
 
@@ -27,9 +27,9 @@ t_vec		get_vec_reflection(double lvec[3], double nvec[3], double scalar)
 /* { */
 /*   float		tab[3]; */
 
-/*   tab[0] = vec->vx; */
-/*   tab[1] = vec->vy; */
-/*   tab[2] = vec->vz; */
+/*   tab[0] = vec->vec[0]; */
+/*   tab[1] = vec->vec[1]; */
+/*   tab[2] = vec->vec[2]; */
 /*   return (tab); */
 /* } */
 
@@ -50,13 +50,13 @@ t_vec		get_vec_reflection(double lvec[3], double nvec[3], double scalar)
 
 /*   scalar = get_scalar(lvec, nvec); */
 /*   reflection = get_vec_reflection(lvec, nvec, scalar); */
-/*   bnorme = (sqrt(pow(reflection.vx, 2) + pow(reflection.vy, 2) */
-/* 		 + pow(reflection.vz, 2)) */
+/*   bnorme = (sqrt(pow(reflection.vec[0], 2) + pow(reflection.vec[1], 2) */
+/* 		 + pow(reflection.vec[2], 2)) */
 /* 	    * sqrt(pow(lvec[0], 2) + pow(lvec[1], 2) */
 /* 		   + pow(lvec[2], 2))); */
-/*   angle = (reflection.vx * lvec[0] */
-/* 	   + reflection.vy * lvec[1] */
-/* 	   + reflection.vz * lvec[2]) / bnorme; */
+/*   angle = (reflection.vec[0] * lvec[0] */
+/* 	   + reflection.vec[1] * lvec[1] */
+/* 	   + reflection.vec[2] * lvec[2]) / bnorme; */
 /*   angle = acos(angle); */
 /*   return (angle); */
 /* } */
@@ -66,9 +66,9 @@ double	get_specular(t_vec *vpt, double vec[3])
   double	bnorme;
 
   bnorme = (sqrt(pow(vec[0], 2) + pow(vec[1], 2) + pow(vec[2], 2))
-	    * sqrt(pow(vpt->vx, 2) + pow(vpt->vy, 2) + pow(vpt->vz, 2)));
+	    * sqrt(pow(vpt->vec[0], 2) + pow(vpt->vec[1], 2) + pow(vpt->vec[2], 2)));
   if (bnorme > ZERO)
-    return ((vec[0] * vpt->vx + vec[1] * vpt->vy + vec[2] * vpt->vz) / bnorme);
+    return ((vec[0] * vpt->vec[0] + vec[1] * vpt->vec[1] + vec[2] * vpt->vec[2]) / bnorme);
   else
     return (1.0);
 }
@@ -96,9 +96,9 @@ void		calc_reflec_vector(t_vec *vpt, t_cam *cpt, t_lco *lpt, t_obj *obj)
   res[0] = (-2 * (lpt->nvec[0] / norme_nor)) * scal + (vec[0] / norme_vec);
   res[1] = (-2 * (lpt->nvec[1] / norme_nor)) * scal + (vec[1] / norme_vec);
   res[2] = (-2 * (lpt->nvec[2] / norme_nor)) * scal + (vec[2] / norme_vec);
-  vpt->vx = res[0];
-  vpt->vy = res[1];
-  vpt->vz = res[2];
+  vpt->vec[0] = res[0];
+  vpt->vec[1] = res[1];
+  vpt->vec[2] = res[2];
   lpt->spec = get_specular(vpt, vec);
 }
 

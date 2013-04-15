@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Mon Apr 15 22:13:19 2013 luc sinet
+** Last update Mon Apr 15 23:03:45 2013 luc sinet
 */
 
 #include <math.h>
@@ -44,9 +44,9 @@ void		calc_inter(t_rt *rpt, double *kmin)
 
 void		new_coor(t_vec *vpt, t_cam *cpt, double x, double y)
 {
-  vpt->vx = DIST - cpt->pos[0];
-  vpt->vy = (WINX / 2.0 - x) - cpt->pos[1];
-  vpt->vz = (WINY / 2.0 - y) - cpt->pos[2];
+  vpt->vec[0] = DIST - cpt->pos[0];
+  vpt->vec[1] = (WINX / 2.0 - x) - cpt->pos[1];
+  vpt->vec[2] = (WINY / 2.0 - y) - cpt->pos[2];
   rotate_veccam(vpt, cpt->ccos, cpt->csin);
 }
 
