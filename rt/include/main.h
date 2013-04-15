@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Sun Apr 14 12:42:00 2013 Adrien Della Maggiora
+** Last update Mon Apr 15 22:11:10 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -31,9 +31,7 @@ typedef struct	s_lco	t_lco;
 
 typedef struct	s_cam
 {
-  double	cx;
-  double	cy;
-  double	cz;
+  double	pos[3];
   double	ccos[3];
   double	csin[3];
   double	tx;

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 23:14:34 2013 luc sinet
-** Last update Fri Apr 12 15:29:49 2013 Adrien Della Maggiora
+** Last update Mon Apr 15 22:12:40 2013 luc sinet
 */
 
 #include <math.h>
@@ -40,8 +40,8 @@ void		get_obj_distance(t_obj *obj, t_cam *cpt, double *hit)
 {
   double	cam[3];
 
-  cam[0] = cpt->cx;
-  cam[1] = cpt->cy;
-  cam[2] = cpt->cz;
+  cam[0] = cpt->pos[0];
+  cam[1] = cpt->pos[1];
+  cam[2] = cpt->pos[2];
   obj->dist = point_distance(cam, hit);
 }

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Mon Apr 15 19:50:46 2013 luc sinet
+** Last update Mon Apr 15 22:38:21 2013 luc sinet
 */
 
 #include <math.h>
@@ -35,9 +35,9 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
   cam_tmp = modif_cam(rpt->cpt, rpt->obj[obj]);
   rotate_cam(&cam_tmp, rpt->obj[obj]);
   vec_tmp = rotate_vec(vpt, rpt->obj[obj]);
-  lpt->obj_coor[0] = rpt->cpt->cx + k * rpt->vpt->vx;
-  lpt->obj_coor[1] = rpt->cpt->cy + k * rpt->vpt->vy;
-  lpt->obj_coor[2] = rpt->cpt->cz + k * rpt->vpt->vz;
+  lpt->obj_coor[0] = rpt->cpt->pos[0] + k * rpt->vpt->vx;
+  lpt->obj_coor[1] = rpt->cpt->pos[1] + k * rpt->vpt->vy;
+  lpt->obj_coor[2] = rpt->cpt->pos[2] + k * rpt->vpt->vz;
   nptr[rpt->obj[obj].type](lpt->nvec, lpt->obj_coor, rpt->obj[obj].pert);
   rotate_z(&lpt->nvec[0], &lpt->nvec[1], rpt->obj[obj].acos[2], rpt->obj[obj].asin[2]);
   rotate_y(&lpt->nvec[2], &lpt->nvec[0], rpt->obj[obj].acos[1], rpt->obj[obj].asin[1]);

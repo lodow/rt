@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Mar 12 20:29:28 2013 luc sinet
-** Last update Fri Apr 12 14:51:27 2013 Adrien Della Maggiora
+** Last update Mon Apr 15 22:41:47 2013 luc sinet
 */
 
 #include <math.h>
@@ -52,9 +52,9 @@ double		move_cam(t_rt *rpt, t_vec *vpt, t_cam *cpt, t_obj obj)
   double	k;
 
   deref_vec(vpt, vec);
-  cam[0] = cpt->cx - obj.pos[0];
-  cam[1] = cpt->cy - obj.pos[1];
-  cam[2] = cpt->cz - obj.pos[2];
+  cam[0] = cpt->pos[0] - obj.pos[0];
+  cam[1] = cpt->pos[1] - obj.pos[1];
+  cam[2] = cpt->pos[2] - obj.pos[2];
   rotate_x(&vec[2], &vec[1], obj.ocos[0], obj.osin[0]);
   rotate_y(&vec[2], &vec[0], obj.ocos[1], obj.osin[1]);
   rotate_z(&vec[0], &vec[1], obj.ocos[2], obj.osin[2]);

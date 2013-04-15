@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Apr  1 21:38:56 2013 luc sinet
-** Last update Fri Apr 12 17:36:11 2013 luc sinet
+** Last update Mon Apr 15 22:40:30 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -46,11 +46,11 @@ void	get_cam_coor(t_cam *cpt, char *line)
   int	i;
 
   i = 0;
-  cpt->cx = my_sgetnbr(line, &i);
+  cpt->pos[0] = my_sgetnbr(line, &i);
   skip_adds(line, &i);
-  cpt->cy = my_sgetnbr(line, &i);
+  cpt->pos[1] = my_sgetnbr(line, &i);
   skip_adds(line, &i);
-  cpt->cz = my_sgetnbr(line, &i);
+  cpt->pos[2] = my_sgetnbr(line, &i);
 }
 
 int	get_cam_carac(t_cam *cpt, int fd)

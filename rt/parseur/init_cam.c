@@ -5,16 +5,16 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Apr  1 21:31:16 2013 luc sinet
-** Last update Fri Apr 12 14:43:44 2013 Adrien Della Maggiora
+** Last update Mon Apr 15 22:41:05 2013 luc sinet
 */
 
 #include "../include/main.h"
 
 void	init_cam(t_cam *cpt)
 {
-  cpt->cx = 0.0;
-  cpt->cy = 0.0;
-  cpt->cz = 0.0;
+  cpt->pos[0] = 0.0;
+  cpt->pos[1] = 0.0;
+  cpt->pos[2] = 0.0;
   cpt->ccos[0] = 1.0;
   cpt->ccos[1] = 1.0;
   cpt->ccos[2] = 1.0;

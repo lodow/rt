@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Tue Apr  2 18:25:49 2013 etienne debas
-** Last update Sun Apr 14 11:42:37 2013 Adrien Della Maggiora
+** Last update Mon Apr 15 22:43:37 2013 luc sinet
 */
 
 #include <math.h>
@@ -81,15 +81,15 @@ void		calc_reflec_vector(t_vec *vpt, t_cam *cpt, t_lco *lpt, t_obj *obj)
   double	norme_vec;
   double	norme_nor;
 
-  cpt->tx = cpt->cx;
-  cpt->ty = cpt->cy;
-  cpt->tz = cpt->cz;
-  vec[0] = lpt->obj_coor[0] - cpt->cx;
-  vec[1] = lpt->obj_coor[1] - cpt->cy;
-  vec[2] = lpt->obj_coor[2] - cpt->cz;
-  /* cpt->cx = lpt->obj_coor[0]; */
-  /* cpt->cy = lpt->obj_coor[1]; */
-  /* cpt->cz = lpt->obj_coor[2]; */
+  cpt->tx = cpt->pos[0];
+  cpt->ty = cpt->pos[1];
+  cpt->tz = cpt->pos[2];
+  vec[0] = lpt->obj_coor[0] - cpt->pos[0];
+  vec[1] = lpt->obj_coor[1] - cpt->pos[1];
+  vec[2] = lpt->obj_coor[2] - cpt->pos[2];
+  /* cpt->pos[0] = lpt->obj_coor[0]; */
+  /* cpt->pos[1] = lpt->obj_coor[1]; */
+  /* cpt->pos[2] = lpt->obj_coor[2]; */
   norme_vec = sqrt(pow(vec[0], 2) + pow(vec[1], 2) + pow(vec[2], 2));
   norme_nor = sqrt(pow(lpt->nvec[0], 2) + pow(lpt->nvec[1], 2) + pow(lpt->nvec[2], 2));
   scal = vec[0] * lpt->nvec[0] + vec[1] * lpt->nvec[1] + vec[2] * lpt->nvec[2];
@@ -135,9 +135,9 @@ unsigned int	reflection(t_rt *rpt, t_lco *lpt, unsigned int color)
       else
 	color = apply_reflection(color, 0x000000, indice);
       ++i;
-      rpt->cpt->cx = rpt->cpt->tx;
-      rpt->cpt->cy = rpt->cpt->ty;
-      rpt->cpt->cz = rpt->cpt->tz;
+      rpt->cpt->pos[0] = rpt->cpt->tx;
+      rpt->cpt->pos[1] = rpt->cpt->ty;
+      rpt->cpt->pos[2] = rpt->cpt->tz;
     }
   return (color);
 }

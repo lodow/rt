@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Thu Mar 21 23:31:20 2013 etienne debas
-** Last update Fri Apr 12 14:41:43 2013 Adrien Della Maggiora
+** Last update Mon Apr 15 22:39:06 2013 luc sinet
 */
 
 #include "include/main.h"
@@ -15,9 +15,9 @@ t_cam		modif_cam(t_cam *cam, t_obj obj)
 {
   t_cam		cam_tmp;
 
-  cam_tmp.cx = cam->cx - obj.pos[0];
-  cam_tmp.cy = cam->cy - obj.pos[1];
-  cam_tmp.cz = cam->cz - obj.pos[2];
+  cam_tmp.pos[0] = cam->pos[0] - obj.pos[0];
+  cam_tmp.pos[1] = cam->pos[1] - obj.pos[1];
+  cam_tmp.pos[2] = cam->pos[2] - obj.pos[2];
   return (cam_tmp);
 }
 
@@ -36,9 +36,9 @@ t_vec		rotate_vec(t_vec *vec, t_obj obj)
 
 void		rotate_cam(t_cam *cam, t_obj obj)
 {
-  rotate_x(&cam->cz, &cam->cy, obj.ocos[0], obj.osin[0]);
-  rotate_y(&cam->cz, &cam->cx, obj.ocos[1], obj.osin[1]);
-  rotate_z(&cam->cx, &cam->cy, obj.ocos[2], obj.osin[2]);
+  rotate_x(&cam->pos[2], &cam->pos[1], obj.ocos[0], obj.osin[0]);
+  rotate_y(&cam->pos[2], &cam->pos[0], obj.ocos[1], obj.osin[1]);
+  rotate_z(&cam->pos[0], &cam->pos[1], obj.ocos[2], obj.osin[2]);
 }
 
 void	rotate_veccam(t_vec *vec, double ccos[3], double csin[3])
