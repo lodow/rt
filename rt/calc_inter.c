@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Sun Apr 14 12:41:38 2013 Adrien Della Maggiora
+** Last update Mon Apr 15 20:51:03 2013 luc sinet
 */
 
 #include <math.h>
@@ -53,17 +53,21 @@ void		new_coor(t_vec *vpt, t_cam *cpt, double x, double y)
 unsigned int	get_pixel_color(t_rt *rpt)
 {
   double	k;
+  double	distance;
   t_lco		lpt;
   unsigned int	color;
 
-  color = 0x000000;
+  color = 0xFFFFFF;
   calc_inter(rpt, &k);
+  distance = 200 * FOG_DIST;
   if (k != -1 && rpt->light[0].on == 1)
     {
       color = recomp_color(rpt->obj[rpt->obj_num].color);
       color = get_light(rpt, k, &rpt->obj[rpt->obj_num], &lpt);
       color = reflection(rpt, &lpt, color);
+      distance = rpt->obj[rpt->obj_num].dist;
     }
+  color = apply_fog(color, rpt->opt->fog, distance);
   return (color);
 }
 
