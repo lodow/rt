@@ -5,45 +5,50 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Thu Mar 21 23:31:20 2013 etienne debas
-** Last update Mon Apr 15 23:09:19 2013 luc sinet
+** Last update Wed Apr 17 14:33:22 2013 luc sinet
 */
 
 #include "include/main.h"
 #include "include/light.h"
 
-t_cam		modif_cam(t_cam *cam, t_obj obj)
+void   	copy_tab(double *tab, double *ctab, int size)
 {
-  t_cam		cam_tmp;
+  int	i;
 
-  cam_tmp.pos[0] = cam->pos[0] - obj.pos[0];
-  cam_tmp.pos[1] = cam->pos[1] - obj.pos[1];
-  cam_tmp.pos[2] = cam->pos[2] - obj.pos[2];
-  return (cam_tmp);
+  i = 0;
+  while (i < size)
+    {
+      ctab[i] = tab[i];
+      ++i;
+    }
 }
 
-t_vec		rotate_vec(t_vec *vec, t_obj obj)
+void	get_impact(double *imp, double *cam, double k, double *vec)
 {
-  t_vec		vec_tmp;
-
-  vec_tmp.vec[0] = vec->vec[0];
-  vec_tmp.vec[1] = vec->vec[1];
-  vec_tmp.vec[2] = vec->vec[2];
-  rotate_x(&vec_tmp.vec[2], &vec_tmp.vec[1], obj.ocos[0], obj.osin[0]);
-  rotate_y(&vec_tmp.vec[2], &vec_tmp.vec[0], obj.ocos[1], obj.osin[1]);
-  rotate_z(&vec_tmp.vec[0], &vec_tmp.vec[1], obj.ocos[2], obj.osin[2]);
-  return (vec_tmp);
+  imp[0] = cam[0] + k * vec[0];
+  imp[1] = cam[1] + k * vec[1];
+  imp[2] = cam[2] + k * vec[2];
 }
 
-void		rotate_cam(t_cam *cam, t_obj obj)
+void		modif_cam(double *c_pos, double *o_pos)
 {
-  rotate_x(&cam->pos[2], &cam->pos[1], obj.ocos[0], obj.osin[0]);
-  rotate_y(&cam->pos[2], &cam->pos[0], obj.ocos[1], obj.osin[1]);
-  rotate_z(&cam->pos[0], &cam->pos[1], obj.ocos[2], obj.osin[2]);
+  c_pos[0] -= o_pos[0];
+  c_pos[1] -= o_pos[1];
+  c_pos[2] -= o_pos[2];
 }
 
-void	rotate_veccam(t_vec *vec, double ccos[3], double csin[3])
+void	rotate(double *p, double *cosin, double *sinus, char opt)
 {
-  rotate_x(&vec->vec[2], &vec->vec[1], ccos[0], csin[0]);
-  rotate_y(&vec->vec[2], &vec->vec[0], ccos[1], csin[1]);
-  rotate_z(&vec->vec[0], &vec->vec[1], ccos[2], csin[2]);
+  if (opt == 0)
+    {
+      rotate_x(p, cosin[0], sinus[0]);
+      rotate_y(p, cosin[1], sinus[1]);
+      rotate_z(p, cosin[2], sinus[2]);
+    }
+  else
+    {
+      rotate_z(p, cosin[2], sinus[2]);
+      rotate_y(p, cosin[1], sinus[1]);
+      rotate_x(p, cosin[0], sinus[0]);
+    }
 }

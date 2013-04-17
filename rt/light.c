@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Wed Apr 17 10:34:57 2013 Adrien
+** Last update Wed Apr 17 14:28:12 2013 luc sinet
 */
 
 #include <math.h>
@@ -23,32 +23,27 @@ void	copy_color(unsigned char *color1, unsigned char *color2)
 void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
 {
   void		(*nptr[4])(double *nvec, double *obj_coor, double *pert);
-  t_cam		cam_tmp;
-  t_vec		vec_tmp;
-  int		obj;
+  double	vcam[6];
+  t_obj		*obj;
 
+  copy_tab(rpt->cpt->pos, &vcam[3], 3);
+  copy_tab(vpt->vec, vcam, 3);
   nptr[0] = &sphere_normal;
   nptr[1] = &plan_normal;
   nptr[2] = &cone_normal;
   nptr[3] = &cylinder_normal;
-  obj = rpt->obj_num;
-  cam_tmp = modif_cam(rpt->cpt, rpt->obj[obj]);
-  rotate_cam(&cam_tmp, rpt->obj[obj]);
-  vec_tmp = rotate_vec(vpt, rpt->obj[obj]);
-  lpt->obj_coor[0] = cam_tmp.pos[0] + k * vec_tmp.vec[0];
-  lpt->obj_coor[1] = cam_tmp.pos[1] + k * vec_tmp.vec[1];
-  lpt->obj_coor[2] = cam_tmp.pos[2] + k * vec_tmp.vec[2];
-  nptr[rpt->obj[obj].type](lpt->nvec, lpt->obj_coor, rpt->obj[obj].pert);
-  /* rotate_z(&lpt->nvec[0], &lpt->nvec[1], rpt->obj[obj].acos[2], rpt->obj[obj].asin[2]); */
-  /* rotate_y(&lpt->nvec[2], &lpt->nvec[0], rpt->obj[obj].acos[1], rpt->obj[obj].asin[1]); */
-  /* rotate_x(&lpt->nvec[2], &lpt->nvec[1], rpt->obj[obj].acos[0], rpt->obj[obj].asin[0]); */
-  /* rotate_z(&lpt->obj_coor[0], &lpt->obj_coor[1], rpt->obj[obj].acos[2], rpt->obj[obj].asin[2]); */
-  /* rotate_y(&lpt->obj_coor[2], &lpt->obj_coor[0], rpt->obj[obj].acos[1], rpt->obj[obj].asin[1]); */
-  /* rotate_x(&lpt->obj_coor[2], &lpt->obj_coor[1], rpt->obj[obj].acos[0], rpt->obj[obj].asin[0]); */
-  /* lpt->obj_coor[0] += rpt->obj[obj].pos[0]; */
-  /* lpt->obj_coor[1] += rpt->obj[obj].pos[1]; */
-  /* lpt->obj_coor[2] += rpt->obj[obj].pos[2]; */
-  get_obj_distance(&rpt->obj[obj], &cam_tmp, lpt->obj_coor);
+  obj = &rpt->obj[rpt->obj_num];
+  modif_cam(&vcam[3], obj->pos);
+  rotate(&vcam[3], obj->ocos, obj->osin, 0);
+  rotate(vcam, obj->ocos, obj->osin, 0);
+  get_impact(lpt->obj_coor, rpt->cpt->pos, k, vpt->vec);
+  nptr[obj->type](lpt->nvec, lpt->obj_coor, obj->pert);
+  /* rotate(lpt->nvec, obj.acos, obj.asin); */
+  /* rotate(lpt->obj_coor, obj.ascos, obj.asin); */
+  /* lpt->obj_coor[0] += obj->pos[0]; */
+  /* lpt->obj_coor[1] += obj->pos[1]; */
+  /* lpt->obj_coor[2] += obj->pos[2]; */
+  get_obj_distance(obj, &vcam[3], lpt->obj_coor);
 }
 
 double		get_light_vector(t_vec *vpt, t_lco *lpt, double *spot_pos)

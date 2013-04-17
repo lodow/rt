@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Nov 14 20:45:42 2012 luc sinet
-** Last update Wed Apr 10 12:25:39 2013 luc sinet
+** Last update Tue Apr 16 00:25:57 2013 luc sinet
 */
 
 #ifndef PP_H_
@@ -22,6 +22,7 @@ typedef struct	s_par
   char		*data;
   double       	**img_obj;
   int		*timg_obj;
+  int		state;
   int		bpp;
   int		sizeline;
   int		endian;

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Wed Apr 17 09:58:37 2013 Adrien
+** Last update Wed Apr 17 13:46:18 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -107,14 +107,13 @@ int		print_i(t_par *ppt);
 int		merror(char *msg, int ret);
 double		move_cam(t_rt *rpt, t_vec *vpt, t_cam *cpt, t_obj obj);
 void		init_cos(t_obj *tab);
-void		rotate_x(double *z, double *y, double cosin, double sinus);
-void		rotate_y(double *z, double *x, double cosin, double sinus);
-void		rotate_z(double *x, double *y, double cosin, double sinus);
+void		rotate_x(double *p, double cosin, double sinus);
+void		rotate_y(double *p, double cosin, double sinus);
+void		rotate_z(double *p, double cosin, double sinus);
 unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt);
-t_cam		modif_cam(t_cam *cam, t_obj obj);
-t_vec		rotate_vec(t_vec *vec, t_obj obj);
-void		rotate_cam(t_cam *cam, t_obj obj);
-void		rotate_veccam(t_vec *vec, double ccos[3], double csin[3]);
+void		copy_tab(double *tab, double *ctab, int size);
+void		modif_cam(double *c_pos, double *o_pos);
+void		rotate(double *p, double *cosin, double *sinus, char opt);
 void		new_coor(t_vec *vpt, t_cam *cpt, double x, double y);
 double		*deref_cam(t_cam *cpt, double *cam);
 double		*deref_vec(t_vec *vpt, double *vec);

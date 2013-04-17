@@ -5,44 +5,44 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Mar 12 20:29:28 2013 luc sinet
-** Last update Mon Apr 15 22:41:47 2013 luc sinet
+** Last update Wed Apr 17 13:44:17 2013 luc sinet
 */
 
 #include <math.h>
 #include "include/main.h"
 #include "include/inter.h"
 
-void		rotate_x(double *z, double *y, double cosin, double sinus)
+void		rotate_x(double *p, double cosin, double sinus)
 {
   double	nvy;
   double	nvz;
 
-  nvz = (*y * sinus) + (*z * cosin);
-  nvy = (*y * cosin) - (*z * sinus);
-  *z = nvz;
-  *y = nvy;
+  nvz = (p[1] * sinus) + (p[2] * cosin);
+  nvy = (p[1] * cosin) - (p[2] * sinus);
+  p[2] = nvz;
+  p[1] = nvy;
 }
 
-void		rotate_y(double *z, double *x, double cosin, double sinus)
+void		rotate_y(double *p, double cosin, double sinus)
 {
   double	nvx;
   double	nvz;
 
-  nvx = (*z * sinus) + (*x * cosin);
-  nvz = (*x * (-sinus)) + (*z * cosin);
-  *z = nvz;
-  *x = nvx;
+  nvx = (p[2] * sinus) + (p[0] * cosin);
+  nvz = (p[0] * (-sinus)) + (p[2] * cosin);
+  p[2] = nvz;
+  p[0] = nvx;
 }
 
-void		rotate_z(double *x, double *y, double cosin, double sinus)
+void		rotate_z(double *p, double cosin, double sinus)
 {
   double	nvy;
   double	nvx;
 
-  nvx = (*x * cosin) + (*y * sinus);
-  nvy = (*x * -sinus) + (*y * cosin);
-  *y = nvy;
-  *x = nvx;
+  nvx = (p[0] * cosin) + (p[1] * sinus);
+  nvy = (p[0] * -sinus) + (p[1] * cosin);
+  p[1] = nvy;
+  p[0] = nvx;
 }
 
 double		move_cam(t_rt *rpt, t_vec *vpt, t_cam *cpt, t_obj obj)
@@ -55,12 +55,8 @@ double		move_cam(t_rt *rpt, t_vec *vpt, t_cam *cpt, t_obj obj)
   cam[0] = cpt->pos[0] - obj.pos[0];
   cam[1] = cpt->pos[1] - obj.pos[1];
   cam[2] = cpt->pos[2] - obj.pos[2];
-  rotate_x(&vec[2], &vec[1], obj.ocos[0], obj.osin[0]);
-  rotate_y(&vec[2], &vec[0], obj.ocos[1], obj.osin[1]);
-  rotate_z(&vec[0], &vec[1], obj.ocos[2], obj.osin[2]);
-  rotate_x(&cam[2], &cam[1], obj.ocos[0], obj.osin[0]);
-  rotate_y(&cam[2], &cam[0], obj.ocos[1], obj.osin[1]);
-  rotate_z(&cam[0], &cam[1], obj.ocos[2], obj.osin[2]);
+  rotate(vec, obj.ocos, obj.osin, 0);
+  rotate(cam, obj.ocos, obj.osin, 0);
   k = rpt->eptr[obj.type](cam, vec, &obj);
   return (k);
 }
