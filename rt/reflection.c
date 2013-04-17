@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Tue Apr  2 18:25:49 2013 etienne debas
-** Last update Wed Apr 17 10:16:34 2013 Adrien
+** Last update Wed Apr 17 18:31:39 2013 Adrien
 */
 
 #include <math.h>
@@ -87,12 +87,12 @@ void		calc_reflec_vector(t_vec *vpt, t_cam *cpt, t_lco *lpt, t_obj *obj)
   vec[0] = lpt->obj_coor[0] - cpt->pos[0];
   vec[1] = lpt->obj_coor[1] - cpt->pos[1];
   vec[2] = lpt->obj_coor[2] - cpt->pos[2];
-  /* cpt->pos[0] = lpt->obj_coor[0]; */
-  /* cpt->pos[1] = lpt->obj_coor[1]; */
-  /* cpt->pos[2] = lpt->obj_coor[2]; */
+  cpt->pos[0] = lpt->obj_coor[0] + obj->pos[0];
+  cpt->pos[1] = lpt->obj_coor[1] + obj->pos[1];
+  cpt->pos[2] = lpt->obj_coor[2] + obj->pos[2];
   norme_vec = sqrt(pow(vec[0], 2) + pow(vec[1], 2) + pow(vec[2], 2));
   norme_nor = sqrt(pow(lpt->nvec[0], 2) + pow(lpt->nvec[1], 2) + pow(lpt->nvec[2], 2));
-  scal = vec[0] * lpt->nvec[0] + vec[1] * lpt->nvec[1] + vec[2] * lpt->nvec[2];
+  scal = (vec[0] / norme_vec) * (lpt->nvec[0] / norme_nor) + (vec[1] / norme_vec) * (lpt->nvec[1] / norme_nor) + (vec[2] / norme_vec) * (lpt->nvec[2] / norme_nor);
   res[0] = (-2 * (lpt->nvec[0] / norme_nor)) * scal + (vec[0] / norme_vec);
   res[1] = (-2 * (lpt->nvec[1] / norme_nor)) * scal + (vec[1] / norme_vec);
   res[2] = (-2 * (lpt->nvec[2] / norme_nor)) * scal + (vec[2] / norme_vec);
@@ -126,10 +126,9 @@ unsigned int	reflection(t_rt *rpt, t_lco *lpt, unsigned int color)
   while (i < MAX_R && rpt->obj[rpt->obj_num].indice[2] >= ZERO)
     {
       indice = rpt->obj[rpt->obj_num].indice[2];
-      printf("%f\n", indice);
       calc_reflec_vector(rpt->vpt, rpt->cpt, lpt, &rpt->obj[rpt->obj_num]);
       calc_inter(rpt, &k);
-      if (k != -1)
+      if (k > 0.00000001)
 	color = apply_reflection(color,
 				 get_light(rpt, k, &rpt->obj[rpt->obj_num], lpt),
 				 indice);
