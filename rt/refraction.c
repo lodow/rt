@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Mon Apr  1 12:31:29 2013 Adrien Della Maggiora
-** Last update Wed Apr 17 09:54:55 2013 Adrien
+** Last update Wed Apr 17 14:49:24 2013 Adrien
 */
 
 #include <math.h>
@@ -27,7 +27,7 @@ unsigned int	apply_refrac(unsigned int color1, double alpha,
   return (recomp_color(c1));
 }
 
-void		get_new_vec(t_vec *res, double *nor, double *vec, double n)
+void		get_new_vec(double *res, double *nor, double *vec, double n)
 {
   double	norme;
   double	cosa;
@@ -41,29 +41,32 @@ void		get_new_vec(t_vec *res, double *nor, double *vec, double n)
   sina = pow(n, 2)  * (1.0 - pow(cosa, 2));
   if (sina > 1.0)
     return ;
-  res->vec[0] = n * vec[0] - (n + sqrt(1.0 - sina) * nor[0]);
-  res->vec[1] = n * vec[1] - (n + sqrt(1.0 - sina) * nor[1]);
-  res->vec[2] = n * vec[2] - (n + sqrt(1.0 - sina) * nor[2]);
+  res[0] = n * vec[0] - (n + sqrt(1.0 - sina) * nor[0]);
+  res[1] = n * vec[1] - (n + sqrt(1.0 - sina) * nor[1]);
+  res[2] = n * vec[2] - (n + sqrt(1.0 - sina) * nor[2]);
 }
 
 unsigned int	get_new_color(t_rt *rpt, t_cam *cpt, t_lco *lpt, double n)
 {
   double	k;
+  double	*cam_tmp;
+  double	*vec_tmp;
   t_cam		save;
-  t_cam		cam_tmp;
-  t_vec		vec_tmp;
 
   save.pos[0] = cpt->pos[0];
   save.pos[1] = cpt->pos[1];
   save.pos[2] = cpt->pos[2];
-  cam_tmp = modif_cam(rpt->cpt, rpt->obj[rpt->obj_num]);
-  rotate_cam(&cam_tmp, rpt->obj[rpt->obj_num]);
-  vec_tmp = rotate_vec(rpt->vpt, rpt->obj[rpt->obj_num]);
-  cpt->pos[0] = cam_tmp.pos[0] + k * vec_tmp.vec[0];
-  cpt->pos[1] = cam_tmp.pos[1] + k * vec_tmp.vec[1];
-  cpt->pos[2] = cam_tmp.pos[2] + k * vec_tmp.vec[2];
+  
+  copy_tab(cpt->pos, cam_tmp, 3);
+  copy_tab(rpt->vpt->vec, vec_tmp, 3);
+  modif_cam(cam_tmp, rpt->obj[rpt->obj_num].pos);
+  rotate(cam_tmp, rpt->obj[rpt->obj_num].ocos, rpt->obj[rpt->obj_num].osin, 0);
+  rotate(vec_tmp, rpt->obj[rpt->obj_num].ocos, rpt->obj[rpt->obj_num].osin, 0);
+  cpt->pos[0] = cam_tmp[0] + k * vec_tmp[0];
+  cpt->pos[1] = cam_tmp[1] + k * vec_tmp[1];
+  cpt->pos[2] = cam_tmp[2] + k * vec_tmp[2];
   if (rpt->obj[rpt->obj_num].indice[1] > 0.000001)
-    get_new_vec(&vec_tmp, lpt->nvec, lpt->lvec, n / rpt->obj[rpt->obj_num].indice[1]);
+    get_new_vec(vec_tmp, lpt->nvec, lpt->lvec, n / rpt->obj[rpt->obj_num].indice[1]);
   calc_inter(rpt, &k);
   cpt->pos[0] = save.pos[0];
   cpt->pos[1] = save.pos[1];

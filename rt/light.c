@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Wed Apr 17 14:28:12 2013 luc sinet
+** Last update Wed Apr 17 14:58:01 2013 Adrien
 */
 
 #include <math.h>
@@ -36,7 +36,7 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
   modif_cam(&vcam[3], obj->pos);
   rotate(&vcam[3], obj->ocos, obj->osin, 0);
   rotate(vcam, obj->ocos, obj->osin, 0);
-  get_impact(lpt->obj_coor, rpt->cpt->pos, k, vpt->vec);
+  get_impact(lpt->obj_coor, &vcam[3], k, vcam);
   nptr[obj->type](lpt->nvec, lpt->obj_coor, obj->pert);
   /* rotate(lpt->nvec, obj.acos, obj.asin); */
   /* rotate(lpt->obj_coor, obj.ascos, obj.asin); */
