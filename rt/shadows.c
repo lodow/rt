@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Wed Apr 17 15:32:33 2013 luc sinet
+** Last update Wed Apr 17 15:35:55 2013 luc sinet
 */
 
 #include <math.h>
@@ -16,7 +16,9 @@ int		shadows(t_rt *rpt, t_cam *cpt, t_lig *spot, t_lco *lpt)
 {
   double	cam[3];
   double	k;
+  int		obj;
 
+  obj = rpt->obj_num;
   copy_tab(cpt->pos, cam, 3);
   copy_tab(lpt->obj_coor, cpt->pos, 3);
   rpt->vpt->vec[0] = spot->pos[0] - lpt->obj_coor[0];
