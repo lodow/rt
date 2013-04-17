@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Wed Apr 17 14:58:01 2013 Adrien
+** Last update Wed Apr 17 15:31:20 2013 luc sinet
 */
 
 #include <math.h>
@@ -38,11 +38,8 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
   rotate(vcam, obj->ocos, obj->osin, 0);
   get_impact(lpt->obj_coor, &vcam[3], k, vcam);
   nptr[obj->type](lpt->nvec, lpt->obj_coor, obj->pert);
-  /* rotate(lpt->nvec, obj.acos, obj.asin); */
-  /* rotate(lpt->obj_coor, obj.ascos, obj.asin); */
-  /* lpt->obj_coor[0] += obj->pos[0]; */
-  /* lpt->obj_coor[1] += obj->pos[1]; */
-  /* lpt->obj_coor[2] += obj->pos[2]; */
+  rotate(lpt->nvec, obj->acos, obj->asin, 1);
+  rotate(lpt->obj_coor, obj->acos, obj->asin, 1);
   get_obj_distance(obj, &vcam[3], lpt->obj_coor);
 }
 
@@ -98,13 +95,13 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt)
     {
       if (rpt->light[i].ambient == 0)
 	{
-	  /* if ((state = shadows(rpt, rpt->cpt, &rpt->light[i], lpt)) == 1) */
+	  if ((state = shadows(rpt, rpt->cpt, &rpt->light[i], lpt)) == 1)
 	    lpt->mx_cos = get_light_color(&rpt->light[i], obj_pos, lpt, rpt->vpt);
-	  /* shadow += state; */
+	  shadow += state;
 	}
       else
        	++shadow;
       ++i;
     }
-  return (apply_light(lpt->c_color, lpt->mx_cos /* * ((double)shadow / (double)i) */, obj));
+  return (apply_light(lpt->c_color, lpt->mx_cos * ((double)shadow / (double)i), obj));
 }
