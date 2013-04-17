@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Mar 16 23:19:04 2013 luc sinet
-** Last update Sun Apr 14 12:43:42 2013 Adrien Della Maggiora
+** Last update Wed Apr 17 09:53:09 2013 Adrien
 */
 
 #include "../include/main.h"
@@ -68,13 +68,13 @@ int	other_opt(char *line, t_obj *ept)
   else if (my_strncmp("Brightness = ", line, 13) == 0)
     ept->bright = LIMIT(my_fgetnbr(&line[13]), 0, 1);
   else if (my_strncmp("Alpha = ", line, 8) == 0)
-    ept->alpha = LIMIT(my_fgetnbr(&line[8]), 0, 1);
+    ept->indice[0] = LIMIT(my_fgetnbr(&line[8]), 0, 1);
   else if (my_strncmp("N = ", line, 4) == 0)
-    ept->n = LIMIT(my_fgetnbr(&line[4]), 0, 1);
+    ept->indice[1] = LIMIT(my_fgetnbr(&line[4]), 0, 1);
   else if (my_strncmp("Limit = ", line, 8) == 0)
     fill_limits(&line[8], ept->limit);
   else if (my_strncmp("Reflexion = ", line, 12) == 0)
-    ept->reflec = LIMIT(my_fgetnbr(&line[12]), 0, 1);
+    ept->indice[2] = LIMIT(my_fgetnbr(&line[12]), 0, 1);
   else if (my_strncmp("Ondulation = ", line, 13) == 0)
     fill_pert(&line[13], ept->pert);
   else

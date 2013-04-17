@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Sun Apr 14 14:51:13 2013 luc sinet
+** Last update Wed Apr 17 09:51:52 2013 Adrien
 */
 
 #include "../include/main.h"
@@ -59,9 +59,9 @@ void    init_elem(t_obj *tab, t_pars *opt)
       init_limits(tab[i].limit);
       tab[i].rayon = 0;
       tab[i].bright = 1.0;
-      tab[i].alpha = 0;
-      tab[i].n = 1;
-      tab[i].reflec = 0;
+      tab[i].indice[0] = 0;
+      tab[i].indice[1] = 1;
+      tab[i].indice[2] = 0;
       i++;
     }
 }

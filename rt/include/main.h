@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Mon Apr 15 23:03:12 2013 luc sinet
+** Last update Wed Apr 17 09:58:37 2013 Adrien
 */
 
 #ifndef MAIN_H_
@@ -54,10 +54,18 @@ typedef struct	s_obj
   double	limit[9];
   double	pert[6];
   double	dist;
-  double	reflec;
-  double	alpha;
-  double	n;
+  double	indice[3];
+  // double	reflec;
+  // double	alpha;
+  // double	n;
 }		t_obj;
+
+/*
+** Indice tab:
+** 0 - alpha
+** 1 - n
+** 2 - reflection
+*/
 
 typedef struct	s_lig
 {

@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Mon Apr  1 12:31:29 2013 Adrien Della Maggiora
-** Last update Mon Apr 15 23:09:58 2013 luc sinet
+** Last update Wed Apr 17 09:54:55 2013 Adrien
 */
 
 #include <math.h>
@@ -62,8 +62,8 @@ unsigned int	get_new_color(t_rt *rpt, t_cam *cpt, t_lco *lpt, double n)
   cpt->pos[0] = cam_tmp.pos[0] + k * vec_tmp.vec[0];
   cpt->pos[1] = cam_tmp.pos[1] + k * vec_tmp.vec[1];
   cpt->pos[2] = cam_tmp.pos[2] + k * vec_tmp.vec[2];
-  if (rpt->obj[rpt->obj_num].n > 0.000001)
-    get_new_vec(&vec_tmp, lpt->nvec, lpt->lvec, n / rpt->obj[rpt->obj_num].n);
+  if (rpt->obj[rpt->obj_num].indice[1] > 0.000001)
+    get_new_vec(&vec_tmp, lpt->nvec, lpt->lvec, n / rpt->obj[rpt->obj_num].indice[1]);
   calc_inter(rpt, &k);
   cpt->pos[0] = save.pos[0];
   cpt->pos[1] = save.pos[1];
@@ -85,14 +85,14 @@ unsigned int	transparency(t_rt *rpt, t_cam *cpt, t_lco *lpt,
   n = 1;
   color_obj = recomp_color(rpt->obj[rpt->obj_num].color);
   obj_num = -1;
-  while (rpt->obj[rpt->obj_num].alpha > 0.0000001 && obj_num != rpt->obj_num)
+  while (rpt->obj[rpt->obj_num].indice[0] > 0.0000001 && obj_num != rpt->obj_num)
     {
       obj_num = rpt->obj_num;
       color2 = get_new_color(rpt, cpt, lpt, n);
-      alpha = rpt->obj[rpt->obj_num].alpha;
+      alpha = rpt->obj[rpt->obj_num].indice[0];
       if (color2 != color_obj || obj_num != rpt->obj_num)
 	color = apply_refrac(color, alpha, color2);
-      n = rpt->obj[rpt->obj_num].n;
+      n = rpt->obj[rpt->obj_num].indice[1];
       obj_num = rpt->obj_num;
     }
   return (color);

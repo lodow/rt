@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Mon Apr 15 23:04:49 2013 luc sinet
+** Last update Wed Apr 17 10:34:57 2013 Adrien
 */
 
 #include <math.h>
@@ -35,19 +35,19 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
   cam_tmp = modif_cam(rpt->cpt, rpt->obj[obj]);
   rotate_cam(&cam_tmp, rpt->obj[obj]);
   vec_tmp = rotate_vec(vpt, rpt->obj[obj]);
-  lpt->obj_coor[0] = rpt->cpt->pos[0] + k * rpt->vpt->vec[0];
-  lpt->obj_coor[1] = rpt->cpt->pos[1] + k * rpt->vpt->vec[1];
-  lpt->obj_coor[2] = rpt->cpt->pos[2] + k * rpt->vpt->vec[2];
+  lpt->obj_coor[0] = cam_tmp.pos[0] + k * vec_tmp.vec[0];
+  lpt->obj_coor[1] = cam_tmp.pos[1] + k * vec_tmp.vec[1];
+  lpt->obj_coor[2] = cam_tmp.pos[2] + k * vec_tmp.vec[2];
   nptr[rpt->obj[obj].type](lpt->nvec, lpt->obj_coor, rpt->obj[obj].pert);
-  rotate_z(&lpt->nvec[0], &lpt->nvec[1], rpt->obj[obj].acos[2], rpt->obj[obj].asin[2]);
-  rotate_y(&lpt->nvec[2], &lpt->nvec[0], rpt->obj[obj].acos[1], rpt->obj[obj].asin[1]);
-  rotate_x(&lpt->nvec[2], &lpt->nvec[1], rpt->obj[obj].acos[0], rpt->obj[obj].asin[0]);
-  rotate_z(&lpt->obj_coor[0], &lpt->obj_coor[1], rpt->obj[obj].acos[2], rpt->obj[obj].asin[2]);
-  rotate_y(&lpt->obj_coor[2], &lpt->obj_coor[0], rpt->obj[obj].acos[1], rpt->obj[obj].asin[1]);
-  rotate_x(&lpt->obj_coor[2], &lpt->obj_coor[1], rpt->obj[obj].acos[0], rpt->obj[obj].asin[0]);
-  lpt->obj_coor[0] += rpt->obj[obj].pos[0];
-  lpt->obj_coor[1] += rpt->obj[obj].pos[1];
-  lpt->obj_coor[2] += rpt->obj[obj].pos[2];
+  /* rotate_z(&lpt->nvec[0], &lpt->nvec[1], rpt->obj[obj].acos[2], rpt->obj[obj].asin[2]); */
+  /* rotate_y(&lpt->nvec[2], &lpt->nvec[0], rpt->obj[obj].acos[1], rpt->obj[obj].asin[1]); */
+  /* rotate_x(&lpt->nvec[2], &lpt->nvec[1], rpt->obj[obj].acos[0], rpt->obj[obj].asin[0]); */
+  /* rotate_z(&lpt->obj_coor[0], &lpt->obj_coor[1], rpt->obj[obj].acos[2], rpt->obj[obj].asin[2]); */
+  /* rotate_y(&lpt->obj_coor[2], &lpt->obj_coor[0], rpt->obj[obj].acos[1], rpt->obj[obj].asin[1]); */
+  /* rotate_x(&lpt->obj_coor[2], &lpt->obj_coor[1], rpt->obj[obj].acos[0], rpt->obj[obj].asin[0]); */
+  /* lpt->obj_coor[0] += rpt->obj[obj].pos[0]; */
+  /* lpt->obj_coor[1] += rpt->obj[obj].pos[1]; */
+  /* lpt->obj_coor[2] += rpt->obj[obj].pos[2]; */
   get_obj_distance(&rpt->obj[obj], &cam_tmp, lpt->obj_coor);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Tue Apr  2 18:25:49 2013 etienne debas
-** Last update Mon Apr 15 23:11:41 2013 luc sinet
+** Last update Wed Apr 17 10:16:34 2013 Adrien
 */
 
 #include <math.h>
@@ -100,7 +100,7 @@ void		calc_reflec_vector(t_vec *vpt, t_cam *cpt, t_lco *lpt, t_obj *obj)
   vpt->vec[1] = res[1];
   vpt->vec[2] = res[2];
   lpt->spec = get_specular(vpt, vec);
-}
+ }
 
 unsigned int	apply_reflection(unsigned int color, unsigned int obj_color,
 				 double indice)
@@ -123,9 +123,10 @@ unsigned int	reflection(t_rt *rpt, t_lco *lpt, unsigned int color)
   int		i;
 
   i = 0;
-  while (i < MAX_R && rpt->obj[rpt->obj_num].reflec >= ZERO)
+  while (i < MAX_R && rpt->obj[rpt->obj_num].indice[2] >= ZERO)
     {
-      indice = rpt->obj[rpt->obj_num].reflec;
+      indice = rpt->obj[rpt->obj_num].indice[2];
+      printf("%f\n", indice);
       calc_reflec_vector(rpt->vpt, rpt->cpt, lpt, &rpt->obj[rpt->obj_num]);
       calc_inter(rpt, &k);
       if (k != -1)
