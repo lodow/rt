@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Wed Apr 17 15:49:05 2013 luc sinet
+** Last update Wed Apr 17 17:48:26 2013 luc sinet
 */
 
 #include <math.h>
@@ -95,7 +95,8 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt)
     {
       if (rpt->light[i].ambient == 0)
 	{
-	  if ((state = shadows(rpt, rpt->cpt, &rpt->light[i], lpt)) == 1)
+	  state = 1.0;
+	  /* if ((state = shadows(rpt, rpt->cpt, &rpt->light[i], lpt)) == 1) */
 	    lpt->mx_cos = get_light_color(&rpt->light[i], obj_pos, lpt, rpt->vpt);
 	  shadow += state;
 	}
@@ -103,5 +104,5 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt)
        	++shadow;
       ++i;
     }
-  return (apply_light(lpt->c_color, lpt->mx_cos * ((double)shadow / (double)i), obj));
+  return (apply_light(lpt->c_color, LIMIT(((lpt->mx_cos * ((double)shadow / (double)i)) * 1.25), 0, 1), obj));
 }

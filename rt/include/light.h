@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Wed Apr 17 15:46:42 2013 luc sinet
+** Last update Wed Apr 17 17:47:40 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -16,7 +16,7 @@
 # define NZ(t, c, zp) (t == 1) ? 100 : (t == 2) ? (-c * zp) : (t == 3) ? 0 : zp
 # define MAX(x, y) (x > y) ? x : y
 # define LIMIT(x, n1, n2) (x < n1) ? n1 : (x > n2) ? n2 : x
-# define DISTM 20000.0
+# define DISTM 30000.0
 
 typedef struct	s_lco
 {
