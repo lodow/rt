@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Wed Apr 17 17:47:40 2013 luc sinet
+** Last update Thu Apr 18 13:55:25 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -50,5 +50,9 @@ void		sphere_normal(double *nvec, double *obj_coor, double *pert);
 void		plan_normal(double *nvec, double *obj_coor, double *pert);
 void		cone_normal(double *nvec, double *obj_coor, double *pert);
 void		cylinder_normal(double *nvec, double *obj_coor, double *pert);
+void		unitaire(double *vec);
+double		norme_vec(double *vec);
+double		scale(double *vec1, double *vec2);
+double		cos_vector(double *vec1, double *vec2);
 
 #endif

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Mar 31 13:20:23 2013 luc sinet
-** Last update Fri Apr 12 21:32:11 2013 luc sinet
+** Last update Thu Apr 18 13:58:11 2013 luc sinet
 */
 
 #include <math.h>
@@ -16,13 +16,13 @@ void	perturb_normal(double *nvec, double *obj_coor, double *pert)
 {
   if ((int)pert[0] == 1)
     nvec[0] = nvec[0] + cos(obj_coor[0] / pert[1])
-      * (vec_norme(nvec) / pert[1]);
+      * (norme_vec(nvec) / pert[1]);
   if ((int)pert[2] == 1)
     nvec[1] = nvec[1] + cos(obj_coor[1] / pert[3])
-      * (vec_norme(nvec) / pert[3]);
+      * (norme_vec(nvec) / pert[3]);
   if ((int)pert[4] == 1)
     nvec[2] = nvec[2] + cos(obj_coor[2] / pert[5])
-      * (vec_norme(nvec) / pert[5]);
+      * (norme_vec(nvec) / pert[5]);
 }
 
 void	sphere_normal(double *nvec, double *obj_coor, double *pert)

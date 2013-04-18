@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr  7 19:07:11 2013 luc sinet
-** Last update Wed Apr 17 15:44:07 2013 luc sinet
+** Last update Thu Apr 18 13:59:35 2013 luc sinet
 */
 
 #include "include/main.h"
@@ -42,8 +42,8 @@ double		get_light_color(t_lig *light, double *obj_pos,
 
   tmp_light = move_light(light->pos, light->intensity,
 			 light->lcolor, obj_pos);
-  if ((cosa = get_light_vector(vpt, lpt, tmp_light.pos)) > ZERO)
-    cosa = apply_distance(lpt, &tmp_light, cosa);
+  if ((cosa = get_light_vector(vpt, lpt, tmp_light.pos)) > ZERO);
+    /* cosa = apply_distance(lpt, &tmp_light, cosa); */
   apply_light_color(lpt->c_color, light->lcolor, cosa);
   return (MAX(lpt->mx_cos, cosa));
 }

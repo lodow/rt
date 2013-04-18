@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 23:14:34 2013 luc sinet
-** Last update Wed Apr 17 14:28:56 2013 luc sinet
+** Last update Thu Apr 18 13:45:32 2013 luc sinet
 */
 
 #include <math.h>
@@ -18,11 +18,6 @@ double	point_distance(double *p1, double *p2)
 	  + pow(p1[2] - p2[2], 2));
 }
 
-double	vec_norme(double *vector)
-{
-  return (sqrt(pow(vector[0], 2) + pow(vector[1], 2) + pow(vector[2], 2)));
-}
-
 double		apply_distance(t_lco *lpt, t_lig *obj, double ratio_a)
 {
   double	dist;
@@ -32,7 +27,7 @@ double		apply_distance(t_lco *lpt, t_lig *obj, double ratio_a)
   if (dist < DISTM)
     dist = DISTM;
   ratio_d = 1.0 / (dist / DISTM);
-  ratio_a = ((1.0 - ratio_a) * ratio_a + (ratio_a * ratio_d)) * obj->intensity;
+  ratio_a = ratio_a * ratio_d * obj->intensity;
   return (ratio_a);
 }
 

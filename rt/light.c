@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Wed Apr 17 17:48:26 2013 luc sinet
+** Last update Thu Apr 18 13:58:29 2013 luc sinet
 */
 
 #include <math.h>
@@ -45,21 +45,12 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
 
 double		get_light_vector(t_vec *vpt, t_lco *lpt, double *spot_pos)
 {
-  double	bnorme;
   double	cosa;
 
   vpt->vec[0] = spot_pos[0] - lpt->obj_coor[0];
   vpt->vec[1] = spot_pos[1] - lpt->obj_coor[1];
   vpt->vec[2] = spot_pos[2] - lpt->obj_coor[2];
-  bnorme = (sqrt(pow(lpt->nvec[0], 2) + pow(lpt->nvec[1], 2)
-		 + pow(lpt->nvec[2], 2))
-	    * sqrt(pow(vpt->vec[0], 2) + pow(vpt->vec[1], 2)
-		   + pow(vpt->vec[2], 2)));
-  if (bnorme < ZERO && bnorme > -ZERO)
-    return (0);
-  cosa = (lpt->nvec[0] * vpt->vec[0]
-	  + lpt->nvec[1] * vpt->vec[1]
-	  + lpt->nvec[2] * vpt->vec[2]) / bnorme;
+  cosa = cos_vector(lpt->nvec, vpt->vec);
   return (cosa < ZERO ? 0.0 : cosa);
 }
 
