@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr  7 19:07:11 2013 luc sinet
-** Last update Fri Apr 19 16:47:19 2013 luc sinet
+** Last update Fri Apr 19 17:48:51 2013 luc sinet
 */
 
 #include <math.h>
@@ -59,15 +59,14 @@ double		get_specular_coef(t_lco *lpt, double *cpos)
   return (spe_cos);
 }
 
-void		get_light_color(t_lig *light, double *obj_pos,
-				  t_lco *lpt, t_rt *rpt)
+void		get_light_color(t_lig *light, t_lco *lpt, t_rt *rpt)
 {
   t_lig		tmp_light;
   double	cosa;
   double	coss;
 
   tmp_light = move_light(light->pos, light->intensity,
-  			 light->lcolor, obj_pos);
+  			 light->lcolor);
   if ((cosa = get_light_vector(rpt->vpt, lpt, tmp_light.pos)) > ZERO);
     cosa = apply_distance(lpt, &tmp_light, cosa);
   /* coss = get_specular_coef(lpt, rpt->vpt->vec); */

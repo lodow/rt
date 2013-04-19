@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Fri Apr 19 16:49:10 2013 luc sinet
+** Last update Fri Apr 19 18:22:31 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -42,10 +42,9 @@ void		*apply_ambient(t_lig *light, unsigned char *color,
 			       double *max_cos);
 double		get_light_vector(t_vec *vpt, t_lco *lpt, double *spot_p);
 t_lig		move_light(double *pos, double intensity,
-			   unsigned char *lcolor, double *obj_pos);
-void		get_light_color(t_lig *light, double *obj_pos, t_lco *lpt,
-				t_rt *rpt);
-int		shadows(t_rt *rpt, t_cam *cpt, t_lig *spot, t_lco *lpt);
+			   unsigned char *lcolor);
+void		get_light_color(t_lig *light, t_lco *lpt, t_rt *rpt);
+int		shadows(t_rt *rpt, double *cpos, double *lpos, double *opos);
 void		get_impact(double *imp, double *cam, double k, double *vec);
 double		vec_norme(double *vector);
 void		sphere_normal(double *nvec, double *obj_coor, double *pert);

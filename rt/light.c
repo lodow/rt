@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Fri Apr 19 17:04:16 2013 luc sinet
+** Last update Fri Apr 19 18:22:10 2013 luc sinet
 */
 
 #include <math.h>
@@ -58,7 +58,7 @@ double		get_light_vector(t_vec *vpt, t_lco *lpt, double *spot_pos)
 }
 
 t_lig		move_light(double *pos, double intensity,
-			   unsigned char *lcolor, double *obj_pos)
+			   unsigned char *lcolor)
 {
   t_lig		new_ligth;
 
@@ -90,13 +90,15 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt)
       if (rpt->light[i].ambient == 0)
 	{
 	  state = 1;
-	  if ((state = shadows(rpt, rpt->cpt, &rpt->light[i], lpt)) == 1)
-	    get_light_color(&rpt->light[i], obj_pos, lpt, rpt);
+	  if ((state = shadows(rpt, rpt->cpt->pos, rpt->light[i].pos,
+			       lpt->obj_coor)) == 1)
+	    get_light_color(&rpt->light[i], lpt, rpt);
 	  shadow += state;
 	}
       else
        	++shadow;
       ++i;
     }
-  return (apply_light(lpt->c_color, LIMIT(((lpt->mx_cos * ((double)shadow / (double)i)) * 1.0), 0, 1), obj));
+  int re = LIMIT((double)shadow / (double)i, 0, 1);
+  return (apply_light(lpt->c_color, LIMIT((lpt->mx_cos * re), 0, 1), obj));
 }

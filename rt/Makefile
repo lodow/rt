@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Thu Apr 18 14:05:06 2013 luc sinet
+## Last update Fri Apr 19 17:55:11 2013 luc sinet
 ##
 
 SRCS	= main.c \
