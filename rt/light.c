@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Thu Apr 18 13:58:29 2013 luc sinet
+** Last update Fri Apr 19 14:35:28 2013 luc sinet
 */
 
 #include <math.h>
@@ -40,6 +40,9 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
   nptr[obj->type](lpt->nvec, lpt->obj_coor, obj->pert);
   rotate(lpt->nvec, obj->acos, obj->asin, 1);
   rotate(lpt->obj_coor, obj->acos, obj->asin, 1);
+  lpt->obj_coor[0] += obj->pos[0];
+  lpt->obj_coor[1] += obj->pos[1];
+  lpt->obj_coor[2] += obj->pos[2];
   get_obj_distance(obj, &vcam[3], lpt->obj_coor);
 }
 
@@ -59,9 +62,9 @@ t_lig		move_light(double *pos, double intensity,
 {
   t_lig		new_ligth;
 
-  new_ligth.pos[0] = pos[0] - obj_pos[0];
-  new_ligth.pos[1] = pos[1] - obj_pos[1];
-  new_ligth.pos[2] = pos[2] - obj_pos[2];
+  new_ligth.pos[0] = pos[0] /* - obj_pos[0] */;
+  new_ligth.pos[1] = pos[1] /* - obj_pos[1] */;
+  new_ligth.pos[2] = pos[2] /* - obj_pos[2] */;
   new_ligth.intensity = intensity;
   new_ligth.lcolor[0] = lcolor[0];
   new_ligth.lcolor[1] = lcolor[1];
@@ -88,12 +91,13 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt)
 	{
 	  state = 1.0;
 	  /* if ((state = shadows(rpt, rpt->cpt, &rpt->light[i], lpt)) == 1) */
-	    lpt->mx_cos = get_light_color(&rpt->light[i], obj_pos, lpt, rpt->vpt);
+	    lpt->mx_cos = get_light_color(&rpt->light[i], obj_pos,
+					  lpt, rpt);
 	  shadow += state;
 	}
       else
        	++shadow;
       ++i;
     }
-  return (apply_light(lpt->c_color, LIMIT(((lpt->mx_cos * ((double)shadow / (double)i)) * 1.25), 0, 1), obj));
+  return (apply_light(lpt->c_color, LIMIT(((lpt->mx_cos * ((double)shadow / (double)i)) * 1.0), 0, 1), obj));
 }
