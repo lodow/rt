@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Fri Apr 19 18:22:10 2013 luc sinet
+** Last update Fri Apr 19 18:27:11 2013 luc sinet
 */
 
 #include <math.h>
@@ -99,6 +99,6 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt)
        	++shadow;
       ++i;
     }
-  int re = LIMIT((double)shadow / (double)i, 0, 1);
+  double re = LIMIT(((double)shadow) / (double)i, 0, 1);
   return (apply_light(lpt->c_color, LIMIT((lpt->mx_cos * re), 0, 1), obj));
 }
