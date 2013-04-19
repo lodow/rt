@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Thu Apr 18 13:55:25 2013 luc sinet
+** Last update Fri Apr 19 16:49:10 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -16,13 +16,15 @@
 # define NZ(t, c, zp) (t == 1) ? 100 : (t == 2) ? (-c * zp) : (t == 3) ? 0 : zp
 # define MAX(x, y) (x > y) ? x : y
 # define LIMIT(x, n1, n2) (x < n1) ? n1 : (x > n2) ? n2 : x
-# define DISTM 30000.0
+# define DISTM 200000.0
+# define SPE_SIZE 1
 
 typedef struct	s_lco
 {
   double	obj_coor[3];
   double	nvec[3];
   double	lvec[3];
+  double	rvec[3];
   double	mx_cos;
   double	spec;
   unsigned char	c_color[3];
@@ -41,8 +43,8 @@ void		*apply_ambient(t_lig *light, unsigned char *color,
 double		get_light_vector(t_vec *vpt, t_lco *lpt, double *spot_p);
 t_lig		move_light(double *pos, double intensity,
 			   unsigned char *lcolor, double *obj_pos);
-double		get_light_color(t_lig *light, double *obj_pos, t_lco *lpt,
-				t_vec *vpt);
+void		get_light_color(t_lig *light, double *obj_pos, t_lco *lpt,
+				t_rt *rpt);
 int		shadows(t_rt *rpt, t_cam *cpt, t_lig *spot, t_lco *lpt);
 void		get_impact(double *imp, double *cam, double k, double *vec);
 double		vec_norme(double *vector);

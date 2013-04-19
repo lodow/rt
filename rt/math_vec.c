@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr 14 17:32:06 2013 luc sinet
-** Last update Thu Apr 18 13:57:02 2013 luc sinet
+** Last update Thu Apr 18 14:58:27 2013 luc sinet
 */
 
 #include <math.h>
@@ -23,6 +23,13 @@ void		unitaire(double *vec)
       vec[1] /= norme;
       vec[2] /= norme;
     }
+}
+
+void	vec_mult(double *vec1, double *vec2, double *vecr)
+{
+  vecr[0] = vec1[0] * vec2[0];
+  vecr[1] = vec1[1] * vec2[1];
+  vecr[2] = vec1[2] * vec2[2];
 }
 
 double	norme_vec(double *vec)

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Thu Apr 18 15:28:06 2013 luc sinet
+** Last update Fri Apr 19 16:43:03 2013 luc sinet
 */
 
 #include <math.h>
@@ -93,7 +93,6 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
 	  fill_img_param(pos, color, rpt, ppt);
 	  ++pos[0];
 	}
-      print_i(ppt);
       ++pos[1];
     }
   detect_edge(rpt, ppt);

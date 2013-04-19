@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Fri Apr 19 14:32:23 2013 luc sinet
+** Last update Fri Apr 19 17:08:25 2013 luc sinet
 */
 
 #include <math.h>
@@ -32,7 +32,11 @@ int		shadows(t_rt *rpt, t_cam *cpt, t_lig *spot, t_lco *lpt)
   calc_inter(rpt, &k);
   copy_tab(cam, cpt->pos, 3);
   copy_tab(vec, rpt->vpt->vec, 3);
-  if (k > 0.0000000001 && k < 1)
-    return (0);
+  if (obj != rpt->obj_num && k > 0.0000000001 && k < 1)
+    {
+      rpt->obj_num = obj;
+      return (0);
+    }
+  rpt->obj_num = obj;
   return (1);
 }
