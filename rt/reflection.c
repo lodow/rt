@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Tue Apr  2 18:25:49 2013 etienne debas
-** Last update Mon Apr 22 11:20:03 2013 Adrien
+** Last update Mon Apr 22 14:26:31 2013 luc sinet
 */
 
 #include <math.h>
@@ -13,81 +13,18 @@
 #include "include/change_color.h"
 #include "include/light.h"
 
-t_vec		get_vec_reflection(double lvec[3], double nvec[3], double scalar)
-{
-  t_vec		vec_reflection;
-
-  vec_reflection.vec[0] = lvec[0] - 2 * scalar * nvec[0];
-  vec_reflection.vec[0] = lvec[1] - 2 * scalar * nvec[1];
-  vec_reflection.vec[0] = lvec[2] - 2 * scalar * nvec[2];
-  return (vec_reflection);
-}
-
-/* float		vec_to_tab(t_vec *vec) */
-/* { */
-/*   float		tab[3]; */
-
-/*   tab[0] = vec->vec[0]; */
-/*   tab[1] = vec->vec[1]; */
-/*   tab[2] = vec->vec[2]; */
-/*   return (tab); */
-/* } */
-
-/* double		get_scalar(double tab1[3], double tab2[3]) */
-/* { */
-/*   double		scalar; */
-
-/*   scalar = tab1[0] * tab2[0] + tab1[1] * tab2[1] + tab1[2] * tab2[2]; */
-/*   return (scalar); */
-/* } */
-
-/* double		get_angle_specular(double lvec[3], double nvec[3], t_lco *lpt) */
-/* { */
-/*   double	bnorme; */
-/*   double	angle; */
-/*   t_vec		reflection; */
-/*   double	scalar; */
-
-/*   scalar = get_scalar(lvec, nvec); */
-/*   reflection = get_vec_reflection(lvec, nvec, scalar); */
-/*   bnorme = (sqrt(pow(reflection.vec[0], 2) + pow(reflection.vec[1], 2) */
-/* 		 + pow(reflection.vec[2], 2)) */
-/* 	    * sqrt(pow(lvec[0], 2) + pow(lvec[1], 2) */
-/* 		   + pow(lvec[2], 2))); */
-/*   angle = (reflection.vec[0] * lvec[0] */
-/* 	   + reflection.vec[1] * lvec[1] */
-/* 	   + reflection.vec[2] * lvec[2]) / bnorme; */
-/*   angle = acos(angle); */
-/*   return (angle); */
-/* } */
-
-double	get_specular(t_vec *vpt, double vec[3])
-{
-  double	bnorme;
-
-  bnorme = (sqrt(pow(vec[0], 2) + pow(vec[1], 2) + pow(vec[2], 2))
-	    * sqrt(pow(vpt->vec[0], 2) + pow(vpt->vec[1], 2) + pow(vpt->vec[2], 2)));
-  if (bnorme > ZERO)
-    return ((vec[0] * vpt->vec[0] + vec[1] * vpt->vec[1] + vec[2] * vpt->vec[2]) / bnorme);
-  else
-    return (1.0);
-}
-
 void		calc_reflec_vector(t_vec *vpt, t_cam *cpt, t_lco *lpt, t_obj *obj)
 {
   double	res[3];
   double	vec[3];
   double	scal;
 
-  cpt->tx = cpt->pos[0];
-  cpt->ty = cpt->pos[1];
-  cpt->tz = cpt->pos[2];
   vec[0] = lpt->obj_coor[0] - cpt->pos[0];
   vec[1] = lpt->obj_coor[1] - cpt->pos[1];
   vec[2] = lpt->obj_coor[2] - cpt->pos[2];
-  cpt->pos[0] = lpt->obj_coor[0] + obj->pos[0];
-  cpt->pos[1] = lpt->obj_coor[1] + obj->pos[1];
-  cpt->pos[2] = lpt->obj_coor[2] + obj->pos[2];
+  cpt->pos[0] = lpt->obj_coor[0];
+  cpt->pos[1] = lpt->obj_coor[1];
+  cpt->pos[2] = lpt->obj_coor[2];
   unitaire(vec);
   unitaire(lpt->nvec);
   scal = scale(vec, lpt->nvec);
@@ -97,7 +34,6 @@ void		calc_reflec_vector(t_vec *vpt, t_cam *cpt, t_lco *lpt, t_obj *obj)
   vpt->vec[0] = res[0];
   vpt->vec[1] = res[1];
   vpt->vec[2] = res[2];
-  lpt->spec = get_specular(vpt, vec);
  }
 
 unsigned int	apply_reflection(unsigned int color, unsigned int obj_color,
@@ -108,9 +44,10 @@ unsigned int	apply_reflection(unsigned int color, unsigned int obj_color,
 
   decomp_color(color, c);
   decomp_color(obj_color, c_obj);
-  c[0] = c[0] * (1 - indice) + c_obj[0] * indice;
-  c[1] = c[1] * (1 - indice) + c_obj[1] * indice;
-  c[2] = c[2] * (1 - indice) + c_obj[2] * indice;
+  printf("%d %d %d\n", c[0], c[1], c[2]);
+  c[0] = (double)c[0] * (1.0 - indice) + (double)c_obj[0] * indice;
+  c[1] = (double)c[1] * (1.0 - indice) + (double)c_obj[1] * indice;
+  c[2] = (double)c[2] * (1.0 - indice) + (double)c_obj[2] * indice;
   return (recomp_color(c));
 }
 
@@ -121,21 +58,17 @@ unsigned int	reflection(t_rt *rpt, t_lco *lpt, unsigned int color)
   int		i;
 
   i = 0;
+  copy_tab(rpt->cpt->pos, rpt->cpt->ctmp, 3);
   while (i < MAX_R && rpt->obj[rpt->obj_num].indice[2] >= ZERO)
     {
       indice = rpt->obj[rpt->obj_num].indice[2];
       calc_reflec_vector(rpt->vpt, rpt->cpt, lpt, &rpt->obj[rpt->obj_num]);
       calc_inter(rpt, &k);
-      if (k > 0.00000001)
-	color = apply_reflection(color,
-				 get_light(rpt, k, &rpt->obj[rpt->obj_num], lpt),
-				 indice);
-      else
-	color = apply_reflection(color, 0x000000, indice);
+      color = apply_reflection(color, (k > ZERO) ?
+			       get_light(rpt, k, &rpt->obj[rpt->obj_num], lpt)
+			       : 0x000000, indice);
       ++i;
-      rpt->cpt->pos[0] = rpt->cpt->tx;
-      rpt->cpt->pos[1] = rpt->cpt->ty;
-      rpt->cpt->pos[2] = rpt->cpt->tz;
     }
+  copy_tab(rpt->cpt->ctmp, rpt->cpt->pos, 3);
   return (color);
 }

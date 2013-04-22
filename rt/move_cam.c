@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Mar 12 20:29:28 2013 luc sinet
-** Last update Wed Apr 17 13:44:17 2013 luc sinet
+** Last update Mon Apr 22 13:53:01 2013 luc sinet
 */
 
 #include <math.h>
@@ -51,7 +51,7 @@ double		move_cam(t_rt *rpt, t_vec *vpt, t_cam *cpt, t_obj obj)
   double	vec[3];
   double	k;
 
-  deref_vec(vpt, vec);
+  copy_tab(vpt->vec, vec, 3);
   cam[0] = cpt->pos[0] - obj.pos[0];
   cam[1] = cpt->pos[1] - obj.pos[1];
   cam[2] = cpt->pos[2] - obj.pos[2];

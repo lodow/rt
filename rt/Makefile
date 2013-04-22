@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Fri Apr 19 17:55:11 2013 luc sinet
+## Last update Mon Apr 22 13:40:08 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -35,7 +35,6 @@ SRCS	= main.c \
 	  move_cam.c \
 	  light.c \
 	  change_color.c \
-	  deref.c \
 	  math_coor.c \
 	  math_vec.c \
 	  normals.c \

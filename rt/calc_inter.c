@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Fri Apr 19 17:37:39 2013 luc sinet
+** Last update Mon Apr 22 14:12:55 2013 luc sinet
 */
 
 #include <math.h>
@@ -57,7 +57,7 @@ unsigned int	get_pixel_color(t_rt *rpt)
   t_lco		lpt;
   unsigned int	color;
 
-  color = 0xFFFFFF;
+  color = 0x000000;
   calc_inter(rpt, &k);
   distance = 200 * FOG_DIST;
   if (k != -1 && rpt->light[0].on == 1)
@@ -93,8 +93,9 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
 	  fill_img_param(pos, color, rpt, ppt);
 	  ++pos[0];
 	}
+      print_i(ppt);
       ++pos[1];
     }
-  /* detect_edge(rpt, ppt); */
-  /* apply_supersampling(rpt, ppt, &spt); */
+  detect_edge(rpt, ppt);
+  apply_supersampling(rpt, ppt, &spt);
 }
