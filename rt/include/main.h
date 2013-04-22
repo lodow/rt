@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Mon Apr 22 23:42:47 2013 luc sinet
+** Last update Mon Apr 22 23:44:29 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -128,5 +128,10 @@ void		detect_edge(t_rt *rpt, t_par *ppt);
 void		apply_supersampling(t_rt *rpt, t_par *ppt, t_samp *spt);
 void		fill_img_param(int *pos, unsigned int color,
 			       t_rt *rpt, t_par *ppt);
+double		solve_third(double *coef);
+void		delta_neg_third(double *k, double delta, double *pq);
+void		delta_nul_third(double *k, double *pq);
+void		delta_pos_third(double *k, double delta, double *pq);
+void		mk_coef_moebius(double *cam, double *vec, double *ept);
 
 #endif
