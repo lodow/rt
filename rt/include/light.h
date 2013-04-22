@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Mon Apr 22 15:35:43 2013 Adrien
+** Last update Mon Apr 22 23:53:31 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -35,7 +35,7 @@ double		apply_distance(t_lco *lpt, t_lig *obj, double cosa);
 void		assign_normal1(t_lco *lpt, int type);
 void		assign_normal2(t_lco *lpt, int type);
 void		apply_light_color(unsigned char *col_o, unsigned char *col_l,
-				  double lg_i);
+				  double lg_i, double spe);
 void		get_obj_distance(t_obj *obj, double *cpos, double *hit);
 double		get_angle_specular(double lvec[3], double nvec[3], t_lco *lpt);
 void		*apply_ambient(t_lig *light, unsigned char *color,
@@ -50,6 +50,7 @@ double		vec_norme(double *vector);
 void		sphere_normal(double *nvec, double *obj_coor, double *pert);
 void		plan_normal(double *nvec, double *obj_coor, double *pert);
 void		cone_normal(double *nvec, double *obj_coor, double *pert);
+void		moebius_normal(double *nvec, double *obj_coor, double *pert);
 void		cylinder_normal(double *nvec, double *obj_coor, double *pert);
 void		unitaire(double *vec);
 double		norme_vec(double *vec);

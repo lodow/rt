@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Mar 31 13:20:23 2013 luc sinet
-** Last update Thu Apr 18 13:58:11 2013 luc sinet
+** Last update Mon Apr 22 23:53:07 2013 luc sinet
 */
 
 #include <math.h>
@@ -54,5 +54,12 @@ void	cylinder_normal(double *nvec, double *obj_coor, double *pert)
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];
   nvec[2] = 0;
+  perturb_normal(nvec, obj_coor, pert);
+}
+void	moebius_normal(double *nvec, double *obj_coor, double *pert)
+{
+  nvec[0] = obj_coor[0];
+  nvec[1] = obj_coor[1];
+  nvec[2] = obj_coor[2];
   perturb_normal(nvec, obj_coor, pert);
 }
