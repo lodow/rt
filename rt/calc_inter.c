@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Mon Apr 22 14:12:55 2013 luc sinet
+** Last update Mon Apr 22 14:50:36 2013 Adrien
 */
 
 #include <math.h>
@@ -64,7 +64,7 @@ unsigned int	get_pixel_color(t_rt *rpt)
     {
       color = recomp_color(rpt->obj[rpt->obj_num].color);
       color = get_light(rpt, k, &rpt->obj[rpt->obj_num], &lpt);
-      color = reflection(rpt, &lpt, color);
+      color = reflection(rpt, &lpt, color, k);
       distance = rpt->obj[rpt->obj_num].dist;
     }
   color = apply_fog(color, rpt->opt->fog, distance);
@@ -93,7 +93,7 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
 	  fill_img_param(pos, color, rpt, ppt);
 	  ++pos[0];
 	}
-      print_i(ppt);
+      /* print_i(ppt); */
       ++pos[1];
     }
   detect_edge(rpt, ppt);

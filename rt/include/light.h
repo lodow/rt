@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Mon Apr 22 15:31:39 2013 luc sinet
+** Last update Mon Apr 22 15:35:43 2013 Adrien
 */
 
 #ifndef LIG_H_
@@ -55,5 +55,6 @@ void		unitaire(double *vec);
 double		norme_vec(double *vec);
 double		scale(double *vec1, double *vec2);
 double		cos_vector(double *vec1, double *vec2);
+void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt);
 
 #endif
