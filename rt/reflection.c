@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Tue Apr  2 18:25:49 2013 etienne debas
-** Last update Wed Apr 17 18:31:39 2013 Adrien
+** Last update Mon Apr 22 11:20:03 2013 Adrien
 */
 
 #include <math.h>
@@ -78,8 +78,6 @@ void		calc_reflec_vector(t_vec *vpt, t_cam *cpt, t_lco *lpt, t_obj *obj)
   double	res[3];
   double	vec[3];
   double	scal;
-  double	norme_vec;
-  double	norme_nor;
 
   cpt->tx = cpt->pos[0];
   cpt->ty = cpt->pos[1];
@@ -90,12 +88,12 @@ void		calc_reflec_vector(t_vec *vpt, t_cam *cpt, t_lco *lpt, t_obj *obj)
   cpt->pos[0] = lpt->obj_coor[0] + obj->pos[0];
   cpt->pos[1] = lpt->obj_coor[1] + obj->pos[1];
   cpt->pos[2] = lpt->obj_coor[2] + obj->pos[2];
-  norme_vec = sqrt(pow(vec[0], 2) + pow(vec[1], 2) + pow(vec[2], 2));
-  norme_nor = sqrt(pow(lpt->nvec[0], 2) + pow(lpt->nvec[1], 2) + pow(lpt->nvec[2], 2));
-  scal = (vec[0] / norme_vec) * (lpt->nvec[0] / norme_nor) + (vec[1] / norme_vec) * (lpt->nvec[1] / norme_nor) + (vec[2] / norme_vec) * (lpt->nvec[2] / norme_nor);
-  res[0] = (-2 * (lpt->nvec[0] / norme_nor)) * scal + (vec[0] / norme_vec);
-  res[1] = (-2 * (lpt->nvec[1] / norme_nor)) * scal + (vec[1] / norme_vec);
-  res[2] = (-2 * (lpt->nvec[2] / norme_nor)) * scal + (vec[2] / norme_vec);
+  unitaire(vec);
+  unitaire(lpt->nvec);
+  scal = scale(vec, lpt->nvec);
+  res[0] = (-2 * lpt->nvec[0] * scal) + vec[0];
+  res[1] = (-2 * lpt->nvec[1] * scal) + vec[1];
+  res[2] = (-2 * lpt->nvec[2] * scal) + vec[2];
   vpt->vec[0] = res[0];
   vpt->vec[1] = res[1];
   vpt->vec[2] = res[2];
