@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Mon Apr 22 21:01:11 2013 etienne debas
-** Last update Mon Apr 22 23:32:48 2013 etienne debas
+** Last update Mon Apr 22 23:36:17 2013 etienne debas
 */
 
 #include <math.h>
@@ -60,4 +60,12 @@ void		delta_pos_third(double *k, double delta, double *pq)
 	* cos((1 / 3) * acos((-pq[1] / 2) * sqrt(27 / pow(-pq[0], 3))) + (2 * i * M_PI) / 3);
       i++;
     }
+
+void	get_pq(double *coef, double *pq)
+{
+  pq[0] = (-pow(coef[1], 2)) / (3.0 * pow(coef[0], 2))
+    + coef[2] / coef[0];
+  pq[1] = (coef[1] / (27.0 * coef[0]))
+    * (((2.0 * pow(coef[1], 2)) / pow(coef[0], 2))
+       - ((9.0 * coef[2]) / coef[0])) + (coef[3] / coef[0]);
 }
