@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Mon Apr 22 23:21:52 2013 etienne debas
+** Last update Mon Apr 22 23:43:59 2013 etienne debas
 */
 
 #ifndef MAIN_H_
@@ -131,7 +131,7 @@ void		fill_img_param(int *pos, unsigned int color,
 double		solve_third(double *coef);
 void		delta_neg_third(double *k, double delta, double *pq);
 void		delta_nul_third(double *k, double *pq);
-void		delta_pos_third(double *k, double delta, double *pq);
-void		mk_coef_moebius(double *cam, double *vec, double *ept);
+void		delta_pos_third(double *k, double *pq);
+double		moebius(double *cam, double *vec);
 
 #endif
