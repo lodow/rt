@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Fri Apr 19 18:22:31 2013 luc sinet
+** Last update Mon Apr 22 15:31:39 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -40,7 +40,7 @@ void		get_obj_distance(t_obj *obj, double *cpos, double *hit);
 double		get_angle_specular(double lvec[3], double nvec[3], t_lco *lpt);
 void		*apply_ambient(t_lig *light, unsigned char *color,
 			       double *max_cos);
-double		get_light_vector(t_vec *vpt, t_lco *lpt, double *spot_p);
+double		get_light_vector(t_lco *lpt, double *spot_p);
 t_lig		move_light(double *pos, double intensity,
 			   unsigned char *lcolor);
 void		get_light_color(t_lig *light, t_lco *lpt, t_rt *rpt);

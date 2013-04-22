@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Fri Apr 19 18:27:11 2013 luc sinet
+** Last update Mon Apr 22 15:31:26 2013 luc sinet
 */
 
 #include <math.h>
@@ -46,14 +46,15 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
   get_obj_distance(obj, &vcam[3], lpt->obj_coor);
 }
 
-double		get_light_vector(t_vec *vpt, t_lco *lpt, double *spot_pos)
+double		get_light_vector(t_lco *lpt, double *spot_pos)
 {
   double	cosa;
+  double	lvec[3];
 
-  vpt->vec[0] = spot_pos[0] - lpt->obj_coor[0];
-  vpt->vec[1] = spot_pos[1] - lpt->obj_coor[1];
-  vpt->vec[2] = spot_pos[2] - lpt->obj_coor[2];
-  cosa = cos_vector(lpt->nvec, vpt->vec);
+  lvec[0] = spot_pos[0] - lpt->obj_coor[0];
+  lvec[1] = spot_pos[1] - lpt->obj_coor[1];
+  lvec[2] = spot_pos[2] - lpt->obj_coor[2];
+  cosa = cos_vector(lpt->nvec, lvec);
   return (cosa < ZERO ? 0.0 : cosa);
 }
 
