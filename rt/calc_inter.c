@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Mon Apr 22 14:50:36 2013 Adrien
+** Last update Mon Apr 22 23:44:51 2013 luc sinet
 */
 
 #include <math.h>
@@ -21,6 +21,7 @@ void	assign_function(t_rt *rpt)
   rpt->eptr[1] = &plan;
   rpt->eptr[2] = &cone;
   rpt->eptr[3] = &cylinder;
+  rpt->eptr[3] = &moebius;
 }
 
 void		calc_inter(t_rt *rpt, double *kmin)
@@ -93,7 +94,7 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
 	  fill_img_param(pos, color, rpt, ppt);
 	  ++pos[0];
 	}
-      /* print_i(ppt); */
+      print_i(ppt);
       ++pos[1];
     }
   detect_edge(rpt, ppt);

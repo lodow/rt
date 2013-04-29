@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Mon Apr 22 14:38:56 2013 Adrien
+** Last update Mon Apr 22 23:46:00 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -93,7 +93,7 @@ typedef struct	s_rt
   t_obj		*obj;
   t_lig		*light;
   t_opt		*opt;
-  double	(*eptr[4])(double *cam, double *vec, t_obj *opt);
+  double	(*eptr[5])(double *cam, double *vec, t_obj *opt);
 }		t_rt;
 
 void		calc_inter(t_rt *rpt, double *kmin);
@@ -128,5 +128,10 @@ void		detect_edge(t_rt *rpt, t_par *ppt);
 void		apply_supersampling(t_rt *rpt, t_par *ppt, t_samp *spt);
 void		fill_img_param(int *pos, unsigned int color,
 			       t_rt *rpt, t_par *ppt);
+double		solve_third(double *coef);
+void		delta_neg_third(double *k, double delta, double *pq);
+void		delta_nul_third(double *k, double *pq);
+void		delta_pos_third(double *k, double *pq);
+double		moebius(double *cam, double *vec);
 
 #endif
