@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 17:42:09 2013 luc sinet
-** Last update Tue Apr 23 10:09:17 2013 Adrien
+** Last update Mon Apr 29 14:45:59 2013 Adrien
 */
 
 #ifndef CHANGE_COLOR_H_
@@ -15,7 +15,7 @@
 # define FOG_COLOR1 180.0
 # define FOG_COLOR2 180.0
 # define FOG_COLOR3 180.0
-# define MAX_R 10
+# define MAX_R 40
 
 typedef	struct s_lco	t_lco;
 

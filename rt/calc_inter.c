@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Mon Apr 22 23:44:51 2013 luc sinet
+** Last update Mon Apr 22 23:51:07 2013 luc sinet
 */
 
 #include <math.h>
@@ -21,7 +21,7 @@ void	assign_function(t_rt *rpt)
   rpt->eptr[1] = &plan;
   rpt->eptr[2] = &cone;
   rpt->eptr[3] = &cylinder;
-  rpt->eptr[3] = &moebius;
+  rpt->eptr[4] = &moebius;
 }
 
 void		calc_inter(t_rt *rpt, double *kmin)
