@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 17:22:40 2013 luc sinet
-** Last update Mon Apr 15 18:06:00 2013 luc sinet
+** Last update Mon Apr 22 23:20:37 2013 luc sinet
 */
 
 #include <math.h>
@@ -72,9 +72,10 @@ void	init_shapes(char **shape)
   shape[1] = "Cone";
   shape[2] = "Cylinder";
   shape[3] = "Plan";
-  shape[4] = "Light";
-  shape[5] = "Cam";
-  shape[6] = "Option";
-  shape[7] = "{";
-  shape[8] = "}";
+  shape[4] = "Moebius";
+  shape[5] = "Light";
+  shape[6] = "Cam";
+  shape[7] = "Option";
+  shape[8] = "{";
+  shape[9] = "}";
 }
