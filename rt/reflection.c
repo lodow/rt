@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Tue Apr  2 18:25:49 2013 etienne debas
-** Last update Mon Apr 22 16:06:24 2013 Adrien
+** Last update Mon Apr 22 23:28:17 2013 Adrien
 */
 
 #include <math.h>
@@ -15,11 +15,9 @@
 
 void		calc_reflec_vector(t_rt *rpt, t_vec *vpt, t_lco *lpt, double k)
 {
-  double	res[3];
   double	vec[3];
   double	scal;
 
-  
   get_inter_normal(rpt, vpt, k, lpt);
   vec[0] = lpt->obj_coor[0] - rpt->cpt->pos[0];
   vec[1] = lpt->obj_coor[1] - rpt->cpt->pos[1];
@@ -30,15 +28,12 @@ void		calc_reflec_vector(t_rt *rpt, t_vec *vpt, t_lco *lpt, double k)
   unitaire(vec);
   unitaire(lpt->nvec);
   scal = scale(vec, lpt->nvec);
-  res[0] = (-2 * lpt->nvec[0] * scal) + vec[0];
-  res[1] = (-2 * lpt->nvec[1] * scal) + vec[1];
-  res[2] = (-2 * lpt->nvec[2] * scal) + vec[2];
-  vpt->vec[0] = res[0];
-  vpt->vec[1] = res[1];
-  vpt->vec[2] = res[2];
+  vpt->vec[0] = (-2 * lpt->nvec[0] * scal) + vec[0];
+  vpt->vec[1] = (-2 * lpt->nvec[1] * scal) + vec[1];
+  vpt->vec[2] = (-2 * lpt->nvec[2] * scal) + vec[2];
 }
 
-unsigned int	apply_reflection(unsigned int color, unsigned int obj_color,
+unsigned int	apply_indice(unsigned int color, unsigned int obj_color,
 				 double indice)
 {
   unsigned char	c[3];
@@ -67,7 +62,7 @@ unsigned int	reflection(t_rt *rpt, t_lco *lpt, unsigned int color, double k)
       indice *= rpt->obj[rpt->obj_num].indice[2];
       calc_reflec_vector(rpt, rpt->vpt, lpt, k);
       calc_inter(rpt, &k);
-      color = apply_reflection(color, (k > ZERO) ?
+      color = apply_indice(color, (k > ZERO) ?
 			       get_light(rpt, k, &rpt->obj[rpt->obj_num], lpt)
 			       : 0x000000, indice);
       ++i;
