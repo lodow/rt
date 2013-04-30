@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Mon Apr  1 12:31:29 2013 Adrien Della Maggiora
-** Last update Tue Apr 30 12:36:02 2013 Adrien
+** Last update Tue Apr 30 12:38:25 2013 Adrien
 */
 
 #include <math.h>
@@ -29,7 +29,7 @@ int		calc_refrac(t_rt *rpt, t_vec *vpt, t_lco *lpt, double k, double n)
   unitaire(vec);
   unitaire(lpt->nvec);
   scal = scale(vec, lpt->nvec);
-  tmp = 1 + (n * n) * (1 - (scal * scal));
+  tmp = 1 + (n * n) * ((scal * scal) - 1);
   tmp = (tmp > ZERO) ? sqrt(tmp) : 0;
   vpt->vec[0] = n * vec[0] + (n * scal - tmp) * lpt->nvec[0];
   vpt->vec[1] = n * vec[1] + (n * scal - tmp) * lpt->nvec[1];
