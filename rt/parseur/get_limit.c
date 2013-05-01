@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Apr 13 16:07:03 2013 luc sinet
-** Last update Sun Apr 14 12:13:49 2013 luc sinet
+** Last update Mon Apr 29 18:49:35 2013 luc sinet
 */
 
 #include "../include/main.h"
@@ -22,9 +22,9 @@ void	skip_fnumber(char *line, int *i)
     ++(*i);
 }
 
-int	fill_limit_value(char *line, int *i, double *limit)
+int	fill_limit_value(char *line, int *i, double *limit, int type)
 {
-  limit[0] = 1;
+  limit[0] = type;
   ++(*i);
   if (my_strncmp(":(", &line[*i], 2) != 0)
     {
@@ -37,7 +37,7 @@ int	fill_limit_value(char *line, int *i, double *limit)
       if (my_strncmp("p:", &line[*i], 2) == 0)
 	limit[2] = my_fgetnbr(&line[*i + 2]);
       else if (my_strncmp("n:", &line[*i], 2) == 0)
-	limit[1] = my_fgetnbr(&line[*i + 2]);
+	limit[1] = -1.0 * my_fgetnbr(&line[*i + 2]);
       else
 	{
 	  my_putstr(&line[*i], 2);
@@ -52,16 +52,14 @@ int	fill_limit_value(char *line, int *i, double *limit)
 void	fill_limits(char *line, double *limit)
 {
   int	i;
-  int	x;
 
   i = 0;
-  x = 0;
-  while (line[i] && x < 3)
+  while (line[i])
     {
       if (line[i] == 'x' || line[i] == 'y' || line[i] == 'z')
 	{
-	  if (fill_limit_value(line, &i,
-			       &limit[x + 2 * (line[i] - 'x')]) == -1)
+	  if (fill_limit_value(line, &i, &limit[3 * (line[i] - 'x')],
+			       line[i] - 'x' + 1) == -1)
 	    return ;
 	  ++i;
 	}
@@ -72,6 +70,5 @@ void	fill_limits(char *line, double *limit)
 	  return ;
 	}
       skip_adds(line, &i);
-      ++x;
     }
 }
