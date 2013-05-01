@@ -5,48 +5,64 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 22:20:26 2013 luc sinet
-** Last update Sun Apr 14 12:37:58 2013 luc sinet
+** Last update Wed May  1 18:22:32 2013 luc sinet
 */
 
 #include "include/main.h"
 
 double		test_left_limit(double *cam, double *vec,
-			      double k, double *limit)
+			      double *k, double *limit)
 {
+  double       	mk[2];
   double	inter[3];
 
-  get_inter(cam, vec, k, inter);
-  if (inter[1] < limit[4])
-    return (-1);
-  if (limit[5] != IVAL && inter[1] > limit[5])
-    return (-1);
-  return (k);
+  mk[0] = get_min(k, 2);
+  get_inter(cam, vec, mk[0], inter);
+  if (inter[1] > limit[5])
+    {
+      mk[1] = get_max(k, 2);
+      get_inter(cam, vec, mk[1], inter);
+      if (inter[1] > limit[5])
+	return (-1);
+      else
+	return (mk[1]);
+    }
+  return (mk[0]);
 }
 
 double		test_right_limit(double *cam, double *vec,
-				double k, double *limit)
+				double *k, double *limit)
 {
+  double       	mk[2];
   double	inter[3];
 
-  get_inter(cam, vec, k, inter);
-  if (inter[1] > limit[5])
-    return (-1);
-  if (limit[4] != IVAL && inter[1] < limit[4])
-    return (-1);
-  return (k);
+  mk[0] = get_min(k, 2);
+  get_inter(cam, vec, mk[0], inter);
+  if (inter[1] < limit[4])
+    {
+      mk[1] = get_max(k, 2);
+      get_inter(cam, vec, mk[1], inter);
+      if (inter[1] < limit[4])
+	return (-1);
+      else
+	return (mk[1]);
+    }
+  return (mk[0]);
 }
 
 double		test_side_limit(double *cam, double *vec,
 				 double *limit, double *k)
 {
   double	min;
-  double	inter[3];
+  double	current;
 
   min = get_min(k, 2);
-  get_inter(cam, vec, min, inter);
-  if (limit[4] != IVAL && inter[1] < limit[4])
-    return (test_left_limit(cam, vec, get_max(k, 2), limit));
-  else if (limit[5] != IVAL && inter[1] > limit[5])
-    return (test_right_limit(cam, vec, get_max(k, 2), limit));
+  current = min;
+  if (limit[4] != IVAL)
+    current = test_right_limit(cam, vec, k, limit);
+  min = GMAX(min, current);
+  if (min >= 0 && limit[5] != IVAL)
+    current = test_left_limit(cam, vec, k, limit);
+  min = GMAX(min, current);
   return (min);
 }
