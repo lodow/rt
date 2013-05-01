@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Mon Apr 22 23:46:00 2013 luc sinet
+** Last update Wed May  1 18:10:26 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -18,13 +18,14 @@
 #include "str.h"
 #include "nb.h"
 
-# define ZERO 0.000001
+# define ZERO 0.00000001
 # define IVAL -1000000
 # define RANG(ang) (ang < 0) ? (ang * -1) : ang
 # define RAD(ang) (ang * 3.1415926 / 180)
 # define ABS(val) ((val) < 0) ? -(val) : val
 # define DIST 1000
 # define K_ESC 65307
+# define GMAX(y, x) (x < 0) ? x : (x > y) ? x : y
 
 typedef struct	s_samp	t_samp;
 typedef struct	s_lco	t_lco;
