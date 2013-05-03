@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 16:50:09 2013 luc sinet
-** Last update Mon Apr 22 18:13:44 2013 luc sinet
+** Last update Thu May  2 16:15:51 2013 luc sinet
 */
 
 #include <math.h>
@@ -29,15 +29,13 @@ void		apply_light_color(unsigned char *col_o, unsigned char *col_l,
   col_o[2] = spe * 255.0 + (1.0 - spe) * col_o[2];
 }
 
-unsigned int	apply_light(unsigned char *c, double cosa, t_obj *ept)
+unsigned int	apply_light(unsigned char *c, double cosa,
+			    double sdw_coef, t_obj *ept)
 {
-  unsigned int	color;
-
   c[0] = (double)c[0] * cosa * ept->bright;
   c[1] = (double)c[1] * cosa * ept->bright;
   c[2] = (double)c[2] * cosa * ept->bright;
-  color = recomp_color(c);
-  return (color);
+  return (darken_color(c, sdw_coef));
 }
 
 void   	decomp_color(unsigned int color, unsigned char *ncolor)

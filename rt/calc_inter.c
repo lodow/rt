@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Mon Apr 29 17:24:24 2013 Adrien
+** Last update Fri May  3 15:52:16 2013 luc sinet
 */
 
 #include <math.h>
@@ -31,7 +31,7 @@ void		calc_inter(t_rt *rpt, double *kmin)
 
   i = 0;
   *kmin = -1;
-  while (rpt->obj[i].type != -1)
+  while (rpt->obj[i].type >= 0 && rpt->obj[i].type < 4)
     {
       k = move_cam(rpt, rpt->vpt, rpt->cpt, rpt->obj[i]);
       if (k > ZERO && (k < *kmin || *kmin == -1))
