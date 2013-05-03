@@ -5,11 +5,12 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Mon Apr 22 23:22:23 2013 etienne debas
+## Last update Fri May  3 16:30:44 2013 luc sinet
 ##
 
 SRCS	= main.c \
 	  parseur/pars.c \
+	  parseur/get_config_file.c \
 	  parseur/fill_obj_color.c \
 	  parseur/fill_elem.c \
 	  parseur/fill_light.c \

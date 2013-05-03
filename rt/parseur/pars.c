@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 18:33:58 2013 luc sinet
-** Last update Mon Apr 22 23:20:36 2013 luc sinet
+** Last update Fri May  3 16:42:01 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -88,6 +88,10 @@ int		pars(t_rt *rpt, char *fname, t_cam *cpt)
 
   init_nb_obj(&opt);
   init_cam(cpt);
+  get_config_file(&opt, fname);
+  int	i;
+  for (i=0;opt.file[i];i++)
+    printf("%s\n", opt.file[i]);
   if ((size = get_size(fname, &opt)) < 0)
     return (size == -2 ? -2 : merror("Enter at least one shape\n", -1));
   if (opt.nb_cam != 1)
@@ -107,4 +111,5 @@ int		pars(t_rt *rpt, char *fname, t_cam *cpt)
       fill_opt(rpt, fname) == -1)
     return (-1);
   return (check_size(rpt->obj));
+  return (-1);
 }

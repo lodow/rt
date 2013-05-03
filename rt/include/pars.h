@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Mon Apr 22 23:21:10 2013 luc sinet
+** Last update Fri May  3 16:29:29 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -21,6 +21,7 @@ typedef struct	s_cam	t_cam;
 
 typedef struct	s_pars
 {
+  char		**file;
   char		*line;
   int		accol;
   int		fd;
