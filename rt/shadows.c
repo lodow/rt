@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Fri May  3 15:53:46 2013 luc sinet
+** Last update Fri May  3 16:06:53 2013 luc sinet
 */
 
 #include <math.h>
@@ -15,9 +15,12 @@
 
 unsigned int		darken_color(unsigned char *color, double sdw_coef)
 {
-  color[0] = ((1.0 - sdw_coef) * color[0]);
-  color[1] = ((1.0 - sdw_coef) * color[1]);
-  color[2] = ((1.0 - sdw_coef) * color[2]);
+  double		intensity;
+
+  intensity = 0.75;
+  color[0] = ((1.0 - (sdw_coef * intensity)) * color[0]);
+  color[1] = ((1.0 - (sdw_coef * intensity)) * color[1]);
+  color[2] = ((1.0 - (sdw_coef * intensity)) * color[2]);
   return (recomp_color(color));
 }
 

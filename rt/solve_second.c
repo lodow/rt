@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Apr  9 14:49:14 2013 luc sinet
-** Last update Wed May  1 17:39:04 2013 luc sinet
+** Last update Wed May  1 18:14:17 2013 luc sinet
 */
 
 #include <math.h>
@@ -43,7 +43,7 @@ double		get_min(double *k, int size)
   smallest = k[0];
   while (i < size)
     {
-      if ((k[i] > ZERO && k[i] < smallest) || smallest < ZERO)
+      if (k[i] > ZERO && (k[i] < smallest || smallest < ZERO))
 	smallest = k[i];
       ++i;
     }
