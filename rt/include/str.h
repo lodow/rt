@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Dec 13 13:54:48 2012 luc sinet
-** Last update Fri Mar 15 22:45:55 2013 luc sinet
+** Last update Sat May  4 13:26:36 2013 luc sinet
 */
 
 #ifndef F1_H_
@@ -13,6 +13,7 @@
 
 char	*my_strcpy(char *dest, char *src);
 void	my_putstr(char *s1, int fd);
+void	my_putchar(char c, int fd);
 char	*my_strdup(char *src);
 int	my_strlen(char *str);
 int	my_strcmp(char *s1, char *s2);

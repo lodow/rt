@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Fri Apr 12 15:50:58 2013 Adrien Della Maggiora
-** Last update Fri Apr 12 18:59:41 2013 Adrien Della Maggiora
+** Last update Sat May  4 11:58:20 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -15,11 +15,11 @@
 #include "../include/get_next_line.h"
 #include "../include/pars.h"
 
-void	init_opt(t_rt *rpt)
+void	init_opt(t_opt *opt)
 {
-  rpt->opt->aa = 1;
-  rpt->opt->fog[0] = 0x000000;
-  rpt->opt->fog[1] = -1;
+  opt->aa = 1;
+  opt->fog[0] = 0x000000;
+  opt->fog[1] = -1;
 }
 
 void	get_opt_fog(t_opt *opt, char *line)
@@ -36,49 +36,42 @@ void	get_opt_fog(t_opt *opt, char *line)
   opt->fog[1] = my_fgetnbr(&line[i]);
 }
 
-int	get_opt_carac(t_opt *opt, int fd)
+int	get_opt_carac(t_pars *ppt, t_opt *opt, int *x)
 {
   int	i;
   char	*line;
 
-  free((line = get_next_line(fd)));
-  while (my_strcmp((line = get_next_line(fd)), "}") != 0)
+  (*x) += 2;
+  while (my_strcmp(ppt->file[*x], "}") != 0)
     {
+      line = ppt->file[*x];
       i = 0;
       while (line[i] == ' ')
         ++i;
       if (my_strncmp(&line[i], "AA = ", 5) == 0)
-	{
-	  opt->aa = my_getnbr(&line[i + 5]);
-	}
+	opt->aa = my_getnbr(&line[i + 5]);
       else if (my_strncmp(&line[i], "FOG = ", 6) == 0
 	       && my_strlen(&line[i]) > 11)
 	get_opt_fog(opt, &line[i + 6]);
       else
-	{
-	  my_putstr("Line ", 2);
-	  my_putstr(line, 2);
-          return (merror(" is invalid\n", -1));
-        }
-      free(line);
+	return (file_error(line, *x, -1));
+      ++(*x);
     }
   return (0);
 }
 
-int	fill_opt(t_rt *rpt, char *fname)
+int	fill_opt(t_pars *opt, t_rt *rpt)
 {
-  int	fd;
-  char	*line;
+  int	i;
 
-  init_opt(rpt);
-  if ((fd = open(fname, O_RDONLY)) == -1)
-    return (merror("Couldn't open the file", -1));
-  while ((line = get_next_line(fd)))
+  i = 0;
+  init_opt(rpt->opt);
+  while (opt->file[i])
     {
-      if (my_strcmp(line, "Option") == 0 && get_opt_carac(rpt->opt, fd) == -1)
+      if (my_strcmp(opt->file[i], "Option") == 0 &&
+	  get_opt_carac(opt, rpt->opt, &i) == -1)
 	return (-1);
-      free(line);
+      ++i;
     }
-  close (fd);
   return (0);
 }

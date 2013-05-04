@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Apr  1 21:38:56 2013 luc sinet
-** Last update Mon Apr 15 22:40:30 2013 luc sinet
+** Last update Sat May  4 12:39:12 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -53,45 +53,40 @@ void	get_cam_coor(t_cam *cpt, char *line)
   cpt->pos[2] = my_sgetnbr(line, &i);
 }
 
-int	get_cam_carac(t_cam *cpt, int fd)
+int	get_cam_carac(t_pars *opt, t_cam *cpt, int *i)
 {
-  int	i;
+  int	x;
   char	*line;
 
-  free((line = get_next_line(fd)));
-  while (my_strcmp((line = get_next_line(fd)), "}") != 0)
+  (*i) += 2;
+  while (opt->file[*i] && my_strcmp(opt->file[*i], "}") != 0)
     {
-      i = 0;
-      while (line[i] == ' ')
-	++i;
-      if (my_strncmp(&line[i], "Center = ", 9) == 0)
-	get_cam_coor(cpt, &line[i + 9]);
-      else if (my_strncmp(&line[i], "Angle = ", 8) == 0)
-	get_cam_rot(cpt, &line[i + 8]);
+      line = opt->file[*i];
+      x = 0;
+      while (line[x] == ' ')
+	++x;
+      if (my_strncmp(&line[x], "Center = ", 9) == 0)
+	get_cam_coor(cpt, &line[x + 9]);
+      else if (my_strncmp(&line[x], "Angle = ", 8) == 0)
+	get_cam_rot(cpt, &line[x + 8]);
       else
-	{
-	  my_putstr("Line ", 2);
-	  my_putstr(line, 2);
-	  return (merror(" is invalid\n", -1));
-	}
-      free(line);
+	return (file_error(line, *i, -1));
+      ++(*i);
     }
   return (0);
 }
 
-int	fill_cam(t_cam *cpt, char *name)
+int	fill_cam(t_pars *opt, t_cam *cpt)
 {
-  int	fd;
-  char	*line;
+  int	i;
 
-  if ((fd = open(name, O_RDONLY)) == -1)
-    return (merror("Couldn't open the file", -1));
-  while ((line = get_next_line(fd)))
+  i = 0;
+  while (opt->file[i])
     {
-      if (my_strcmp(line, "Cam") == 0 && get_cam_carac(cpt, fd) == -1)
+      if (my_strcmp(opt->file[i], "Cam") == 0 &&
+	  get_cam_carac(opt, cpt, &i) == -1)
 	return (-1);
-      free(line);
+      ++i;
     }
-  close (fd);
   return (0);
 }

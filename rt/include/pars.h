@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Fri May  3 16:29:29 2013 luc sinet
+** Last update Sat May  4 13:22:15 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -24,9 +24,7 @@ typedef struct	s_pars
   char		**file;
   char		*line;
   int		accol;
-  int		fd;
   int		rv;
-  int		nb_line;
   int		nb_shape;
   int		nb_light;
   int		nb_cam;
@@ -39,11 +37,11 @@ void	fill_center(t_obj *ept, char *line);
 void	init_light(t_lig *ltab, t_pars *opt);
 void	init_elem(t_obj *tab, t_pars *opt);
 void	init_nb_obj(t_pars *opt);
-int	fill_tab(t_pars *opt, t_obj *tab, char *name);
-int	fill_light(t_pars *opt, t_lig *ltab, char *name);
-int	fill_cam(t_cam *cpt, char *name);
+int	fill_tab(t_pars *opt, t_obj *tab);
+int	fill_light(t_pars *opt, t_lig *ltab);
+int	fill_cam(t_pars *opt, t_cam *cpt);
 void	fill_pert(char *line, double *pert);
-int	fill_opt(t_rt *rpt, char *fname);
+int	fill_opt(t_pars *opt, t_rt *rpt);
 int	pars(t_rt *rpt, char *fname, t_cam *cpt);
 void	fill_limits(char *line, double *limit);
 void	get_color(char *line, unsigned char *color);
@@ -51,5 +49,7 @@ void	init_shapes(char **shape);
 void	init_cam(t_cam *cpt);
 void	skip_adds(char *line, int *i);
 int	light_carac(char *line, t_lig *ltab, int i);
+int     file_error(char *line, int lnb, int ret);
+int     get_config_file(t_pars *ppt, char *conf_name);
 
 #endif

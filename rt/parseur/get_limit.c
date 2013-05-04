@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Apr 13 16:07:03 2013 luc sinet
-** Last update Mon Apr 29 18:49:35 2013 luc sinet
+** Last update Sat May  4 13:27:50 2013 luc sinet
 */
 
 #include "../include/main.h"
@@ -65,7 +65,7 @@ void	fill_limits(char *line, double *limit)
 	}
       else
 	{
-	  write(2, &line[i], 1);
+	  my_putchar(line[i], 1);
 	  my_putstr(" is invalid must be (x,y,z)\n", 2);
 	  return ;
 	}

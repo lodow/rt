@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Fri May  3 16:30:44 2013 luc sinet
+## Last update Sat May  4 11:48:05 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -29,7 +29,7 @@ SRCS	= main.c \
 	  parseur/str.c \
 	  parseur/nb.c \
 	  parseur/my_atof.c \
-	  light_carac.c \
+	  parseur/light_carac.c \
 	  calc_inter.c \
 	  pp_image.c \
 	  inter.c \

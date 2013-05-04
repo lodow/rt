@@ -5,10 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri Feb 15 12:36:24 2013 luc sinet
-** Last update Fri Apr 12 14:50:07 2013 Adrien Della Maggiora
+** Last update Sat May  4 13:25:59 2013 luc sinet
 */
 
 #include <stdlib.h>
+#include <unistd.h>
 #include "../include/str.h"
 
 int	my_strncmp(char *s1, char *s2, int n)
@@ -49,4 +50,11 @@ void	free_tab(char **tab)
   while (tab[i])
     free(tab[i++]);
   free(tab);
+}
+
+void	my_putchar(char c, int fd)
+{
+  if (write(fd, &c, 1) == -1)
+    if (write(2, "Write error\n", 12) == -1)
+      return ;
 }
