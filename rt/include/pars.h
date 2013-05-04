@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Sat May  4 13:22:15 2013 luc sinet
+** Last update Sat May  4 20:34:07 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -51,5 +51,9 @@ void	skip_adds(char *line, int *i);
 int	light_carac(char *line, t_lig *ltab, int i);
 int     file_error(char *line, int lnb, int ret);
 int     get_config_file(t_pars *ppt, char *conf_name);
+int	indice(char *line, t_obj *ept);
+int	deformation(char *line, t_obj *ept);
+int	shape_carac(char *line, t_obj *ept);
+void	skip_adds(char *line, int *i);
 
 #endif

@@ -5,15 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 23:15:31 2013 luc sinet
-** Last update Sat May  4 13:20:50 2013 luc sinet
+** Last update Sat May  4 20:29:40 2013 luc sinet
 */
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include "../include/main.h"
 #include "../include/pars.h"
-#include "../include/get_next_line.h"
 
 int	get_args(t_obj *tab, char **file, int *y)
 {
@@ -32,7 +28,7 @@ int	get_args(t_obj *tab, char **file, int *y)
       else if (my_strncmp("Angle = ", &line[s], 8) == 0)
 	fill_angle(tab, &line[s]);
       else if (other_opt(&line[s], tab) == -1)
-	return (merror("Unknown argument\n", -1));
+	return (file_error(line, *y, -1));
       ++(*y);
     }
   return (0);
@@ -53,7 +49,6 @@ int	fill_shape(char **file, int *y, t_obj *tab, int i)
   while (x == 5 && file[*y])
     {
       line = file[*y];
-      /* printf("%s\n", line); */
       x = 0;
       while (x < 5 && my_strcmp(shape[x], line) != 0)
 	x++;
