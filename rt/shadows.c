@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Sun May  5 10:51:21 2013 luc sinet
+** Last update Sun May  5 11:08:07 2013 luc sinet
 */
 
 #include <math.h>
@@ -28,25 +28,38 @@ double		shadows(t_rt *rpt, double *cpos, double *lpos, double *opos)
 {
   double	cam[3];
   double	vec[3];
+  double	inter[3];
   double	*vpos;
   double	k;
+  double	sdw_coef;
   int		obj;
-  int		retv;
+  char		hit;
 
-  retv = 0;
+  hit = 0;
+  sdw_coef = 0;
   vpos = rpt->vpt->vec;
-  obj = rpt->obj_num;
-  copy_tab(cpos, cam, 3);
   copy_tab(vpos, vec, 3);
-  copy_tab(opos, cpos, 3);
-  vpos[0] = lpos[0] - cpos[0];
-  vpos[1] = lpos[1] - cpos[1];
-  vpos[2] = lpos[2] - cpos[2];
-  calc_inter(rpt, &k);
+  copy_tab(cpos, cam, 3);
+  copy_tab(opos, inter, 3);
+  obj = rpt->obj_num;
+  while (sdw_coef < 1.0 && hit == 0)
+    {
+      copy_tab(opos, cpos, 3);
+      vpos[0] = lpos[0] - cpos[0];
+      vpos[1] = lpos[1] - cpos[1];
+      vpos[2] = lpos[2] - cpos[2];
+      calc_inter(rpt, &k);
+      if (obj != rpt->obj_num && k > ZERO && k < 1)
+	{
+	  sdw_coef += 1 - rpt->obj[rpt->obj_num].indice[0];
+	  /* if (sdw_coef < 1.0) */
+	  /*   move_vector_to_inter */
+	}
+      else
+	hit = 1;
+    }
   copy_tab(cam, cpos, 3);
   copy_tab(vec, vpos, 3);
-  if (obj != rpt->obj_num && k > ZERO && k < 1)
-    retv = 1;
   rpt->obj_num = obj;
-  return (retv);
+  return (sdw_coef);
 }
