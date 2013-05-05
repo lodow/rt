@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Sun May  5 11:24:32 2013 luc sinet
+** Last update Sun May  5 13:35:05 2013 luc sinet
 */
 
 #include <math.h>
@@ -33,19 +33,21 @@ double		shadows(t_rt *rpt, double *cpos, double *lpos, double *opos)
   double	k;
   double	sdw_coef;
   int		obj[2];
+  int		re;
   char		hit;
 
   hit = 0;
+  re = 0;
   sdw_coef = 0;
   vpos = rpt->vpt->vec;
   copy_tab(vpos, vec, 3);
   copy_tab(cpos, cam, 3);
   copy_tab(opos, inter, 3);
-  printf("New shadow\n");
+  /* printf("New shadow\n"); */
   obj[0] = rpt->obj_num;
   while (sdw_coef < 1.0 && hit == 0)
     {
-      printf("sdw_coef = %f\n", sdw_coef);
+      /* printf("sdw_coef = %f\n", sdw_coef); */
       obj[1] = rpt->obj_num;
       copy_tab(inter, cpos, 3);
       vpos[0] = lpos[0] - cpos[0];
@@ -54,14 +56,20 @@ double		shadows(t_rt *rpt, double *cpos, double *lpos, double *opos)
       calc_inter(rpt, &k);
       if (obj[1] != rpt->obj_num && k > ZERO && k < 1)
 	{
-	  sdw_coef += 1 - rpt->obj[rpt->obj_num].indice[0];
+	  re = 0;
+	  sdw_coef += 1.0 - rpt->obj[rpt->obj_num].indice[0];
 	  if (sdw_coef < 1.0)
 	    get_impact(inter, cpos, k, vpos);
+	}
+      else if (obj[1] == rpt->obj_num && k > ZERO && k < 1 && re < MAXRE)
+	{
+	  ++re;
+	  get_impact(inter, cpos, k, vpos);
 	}
       else
 	hit = 1;
     }
-  printf("final: sdw_coef = %f\n\n", sdw_coef);
+  /* printf("final: sdw_coef = %f\n\n", sdw_coef); */
   copy_tab(cam, cpos, 3);
   copy_tab(vec, vpos, 3);
   rpt->obj_num = obj[0];

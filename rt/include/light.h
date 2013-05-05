@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Sun May  5 11:37:12 2013 luc sinet
+** Last update Sun May  5 13:34:26 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -18,6 +18,7 @@
 # define LIMIT(x, n1, n2) (x < n1) ? n1 : (x > n2) ? n2 : x
 # define DISTM 70000.0
 # define SPE_SIZE 1
+# define MAXRE 3
 
 typedef struct	s_lco
 {
