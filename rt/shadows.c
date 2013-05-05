@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Sun May  5 13:35:05 2013 luc sinet
+** Last update Sun May  5 14:13:33 2013 luc sinet
 */
 
 #include <math.h>
@@ -24,54 +24,60 @@ unsigned int		darken_color(unsigned char *color, double sdw_coef)
   return (recomp_color(color));
 }
 
+void   	init_shadows(t_shadow *spt, t_rt *rpt, double *cpos, double *opos)
+{
+  spt->re = 0;
+  spt->sdw_coef = 0;
+  spt->vpos = rpt->vpt->vec;
+  copy_tab(spt->vpos, spt->vec, 3);
+  copy_tab(cpos, spt->cam, 3);
+  copy_tab(opos, spt->inter, 3);
+  spt->obj[0] = rpt->obj_num;
+  spt->hit = 0;
+}
+
+void	cam_to_inter(t_shadow *spt, int obj_num, double *cpos, double *lpos)
+{
+  spt->obj[1] = obj_num;
+  copy_tab(spt->inter, cpos, 3);
+  spt->vpos[0] = lpos[0] - cpos[0];
+  spt->vpos[1] = lpos[1] - cpos[1];
+  spt->vpos[2] = lpos[2] - cpos[2];
+}
+
+void	get_inter_shadow(t_shadow *spt, t_rt *rpt, double k, double *cpos)
+{
+  if (spt->obj[1] != rpt->obj_num && k > ZERO && k < 1)
+    {
+      spt->re = 0;
+      spt->sdw_coef += 1.0 - rpt->obj[rpt->obj_num].indice[0];
+      if (spt->sdw_coef < 1.0)
+	get_impact(spt->inter, cpos, k, spt->vpos);
+    }
+  else if (spt->obj[1] == rpt->obj_num &&
+	   k > ZERO && k < 1 && spt->re < MAXRE)
+    {
+      ++spt->re;
+      get_impact(spt->inter, cpos, k, spt->vpos);
+    }
+  else
+    spt->hit = 1;
+}
+
 double		shadows(t_rt *rpt, double *cpos, double *lpos, double *opos)
 {
-  double	cam[3];
-  double	vec[3];
-  double	inter[3];
-  double	*vpos;
+  t_shadow	spt;
   double	k;
-  double	sdw_coef;
-  int		obj[2];
-  int		re;
-  char		hit;
 
-  hit = 0;
-  re = 0;
-  sdw_coef = 0;
-  vpos = rpt->vpt->vec;
-  copy_tab(vpos, vec, 3);
-  copy_tab(cpos, cam, 3);
-  copy_tab(opos, inter, 3);
-  /* printf("New shadow\n"); */
-  obj[0] = rpt->obj_num;
-  while (sdw_coef < 1.0 && hit == 0)
+  init_shadows(&spt, rpt, cpos, opos);
+  while (spt.sdw_coef < 1.0 && spt.hit == 0)
     {
-      /* printf("sdw_coef = %f\n", sdw_coef); */
-      obj[1] = rpt->obj_num;
-      copy_tab(inter, cpos, 3);
-      vpos[0] = lpos[0] - cpos[0];
-      vpos[1] = lpos[1] - cpos[1];
-      vpos[2] = lpos[2] - cpos[2];
+      cam_to_inter(&spt, rpt->obj_num, cpos, lpos);
       calc_inter(rpt, &k);
-      if (obj[1] != rpt->obj_num && k > ZERO && k < 1)
-	{
-	  re = 0;
-	  sdw_coef += 1.0 - rpt->obj[rpt->obj_num].indice[0];
-	  if (sdw_coef < 1.0)
-	    get_impact(inter, cpos, k, vpos);
-	}
-      else if (obj[1] == rpt->obj_num && k > ZERO && k < 1 && re < MAXRE)
-	{
-	  ++re;
-	  get_impact(inter, cpos, k, vpos);
-	}
-      else
-	hit = 1;
-    }
-  /* printf("final: sdw_coef = %f\n\n", sdw_coef); */
-  copy_tab(cam, cpos, 3);
-  copy_tab(vec, vpos, 3);
-  rpt->obj_num = obj[0];
-  return (sdw_coef > 1.0 ? 1.0 : sdw_coef);
+      get_inter_shadow(&spt, rpt, k, cpos);
+   }
+  copy_tab(spt.cam, cpos, 3);
+  copy_tab(spt.vec, spt.vpos, 3);
+  rpt->obj_num = spt.obj[0];
+  return (spt.sdw_coef > 1.0 ? 1.0 : spt.sdw_coef);
 }
