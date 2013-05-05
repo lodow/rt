@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Mon Apr 29 14:45:08 2013 Adrien
+** Last update Sun May  5 18:30:11 2013 Adrien
 */
 
 #include <math.h>
@@ -22,7 +22,7 @@ void	copy_color(unsigned char *color1, unsigned char *color2)
 
 void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
 {
-  void		(*nptr[5])(double *nvec, double *obj_coor, double *pert);
+  void		(*nptr[6])(double *nvec, double *obj_coor, double *pert);
   double	vcam[6];
   t_obj		*obj;
 
@@ -32,7 +32,8 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
   nptr[1] = &plan_normal;
   nptr[2] = &cone_normal;
   nptr[3] = &cylinder_normal;
-  nptr[4] = &moebius_normal;
+  nptr[4] = &plan_normal;
+  nptr[5] = &moebius_normal;
   obj = &rpt->obj[rpt->obj_num];
   modif_cam(&vcam[3], obj->pos);
   rotate(&vcam[3], obj->ocos, obj->osin, 0);

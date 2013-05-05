@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Mon Apr 22 23:22:23 2013 etienne debas
+## Last update Sat May  4 15:34:20 2013 Adrien
 ##
 
 SRCS	= main.c \
@@ -52,7 +52,9 @@ SRCS	= main.c \
 	  limit_depth.c \
 	  supersampling.c \
 	  solve_third.c \
-	  inter_third.c
+	  inter_third.c \
+	  limited_plan.c \
+	  exotique.c
 
 OBJS	= $(SRCS:.c=.o)
 

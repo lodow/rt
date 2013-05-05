@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Wed May  1 18:10:26 2013 luc sinet
+** Last update Sat May  4 16:11:14 2013 Adrien
 */
 
 #ifndef MAIN_H_
@@ -53,7 +53,9 @@ typedef struct	s_obj
   double	limit[9];
   double	pert[6];
   double	dist;
-  double	indice[3];
+  double	v1[3];
+  double	v2[3];
+  double	indice[4];
 }		t_obj;
 
 /*
@@ -94,7 +96,7 @@ typedef struct	s_rt
   t_obj		*obj;
   t_lig		*light;
   t_opt		*opt;
-  double	(*eptr[5])(double *cam, double *vec, t_obj *opt);
+  double	(*eptr[10])(double *cam, double *vec, t_obj *opt);
 }		t_rt;
 
 void		calc_inter(t_rt *rpt, double *kmin);

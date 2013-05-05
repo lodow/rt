@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Mon Apr 29 17:24:24 2013 Adrien
+** Last update Sun May  5 18:23:34 2013 Adrien
 */
 
 #include <math.h>
@@ -21,7 +21,12 @@ void	assign_function(t_rt *rpt)
   rpt->eptr[1] = &plan;
   rpt->eptr[2] = &cone;
   rpt->eptr[3] = &cylinder;
-  rpt->eptr[4] = &moebius;
+  rpt->eptr[4] = &circle;
+  rpt->eptr[5] = &square;
+  rpt->eptr[6] = &triangle;
+  rpt->eptr[7] = &paraboloide;
+  rpt->eptr[8] = &hyperboloide;
+  rpt->eptr[9] = &moebius;
 }
 
 void		calc_inter(t_rt *rpt, double *kmin)

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 23:15:31 2013 luc sinet
-** Last update Tue Apr 30 19:46:16 2013 luc sinet
+** Last update Sun May  5 18:40:58 2013 Adrien
 */
 
 #include <sys/types.h>
@@ -40,21 +40,26 @@ int	get_args(t_obj *tab, int i, int shape, int fd)
 
 int	fill_shape(t_obj *tab, int i, char *line, int fd)
 {
-  char	*shape[5];
+  char	*shape[10];
   int	x;
 
   shape[0] = "Sphere";
   shape[1] = "Plan";
   shape[2] = "Cone";
   shape[3] = "Cylinder";
-  shape[4] = "Moebius";
-  x = 5;
-  while (x == 5)
+  shape[4] = "Circle";
+  shape[5] = "Square";
+  shape[6] = "Triangle";
+  shape[7] = "Paraboloide";
+  shape[8] = "Hyperboloide";
+  shape[9] = "Moebius";
+  x = 10;
+  while (x == 10)
     {
       if ((line = get_next_line(fd)) == NULL)
 	return (0);
       x = 0;
-      while (x < 5 && my_strcmp(shape[x], line) != 0)
+      while (x < 10 && my_strcmp(shape[x], line) != 0)
 	x++;
       free(line);
   }
