@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sat May  4 20:25:51 2013 luc sinet
+## Last update Sun May  5 18:28:32 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -43,6 +43,7 @@ SRCS	= main.c \
 	  modif_cam.c \
 	  refraction.c \
 	  reflection.c \
+	  transparency.c \
 	  antialiasing.c \
 	  ambient_light.c \
 	  shadows.c \
