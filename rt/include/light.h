@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Sun May  5 14:02:38 2013 luc sinet
+** Last update Mon May  6 10:41:29 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -18,7 +18,6 @@
 # define LIMIT(x, n1, n2) (x < n1) ? n1 : (x > n2) ? n2 : x
 # define DISTM 70000.0
 # define SPE_SIZE 1
-# define MAXRE 3
 
 typedef struct	s_lco
 {
@@ -38,8 +37,8 @@ typedef struct	s_shadow
   double	inter[3];
   double	*vpos;
   double	sdw_coef;
-  int		re;
   int		obj[2];
+  int		pass[256];
   int		hit;
 }		t_shadow;
 
