@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 22:20:26 2013 luc sinet
-** Last update Wed May  1 18:37:15 2013 luc sinet
+** Last update Thu May  2 15:22:43 2013 luc sinet
 */
 
 #include "include/main.h"
@@ -18,10 +18,12 @@ double		test_forw_limit(double *cam, double *vec,
 
   mk[0] = get_min(k, 2);
   get_inter(cam, vec, mk[0], inter);
+  /* printf("inter[0] = %f\n", inter[0]); */
   if (inter[0] < limit[1])
     {
       mk[1] = get_max(k, 2);
       get_inter(cam, vec, mk[1], inter);
+      /* printf("sinter[0] = %f\n\n", inter[0]); */
       if (inter[0] < limit[1])
 	return (-1);
       else

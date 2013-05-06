@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Sun May  5 19:17:22 2013 Adrien
+** Last update Mon May  6 10:37:25 2013 Adrien
 */
 
 #include <math.h>
@@ -80,12 +80,12 @@ t_lig		move_light(double *pos, double intensity,
 unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt)
 {
   double	*obj_pos;
+  double	nb_shadow;
+  double	state;
   int		i;
-  int		state;
-  int		shadow;
 
   i = 0;
-  shadow = 0;
+  nb_shadow = 0;
   obj_pos = rpt->obj[rpt->obj_num].pos;
   get_inter_normal(rpt, rpt->vpt, k, lpt);
   copy_color(lpt->c_color, obj->color);
@@ -94,16 +94,12 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt)
     {
       if (rpt->light[i].ambient == 0)
 	{
-	  /* state = 1; */
-	  /* if ((state = shadows(rpt, rpt->cpt->pos, rpt->light[i].pos,
-	     lpt->obj_coor)) == 1)*/
-	  get_light_color(&rpt->light[i], lpt, rpt);
-	  //	  shadow += state;
+	  if ((state = shadows(rpt, rpt->cpt->pos, rpt->light[i].pos,
+			       lpt->obj_coor)) < 1)
+	    get_light_color(&rpt->light[i], lpt, rpt, 1.0 - state);
+	  nb_shadow += state;
 	}
-      else
-       	++shadow;
       ++i;
     }
-  /* double re = LIMIT(((double)shadow) / (double)i, 0, 1); */
-  return (apply_light(lpt->c_color, LIMIT((lpt->mx_cos /** re)*/), 0, 1), obj));
+  return (apply_light(lpt->c_color, lpt->mx_cos, nb_shadow / (double)i, obj));
 }

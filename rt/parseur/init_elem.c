@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Wed Apr 17 09:51:52 2013 Adrien
+** Last update Sat May  4 13:14:02 2013 luc sinet
 */
 
 #include "../include/main.h"
@@ -46,7 +46,7 @@ void    init_elem(t_obj *tab, t_pars *opt)
   int   x;
 
   i = 0;
-  while (i < opt->nb_shape)
+  while (i < opt->nb_shape + 1)
     {
       x = 0;
       tab[i].type = -1;

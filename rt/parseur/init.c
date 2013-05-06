@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 17:22:40 2013 luc sinet
-** Last update Sat May  4 14:17:26 2013 Adrien
+** Last update Mon May  6 10:35:53 2013 Adrien
 */
 
 #include <math.h>
@@ -59,7 +59,6 @@ void	init_cos(t_obj *obj)
 void	init_nb_obj(t_pars *opt)
 {
   opt->accol = 0;
-  opt->nb_line = 0;
   opt->nb_shape = 0;
   opt->nb_light = 0;
   opt->nb_cam = 0;

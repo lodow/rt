@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 18:33:58 2013 luc sinet
-** Last update Sat May  4 14:42:16 2013 Adrien
+** Last update Mon May  6 10:35:27 2013 Adrien
 */
 
 #include <sys/types.h>
@@ -34,14 +34,14 @@ int	check_shape(char *line, int *accol, int nb_line)
   return (i < 10 ? 1 : (i == 10) ? 2 : (i == 11) ? 3 : (i == 12) ? 4 : 0);
 }
 
-int	get_size(char *name, t_pars *opt)
+int	get_size(t_pars *opt)
 {
-  if ((opt->fd = open(name, O_RDONLY)) == -1)
-    return (merror("Could open the file\n", -2));
-  while ((opt->line = get_next_line(opt->fd)))
+  int	i;
+
+  i = 0;
+  while (opt->file[i])
     {
-      opt->nb_line++;
-      if ((opt->rv = check_shape(opt->line, &opt->accol, opt->nb_line)) == -1)
+      if ((opt->rv = check_shape(opt->file[i], &opt->accol, i)) == -1)
 	return (-2);
       if (opt->rv == 1)
 	++opt->nb_shape;
@@ -51,9 +51,8 @@ int	get_size(char *name, t_pars *opt)
 	++opt->nb_cam;
       else if (opt->rv == 4)
 	++opt->nb_opt;
-      free(opt->line);
+      ++i;
     }
-  close(opt->fd);
   return ((opt->nb_shape == 0 || opt->accol != 0) ? -1 : opt->nb_shape + 1);
 }
 
@@ -69,7 +68,8 @@ int	check_size(t_obj *tab)
       while (i < 3)
 	{
 	  if (tab[obj].angle[i] == IVAL || tab[obj].pos[i] == IVAL)
-	    return (merror("Not enough informations specified\n", -1));
+	    return (merror("Not enough informations specified\n"
+			   "Missing position or angle information\n", -1));
 	  ++i;
 	}
       if (tab[obj].type == 2 && tab[obj].angle[3] == IVAL)
@@ -81,30 +81,37 @@ int	check_size(t_obj *tab)
   return (0);
 }
 
+int		check_blocks(t_pars *opt)
+{
+  if (opt->nb_shape == 0)
+    return (merror("Enter at least one shape\n", -1));
+  if (opt->nb_cam != 1)
+    return (merror("You must have (only / at least) one camera\n", -1));
+  if (opt->nb_opt != 1)
+    return (merror("You must have one option bloc\n", -1));
+  return (0);
+}
+
 int		pars(t_rt *rpt, char *fname, t_cam *cpt)
 {
   t_pars	opt;
-  int		size;
 
   init_nb_obj(&opt);
   init_cam(cpt);
-  if ((size = get_size(fname, &opt)) < 0)
-    return (size == -2 ? -2 : merror("Enter at least one shape\n", -1));
-  if (opt.nb_cam != 1)
-    return (merror("You must have (only / at least) one camera\n", -1));
-  if (opt.nb_opt != 1)
-    return (merror("You must have one option bloc\n", -1));
-  opt.nb_shape += 1;
-  opt.nb_light += 1;
-  if ((rpt->obj = malloc(sizeof(t_obj) * opt.nb_shape)) == NULL ||
-      (rpt->light = malloc(sizeof(t_lig) * opt.nb_light)) == NULL)
+  if (get_config_file(&opt, fname) < 0)
+    return (-1);
+  if (get_size(&opt) < 0)
+    return (-2);
+  check_blocks(&opt);
+  if ((rpt->obj = malloc(sizeof(t_obj) * (opt.nb_shape + 1))) == NULL ||
+      (rpt->light = malloc(sizeof(t_lig) * (opt.nb_light + 1))) == NULL)
     return (merror("Malloc failed\n", -1));
   init_elem(rpt->obj, &opt);
   init_light(rpt->light, &opt);
-  if ((fill_tab(&opt, rpt->obj, fname) == -1) ||
-      fill_light(&opt, rpt->light, fname) == -1 ||
-      fill_cam(cpt, fname) == -1 ||
-      fill_opt(rpt, fname) == -1)
+  if ((fill_tab(&opt, rpt->obj) == -1) ||
+      fill_light(&opt, rpt->light) == -1 ||
+      fill_cam(&opt, cpt) == -1 ||
+      fill_opt(&opt, rpt) == -1)
     return (-1);
   return (check_size(rpt->obj));
 }

@@ -5,11 +5,12 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sat May  4 15:34:20 2013 Adrien
+## Last update Mon May  6 10:38:19 2013 Adrien
 ##
 
 SRCS	= main.c \
 	  parseur/pars.c \
+	  parseur/get_config_file.c \
 	  parseur/fill_obj_color.c \
 	  parseur/fill_elem.c \
 	  parseur/fill_light.c \
@@ -28,7 +29,8 @@ SRCS	= main.c \
 	  parseur/str.c \
 	  parseur/nb.c \
 	  parseur/my_atof.c \
-	  light_carac.c \
+	  parseur/light_carac.c \
+	  parseur/obj_carac.c \
 	  calc_inter.c \
 	  pp_image.c \
 	  inter.c \
@@ -41,6 +43,7 @@ SRCS	= main.c \
 	  modif_cam.c \
 	  refraction.c \
 	  reflection.c \
+	  transparency.c \
 	  antialiasing.c \
 	  ambient_light.c \
 	  shadows.c \

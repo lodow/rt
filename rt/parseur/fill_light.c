@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 20:12:16 2013 luc sinet
-** Last update Fri Apr 12 17:36:28 2013 luc sinet
+** Last update Sat May  4 13:10:41 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -39,63 +39,42 @@ void	fill_lcenter(t_lig *ltab, int i, char *line)
     }
 }
 
-int	get_value(t_lig *ltab, int i, int fd)
+int	get_value(char **tab, int *x, t_lig *ltab, int i)
 {
   char	*line;
   int	s;
 
-  while ((line = get_next_line(fd)) && my_strcmp(line, "}") != 0)
+  while (my_strcmp(tab[*x], "}") != 0)
     {
+      line = tab[*x];
       s = 0;
       while (line[s] == ' ')
 	s++;
       if (my_strncmp("Center = ", &line[s], 9) == 0)
 	fill_lcenter(ltab, i, &line[s + 9]);
       else if (light_carac(&line[s], ltab, i) == -1)
-	{
-	  my_putstr(&line[s], 2);
-	  return (merror(" is invalid\n", -1));
-	}
-      free(line);
+	return (file_error(line, *x, -1));
+      ++(*x);
     }
   ltab[i].on = 1;
-  free(line);
   return (0);
 }
 
-int	get_linfo(t_lig *ltab, int i, char *line, int fd)
+int	fill_light(t_pars *opt, t_lig *ltab)
 {
-  int	rv;
-
-  rv = 1;
-  while (rv != 0)
-    {
-      if ((line = get_next_line(fd)) == NULL)
-	return (0);
-      rv = my_strcmp(line, "Light");
-      free(line);
-    }
-  free((line = get_next_line(fd)));
-  return (get_value(ltab, i, fd));
-}
-
-int	fill_light(t_pars *opt, t_lig *ltab, char *name)
-{
-  int	fd;
+  int	x;
   int	i;
 
-  if ((fd = open(name, O_RDONLY)) == -1)
-    return (merror("Couldn't open the file\n", -1));
   i = 0;
+  x = 0;
   while (i < opt->nb_light)
     {
-      if (get_linfo(ltab, i, "abc" , fd) == -1)
-	{
-	  close(fd);
-	  return (-1);
-	}
-      i++;
+      while (my_strcmp(opt->file[x], "Light") != 0)
+	++x;
+      x += 2;
+      if (get_value(opt->file, &x, ltab, i) == -1)
+	return (-1);
+      ++i;
     }
-  close(fd);
   return (0);
 }
