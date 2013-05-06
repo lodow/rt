@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 23:15:31 2013 luc sinet
-** Last update Mon May  6 10:37:15 2013 Adrien
+** Last update Mon May  6 13:42:05 2013 luc sinet
 */
 
 #include "../include/main.h"
@@ -40,16 +40,7 @@ int	fill_shape(char **file, int *y, t_obj *tab, int i)
   char	*line;
   int	x;
 
-  shape[0] = "Sphere";
-  shape[1] = "Plan";
-  shape[2] = "Cone";
-  shape[3] = "Cylinder";
-  shape[4] = "Circle";
-  shape[5] = "Square";
-  shape[6] = "Triangle";
-  shape[7] = "Paraboloide";
-  shape[8] = "Hyperboloide";
-  shape[9] = "Moebius";
+  init_tab_names(shape);
   x = 10;
   while (x == 10 && file[*y])
     {

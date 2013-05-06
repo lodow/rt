@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr  7 19:07:11 2013 luc sinet
-** Last update Sun May  5 11:37:36 2013 luc sinet
+** Last update Mon May  6 13:52:24 2013 luc sinet
 */
 
 #include <math.h>
@@ -42,7 +42,7 @@ double		get_specular_coef(double *obj_coor, double *cam_pos, double *nvec, doubl
   double	refl[3];
   double	unvec[3];
   double	lvec[3];
-  double	scal;
+  /* double	scal; */
   double	ncos;
 
   copy_tab(nvec, unvec, 3);
@@ -77,8 +77,8 @@ void		get_light_color(t_lig *light, t_lco *lpt,
   tmp_light = move_light(light->pos, light->intensity,
   			 light->lcolor);
   tmp_light.intensity *= lpower;
-  if ((cosa = get_light_vector(lpt, tmp_light.pos)) > ZERO);
-  cosa = apply_distance(lpt, &tmp_light, cosa);
+  if ((cosa = get_light_vector(lpt, tmp_light.pos)) > ZERO)
+    cosa = apply_distance(lpt, &tmp_light, cosa);
   coss = get_specular_coef(lpt->obj_coor, rpt->cpt->pos, lpt->nvec, light->pos);
   if (coss < ZERO)
     coss = 0.0;

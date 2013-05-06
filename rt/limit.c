@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Apr  9 18:33:23 2013 luc sinet
-** Last update Thu May  2 14:19:30 2013 luc sinet
+** Last update Mon May  6 13:52:41 2013 luc sinet
 */
 
 #include "include/main.h"
@@ -69,7 +69,6 @@ double		test_heigh_limit(double *cam, double *vec,
 
 double		test_limit(double *cam, double *vec, double *k, double *limit)
 {
-  double	inter[3];
   double	min;
   double	curent;
 

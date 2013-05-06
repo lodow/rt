@@ -5,11 +5,25 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Sat May  4 13:14:02 2013 luc sinet
+** Last update Mon May  6 13:42:47 2013 luc sinet
 */
 
 #include "../include/main.h"
 #include "../include/pars.h"
+
+void	init_tab_names(char **shape)
+{
+  shape[0] = "Sphere";
+  shape[1] = "Plan";
+  shape[2] = "Cone";
+  shape[3] = "Cylinder";
+  shape[4] = "Circle";
+  shape[5] = "Square";
+  shape[6] = "Triangle";
+  shape[7] = "Paraboloide";
+  shape[8] = "Hyperboloide";
+  shape[9] = "Moebius";
+}
 
 void	init_limit_angle(double *pert, double *angle)
 {

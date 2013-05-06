@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Mon May  6 10:37:25 2013 Adrien
+** Last update Mon May  6 13:50:43 2013 luc sinet
 */
 
 #include <math.h>
@@ -79,14 +79,12 @@ t_lig		move_light(double *pos, double intensity,
 
 unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt)
 {
-  double	*obj_pos;
   double	nb_shadow;
   double	state;
   int		i;
 
   i = 0;
   nb_shadow = 0;
-  obj_pos = rpt->obj[rpt->obj_num].pos;
   get_inter_normal(rpt, rpt->vpt, k, lpt);
   copy_color(lpt->c_color, obj->color);
   apply_ambient(rpt->light, lpt->c_color, &lpt->mx_cos);

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Feb 26 05:58:41 2013 luc sinet
-** Last update Sun May  5 18:25:27 2013 Adrien
+** Last update Mon May  6 13:53:20 2013 luc sinet
 */
 
 #ifndef REND_H_
@@ -20,5 +20,6 @@ double	square(double *cam, double *vec, t_obj *ept);
 double	triangle(double *cam, double *vec, t_obj *ept);
 double	paraboloide(double *cam, double *vec, t_obj *ept);
 double	hyperboloide(double *cam, double *vec, t_obj *ept);
+double 	moebius(double *cam, double *vec, t_obj *ept);
 
 #endif

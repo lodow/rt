@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Sat May  4 16:11:14 2013 Adrien
+** Last update Mon May  6 13:49:48 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -135,6 +135,9 @@ double		solve_third(double *coef);
 void		delta_neg_third(double *k, double delta, double *pq);
 void		delta_nul_third(double *k, double *pq);
 void		delta_pos_third(double *k, double *pq);
-double		moebius(double *cam, double *vec);
+unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
+			     double k);
+void		calc_refrac(t_rt *rpt, t_vec *vpt, t_lco *lpt,
+			    double k, double n);
 
 #endif

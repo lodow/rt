@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Mon Apr  1 12:31:29 2013 Adrien Della Maggiora
-** Last update Mon May  6 10:35:08 2013 Adrien
+** Last update Mon May  6 13:45:15 2013 luc sinet
 */
 
 #include <math.h>
@@ -13,7 +13,8 @@
 #include "include/light.h"
 #include "include/change_color.h"
 
-void		calc_refrac(t_rt *rpt, t_vec *vpt, t_lco *lpt, double k, double n)
+void		calc_refrac(t_rt *rpt, t_vec *vpt, t_lco *lpt,
+			    double k, double n)
 {
   double        vec[3];
   double        scal;
