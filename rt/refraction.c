@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Mon Apr  1 12:31:29 2013 Adrien Della Maggiora
-** Last update Tue Apr 30 12:38:25 2013 Adrien
+** Last update Wed May  1 10:32:31 2013 Adrien
 */
 
 #include <math.h>
@@ -13,7 +13,7 @@
 #include "include/light.h"
 #include "include/change_color.h"
 
-int		calc_refrac(t_rt *rpt, t_vec *vpt, t_lco *lpt, double k, double n)
+void		calc_refrac(t_rt *rpt, t_vec *vpt, t_lco *lpt, double k, double n)
 {
   double        vec[3];
   double        scal;
@@ -31,10 +31,9 @@ int		calc_refrac(t_rt *rpt, t_vec *vpt, t_lco *lpt, double k, double n)
   scal = scale(vec, lpt->nvec);
   tmp = 1 + (n * n) * ((scal * scal) - 1);
   tmp = (tmp > ZERO) ? sqrt(tmp) : 0;
-  vpt->vec[0] = n * vec[0] + (n * scal - tmp) * lpt->nvec[0];
-  vpt->vec[1] = n * vec[1] + (n * scal - tmp) * lpt->nvec[1];
-  vpt->vec[2] = n * vec[2] + (n * scal - tmp) * lpt->nvec[2];
-  return (0);
+  vpt->vec[0] = n * vec[0] - (n * scal - tmp) * lpt->nvec[0];
+  vpt->vec[1] = n * vec[1] - (n * scal - tmp) * lpt->nvec[1];
+  vpt->vec[2] = n * vec[2] - (n * scal - tmp) * lpt->nvec[2];
 }
 
 unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
