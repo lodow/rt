@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May  5 18:27:59 2013 luc sinet
-** Last update Sun May  5 18:28:55 2013 luc sinet
+** Last update Sun May  5 18:33:21 2013 luc sinet
 */
 
 #include <math.h>
@@ -35,7 +35,8 @@ unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
       n = rpt->obj[obj].indice[1];
       calc_inter(rpt, &k);
       if (k > ZERO && rpt->obj_num != obj)
-	color = apply_indice(color, get_light(rpt, k, &rpt->obj[rpt->obj_num], lpt), alpha);
+	color = apply_indice(color, get_light(rpt, k, &rpt->obj[rpt->obj_num],
+					      lpt), alpha);
       else if (k == -1)
 	color = apply_indice(color, 0x000000, alpha);
     }
