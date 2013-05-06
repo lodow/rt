@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Mon May  6 10:19:19 2013 luc sinet
+** Last update Mon May  6 10:50:33 2013 luc sinet
 */
 
 #include <math.h>
@@ -26,7 +26,6 @@ unsigned int		darken_color(unsigned char *color, double sdw_coef)
 
 void   	init_shadows(t_shadow *spt, t_rt *rpt, double *cpos, double *opos)
 {
-  spt->re = 0;
   spt->sdw_coef = 0;
   spt->vpos = rpt->vpt->vec;
   copy_tab(spt->vpos, spt->vec, 3);
@@ -49,15 +48,14 @@ void	get_inter_shadow(t_shadow *spt, t_rt *rpt, double k, double *cpos)
 {
   if (spt->obj[1] != rpt->obj_num && k > ZERO && k < 1)
     {
-      spt->re = 0;
-      spt->sdw_coef += 1.0 - rpt->obj[rpt->obj_num].indice[0];
+      if (add_to_tab(spt->pass, rpt->obj_num) == 1)
+	spt->sdw_coef += 1.0 - rpt->obj[rpt->obj_num].indice[0];
       if (spt->sdw_coef < 1.0)
 	get_impact(spt->inter, cpos, k, spt->vpos);
     }
-  else if (spt->obj[1] == rpt->obj_num &&
-	   k > ZERO && k < 1 && spt->re < MAXRE)
+  else if (spt->obj[1] == rpt->obj_num && k > ZERO && k < 1)
     {
-      ++spt->re;
+      add_to_tab(spt->pass, rpt->obj_num);
       get_impact(spt->inter, cpos, k, spt->vpos);
     }
   else
@@ -70,6 +68,7 @@ double		shadows(t_rt *rpt, double *cpos, double *lpos, double *opos)
   double	k;
 
   init_shadows(&spt, rpt, cpos, opos);
+  tab_set(spt.pass, 256);
   while (spt.sdw_coef < 1.0 && spt.hit == 0)
     {
       cam_to_inter(&spt, rpt->obj_num, cpos, lpos);

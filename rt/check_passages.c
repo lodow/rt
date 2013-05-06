@@ -5,10 +5,19 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon May  6 10:09:26 2013 luc sinet
-** Last update Mon May  6 10:19:19 2013 luc sinet
+** Last update Mon May  6 10:46:57 2013 luc sinet
 */
 
 #include "include/main.h"
+
+void	tab_set(int *tab, int size)
+{
+  int	i;
+
+  i = 0;
+  while (i < size)
+    tab[i++] = -1;
+}
 
 int	find_in_tab(int *tab, int nb, int *i)
 {
