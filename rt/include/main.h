@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Mon May  6 13:49:48 2013 luc sinet
+** Last update Mon May  6 16:00:28 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -25,7 +25,7 @@
 # define ABS(val) ((val) < 0) ? -(val) : val
 # define DIST 1000
 # define K_ESC 65307
-# define GMAX(y, x) (x < 0) ? x : (x > y) ? x : y
+# define GMAX(y, x) (y < 0 || x < 0) ? -1 : (x > y) ? x : y
 
 typedef struct	s_samp	t_samp;
 typedef struct	s_lco	t_lco;

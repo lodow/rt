@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 17:42:09 2013 luc sinet
-** Last update Thu May  2 16:22:44 2013 luc sinet
+** Last update Tue May  7 15:03:33 2013 luc sinet
 */
 
 #ifndef CHANGE_COLOR_H_
@@ -31,5 +31,6 @@ unsigned int	apply_indice(unsigned int color, unsigned int obj_color,
 unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
 			     double k);
 unsigned int   	darken_color(unsigned char *color, double sdw_coef);
+void		change_shadow_color(unsigned char *obj_color, t_obj *d_elem);
 
 #endif
