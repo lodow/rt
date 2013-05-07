@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Mon May  6 13:49:48 2013 luc sinet
+** Last update Tue May  7 14:50:05 2013 Hugues
 */
 
 #ifndef MAIN_H_
@@ -139,5 +139,7 @@ unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
 			     double k);
 void		calc_refrac(t_rt *rpt, t_vec *vpt, t_lco *lpt,
 			    double k, double n);
+void		my_mem_cpy(void *dest, void *src, int size);
+void		*adjust_mem_size(void *mem, int size, int nsize, int dfree);
 
 #endif

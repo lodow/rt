@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Mon May  6 10:40:42 2013 luc sinet
+## Last update Tue May  7 11:31:57 2013 Hugues
 ##
 
 SRCS	= main.c \
@@ -20,6 +20,7 @@ SRCS	= main.c \
 	  parseur/init_elem.c \
 	  parseur/init_cam.c \
 	  parseur/get_carac.c \
+	  parseur/get_obj_model.c \
 	  parseur/get_pert.c \
 	  parseur/get_limit.c \
 	  parseur/get_next_line.c \
@@ -58,6 +59,7 @@ SRCS	= main.c \
 	  solve_third.c \
 	  inter_third.c \
 	  limited_plan.c \
+	  mem.c \
 	  exotique.c
 
 OBJS	= $(SRCS:.c=.o)
