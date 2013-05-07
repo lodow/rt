@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Mon May  6 13:46:16 2013 luc sinet
+** Last update Tue May  7 14:19:23 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -32,6 +32,7 @@ typedef struct	s_lco
 
 typedef struct	s_shadow
 {
+  t_lco		*slpt;
   double	cam[3];
   double	vec[3];
   double	inter[3];
@@ -57,7 +58,7 @@ t_lig		move_light(double *pos, double intensity,
 			   unsigned char *lcolor);
 void		get_light_color(t_lig *light, t_lco *lpt,
 				t_rt *rpt, double lpower);
-double		shadows(t_rt *rpt, double *cpos, double *lpos, double *opos);
+double		shadows(t_rt *rpt, double *cpos, double *lpos, t_lco *lpt);
 void		get_impact(double *imp, double *cam, double k, double *vec);
 double		vec_norme(double *vector);
 void		sphere_normal(double *nvec, double *obj_coor, double *pert);

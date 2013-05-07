@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Mon May  6 10:50:33 2013 luc sinet
+** Last update Tue May  7 14:36:57 2013 luc sinet
 */
 
 #include <math.h>
@@ -24,13 +24,14 @@ unsigned int		darken_color(unsigned char *color, double sdw_coef)
   return (recomp_color(color));
 }
 
-void   	init_shadows(t_shadow *spt, t_rt *rpt, double *cpos, double *opos)
+void   	init_shadows(t_shadow *spt, t_rt *rpt, double *cpos, t_lco *lpt)
 {
+  spt->slpt = lpt;
   spt->sdw_coef = 0;
   spt->vpos = rpt->vpt->vec;
   copy_tab(spt->vpos, spt->vec, 3);
   copy_tab(cpos, spt->cam, 3);
-  copy_tab(opos, spt->inter, 3);
+  copy_tab(lpt->obj_coor, spt->inter, 3);
   spt->obj[0] = rpt->obj_num;
   spt->hit = 0;
 }
@@ -49,7 +50,12 @@ void	get_inter_shadow(t_shadow *spt, t_rt *rpt, double k, double *cpos)
   if (spt->obj[1] != rpt->obj_num && k > ZERO && k < 1)
     {
       if (add_to_tab(spt->pass, rpt->obj_num) == 1)
-	spt->sdw_coef += 1.0 - rpt->obj[rpt->obj_num].indice[0];
+	{
+	  spt->sdw_coef += 1.0 - rpt->obj[rpt->obj_num].indice[0];
+	  if (rpt->obj[rpt->obj_num].indice[0] < 1.0)
+	    change_shadow_color
+	      (spt->slpt->c_color, &rpt->obj[rpt->obj_num]);
+	}
       if (spt->sdw_coef < 1.0)
 	get_impact(spt->inter, cpos, k, spt->vpos);
     }
@@ -62,12 +68,12 @@ void	get_inter_shadow(t_shadow *spt, t_rt *rpt, double k, double *cpos)
     spt->hit = 1;
 }
 
-double		shadows(t_rt *rpt, double *cpos, double *lpos, double *opos)
+double		shadows(t_rt *rpt, double *cpos, double *lpos, t_lco *lpt)
 {
   t_shadow	spt;
   double	k;
 
-  init_shadows(&spt, rpt, cpos, opos);
+  init_shadows(&spt, rpt, cpos, lpt);
   tab_set(spt.pass, 256);
   while (spt.sdw_coef < 1.0 && spt.hit == 0)
     {
