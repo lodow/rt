@@ -5,10 +5,13 @@
 ** Login   <moriss_h@epitech.net>
 ** 
 ** Started on  Sun May  5 14:22:04 2013 Hugues
-** Last update Tue May  7 15:19:04 2013 Hugues
+** Last update Tue May  7 17:18:52 2013 Hugues
 */
 
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include "../include/get_next_line.h"
 #include "../include/str.h"
 #include "../include/nb.h"
@@ -16,25 +19,25 @@
 #include "../include/model.h"
 #include "../include/pars.h"
 
-void		fill_model_tab(double *(*(tab[3])), int *size, char *line)
+void		fill_model_tab(double ***tab, int *size, char *line)
 {
   int		i;
-  double	*(tmp[3]);
+  double	**tmp;
   int		tsize;
 
   i = 0;
   tsize = *size;
-  tmp = (*tab);
-  if ((tmp = adjust_mem_size(tmp, size * sizeof(double[3]),
-			     (size + 1) * sizeof(double[3]), 1))
+  tmp = *tab;
+  if ((tmp = adjust_mem_size((void*)tmp, tsize * sizeof(double) * 3,
+			     (tsize + 1) * sizeof(double) * 3, 1))
       == NULL)
     return ;
   *tab = tmp;
-  tmp[size][0] = my_fgetnbr(&line[i]);
+  tmp[tsize][0] = my_fgetnbr(&line[i]);
   skip_fnumber(line, &i);
-  tmp[size][1] = my_fgetnbr(&line[i]);
+  tmp[tsize][1] = my_fgetnbr(&line[i]);
   skip_fnumber(line, &i);
-  tmp[size][2] = my_fgetnbr(&line[i]);
+  tmp[tsize][2] = my_fgetnbr(&line[i]);
   *size += 1;
 }
 
@@ -50,12 +53,12 @@ void		parse_model(t_model *obj, const int fd)
   while ((line = get_next_line(fd)) != NULL)
     {
       if (!my_strncmp(line, "v ", 2)) 
-	fill_model_tab((obj->raw_vertice), &(obj->raw_size_vertice), &line[2]);
-      if (!my_strncmp(line, "vt "))
-	fill_model_tab((obj->raw_uvs), &(obj->raw_size_uvs), &line[3]);
-      if (!my_strncmp(line, "vn "))
-	fill_model_tab((obj->raw_normal), &(obj->raw_size_normal), &line[3]);
-      if (!my_strncmp(line, "f "))
+	fill_model_tab((double***)&(obj->raw_vertice), &(obj->raw_size_vertice), &line[2]);
+      if (!my_strncmp(line, "vt ", 3))
+	fill_model_tab((double***)&(obj->raw_uvs), &(obj->raw_size_uvs), &line[3]);
+      if (!my_strncmp(line, "vn ", 3))
+	fill_model_tab((double***)&(obj->raw_normal), &(obj->raw_size_normal), &line[3]);
+      if (!my_strncmp(line, "f ", 2))
 	model_indice_stuff(obj);
       free(line);
     }
