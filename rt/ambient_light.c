@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr  7 19:07:11 2013 luc sinet
-** Last update Wed May  8 14:10:55 2013 luc sinet
+** Last update Wed May  8 19:55:44 2013 luc sinet
 */
 
 #include <math.h>
@@ -58,20 +58,17 @@ double		get_specular_coef(t_lco *lpt, double *cam_pos)
 void		get_light_color(t_lig *light, t_lco *lpt,
 				t_rt *rpt, double lpower)
 {
-  t_lig		tmp_light;
   double	cosa;
   double	coss;
 
-  tmp_light = move_light(light->pos, light->intensity,
-  			 light->lcolor);
-  tmp_light.intensity *= lpower;
-  if ((cosa = get_light_vector(lpt, tmp_light.pos)) > ZERO);
-    /* cosa = apply_distance(lpt, &tmp_light, cosa); */
+  light->intensity *= lpower;
+  if ((cosa = get_light_vector(lpt, light->pos)) > ZERO);
+  /* cosa = apply_distance(lpt, &tmp_light, cosa); */
   coss = get_specular_coef(lpt, rpt->cpt->pos);
   if (coss < ZERO)
     coss = 0.0;
   /* printf("cosa = %f | cosS =  %f\n", cosa, coss); */
-  cosa = 0.25 * coss + 0.75 * cosa;
-  apply_light_color(lpt->c_color, light->lcolor, cosa, 0);
+  /* cosa = 0.25 * coss + 0.75 * cosa; */
+  apply_light_color(lpt->c_color, light->lcolor, cosa * light->intensity, 0);
   lpt->mx_cos = MAX(lpt->mx_cos, cosa);
 }

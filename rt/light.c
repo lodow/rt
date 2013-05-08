@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Wed May  8 13:54:43 2013 luc sinet
+** Last update Wed May  8 19:50:29 2013 luc sinet
 */
 
 #include <math.h>
@@ -59,23 +59,20 @@ double		get_light_vector(t_lco *lpt, double *spot_pos)
   return (cosa < ZERO ? 0.0 : cosa);
 }
 
-t_lig		move_light(double *pos, double intensity,
-			   unsigned char *lcolor)
+void   	copy_light(t_lig *tlight, t_lig *light)
 {
-  t_lig		new_ligth;
-
-  new_ligth.pos[0] = pos[0];
-  new_ligth.pos[1] = pos[1];
-  new_ligth.pos[2] = pos[2];
-  new_ligth.intensity = intensity;
-  new_ligth.lcolor[0] = lcolor[0];
-  new_ligth.lcolor[1] = lcolor[1];
-  new_ligth.lcolor[2] = lcolor[2];
-  return (new_ligth);
+  tlight->pos[0] = light->pos[0];
+  tlight->pos[1] = light->pos[1];
+  tlight->pos[2] = light->pos[2];
+  tlight->intensity = light->intensity;
+  tlight->lcolor[0] = light->lcolor[0];
+  tlight->lcolor[1] = light->lcolor[1];
+  tlight->lcolor[2] = light->lcolor[2];
 }
 
 unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt)
 {
+  t_lig		tlight;
   double	nb_shadow;
   double	state;
   int		i;
@@ -88,11 +85,12 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt)
   while (rpt->light[i].on == 1)
     {
       lpt->light = &rpt->light[i];
+      copy_light(&tlight, &rpt->light[i]);
       if (rpt->light[i].ambient == 0)
 	{
-	  if ((state = shadows(rpt, rpt->cpt->pos, rpt->light[i].pos,
+	  if ((state = shadows(rpt, rpt->cpt->pos, &tlight,
 			       lpt)) < 1.0)
-	    get_light_color(&rpt->light[i], lpt, rpt, 1.0 - state);
+	    get_light_color(&tlight, lpt, rpt, 1.0 - state);
 	  nb_shadow += state;
 	}
       ++i;
