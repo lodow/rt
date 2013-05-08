@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Tue May  7 14:04:37 2013 luc sinet
+** Last update Wed May  8 13:54:43 2013 luc sinet
 */
 
 #include <math.h>
@@ -13,11 +13,16 @@
 #include "include/change_color.h"
 #include "include/light.h"
 
-void	copy_color(unsigned char *color1, unsigned char *color2)
+void		init_normals_pointers(void (**nptr)(double *nvec, double *obj_coor, double *pert))
 {
-  color1[0] = color2[0];
-  color1[1] = color2[1];
-  color1[2] = color2[2];
+  nptr[0] = &sphere_normal;
+  nptr[1] = &plan_normal;
+  nptr[2] = &cone_normal;
+  nptr[3] = &cylinder_normal;
+  nptr[4] = &plan_normal;
+  nptr[5] = &plan_normal;
+  nptr[6] = &plan_normal;
+  nptr[7] = &moebius_normal;
 }
 
 void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
@@ -28,14 +33,7 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
 
   copy_tab(rpt->cpt->pos, &vcam[3], 3);
   copy_tab(vpt->vec, vcam, 3);
-  nptr[0] = &sphere_normal;
-  nptr[1] = &plan_normal;
-  nptr[2] = &cone_normal;
-  nptr[3] = &cylinder_normal;
-  nptr[4] = &plan_normal;
-  nptr[5] = &plan_normal;
-  nptr[6] = &plan_normal;
-  nptr[7] = &moebius_normal;
+  init_normals_pointers(nptr);
   obj = &rpt->obj[rpt->obj_num];
   modif_cam(&vcam[3], obj->pos);
   rotate(&vcam[3], obj->ocos, obj->osin, 0);
@@ -53,12 +51,11 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
 double		get_light_vector(t_lco *lpt, double *spot_pos)
 {
   double	cosa;
-  double	lvec[3];
 
-  lvec[0] = spot_pos[0] - lpt->obj_coor[0];
-  lvec[1] = spot_pos[1] - lpt->obj_coor[1];
-  lvec[2] = spot_pos[2] - lpt->obj_coor[2];
-  cosa = cos_vector(lpt->nvec, lvec);
+  lpt->lvec[0] = spot_pos[0] - lpt->obj_coor[0];
+  lpt->lvec[1] = spot_pos[1] - lpt->obj_coor[1];
+  lpt->lvec[2] = spot_pos[2] - lpt->obj_coor[2];
+  cosa = cos_vector(lpt->nvec, lpt->lvec);
   return (cosa < ZERO ? 0.0 : cosa);
 }
 
@@ -86,14 +83,15 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt)
   i = 0;
   nb_shadow = 0;
   get_inter_normal(rpt, rpt->vpt, k, lpt);
-  copy_color(lpt->c_color, obj->color);
+  copy_color(obj->color, lpt->c_color);
   apply_ambient(rpt->light, lpt->c_color, &lpt->mx_cos);
   while (rpt->light[i].on == 1)
     {
+      lpt->light = &rpt->light[i];
       if (rpt->light[i].ambient == 0)
 	{
 	  if ((state = shadows(rpt, rpt->cpt->pos, rpt->light[i].pos,
-			       lpt)) < 1)
+			       lpt)) < 1.0)
 	    get_light_color(&rpt->light[i], lpt, rpt, 1.0 - state);
 	  nb_shadow += state;
 	}
