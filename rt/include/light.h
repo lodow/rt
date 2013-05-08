@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Tue May  7 14:19:23 2013 luc sinet
+** Last update Wed May  8 11:17:23 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -19,12 +19,16 @@
 # define DISTM 70000.0
 # define SPE_SIZE 1
 
+typedef struct	s_lig	t_lig;
+
 typedef struct	s_lco
 {
+  t_lig		*light;
   double	obj_coor[3];
   double	nvec[3];
   double	lvec[3];
   double	rvec[3];
+  double	cos_coef;
   double	mx_cos;
   double	spec;
   unsigned char	c_color[3];
