@@ -1,9 +1,9 @@
 ##
 ## Makefile for copylib in /home/sinet_l//jour11
-## 
+##
 ## Made by luc sinet
 ## Login   <sinet_l@epitech.net>
-## 
+##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
 ## Last update Tue May  7 15:20:41 2013 Hugues
 ##
@@ -21,6 +21,7 @@ SRCS	= main.c \
 	  parseur/init_cam.c \
 	  parseur/get_carac.c \
 	  parseur/get_obj_model.c \
+	  parseur/get_obj_model_indice_exp.c \
 	  parseur/get_pert.c \
 	  parseur/get_limit.c \
 	  parseur/get_next_line.c \
