@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Wed May  8 13:52:35 2013 luc sinet
+** Last update Wed May  8 18:06:51 2013 Adrien Della Maggiora
 */
 
 #ifndef LIG_H_
@@ -78,5 +78,6 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt);
 int		add_to_tab(int *tab, int nb);
 void		tab_set(int *tab, int size);
 void		copy_color(unsigned char *col1, unsigned char *col2);
+void		invert_vec(double *vec);
 
 #endif

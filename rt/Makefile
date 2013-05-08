@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Wed May  8 13:51:17 2013 luc sinet
+## Last update Wed May  8 18:14:40 2013 Adrien Della Maggiora
 ##
 
 SRCS	= main.c \
@@ -33,6 +33,7 @@ SRCS	= main.c \
 	  parseur/my_atof.c \
 	  parseur/light_carac.c \
 	  parseur/obj_carac.c \
+	  parseur/calc_vec.c \
 	  calc_inter.c \
 	  pp_image.c \
 	  inter.c \
@@ -63,7 +64,8 @@ SRCS	= main.c \
 	  inter_third.c \
 	  limited_plan.c \
 	  mem.c \
-	  exotique.c
+	  exotique.c \
+	  transform_vec.c
 
 OBJS	= $(SRCS:.c=.o)
 
