@@ -17,6 +17,7 @@
 #include "pp_image.h"
 #include "str.h"
 #include "nb.h"
+#include "model.h"
 
 # define ZERO 0.00000001
 # define IVAL -1000000

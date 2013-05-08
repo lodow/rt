@@ -1,9 +1,9 @@
 /*
 ** get_obj_model.c for get_obj_model in rt/
-** 
+**
 ** Made by moriss_h
 ** Login   <moriss_h@epitech.net>
-** 
+**
 ** Started on  Sun May  5 14:22:04 2013 Hugues
 ** Last update Tue May  7 17:18:52 2013 Hugues
 */
@@ -19,31 +19,54 @@
 #include "../include/model.h"
 #include "../include/pars.h"
 
-void		fill_model_tab(double ***tab, int *size, char *line)
+void		fill_model_tab(double **tab, int *size, char *line)
 {
   int		i;
-  double	**tmp;
+  double	*tmp;
   int		tsize;
 
   i = 0;
-  tsize = *size;
+  tsize = *size * 3;
   tmp = *tab;
-  if ((tmp = adjust_mem_size((void*)tmp, tsize * sizeof(double) * 3,
-			     (tsize + 1) * sizeof(double) * 3, 1))
-      == NULL)
+  if ((tmp = adjust_mem_size((void*)tmp, tsize * sizeof(double),
+                             (tsize + 3) * sizeof(double), 1)) == NULL)
     return ;
   *tab = tmp;
-  tmp[tsize][0] = my_fgetnbr(&line[i]);
+  tmp[tsize + 0] = my_fgetnbr(&line[i]);
   skip_fnumber(line, &i);
-  tmp[tsize][1] = my_fgetnbr(&line[i]);
+  if (line[i] != '\0')
+    i++;
+  tmp[tsize + 1] = my_fgetnbr(&line[i]);
   skip_fnumber(line, &i);
-  tmp[tsize][2] = my_fgetnbr(&line[i]);
+  if (line[i] != '\0')
+    i++;
+  tmp[tsize + 2] = my_fgetnbr(&line[i]);
   *size += 1;
 }
 
-void		model_indice_stuff(t_model *obj)
+void		model_indice_stuff(t_model *obj, char *line)
 {
+  int		i;
+ /* double	*tmp;
+  int		tsize;
 
+  i = 0;
+  tsize = *size * 3;
+  tmp = *tab;
+  if ((tmp = adjust_mem_size((void*)tmp, tsize * sizeof(double),
+                             (tsize + 3) * sizeof(double), 1)) == NULL)
+    return ;
+  *tab = tmp;
+  tmp[tsize + 0] = my_fgetnbr(&line[i]);
+  skip_fnumber(line, &i);
+  if (line[i] != '\0')
+    i++;
+  tmp[tsize + 1] = my_fgetnbr(&line[i]);
+  skip_fnumber(line, &i);
+  if (line[i] != '\0')
+    i++;
+  tmp[tsize + 2] = my_fgetnbr(&line[i]);
+  *size += 1;*/
 }
 
 void		parse_model(t_model *obj, const int fd)
@@ -52,14 +75,14 @@ void		parse_model(t_model *obj, const int fd)
 
   while ((line = get_next_line(fd)) != NULL)
     {
-      if (!my_strncmp(line, "v ", 2)) 
-	fill_model_tab((double***)&(obj->raw_vertice), &(obj->raw_size_vertice), &line[2]);
+      if (!my_strncmp(line, "v ", 2))
+        fill_model_tab(&(obj->raw_vertice), &(obj->raw_size_vertice), &line[2]);
       if (!my_strncmp(line, "vt ", 3))
-	fill_model_tab((double***)&(obj->raw_uvs), &(obj->raw_size_uvs), &line[3]);
+        fill_model_tab(&(obj->raw_uvs), &(obj->raw_size_uvs), &line[3]);
       if (!my_strncmp(line, "vn ", 3))
-	fill_model_tab((double***)&(obj->raw_normal), &(obj->raw_size_normal), &line[3]);
+        fill_model_tab(&(obj->raw_normal), &(obj->raw_size_normal), &line[3]);
       if (!my_strncmp(line, "f ", 2))
-	model_indice_stuff(obj);
+        model_indice_stuff(obj, &line[2]);
       free(line);
     }
 }
