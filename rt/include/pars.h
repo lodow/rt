@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Mon May  6 13:42:45 2013 luc sinet
+** Last update Tue May  7 16:55:49 2013 Hugues
 */
 
 #ifndef PARS_H_
@@ -56,5 +56,6 @@ int	deformation(char *line, t_obj *ept);
 int	shape_carac(char *line, t_obj *ept);
 void	skip_adds(char *line, int *i);
 void	init_tab_names(char **shape);
+void	skip_fnumber(char *str, int *i);
 
 #endif

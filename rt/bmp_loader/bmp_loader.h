@@ -1,9 +1,9 @@
 /*
 ** bmp_loader.h for bmp_loader in /home/adrien/bmp_loader
-** 
+**
 ** Made by Adrien
 ** Login   <adrien@Adrien>
-** 
+**
 ** Started on  Wed May  1 14:21:15 2013 Adrien
 ** Last update Wed May  1 18:34:27 2013 Adrien
 */
