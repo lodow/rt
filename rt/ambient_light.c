@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr  7 19:07:11 2013 luc sinet
-** Last update Mon May  6 13:52:24 2013 luc sinet
+** Last update Wed May  8 14:10:55 2013 luc sinet
 */
 
 #include <math.h>
@@ -35,36 +35,24 @@ void		*apply_ambient(t_lig *light, unsigned char *color,
   return (color);
 }
 
-double		get_specular_coef(double *obj_coor, double *cam_pos, double *nvec, double *lpos)
+double		get_specular_coef(t_lco *lpt, double *cam_pos)
 {
-  double	vis[3];
-  double	cpos[3];
-  double	refl[3];
-  double	unvec[3];
   double	lvec[3];
-  /* double	scal; */
-  double	ncos;
+  double	cvec[3];
+  double	rvec[3];
+  double	scal;
 
-  copy_tab(nvec, unvec, 3);
-  copy_tab(cam_pos, cpos, 3);
-  lvec[0] = -lpos[0] + obj_coor[0];
-  lvec[1] = -lpos[1] + obj_coor[1];
-  lvec[2] = -lpos[2] + obj_coor[2];
-  vis[0] = obj_coor[0] - cpos[0];
-  vis[1] = obj_coor[1] - cpos[1];
-  vis[2] = obj_coor[2] - cpos[2];
-  unitaire(vis);
-  unitaire(unvec);
+  copy_tab(lpt->lvec, lvec, 3);
+  cvec[0] = cam_pos[0] - lpt->obj_coor[0];
+  cvec[1] = cam_pos[1] - lpt->obj_coor[1];
+  cvec[2] = cam_pos[2] - lpt->obj_coor[2];
+  scal = scale(lvec, lpt->nvec);
   unitaire(lvec);
-  ncos = cos_vector(unvec, lvec);
-  refl[0] = lvec[0] - 2.0 * ncos * unvec[0];
-  refl[1] = lvec[1] - 2.0 * ncos * unvec[1];
-  refl[2] = lvec[2] - 2.0 * ncos * unvec[2];
-  /* scal = scale(vis, unvec); */
-  /* refl[0] = (-2.0 * unvec[0] * scal) + vis[0]; */
-  /* refl[1] = (-2.0 * unvec[1] * scal) + vis[1]; */
-  /* refl[2] = (-2.0 * unvec[2] * scal) + vis[2]; */
-  return (pow(cos_vector(vis, refl), 20));
+  unitaire(lpt->nvec);
+  rvec[0] = lvec[0] - 2.0 * scal * lpt->nvec[0];
+  rvec[1] = lvec[1] - 2.0 * scal * lpt->nvec[1];
+  rvec[2] = lvec[2] - 2.0 * scal * lpt->nvec[2];
+  return (pow(cos_vector(rvec, cvec), 50));
 }
 
 void		get_light_color(t_lig *light, t_lco *lpt,
@@ -77,12 +65,13 @@ void		get_light_color(t_lig *light, t_lco *lpt,
   tmp_light = move_light(light->pos, light->intensity,
   			 light->lcolor);
   tmp_light.intensity *= lpower;
-  if ((cosa = get_light_vector(lpt, tmp_light.pos)) > ZERO)
-    cosa = apply_distance(lpt, &tmp_light, cosa);
-  coss = get_specular_coef(lpt->obj_coor, rpt->cpt->pos, lpt->nvec, light->pos);
+  if ((cosa = get_light_vector(lpt, tmp_light.pos)) > ZERO);
+    /* cosa = apply_distance(lpt, &tmp_light, cosa); */
+  coss = get_specular_coef(lpt, rpt->cpt->pos);
   if (coss < ZERO)
     coss = 0.0;
   /* printf("cosa = %f | cosS =  %f\n", cosa, coss); */
+  cosa = 0.25 * coss + 0.75 * cosa;
   apply_light_color(lpt->c_color, light->lcolor, cosa, 0);
   lpt->mx_cos = MAX(lpt->mx_cos, cosa);
 }
