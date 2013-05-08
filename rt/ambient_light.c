@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr  7 19:07:11 2013 luc sinet
-** Last update Wed May  8 11:51:25 2013 luc sinet
+** Last update Wed May  8 14:10:55 2013 luc sinet
 */
 
 #include <math.h>
@@ -71,7 +71,7 @@ void		get_light_color(t_lig *light, t_lco *lpt,
   if (coss < ZERO)
     coss = 0.0;
   /* printf("cosa = %f | cosS =  %f\n", cosa, coss); */
-  /* cosa = 0.25 * coss + 0.75 * cosa; */
+  cosa = 0.25 * coss + 0.75 * cosa;
   apply_light_color(lpt->c_color, light->lcolor, cosa, 0);
   lpt->mx_cos = MAX(lpt->mx_cos, cosa);
 }
