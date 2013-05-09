@@ -5,15 +5,15 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Fri Apr 12 15:50:58 2013 Adrien Della Maggiora
-** Last update Sat May  4 11:58:20 2013 luc sinet
+** Last update Thu May  9 10:27:56 2013 Adrien Della Maggiora
 */
 
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "../include/main.h"
-#include "../include/get_next_line.h"
-#include "../include/pars.h"
+#include "main.h"
+#include "get_next_line.h"
+#include "pars.h"
 
 void	init_opt(t_opt *opt)
 {

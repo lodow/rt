@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Wed May  8 18:14:40 2013 Adrien Della Maggiora
+## Last update Thu May  9 10:43:59 2013 Adrien Della Maggiora
 ##
 
 SRCS	= main.c \
@@ -65,13 +65,14 @@ SRCS	= main.c \
 	  limited_plan.c \
 	  mem.c \
 	  exotique.c \
-	  transform_vec.c
+	  transform_vec.c \
+	  bmp_loader.c
 
 OBJS	= $(SRCS:.c=.o)
 
 OPT     = -L/usr/lib64 -lmlx_x86_64-linux -L/usr/lib64/X11 -lXext -lX11 -lm
 
-CC	= gcc -g -Wall -Wextra
+CC	= gcc -g -Wall -Wextra -I./include/
 
 RM	= rm -f
 

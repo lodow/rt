@@ -5,12 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May  7 14:26:08 2013 luc sinet
-** Last update Wed May  8 14:04:45 2013 luc sinet
+** Last update Thu May  9 10:31:03 2013 Adrien Della Maggiora
 */
 
-#include "include/main.h"
-#include "include/light.h"
-#include "include/change_color.h"
+#include "main.h"
+#include "light.h"
+#include "change_color.h"
 
 void		change_shadow_color(unsigned char *obj_color, t_obj *d_elem,
 				    t_lig *lpt)

@@ -5,10 +5,10 @@
 ** Login   <adrien@Adrien>
 ** 
 ** Started on  Sat May  4 14:46:20 2013 Adrien
-** Last update Sun May  5 19:12:45 2013 Adrien
+** Last update Thu May  9 10:32:02 2013 Adrien Della Maggiora
 */
 
-#include "include/main.h"
+#include "main.h"
 
 double		circle(double *cam, double *vec, t_obj *ept)
 {

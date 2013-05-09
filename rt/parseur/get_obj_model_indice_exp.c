@@ -5,14 +5,14 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Thu May  9 10:28:52 2013 Adrien Della Maggiora
 */
 
-#include "../include/str.h"
-#include "../include/nb.h"
-#include "../include/main.h"
-#include "../include/model.h"
-#include "../include/pars.h"
+#include "str.h"
+#include "nb.h"
+#include "main.h"
+#include "model.h"
+#include "pars.h"
 
 void		cpy_model_xyz(double *dest, int pos, double *src, int posrc)
 {

@@ -5,19 +5,19 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Sun May  5 14:22:04 2013 Hugues
-** Last update Tue May  7 17:18:52 2013 Hugues
+** Last update Thu May  9 10:29:52 2013 Adrien Della Maggiora
 */
 
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "../include/get_next_line.h"
-#include "../include/str.h"
-#include "../include/nb.h"
-#include "../include/main.h"
-#include "../include/model.h"
-#include "../include/pars.h"
+#include "get_next_line.h"
+#include "str.h"
+#include "nb.h"
+#include "main.h"
+#include "model.h"
+#include "pars.h"
 
 void		fill_model_tab(double **tab, int *size, char *line)
 {

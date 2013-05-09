@@ -5,11 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Mon May  6 13:42:47 2013 luc sinet
+** Last update Thu May  9 10:26:56 2013 Adrien Della Maggiora
 */
 
-#include "../include/main.h"
-#include "../include/pars.h"
+#include "main.h"
+#include "pars.h"
 
 void	init_tab_names(char **shape)
 {

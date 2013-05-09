@@ -5,12 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 17:22:40 2013 luc sinet
-** Last update Mon May  6 10:35:53 2013 Adrien
+** Last update Thu May  9 10:29:02 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "../include/main.h"
-#include "../include/pars.h"
+#include "main.h"
+#include "pars.h"
 
 void	init_light(t_lig *ltab, t_pars *opt)
 {

@@ -5,10 +5,10 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 22:20:26 2013 luc sinet
-** Last update Wed May  1 18:22:32 2013 luc sinet
+** Last update Thu May  9 10:31:58 2013 Adrien Della Maggiora
 */
 
-#include "include/main.h"
+#include "main.h"
 
 double		test_left_limit(double *cam, double *vec,
 			      double *k, double *limit)

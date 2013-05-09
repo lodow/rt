@@ -5,13 +5,13 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Mon Apr  1 12:31:29 2013 Adrien Della Maggiora
-** Last update Wed May  8 18:07:19 2013 Adrien Della Maggiora
+** Last update Thu May  9 10:31:13 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "include/main.h"
-#include "include/light.h"
-#include "include/change_color.h"
+#include "main.h"
+#include "light.h"
+#include "change_color.h"
 
 void		calc_refrac(t_rt *rpt, t_vec *vpt, t_lco *lpt,
 			    double k, double n)

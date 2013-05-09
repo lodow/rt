@@ -5,15 +5,15 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 18:33:58 2013 luc sinet
-** Last update Mon May  6 10:35:27 2013 Adrien
+** Last update Thu May  9 10:27:14 2013 Adrien Della Maggiora
 */
 
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "../include/main.h"
-#include "../include/pars.h"
-#include "../include/get_next_line.h"
+#include "main.h"
+#include "pars.h"
+#include "get_next_line.h"
 
 int	check_shape(char *line, int *accol, int nb_line)
 {

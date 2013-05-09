@@ -5,15 +5,15 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri May  3 16:18:05 2013 luc sinet
-** Last update Fri May  3 16:40:13 2013 luc sinet
+** Last update Thu May  9 10:28:08 2013 Adrien Della Maggiora
 */
 
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "../include/main.h"
-#include "../include/pars.h"
-#include "../include/get_next_line.h"
+#include "main.h"
+#include "pars.h"
+#include "get_next_line.h"
 
 void	free_old_tab(char **tab, int size)
 {

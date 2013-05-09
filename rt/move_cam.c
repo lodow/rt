@@ -5,12 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Mar 12 20:29:28 2013 luc sinet
-** Last update Thu May  2 15:42:41 2013 luc sinet
+** Last update Thu May  9 10:31:33 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "include/main.h"
-#include "include/inter.h"
+#include "main.h"
+#include "inter.h"
 
 void		rotate_x(double *p, double cosin, double sinus)
 {

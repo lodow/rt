@@ -5,13 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Apr 13 16:07:03 2013 luc sinet
-** Last update Sat May  4 13:27:50 2013 luc sinet
+** Last update Thu May  9 10:28:14 2013 Adrien Della Maggiora
 */
 
-#include "../include/main.h"
-#include "../include/pars.h"
-#include "../include/str.h"
-#include "../include/nb.h"
+#include "main.h"
+#include "pars.h"
+#include "str.h"
+#include "nb.h"
 
 void	skip_fnumber(char *line, int *i)
 {
