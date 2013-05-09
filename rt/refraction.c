@@ -5,13 +5,13 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Mon Apr  1 12:31:29 2013 Adrien Della Maggiora
-** Last update Tue May  7 10:06:35 2013 luc sinet
+** Last update Thu May  9 10:31:13 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "include/main.h"
-#include "include/light.h"
-#include "include/change_color.h"
+#include "main.h"
+#include "light.h"
+#include "change_color.h"
 
 void		calc_refrac(t_rt *rpt, t_vec *vpt, t_lco *lpt,
 			    double k, double n)
@@ -30,6 +30,11 @@ void		calc_refrac(t_rt *rpt, t_vec *vpt, t_lco *lpt,
   unitaire(vec);
   unitaire(lpt->nvec);
   scal = scale(vec, lpt->nvec);
+  if (scal < ZERO)
+    {
+      invert_vec(lpt->nvec);
+      scal = scale(vec, lpt->nvec);
+    }
   tmp = 1 + (n * n) * ((scal * scal) - 1);
   tmp = (tmp > ZERO) ? sqrt(tmp) : 0;
   vpt->vec[0] = n * vec[0] + (n * scal - tmp) * lpt->nvec[0];

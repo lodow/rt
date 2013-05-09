@@ -5,12 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 23:14:34 2013 luc sinet
-** Last update Thu May  9 12:16:41 2013 luc sinet
+** Last update Thu May  9 12:25:47 2013 luc sinet
 */
 
 #include <math.h>
-#include "include/main.h"
-#include "include/light.h"
+#include "main.h"
+#include "light.h"
 
 double	point_distance(double *p1, double *p2)
 {

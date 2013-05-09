@@ -5,12 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Apr  8 21:05:59 2013 luc sinet
-** Last update Sat Apr 13 23:08:57 2013 luc sinet
+** Last update Thu May  9 10:32:54 2013 Adrien Della Maggiora
 */
 
 #include <unistd.h>
-#include "include/main.h"
-#include "include/supersampling.h"
+#include "main.h"
+#include "supersampling.h"
 
 void	emphasize_edges(int *img, t_par *ppt)
 {

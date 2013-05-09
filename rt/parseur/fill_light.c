@@ -5,17 +5,17 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 20:12:16 2013 luc sinet
-** Last update Sat May  4 13:10:41 2013 luc sinet
+** Last update Thu May  9 10:27:43 2013 Adrien Della Maggiora
 */
 
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "../include/main.h"
-#include "../include/pars.h"
-#include "../include/get_next_line.h"
-#include "../include/str.h"
-#include "../include/nb.h"
+#include "main.h"
+#include "pars.h"
+#include "get_next_line.h"
+#include "str.h"
+#include "nb.h"
 
 void	fill_lcenter(t_lig *ltab, int i, char *line)
 {

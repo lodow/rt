@@ -5,13 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Wed May  8 19:50:29 2013 luc sinet
+** Last update Thu May  9 12:26:07 2013 luc sinet
 */
 
 #include <math.h>
-#include "include/main.h"
-#include "include/change_color.h"
-#include "include/light.h"
+#include "main.h"
+#include "change_color.h"
+#include "light.h"
 
 void		init_normals_pointers(void (**nptr)(double *nvec, double *obj_coor, double *pert))
 {

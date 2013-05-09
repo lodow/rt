@@ -5,16 +5,16 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Apr  1 21:38:56 2013 luc sinet
-** Last update Sat May  4 20:34:07 2013 luc sinet
+** Last update Thu May  9 10:27:35 2013 Adrien Della Maggiora
 */
 
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <math.h>
-#include "../include/main.h"
-#include "../include/pars.h"
-#include "../include/get_next_line.h"
+#include "main.h"
+#include "pars.h"
+#include "get_next_line.h"
 
 void	skip_adds(char *line, int *i)
 {

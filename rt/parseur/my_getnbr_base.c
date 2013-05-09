@@ -5,10 +5,10 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Nov 11 17:23:02 2012 luc sinet
-** Last update Fri Apr 12 18:24:37 2013 Adrien Della Maggiora
+** Last update Thu May  9 10:27:08 2013 Adrien Della Maggiora
 */
 
-#include "../include/str.h"
+#include "str.h"
 
 int	my_power_rec(int nb, int power)
 {

@@ -5,13 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr  7 19:07:11 2013 luc sinet
-** Last update Thu May  9 12:16:40 2013 luc sinet
+** Last update Thu May  9 12:26:57 2013 luc sinet
 */
 
 #include <math.h>
-#include "include/main.h"
-#include "include/change_color.h"
-#include "include/light.h"
+#include "main.h"
+#include "change_color.h"
+#include "light.h"
 
 void		*apply_ambient(t_lig *light, unsigned char *color,
 			      double *max_cos)

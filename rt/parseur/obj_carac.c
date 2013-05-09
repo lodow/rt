@@ -5,11 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat May  4 20:10:26 2013 luc sinet
-** Last update Sat May  4 20:26:09 2013 luc sinet
+** Last update Thu May  9 10:27:13 2013 Adrien Della Maggiora
 */
 
-#include "../include/main.h"
-#include "../include/pars.h"
+#include "main.h"
+#include "pars.h"
 
 int	indice(char *line, t_obj *ept)
 {

@@ -5,13 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May  5 18:27:59 2013 luc sinet
-** Last update Mon May  6 13:44:18 2013 luc sinet
+** Last update Thu May  9 10:30:30 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "include/main.h"
-#include "include/light.h"
-#include "include/change_color.h"
+#include "main.h"
+#include "light.h"
+#include "change_color.h"
 
 unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
 			     double k)

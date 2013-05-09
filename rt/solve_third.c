@@ -5,11 +5,11 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Mon Apr 22 21:01:11 2013 etienne debas
-** Last update Mon Apr 22 23:39:51 2013 etienne debas
+** Last update Thu May  9 10:30:44 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "include/main.h"
+#include "main.h"
 
 void	get_pq(double *coef, double *pq)
 {

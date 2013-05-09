@@ -5,10 +5,10 @@
 ** Login   <adrien@adrien>
 ** 
 ** Started on  Fri Mar 15 16:19:57 2013 Adrien
-** Last update Sun May  5 18:29:22 2013 Adrien
+** Last update Thu May  9 10:47:33 2013 Adrien Della Maggiora
 */
 
-#include "include/main.h"
+#include "main.h"
 
 double		paraboloide(double *cam, double *vec, t_obj *ept)
 {
@@ -16,7 +16,8 @@ double		paraboloide(double *cam, double *vec, t_obj *ept)
   double	k[2];
 
   a[0] = (vec[0] * vec[0]) + (vec[1] * vec[1]);
-  a[1] = 2 * ((cam[0] * vec[0]) + (cam[1] * vec[1])) - (ept->indice[3] * vec[2]);
+  a[1] = 2 * ((cam[0] * vec[0]) + (cam[1] * vec[1]))
+    - (ept->indice[3] * vec[2]);
   a[2] = (cam[0] * cam[0]) + (cam[1] * cam[1])
     - (cam[2] * ept->indice[3]);
   if (solve_second(a, k) == -1)
@@ -40,9 +41,12 @@ double		hyperboloide(double *cam, double *vec, t_obj *ept)
   double	a[3];
   double	k[2];
 
-  a[0] = (vec[0] * vec[0]) + (vec[1] * vec[1]) - (ept->indice[3] * (vec[2] * vec[2]));
-  a[1] = 2 * ((cam[0] * vec[0]) + (cam[1] * vec[1]) - (ept->indice[3] * (vec[2] * cam[2])));
-  a[2] = (cam[0] * cam[0]) + (cam[1] * cam[1]) - (cam[2] *  cam[2] * ept->indice[3]) - 1;
+  a[0] = (vec[0] * vec[0]) + (vec[1] * vec[1]) - (ept->indice[3]
+						  * (vec[2] * vec[2]));
+  a[1] = 2 * ((cam[0] * vec[0]) + (cam[1] * vec[1]) - (ept->indice[3]
+						       * (vec[2] * cam[2])));
+  a[2] = (cam[0] * cam[0]) + (cam[1] * cam[1]) - (cam[2] *  cam[2]
+						  * ept->indice[3]) - 1;
   if (solve_second(a, k) == -1)
     return (-1);
   return (test_limit(cam, vec, k, ept->limit));

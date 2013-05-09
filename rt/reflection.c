@@ -5,13 +5,13 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Tue Apr  2 18:25:49 2013 etienne debas
-** Last update Mon Apr 22 23:28:17 2013 Adrien
+** Last update Thu May  9 10:31:18 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "include/main.h"
-#include "include/change_color.h"
-#include "include/light.h"
+#include "main.h"
+#include "change_color.h"
+#include "light.h"
 
 void		calc_reflec_vector(t_rt *rpt, t_vec *vpt, t_lco *lpt, double k)
 {

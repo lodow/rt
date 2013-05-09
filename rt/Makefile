@@ -1,11 +1,11 @@
 ##
 ## Makefile for copylib in /home/sinet_l//jour11
-## 
+##
 ## Made by luc sinet
 ## Login   <sinet_l@epitech.net>
-## 
+##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Wed May  8 19:17:20 2013 luc sinet
+## Last update Thu May  9 12:27:15 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -21,6 +21,7 @@ SRCS	= main.c \
 	  parseur/init_cam.c \
 	  parseur/get_carac.c \
 	  parseur/get_obj_model.c \
+	  parseur/get_obj_model_indice_exp.c \
 	  parseur/get_pert.c \
 	  parseur/get_limit.c \
 	  parseur/get_next_line.c \
@@ -32,6 +33,7 @@ SRCS	= main.c \
 	  parseur/my_atof.c \
 	  parseur/light_carac.c \
 	  parseur/obj_carac.c \
+	  parseur/calc_vec.c \
 	  calc_inter.c \
 	  pp_image.c \
 	  inter.c \
@@ -63,13 +65,15 @@ SRCS	= main.c \
 	  inter_third.c \
 	  limited_plan.c \
 	  mem.c \
-	  exotique.c
+	  exotique.c \
+	  transform_vec.c \
+	  bmp_loader.c
 
 OBJS	= $(SRCS:.c=.o)
 
 OPT     = -L/usr/lib64 -lmlx_x86_64-linux -L/usr/lib64/X11 -lXext -lX11 -lm
 
-CC	= gcc -g -Wall -Wextra
+CC	= gcc -g -Wall -Wextra -I./include/
 
 RM	= rm -f
 

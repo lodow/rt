@@ -5,11 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Nov 12 11:23:01 2012 luc sinet
-** Last update Fri Apr 12 14:51:17 2013 Adrien Della Maggiora
+** Last update Thu May  9 10:31:24 2013 Adrien Della Maggiora
 */
 
 #include "mlx.h"
-#include "include/pp_image.h"
+#include "pp_image.h"
 
 int		my_pixel_put_to_image(int x, int y, t_par *par, unsigned int color)
 {

@@ -5,10 +5,10 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 22:20:26 2013 luc sinet
-** Last update Thu May  2 15:22:43 2013 luc sinet
+** Last update Thu May  9 10:32:06 2013 Adrien Della Maggiora
 */
 
-#include "include/main.h"
+#include "main.h"
 
 double		test_forw_limit(double *cam, double *vec,
 			      double *k, double *limit)

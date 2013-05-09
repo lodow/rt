@@ -5,12 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr 14 17:32:06 2013 luc sinet
-** Last update Mon Apr 22 01:00:07 2013 luc sinet
+** Last update Thu May  9 10:31:42 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "include/main.h"
-#include "include/light.h"
+#include "main.h"
+#include "light.h"
 
 void		unitaire(double *vec)
 {

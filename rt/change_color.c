@@ -5,13 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 16:50:09 2013 luc sinet
-** Last update Thu May  2 16:15:51 2013 luc sinet
+** Last update Thu May  9 10:32:44 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "include/main.h"
-#include "include/light.h"
-#include "include/change_color.h"
+#include "main.h"
+#include "light.h"
+#include "change_color.h"
 
 void		apply_light_color(unsigned char *col_o, unsigned char *col_l,
 				  double lg_i, double spe)

@@ -5,13 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri Apr  5 11:07:42 2013 luc sinet
-** Last update Sat Apr 13 23:11:44 2013 luc sinet
+** Last update Thu May  9 10:30:36 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "include/main.h"
-#include "include/change_color.h"
-#include "include/supersampling.h"
+#include "main.h"
+#include "change_color.h"
+#include "supersampling.h"
 
 unsigned int	mix_color(unsigned int *tab, int ssp)
 {

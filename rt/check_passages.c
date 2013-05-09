@@ -5,10 +5,10 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon May  6 10:09:26 2013 luc sinet
-** Last update Mon May  6 13:46:18 2013 luc sinet
+** Last update Thu May  9 10:32:40 2013 Adrien Della Maggiora
 */
 
-#include "include/main.h"
+#include "main.h"
 
 void	tab_set(int *tab, int size)
 {

@@ -5,13 +5,13 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Wed May  8 19:41:34 2013 luc sinet
+** Last update Thu May  9 12:25:00 2013 luc sinet
 */
 
 #include <math.h>
-#include "include/main.h"
-#include "include/light.h"
-#include "include/change_color.h"
+#include "main.h"
+#include "light.h"
+#include "change_color.h"
 
 unsigned int		darken_color(unsigned char *color, double sdw_coef)
 {

@@ -5,12 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri Apr 12 16:59:39 2013 luc sinet
-** Last update Fri Apr 12 21:38:32 2013 luc sinet
+** Last update Thu May  9 10:28:56 2013 Adrien Della Maggiora
 */
 
-#include "../include/main.h"
-#include "../include/pars.h"
-#include "../include/nb.h"
+#include "main.h"
+#include "pars.h"
+#include "nb.h"
 
 void	check_space_arg(char *line, double *pert, int *i)
 {

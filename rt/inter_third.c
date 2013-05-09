@@ -5,11 +5,11 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Mon Apr 22 23:06:51 2013 etienne debas
-** Last update Mon May  6 13:54:12 2013 luc sinet
+** Last update Thu May  9 10:32:20 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
-#include "include/main.h"
+#include "main.h"
 
 double		moebius(double *cam, double *vec, t_obj *ept)
 {

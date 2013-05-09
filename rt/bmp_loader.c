@@ -5,14 +5,15 @@
 ** Login   <adrien@Adrien>
 ** 
 ** Started on  Wed May  1 13:50:59 2013 Adrien
-** Last update Thu May  2 17:28:29 2013 Adrien
+** Last update Thu May  9 10:46:53 2013 Adrien Della Maggiora
 */
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <stdlib.h>
-#include <stdio.h>
 #include "bmp_loader.h"
 
 void	my_memcpy(void *mem1, void *mem2, int size)
@@ -32,13 +33,14 @@ int	check_bmp(t_info_bmp *info, char **img, int fd, t_bmp *image)
   int	ret;
 
   if ((info->deep_color[0] != 0x18 && info->deep_color[1] != 0) ||
-      (info->magic_nb[0] != 'B' && info->magic_nb[1] != 'M') || 
-      (*img = malloc((info->widht + info->widht % 4) * (info->deep_color[0] / 8)
-		     * info->deep_color[0] * info->height)) == NULL ||
+      (info->magic_nb[0] != 'B' && info->magic_nb[1] != 'M') ||
+      (*img = malloc((info->widht + info->widht % 4)
+		     * (info->deep_color[0] / 8) * info->deep_color[0]
+		     * info->height)) == NULL ||
       (image->texture = malloc(info->widht_image * (info->deep_color[0] / 8)
 			       * info->height_image)) == NULL
-      || ((ret = read(fd, *img, (info->widht + info->widht % 4) * info->deep_color[0]
-		      * info->height)) == -1)
+      || ((ret = read(fd, *img, (info->widht + info->widht % 4)
+		      * info->deep_color[0] * info->height)) == -1)
       || (ret < ((info->widht + info->widht % 4) * (info->deep_color[0] / 8))
 	  * info->height))
     return (-1);

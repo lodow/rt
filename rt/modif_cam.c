@@ -5,11 +5,11 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Thu Mar 21 23:31:20 2013 etienne debas
-** Last update Wed Apr 17 14:33:22 2013 luc sinet
+** Last update Thu May  9 10:31:37 2013 Adrien Della Maggiora
 */
 
-#include "include/main.h"
-#include "include/light.h"
+#include "main.h"
+#include "light.h"
 
 void   	copy_tab(double *tab, double *ctab, int size)
 {
