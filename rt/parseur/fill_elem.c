@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 23:15:31 2013 luc sinet
-** Last update Thu May  9 10:23:57 2013 Adrien Della Maggiora
+** Last update Thu May  9 14:14:36 2013 luc sinet
 */
 
 #include "main.h"
@@ -51,8 +51,7 @@ int	fill_shape(char **file, int *y, t_obj *tab, int i)
       ++(*y);
     }
   tab[i].type = x;
-  get_args(&tab[i], file, y);
-  return (0);
+  return (get_args(&tab[i], file, y));
 }
 
 int	fill_tab(t_pars *opt, t_obj *tab)
