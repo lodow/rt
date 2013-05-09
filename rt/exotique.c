@@ -5,10 +5,11 @@
 ** Login   <adrien@adrien>
 ** 
 ** Started on  Fri Mar 15 16:19:57 2013 Adrien
-** Last update Thu May  9 10:47:33 2013 Adrien Della Maggiora
+** Last update Thu May  9 13:35:08 2013 Adrien Della Maggiora
 */
 
 #include "main.h"
+#include "light.h"
 
 double		paraboloide(double *cam, double *vec, t_obj *ept)
 {
@@ -25,16 +26,14 @@ double		paraboloide(double *cam, double *vec, t_obj *ept)
   return (test_limit(cam, vec, k, ept->limit));
 }
 
-/*t_coord norparaboloide(t_coord pos, t_coord *pt, t_obj *obj)
+void	paraboloide_normal(double *nvec, double *obj_coor, double *pert,
+			   t_obj *obj)
 {
-  pos.x = pt->x - obj->pos.x;
-  pos.y = pt->y - obj->pos.y;
-  pos.z = (-obj->x) - obj->pos.z;
-  rotate_x(obj->rot.x, &pos);
-  rotate_y(obj->rot.y, &pos);
-  rotate_z(obj->rot.z, &pos);
-  return (pos);
-  }*/
+  nvec[0] = obj_coor[0];
+  nvec[1] = obj_coor[1];
+  nvec[2] = (-obj->indice[3]);
+  perturb_normal(nvec, obj_coor, pert);
+}
 
 double		hyperboloide(double *cam, double *vec, t_obj *ept)
 {
@@ -52,14 +51,11 @@ double		hyperboloide(double *cam, double *vec, t_obj *ept)
   return (test_limit(cam, vec, k, ept->limit));
 }
 
-/*t_coord norhyperboloide(t_coord pos, t_coord *pt, t_obj *obj)
+void	hyperboloide_normal(double *nvec, double *obj_coor, double *pert,
+			    t_obj *obj)
 {
-  pos.x = pt->x - obj->pos.x;
-  pos.y = pt->y - obj->pos.y;
-  pos.z = ((-obj->x) * pt->z) - obj->pos.z;
-  rotate_x(obj->rot.x, &pos);
-  rotate_y(obj->rot.y, &pos);
-  rotate_z(obj->rot.z, &pos);
-  return (pos);
+  nvec[0] = obj_coor[0];
+  nvec[1] = obj_coor[1];
+  nvec[2] = ((-obj->indice[3]) * obj_coor[2]);
+  perturb_normal(nvec, obj_coor, pert);
 }
-*/

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Thu May  9 12:26:35 2013 luc sinet
+** Last update Thu May  9 14:00:41 2013 Adrien Della Maggiora
 */
 
 #ifndef LIG_H_
@@ -67,11 +67,14 @@ void		get_light_color(t_lig *light, t_lco *lpt,
 double		shadows(t_rt *rpt, double *cpos, t_lig *light, t_lco *lpt);
 void		get_impact(double *imp, double *cam, double k, double *vec);
 double		vec_norme(double *vector);
-void		sphere_normal(double *nvec, double *obj_coor, double *pert);
-void		plan_normal(double *nvec, double *obj_coor, double *pert);
-void		cone_normal(double *nvec, double *obj_coor, double *pert);
-void		moebius_normal(double *nvec, double *obj_coor, double *pert);
-void		cylinder_normal(double *nvec, double *obj_coor, double *pert);
+void		sphere_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
+void		perturb_normal(double *nvec, double *obj_coor, double *pert);
+void		plan_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
+void		cone_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
+void		moebius_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
+void		cylinder_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
+void		paraboloide_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
+void		hyperboloide_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
 void		unitaire(double *vec);
 double		norme_vec(double *vec);
 double		scale(double *vec1, double *vec2);
