@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 17:22:40 2013 luc sinet
-** Last update Thu May  9 15:35:05 2013 luc sinet
+** Last update Thu May  9 16:08:16 2013 luc sinet
 */
 
 #include <math.h>
@@ -18,7 +18,7 @@ void	init_light(t_lig *ltab, t_pars *opt)
   int	x;
 
   i = 0;
-  while (i < opt->nb_light)
+  while (i <= opt->nb_light)
     {
       x = 0;
       ltab[i].on = 0;

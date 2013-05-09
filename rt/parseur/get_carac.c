@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Mar 16 23:19:04 2013 luc sinet
-** Last update Thu May  9 11:39:35 2013 Adrien Della Maggiora
+** Last update Thu May  9 16:13:34 2013 luc sinet
 */
 
 #include "main.h"
@@ -88,6 +88,8 @@ int	other_opt(char *line, t_obj *ept)
 
   i = 0;
   comp = "ANRcLO  SCBV";
+  if (my_strncmp(line, "Name = ", 7) == 0)
+    return (0);
   objptr[0] = &indice;
   objptr[1] = deformation;
   objptr[2] = &shape_carac;
