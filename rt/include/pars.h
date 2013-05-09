@@ -57,6 +57,6 @@ int	shape_carac(char *line, t_obj *ept);
 void	skip_adds(char *line, int *i);
 void	init_tab_names(char **shape);
 void	skip_fnumber(char *str, int *i);
-void	calc_vec(double *pt, double *v1, double *v2);
+void	calc_vec(double *point, t_obj *obj);
 
 #endif

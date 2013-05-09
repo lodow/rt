@@ -11,6 +11,8 @@
 #ifndef MODEL_H_
 # define MODEL_H_
 
+# include "main.h"
+
 typedef struct	s_model
 {
   double	*raw_vertice;

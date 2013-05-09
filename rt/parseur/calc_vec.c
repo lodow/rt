@@ -8,6 +8,8 @@
 ** Last update Wed May  8 18:13:52 2013 Adrien Della Maggiora
 */
 
+#include "main.h"
+
 void	calc_vec(double *point, t_obj *obj)
 {
   obj->v1[0] = point[0] - point[3];

@@ -93,18 +93,18 @@ void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
   int		nb_tri;
   int		sizeobj;
   int		i;
-  t_obj		tmp_obj;
 
   nb_tri = model->fin_size_vertice / 9;
-  sizeobj = nb_obj(*objtab);
+  sizeobj = 0;
+  while ((*objtab)[sizeobj].type != -1)
+    sizeobj++;
   (*objtab) = adjust_mem_size((void*)objtab, sizeobj * sizeof(t_obj),
-                              (sizeobj + nb_tri) * sizeobj(t_obj), 1);
+                              (sizeobj + nb_tri) * sizeof(t_obj), 1);
   i = 0;
   while (i < nb_tri)
     {
-      tmp_obj = baseobj;
-      calc_vec(&(model->fin_vertice[i * 9]), tmp_obj);
-      (*objtab)[i + sizeobj] = tmp_obj;
+      (*objtab)[i + sizeobj] = *baseobj;
+      calc_vec(&(model->fin_vertice[i * 9]), &((*objtab)[i + sizeobj]));
       i++;
     }
 }
