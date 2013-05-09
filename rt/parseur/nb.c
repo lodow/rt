@@ -80,13 +80,3 @@ void	my_put_nbr(int nb, int fd)
   if (write(fd, &res, 1) == -1)
     write(2, "Write error\n", 12);
 }
-
-int	nb_obj(t_obj *obj)
-{
-  int	i;
-
-  i = 0;
-  while (obj[i].nb != -1)
-    ++i;
-  return (i);
-}
