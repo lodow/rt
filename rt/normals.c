@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Mar 31 13:20:23 2013 luc sinet
-** Last update Thu May  9 10:31:28 2013 Adrien Della Maggiora
+** Last update Thu May  9 11:20:47 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
@@ -25,39 +25,46 @@ void	perturb_normal(double *nvec, double *obj_coor, double *pert)
       * (norme_vec(nvec) / pert[5]);
 }
 
-void	sphere_normal(double *nvec, double *obj_coor, double *pert)
+void	sphere_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 {
+  (void)(obj);
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];
   nvec[2] = obj_coor[2];
   perturb_normal(nvec, obj_coor, pert);
 }
 
-void	plan_normal(double *nvec, double *obj_coor, double *pert)
+void	plan_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 {
+  (void)(obj);
   nvec[0] = 0;
   nvec[1] = 0;
   nvec[2] = 100;
   perturb_normal(nvec, obj_coor, pert);
 }
 
-void	cone_normal(double *nvec, double *obj_coor, double *pert)
+void	cone_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 {
+  (void)(obj);
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];
   nvec[2] = -0.6 * obj_coor[2];
   perturb_normal(nvec, obj_coor, pert);
 }
 
-void	cylinder_normal(double *nvec, double *obj_coor, double *pert)
+void	cylinder_normal(double *nvec, double *obj_coor, double *pert,
+			t_obj *obj)
 {
+  (void)(obj);
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];
   nvec[2] = 0;
   perturb_normal(nvec, obj_coor, pert);
 }
-void	moebius_normal(double *nvec, double *obj_coor, double *pert)
+
+void	moebius_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 {
+  (void)(obj);
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];
   nvec[2] = obj_coor[2];

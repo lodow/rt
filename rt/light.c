@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Thu May  9 10:32:15 2013 Adrien Della Maggiora
+** Last update Thu May  9 11:24:19 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
@@ -13,7 +13,7 @@
 #include "change_color.h"
 #include "light.h"
 
-void		init_normals_pointers(void (**nptr)(double *nvec, double *obj_coor, double *pert))
+void		init_normals_pointers(void (**nptr)(double *nvec, double *obj_coor, double *pert, t_obj *obj))
 {
   nptr[0] = &sphere_normal;
   nptr[1] = &plan_normal;
@@ -22,12 +22,14 @@ void		init_normals_pointers(void (**nptr)(double *nvec, double *obj_coor, double
   nptr[4] = &plan_normal;
   nptr[5] = &plan_normal;
   nptr[6] = &plan_normal;
-  nptr[7] = &moebius_normal;
+  nptr[7] = &paraboloide_normal;
+  nptr[8] = &hyperboloide_normal;
+  nptr[9] = &moebius_normal;
 }
 
 void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
 {
-  void		(*nptr[8])(double *nvec, double *obj_coor, double *pert);
+  void		(*nptr[10])(double *nvec, double *obj_coor, double *pert, t_obj *obj);
   double	vcam[6];
   t_obj		*obj;
 
@@ -39,7 +41,7 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
   rotate(&vcam[3], obj->ocos, obj->osin, 0);
   rotate(vcam, obj->ocos, obj->osin, 0);
   get_impact(lpt->obj_coor, &vcam[3], k, vcam);
-  nptr[obj->type](lpt->nvec, lpt->obj_coor, obj->pert);
+  nptr[obj->type](lpt->nvec, lpt->obj_coor, obj->pert, &(rpt->obj[rpt->obj_num]));
   rotate(lpt->nvec, obj->acos, obj->asin, 1);
   rotate(lpt->obj_coor, obj->acos, obj->asin, 1);
   lpt->obj_coor[0] += obj->pos[0];

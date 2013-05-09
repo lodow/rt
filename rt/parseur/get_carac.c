@@ -5,12 +5,34 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Mar 16 23:19:04 2013 luc sinet
-** Last update Thu May  9 10:28:03 2013 Adrien Della Maggiora
+** Last update Thu May  9 11:39:35 2013 Adrien Della Maggiora
 */
 
 #include "main.h"
 #include "pars.h"
 #include "nb.h"
+
+void	fill_vec(double vec[3], char *line)
+{
+  int	pl;
+  int	x;
+
+  pl = 0;
+  x = 0;
+  if (!line[pl])
+    return ;
+  while (x < 3)
+    {
+      if (line[pl] == ',' || line[pl] == ';')
+        return ;
+      vec[x] = my_sgetnbr(line, &pl);
+      if (line[pl])
+        pl++;
+      if (!line[pl])
+        return ;
+      x++;
+    }
+}
 
 void	fill_center(t_obj *ept, char *line)
 {
@@ -65,11 +87,11 @@ int	other_opt(char *line, t_obj *ept)
   int	(*objptr[3])(char *line, t_obj *ept);
 
   i = 0;
-  comp = "ANRLO SCB";
+  comp = "ANRcLO  SCBV";
   objptr[0] = &indice;
   objptr[1] = deformation;
   objptr[2] = &shape_carac;
   while (comp[i] && comp[i] != line[0])
     ++i;
-  return (!comp[i] ? -1 : objptr[i / 3](line, ept));
+  return (!comp[i] ? -1 : objptr[i / 4](line, ept));
 }
