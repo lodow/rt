@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu May  9 10:28:52 2013 Adrien Della Maggiora
+** Last update Thu May  9 16:56:33 2013 luc sinet
 */
 
 #include "str.h"
@@ -98,8 +98,8 @@ void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
   sizeobj = 0;
   while ((*objtab)[sizeobj].type != -1)
     sizeobj++;
-  if (((*objtab) = adjust_mem_size((void*)objtab, sizeobj * sizeof(t_obj),
-                                   (sizeobj + nb_tri) * sizeof(t_obj), 1))
+  if (((*objtab) = adjust_mem_size((void *)*objtab, sizeobj * sizeof(t_obj),
+                                   (sizeobj + nb_tri + 1) * sizeof(t_obj), 1))
       == NULL)
     return ;
   i = 0;
@@ -109,4 +109,5 @@ void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
       calc_vec(&(model->fin_vertice[i * 9]), &((*objtab)[i + sizeobj]));
       i++;
     }
+  (*objtab)[i + sizeobj].type = -1;
 }
