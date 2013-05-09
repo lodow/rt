@@ -98,6 +98,7 @@ void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
   sizeobj = 0;
   while ((*objtab)[sizeobj].type != -1)
     sizeobj++;
+  sizeobj--;
   if (((*objtab) = adjust_mem_size((void *)*objtab, sizeobj * sizeof(t_obj),
                                    (sizeobj + nb_tri + 1) * sizeof(t_obj), 1))
       == NULL)
