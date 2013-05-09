@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Thu May  9 10:26:56 2013 Adrien Della Maggiora
+** Last update Thu May  9 11:04:21 2013 Adrien Della Maggiora
 */
 
 #include "main.h"
@@ -67,7 +67,9 @@ void    init_elem(t_obj *tab, t_pars *opt)
       while (x < 3)
 	{
 	  tab[i].pos[x] = IVAL;
-	  tab[i].color[x++] = 0;
+	  tab[i].color[x] = 0;
+	  tab[i].v1[x] = 0;
+	  tab[i].v2[x++] = 0;
 	}
       init_limit_angle(tab[i].pert, tab[i].angle);
       init_limits(tab[i].limit);
@@ -76,6 +78,7 @@ void    init_elem(t_obj *tab, t_pars *opt)
       tab[i].indice[0] = 0;
       tab[i].indice[1] = 1;
       tab[i].indice[2] = 0;
+      tab[i].indice[3] = 0;
       i++;
     }
 }
