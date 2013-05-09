@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Thu May  9 16:08:40 2013 luc sinet
+** Last update Thu May  9 16:46:57 2013 luc sinet
 */
 
 #include "main.h"
@@ -54,31 +54,37 @@ void	init_limits(double *limit)
     }
 }
 
+void	init_single_elem(t_obj *obj)
+{
+  int	x;
+
+  x = 0;
+  obj->type = -1;
+  while (x < 3)
+    {
+      obj->pos[x] = IVAL;
+      obj->color[x] = 0;
+      obj->v1[x] = 0;
+      obj->v2[x++] = 0;
+    }
+  init_limit_angle(obj->pert, obj->angle);
+  init_limits(obj->limit);
+  obj->rayon = 0;
+  obj->bright = 1.0;
+  obj->indice[0] = 0;
+  obj->indice[1] = 1;
+  obj->indice[2] = 0;
+  obj->indice[3] = 0;
+}
+
 void    init_elem(t_obj *tab, t_pars *opt)
 {
   int   i;
-  int   x;
 
   i = 0;
   while (i <= opt->nb_shape)
     {
-      x = 0;
-      tab[i].type = -1;
-      while (x < 3)
-	{
-	  tab[i].pos[x] = IVAL;
-	  tab[i].color[x] = 0;
-	  tab[i].v1[x] = 0;
-	  tab[i].v2[x++] = 0;
-	}
-      init_limit_angle(tab[i].pert, tab[i].angle);
-      init_limits(tab[i].limit);
-      tab[i].rayon = 0;
-      tab[i].bright = 1.0;
-      tab[i].indice[0] = 0;
-      tab[i].indice[1] = 1;
-      tab[i].indice[2] = 0;
-      tab[i].indice[3] = 0;
-      i++;
+      init_single_elem(&tab[i]);
+      ++i;
     }
 }
