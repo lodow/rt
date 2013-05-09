@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Thu May  9 16:45:41 2013 luc sinet
+** Last update Thu May  9 17:26:09 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -60,7 +60,7 @@ void	init_tab_names(char **shape);
 void	skip_fnumber(char *str, int *i);
 void	calc_vec(double *point, t_obj *obj);
 void	fill_vec(double vec[3], char *line);
-int	fill_model(t_pars *opt, t_obj *tab);
+int	fill_model(t_pars *opt, t_obj **tab);
 int	get_args(t_obj *tab, char **file, int *y);
 
 #endif

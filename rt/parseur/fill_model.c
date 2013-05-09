@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu May  9 13:47:30 2013 luc sinet
-** Last update Thu May  9 16:51:03 2013 luc sinet
+** Last update Thu May  9 17:28:54 2013 luc sinet
 */
 
 #include "main.h"
@@ -42,7 +42,7 @@ char	*get_model_name(char **file, int i)
   return (file_name);
 }
 
-int		fill_model_struct(t_pars *opt, t_obj *tab, int *i)
+int		fill_model_struct(t_pars *opt, t_obj **tab, int *i)
 {
   t_obj		model;
   t_model	*obj;
@@ -58,11 +58,11 @@ int		fill_model_struct(t_pars *opt, t_obj *tab, int *i)
   if ((obj = get_file_obj_model(file_name)) == NULL)
     return (merror("Failed to get the model's informations\n", -1));
   free(file_name);
-  raw_model_t_obj(&tab, obj, &model);
+  raw_model_t_obj(tab, obj, &model);
   return (0);
 }
 
-int	fill_model(t_pars *opt, t_obj *tab)
+int	fill_model(t_pars *opt, t_obj **tab)
 {
   int	i;
 
