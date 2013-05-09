@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Oct 20 11:27:34 2012 luc sinet
-** Last update Thu May  9 10:29:27 2013 Adrien Della Maggiora
+** Last update Thu May  9 13:43:24 2013 luc sinet
 */
 
 #include <stdlib.h>
@@ -79,4 +79,14 @@ void	my_put_nbr(int nb, int fd)
   res = nb % 10 + 48;
   if (write(fd, &res, 1) == -1)
     write(2, "Write error\n", 12);
+}
+
+int	nb_obj(t_obj *obj)
+{
+  int	i;
+
+  i = 0;
+  while (obj[i].nb != -1)
+    ++i;
+  return (i);
 }
