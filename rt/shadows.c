@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Thu May  9 10:31:09 2013 Adrien Della Maggiora
+** Last update Thu May  9 12:36:53 2013 luc sinet
 */
 
 #include <math.h>
@@ -27,7 +27,7 @@ unsigned int		darken_color(unsigned char *color, double sdw_coef)
 void   	init_shadows(t_shadow *spt, t_rt *rpt, double *cpos, t_lco *lpt)
 {
   spt->slpt = lpt;
-  spt->sdw_coef = 0;
+  spt->sdw_coef = 1.0;
   spt->vpos = rpt->vpt->vec;
   copy_tab(spt->vpos, spt->vec, 3);
   copy_tab(cpos, spt->cam, 3);
@@ -51,12 +51,13 @@ void	get_inter_shadow(t_shadow *spt, t_rt *rpt, double k, double *cpos)
     {
       if (add_to_tab(spt->pass, rpt->obj_num) == 1)
 	{
-	  spt->sdw_coef += 1.0 - rpt->obj[rpt->obj_num].indice[0];
-	  /* if (rpt->obj[rpt->obj_num].indice[0] < 1.0) */
+	  spt->sdw_coef *= rpt->obj[rpt->obj_num].indice[0];
+	  if (rpt->obj[rpt->obj_num].indice[0] > ZERO)
+	    filter_light_color(spt->light->lcolor, &rpt->obj[rpt->obj_num]);
 	  /*   change_shadow_color */
 	  /*     (spt->slpt->c_color, &rpt->obj[rpt->obj_num], spt->slpt->light); */
 	}
-      if (spt->sdw_coef < 1.0)
+      if (spt->sdw_coef > 0)
 	get_impact(spt->inter, cpos, k, spt->vpos);
     }
   else if (spt->obj[1] == rpt->obj_num && k > ZERO && k < 1)
@@ -68,21 +69,22 @@ void	get_inter_shadow(t_shadow *spt, t_rt *rpt, double k, double *cpos)
     spt->hit = 1;
 }
 
-double		shadows(t_rt *rpt, double *cpos, double *lpos, t_lco *lpt)
+double		shadows(t_rt *rpt, double *cpos, t_lig *light, t_lco *lpt)
 {
   t_shadow	spt;
   double	k;
 
   init_shadows(&spt, rpt, cpos, lpt);
+  spt.light = light;
   tab_set(spt.pass, 256);
-  while (spt.sdw_coef < 1.0 && spt.hit == 0)
+  while (spt.sdw_coef > 0 && spt.hit == 0)
     {
-      cam_to_inter(&spt, rpt->obj_num, cpos, lpos);
+      cam_to_inter(&spt, rpt->obj_num, cpos, light->pos);
       calc_inter(rpt, &k);
       get_inter_shadow(&spt, rpt, k, cpos);
    }
   copy_tab(spt.cam, cpos, 3);
   copy_tab(spt.vec, spt.vpos, 3);
   rpt->obj_num = spt.obj[0];
-  return (spt.sdw_coef > 1.0 ? 1.0 : spt.sdw_coef);
+  return (1.0 - spt.sdw_coef);
 }
