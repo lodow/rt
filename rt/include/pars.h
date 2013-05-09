@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Thu May  9 11:33:11 2013 Adrien Della Maggiora
+** Last update Thu May  9 15:33:45 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -13,7 +13,7 @@
 
 # define LIMIT(x, n1, n2) (x < n1) ? n1 : (x > n2) ? n2 : x
 # define BOOL(x) (x >= 1) ? 1 : 0
-# define T_ACCOL(x) (x == 13) ? 1 : (x == 14) ? -1 : 0
+# define T_ACCOL(x) (x == 14) ? 1 : (x == 15) ? -1 : 0
 
 typedef struct	s_obj	t_obj;
 typedef struct	s_lig	t_lig;
