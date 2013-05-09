@@ -5,11 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 23:15:31 2013 luc sinet
-** Last update Thu May  9 16:14:06 2013 luc sinet
+** Last update Thu May  9 16:31:34 2013 luc sinet
 */
 
 #include "main.h"
 #include "pars.h"
+#include "model.h"
 
 int	get_args(t_obj *tab, char **file, int *y)
 {
