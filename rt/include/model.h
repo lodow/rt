@@ -31,5 +31,6 @@ t_model		*get_file_obj_model(const char *filename);
 void		model_sizeup_fin_tab(t_model *obj);
 void		fill_model_tabs(t_model *obj, int *vert, int *uvv, int *norm);
 void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj);
+void		init_model_struct(t_model *model);
 
 #endif

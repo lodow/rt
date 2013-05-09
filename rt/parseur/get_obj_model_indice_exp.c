@@ -111,3 +111,19 @@ void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
     }
   (*objtab)[i + sizeobj].type = -1;
 }
+
+void		init_model_struct(t_model *model)
+{
+  model->fin_size_normal = 0;
+  model->fin_size_vertice = 0;
+  model->fin_size_uvs = 0;
+  model->raw_size_normal = 0;
+  model->raw_size_vertice = 0;
+  model->raw_size_uvs = 0;
+  model->fin_normal = NULL;
+  model->fin_uvs = NULL;
+  model->fin_vertice = NULL;
+  model->raw_normal = NULL;
+  model->raw_uvs = NULL;
+  model->raw_vertice = NULL;
+}
