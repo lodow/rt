@@ -41,16 +41,16 @@ void		fill_model_tabs(t_model *obj, int *vert, int *uvs, int *norm)
       i++;
     }
   obj->fin_size_vertice += 3;
- /* i = 0;
-  while (i < 3)
-    {
-      tmpind = uvs[i] - 1;
-      if ((tmpind * 3) < obj->raw_size_uvs && tmpind >= 0)
-        cpy_model_xyz(obj->fin_uvs, obj->fin_size_uvs * 3,
-                      obj->raw_uvs, tmpind * 3);
-      i++;
-    }
-  obj->fin_size_uvs += 3;*/
+  /* i = 0;
+   while (i < 3)
+     {
+       tmpind = uvs[i] - 1;
+       if ((tmpind * 3) < obj->raw_size_uvs && tmpind >= 0)
+         cpy_model_xyz(obj->fin_uvs, obj->fin_size_uvs * 3,
+                       obj->raw_uvs, tmpind * 3);
+       i++;
+     }
+   obj->fin_size_uvs += 3;*/
   i = 0;
   while (i < 3)
     {
@@ -86,4 +86,25 @@ void		model_sizeup_fin_tab(t_model *obj)
                                 (tmpsize + 9) * sizeof(double), 1)) == NULL)
     return ;
   obj->fin_normal = tmptab;
+}
+
+void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
+{
+  int		nb_tri;
+  int		sizeobj;
+  int		i;
+  t_obj		tmp_obj;
+
+  nb_tri = model->fin_size_vertice / 9;
+  sizeobj = nb_obj(*objtab);
+  (*objtab) = adjust_mem_size((void*)objtab, sizeobj * sizeof(t_obj),
+                              (sizeobj + nb_tri) * sizeobj(t_obj), 1);
+  i = 0;
+  while (i < nb_tri)
+    {
+      tmp_obj = baseobj;
+      calc_vec(&(model->fin_vertice[i * 9]), tmp_obj);
+      (*objtab)[i + sizeobj] = tmp_obj;
+      i++;
+    }
 }
