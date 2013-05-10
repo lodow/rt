@@ -94,11 +94,11 @@ void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
   int		sizeobj;
   int		i;
 
-  nb_tri = model->fin_size_vertice / 9;
+  nb_tri = model->fin_size_vertice / 3;
   sizeobj = 0;
+  baseobj->type = 6;
   while ((*objtab)[sizeobj].type != -1)
     sizeobj++;
-  sizeobj--;
   if (((*objtab) = adjust_mem_size((void *)*objtab, sizeobj * sizeof(t_obj),
                                    (sizeobj + nb_tri + 1) * sizeof(t_obj), 1))
       == NULL)
@@ -107,7 +107,16 @@ void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
   while (i < nb_tri)
     {
       (*objtab)[i + sizeobj] = *baseobj;
-      calc_vec(&(model->fin_vertice[i * 9]), &((*objtab)[i + sizeobj]));
+      calc_vec(&(model->fin_vertice[i * 3]), &((*objtab)[i + sizeobj]));
+       printf("tri: center %f,%f,%f  v1: %f,%f,%f  v2: %f, %f, %f\n", ((*objtab)[i + sizeobj]).pos[0],
+              ((*objtab)[i + sizeobj]).pos[1],
+              ((*objtab)[i + sizeobj]).pos[2],
+              ((*objtab)[i + sizeobj]).v1[0],
+              ((*objtab)[i + sizeobj]).v1[1],
+              ((*objtab)[i + sizeobj]).v1[2],
+              ((*objtab)[i + sizeobj]).v2[0],
+              ((*objtab)[i + sizeobj]).v2[1],
+              ((*objtab)[i + sizeobj]).v2[2]);
       i++;
     }
   (*objtab)[i + sizeobj].type = -1;
