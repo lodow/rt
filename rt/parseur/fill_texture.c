@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 ** 
 ** Started on  Thu May  9 10:16:03 2013 Adrien Della Maggiora
-** Last update Fri May 10 13:51:27 2013 Adrien Della Maggiora
+** Last update Fri May 10 15:48:08 2013 Adrien Della Maggiora
 */
 
 #include <stdlib.h>
@@ -15,7 +15,22 @@
 #include "bmp_loader.h"
 
 void	link_text(t_obj *ept, char *line, t_text *text)
-{}
+{
+  int	i;
+  int	j;
+
+  i = 0;
+  while (line[i] && line[i] == ' ')
+    ++i;
+  if (!line[i])
+    return ;
+  j = 0;
+  while (text->name && text->name[j] && my_strcmp(text->name[j], &line[i]) != 0)
+    j++;
+  if (!text->name)
+    return ;
+  ept->texture = text->text[j];
+}
 
 char	*get_textname(char *line)
 {
@@ -48,7 +63,6 @@ int	fill_text(char **file, t_rt *rpt, int i)
   while (file[j] && my_strcmp(file[j], "}") != 0)
     ++j;
   if (!file[j]
-      || (rpt->text = malloc(sizeof(t_text))) == NULL
       || (rpt->text->name = malloc((j - i + 1) * sizeof(char *))) == NULL
       || (rpt->text->text = malloc((j - i + 1) * sizeof(char *))) == NULL)
     return (-1);
@@ -56,12 +70,16 @@ int	fill_text(char **file, t_rt *rpt, int i)
   while (file[i] && my_strcmp(file[i], "}") != 0)
     {
       rpt->text->name[j] = get_textname(file[i]);
-      rpt->text->text[i] = bmp_loader(rpt->text->name[i]);
+      printf("%s || %d\n", rpt->text->name[j], j);
+      rpt->text->text[j] = bmp_loader(rpt->text->name[j]);
       if (!rpt->text->name[j] && !rpt->text->text[j])
 	return (-1);
       ++i;
       ++j;
     }
+  printf("%d\n", j);
+  rpt->text->name[j] = NULL;
+  rpt->text->text[j] = NULL;
   return (0);
 }
 
@@ -69,7 +87,8 @@ int	fill_texture(t_pars *opt, t_rt *rpt)
 {
   int	i;
 
-  rpt->text = NULL;
+  opt->text = rpt->text;
+  rpt->text->name = NULL;
   i = 0;
   while (opt->file[i] && my_strcmp(opt->file[i], "Texture") != 0)
     ++i;

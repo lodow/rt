@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Mar 16 23:19:04 2013 luc sinet
-** Last update Fri May 10 13:49:18 2013 Adrien Della Maggiora
+** Last update Fri May 10 15:34:43 2013 Adrien Della Maggiora
 */
 
 #include "main.h"
@@ -80,7 +80,7 @@ void	fill_angle(t_obj *ept, char *line)
     }
 }
 
-int	other_opt(char *line, t_obj *ept)
+int	other_opt(char *line, t_obj *ept, t_text *text)
 {
   int	i;
   char	*comp;
@@ -95,5 +95,5 @@ int	other_opt(char *line, t_obj *ept)
   objptr[2] = &shape_carac;
   while (comp[i] && comp[i] != line[0])
     ++i;
-  return (!comp[i] ? -1 : objptr[i / 5](line, ept, NULL));
+  return (!comp[i] ? -1 : objptr[i / 5](line, ept, text));
 }

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 18:33:58 2013 luc sinet
-** Last update Fri May 10 13:58:10 2013 Adrien Della Maggiora
+** Last update Fri May 10 14:21:32 2013 Adrien Della Maggiora
 */
 
 #include <sys/types.h>
@@ -108,11 +108,11 @@ int		pars(t_rt *rpt, char *fname, t_cam *cpt)
     return (merror("Malloc failed\n", -1));
   init_elem(rpt->obj, &opt);
   init_light(rpt->light, &opt);
-  if ((fill_tab(&opt, rpt->obj) == -1) ||
+  if (fill_texture(&opt, rpt) == -1 ||
+      (fill_tab(&opt, rpt->obj) == -1) ||
       fill_light(&opt, rpt->light) == -1 ||
       fill_cam(&opt, cpt) == -1 ||
-      fill_opt(&opt, rpt) == -1 ||
-      fill_texture(&opt, rpt) == -1)
+      fill_opt(&opt, rpt) == -1)
     return (-1);
   fill_model(&opt, &rpt->obj);
   return (check_size(rpt->obj));

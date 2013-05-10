@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat May  4 20:10:26 2013 luc sinet
-** Last update Fri May 10 13:47:37 2013 Adrien Della Maggiora
+** Last update Fri May 10 14:59:52 2013 Adrien Della Maggiora
 */
 
 #include "main.h"
@@ -13,6 +13,7 @@
 
 int	indice(char *line, t_obj *ept, t_text *text)
 {
+  (void)text;
   if (my_strncmp("Alpha = ", line, 8) == 0)
     ept->indice[0] = LIMIT(my_fgetnbr(&line[8]), 0, 1);
   else if (my_strncmp("N = ", line, 4) == 0)
@@ -28,6 +29,7 @@ int	indice(char *line, t_obj *ept, t_text *text)
 
 int	deformation(char *line, t_obj *ept, t_text *text)
 {
+  (void)text;
   if (my_strncmp("Limit = ", line, 8) == 0)
     fill_limits(&line[8], ept->limit);
   else if (my_strncmp("Ondulation = ", line, 13) == 0)

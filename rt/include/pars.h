@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Fri May 10 13:57:54 2013 Adrien Della Maggiora
+** Last update Fri May 10 14:32:34 2013 Adrien Della Maggiora
 */
 
 #ifndef PARS_H_
@@ -23,6 +23,7 @@ typedef struct	s_pars
 {
   char		**file;
   char		*line;
+  t_text	*text;
   int		accol;
   int		rv;
   int		nb_shape;
@@ -31,7 +32,7 @@ typedef struct	s_pars
   int		nb_opt;
 }		t_pars;
 
-int	other_opt(char *line, t_obj *ept);
+int	other_opt(char *line, t_obj *ept, t_text *text);
 void	fill_angle(t_obj *ept, char *line);
 void	fill_center(t_obj *ept, char *line);
 void	init_light(t_lig *ltab, t_pars *opt);
@@ -62,6 +63,6 @@ void	calc_vec(double *point, t_obj *obj);
 void	fill_vec(double vec[3], char *line);
 int	fill_texture(t_pars *opt, t_rt *rpt);
 int	fill_model(t_pars *opt, t_obj **tab);
-int	get_args(t_obj *tab, char **file, int *y);
+int	get_args(t_obj *tab, t_pars *opt, int *y);
 
 #endif
