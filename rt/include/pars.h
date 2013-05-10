@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Thu May  9 17:26:09 2013 luc sinet
+** Last update Fri May 10 13:57:54 2013 Adrien Della Maggiora
 */
 
 #ifndef PARS_H_
@@ -52,14 +52,15 @@ void	skip_adds(char *line, int *i);
 int	light_carac(char *line, t_lig *ltab, int i);
 int     file_error(char *line, int lnb, int ret);
 int     get_config_file(t_pars *ppt, char *conf_name);
-int	indice(char *line, t_obj *ept);
-int	deformation(char *line, t_obj *ept);
-int	shape_carac(char *line, t_obj *ept);
+int	indice(char *line, t_obj *ept, t_text *text);
+int	deformation(char *line, t_obj *ept, t_text *text);
+int	shape_carac(char *line, t_obj *ept, t_text *text);
 void	skip_adds(char *line, int *i);
 void	init_tab_names(char **shape);
 void	skip_fnumber(char *str, int *i);
 void	calc_vec(double *point, t_obj *obj);
 void	fill_vec(double vec[3], char *line);
+int	fill_texture(t_pars *opt, t_rt *rpt);
 int	fill_model(t_pars *opt, t_obj **tab);
 int	get_args(t_obj *tab, char **file, int *y);
 

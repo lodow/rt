@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Tue May  7 15:21:24 2013 Hugues
+** Last update Thu May  9 16:40:18 2013 Adrien Della Maggiora
 */
 
 #ifndef MAIN_H_
@@ -29,6 +29,7 @@
 
 typedef struct	s_samp	t_samp;
 typedef struct	s_lco	t_lco;
+typedef struct	s_bmp	t_bmp;
 
 typedef struct	s_cam
 {
@@ -88,6 +89,12 @@ typedef struct	s_vec
   double	vec[3];
 }		t_vec;
 
+typedef	struct	s_text
+{
+  char		**name;
+  t_bmp		**text;
+}		t_text;
+
 typedef struct	s_rt
 {
   int		obj_num;
@@ -96,6 +103,7 @@ typedef struct	s_rt
   t_obj		*obj;
   t_lig		*light;
   t_opt		*opt;
+  t_text	*text;
   double	(*eptr[10])(double *cam, double *vec, t_obj *opt);
 }		t_rt;
 

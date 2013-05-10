@@ -5,13 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat May  4 20:10:26 2013 luc sinet
-** Last update Thu May  9 11:30:08 2013 Adrien Della Maggiora
+** Last update Fri May 10 13:47:37 2013 Adrien Della Maggiora
 */
 
 #include "main.h"
 #include "pars.h"
 
-int	indice(char *line, t_obj *ept)
+int	indice(char *line, t_obj *ept, t_text *text)
 {
   if (my_strncmp("Alpha = ", line, 8) == 0)
     ept->indice[0] = LIMIT(my_fgetnbr(&line[8]), 0, 1);
@@ -26,7 +26,7 @@ int	indice(char *line, t_obj *ept)
   return (0);
 }
 
-int	deformation(char *line, t_obj *ept)
+int	deformation(char *line, t_obj *ept, t_text *text)
 {
   if (my_strncmp("Limit = ", line, 8) == 0)
     fill_limits(&line[8], ept->limit);
@@ -37,7 +37,7 @@ int	deformation(char *line, t_obj *ept)
   return (0);
 }
 
-int	shape_carac(char *line, t_obj *ept)
+int	shape_carac(char *line, t_obj *ept, t_text *text)
 {
   if (my_strncmp("Size = ", line, 7) == 0)
     ept->rayon = my_getnbr(&line[7]);
@@ -50,6 +50,8 @@ int	shape_carac(char *line, t_obj *ept)
     fill_vec(ept->v1, &line[5]);
   else if (my_strncmp("V2 = ", line, 5) == 0)
     fill_vec(ept->v2, &line[5]);
+  else if (my_strncmp("Texture = ", line, 10) == 0)
+    link_text(ept, &line[10], text);
   else
     return (-1);
   return (0);
