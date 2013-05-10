@@ -5,13 +5,11 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Tue May  7 14:55:53 2013 Hugues
-** Last update Tue May  7 14:56:13 2013 Hugues
+** Last update Thu May  9 16:30:17 2013 luc sinet
 */
 
 #ifndef MODEL_H_
 # define MODEL_H_
-
-# include "main.h"
 
 typedef struct	s_model
 {
@@ -29,9 +27,10 @@ typedef struct	s_model
   int		fin_size_uvs;
 }		t_model;
 
-t_model	*get_file_obj_model(const char *filename);
+t_model		*get_file_obj_model(const char *filename);
 void		model_sizeup_fin_tab(t_model *obj);
 void		fill_model_tabs(t_model *obj, int *vert, int *uvv, int *norm);
 void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj);
+void		init_model_struct(t_model *model);
 
 #endif

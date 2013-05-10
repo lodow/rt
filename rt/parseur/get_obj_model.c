@@ -107,12 +107,7 @@ t_model		*get_file_obj_model(const char *filename)
     return (NULL);
   if ((obj = malloc(1 * sizeof(t_model))) == NULL)
     return (NULL);
-  obj->raw_size_vertice = 0;
-  obj->raw_size_normal = 0;
-  obj->raw_size_uvs = 0;
-  obj->fin_size_vertice = 0;
-  obj->fin_size_normal = 0;
-  obj->fin_size_uvs = 0;
+  init_model_struct(obj);
   parse_model(obj, fd);
   close(fd);
   free(obj->raw_vertice);
