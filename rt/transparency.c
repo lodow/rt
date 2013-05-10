@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May  5 18:27:59 2013 luc sinet
-** Last update Fri May 10 18:51:53 2013 Adrien Della Maggiora
+** Last update Fri May 10 18:58:31 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
@@ -18,19 +18,13 @@ unsigned int	calc_trans(unsigned int *all_color, double *alpha, int i,
 {
   unsigned int	res;
 
-  printf("-- Start --\n");
-  printf("%X\n", all_color[i]);
   res = all_color[i--];
   while (i >= 0)
     {
-      printf("%X\n", all_color[i]);
       res = apply_indice(all_color[i], res, alpha[i + 1]);
       --i;
     }
   res = apply_indice(color, res, alpha[0]);
-  printf("%X\n", color);
-  printf("\n%X\n", res);
-  printf("-- END --\n");
   return (res);
 }
 
