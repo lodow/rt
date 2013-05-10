@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu May  9 13:47:30 2013 luc sinet
-** Last update Fri May 10 14:04:01 2013 luc sinet
+** Last update Fri May 10 17:12:56 2013 luc sinet
 */
 
 #include "main.h"
@@ -53,7 +53,7 @@ int		fill_model_struct(t_pars *opt, t_obj **tab, int *i)
     return (merror("Missing model's name\n", -1));
   init_single_elem(&model);
   model.type = 6;
-  if (get_args(&model, opt->file, i) == -1)
+  if (get_args(&model, opt, i) == -1)
     return (-1);
   if ((obj = get_file_obj_model(file_name)) == NULL)
     return (merror("Failed to get the model's informations\n", -1));
