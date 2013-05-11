@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Thu May  9 16:46:57 2013 luc sinet
+** Last update Sat May 11 17:10:49 2013 luc sinet
 */
 
 #include "main.h"
@@ -23,6 +23,7 @@ void	init_tab_names(char **shape)
   shape[7] = "Paraboloide";
   shape[8] = "Hyperboloide";
   shape[9] = "Moebius";
+  shape[10] = "Tangle";
 }
 
 void	init_limit_angle(double *pert, double *angle)
