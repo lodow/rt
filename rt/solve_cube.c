@@ -5,10 +5,11 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Fri May 10 21:28:51 2013 etienne debas
-** Last update Sat May 11 16:21:55 2013 etienne debas
+** Last update Sat May 11 16:42:36 2013 etienne debas
 */
 
 # include "solve_cube.h"
+# include "include/main.h"
 
 void		get_pq_and_disc(double *coef, double *res,
 				double *pq, double *discriminant)
@@ -60,11 +61,10 @@ void		one_solution(double *res, double *pq,
   res[0] = (s + u) + v;
 }
 
-void		solve_third(double *coef)
+double		solve_third(double *coef, double *res)
 {
     double	discriminant;
     double	pq[2];
-    double	res[3];
 
     get_pq_and_disc(coef, res, pq, &discriminant);
     if (pq[0] == 0 && pq[1] == 0 && discriminant == 0)
@@ -73,4 +73,5 @@ void		solve_third(double *coef)
       three_solution(res, pq, coef, discriminant);
     else if (discriminant > 0)
       one_solution(res, pq, coef, discriminant);
+    return (get_min(res, 4));
 }

@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Mon Apr 22 23:06:51 2013 etienne debas
-** Last update Thu May  9 10:32:20 2013 Adrien Della Maggiora
+** Last update Sat May 11 16:49:39 2013 etienne debas
 */
 
 #include <math.h>
@@ -31,5 +31,4 @@ double		moebius(double *cam, double *vec, t_obj *ept)
   a[3] = (pow(cam[0], 2) * cam[1] + pow(cam[2], 2) * cam[1]
 	  + pow(cam[1], 3) - cam[1] - 2 * cam[0] * cam[2]
 	  - 2 * pow(cam[0], 2) * cam[2] - 2 * pow(cam[1], 2) * cam[2]);
-  return (solve_third(a));
 }
