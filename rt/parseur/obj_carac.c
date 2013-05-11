@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat May  4 20:10:26 2013 luc sinet
-** Last update Fri May 10 14:59:52 2013 Adrien Della Maggiora
+** Last update Sat May 11 16:19:09 2013 Adrien Della Maggiora
 */
 
 #include "main.h"
@@ -16,7 +16,7 @@ int	indice(char *line, t_obj *ept, t_text *text)
   (void)text;
   if (my_strncmp("Alpha = ", line, 8) == 0)
     ept->indice[0] = LIMIT(my_fgetnbr(&line[8]), 0, 1);
-  else if (my_strncmp("N = ", line, 4) == 0)
+  else if (my_strncmp("n = ", line, 4) == 0)
     ept->indice[1] = my_fgetnbr(&line[4]);
   else if (my_strncmp("Reflexion = ", line, 12) == 0)
     ept->indice[2] = LIMIT(my_fgetnbr(&line[12]), 0, 1);
@@ -52,6 +52,8 @@ int	shape_carac(char *line, t_obj *ept, t_text *text)
     fill_vec(ept->v1, &line[5]);
   else if (my_strncmp("V2 = ", line, 5) == 0)
     fill_vec(ept->v2, &line[5]);
+  else if (my_strncmp("Normal = ", line, 9) == 0)
+    fill_vec(ept->normal, &line[9]);
   else if (my_strncmp("Texture = ", line, 10) == 0)
     link_text(ept, &line[10], text);
   else

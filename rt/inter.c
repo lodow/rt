@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Feb 26 04:22:07 2013 luc sinet
-** Last update Sat May 11 16:36:59 2013 luc sinet
+** Last update Sat May 11 18:07:15 2013 luc sinet
 */
 
 #include <math.h>
@@ -47,8 +47,19 @@ double		cone(double *cam, double *vec, t_obj *ept)
 
 double		plan(double *cam, double *vec, t_obj *ept)
 {
+  double	a;
+  double	b;
+
   (void)(*ept);
-  return ((vec[2] == ZERO) ? -1.0 : -(cam[2] / vec[2]));
+  a = ept->normal[0] * vec[0] + ept->normal[1] * vec[1]
+    + ept->normal[2] * vec[2];
+  b = -(ept->normal[0] * cam[0] + ept->normal[1] * cam[1]
+	+ ept->normal[2] * cam[2]
+	+ (-(ept->pos[0] * ept->normal[0] + ept->pos[1] * ept->normal[1]
+	     + ept->pos[2] * ept->normal[2])));
+  if (a > ZERO || a < ZERO)
+    return (b / a);
+  return (-1.0);
 }
 
 double		cylinder(double *cam, double *vec, t_obj *ept)

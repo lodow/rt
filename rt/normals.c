@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Mar 31 13:20:23 2013 luc sinet
-** Last update Sat May 11 17:52:25 2013 luc sinet
+** Last update Sat May 11 18:06:49 2013 luc sinet
 */
 
 #include <math.h>
@@ -37,9 +37,9 @@ void	sphere_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 void	plan_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 {
   (void)(obj);
-  nvec[0] = 0;
-  nvec[1] = 0;
-  nvec[2] = 100;
+  nvec[0] = obj->normal[0];
+  nvec[1] = obj->normal[1];
+  nvec[2] = obj->normal[2];
   perturb_normal(nvec, obj_coor, pert);
 }
 

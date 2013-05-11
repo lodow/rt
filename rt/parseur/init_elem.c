@@ -5,9 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Sat May 11 17:10:49 2013 luc sinet
+** Last update Sat May 11 17:34:55 2013 Adrien Della Maggiora
 */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
 #include "pars.h"
 
@@ -65,6 +67,8 @@ void	init_single_elem(t_obj *obj)
     {
       obj->pos[x] = IVAL;
       obj->color[x] = 0;
+      obj->indice[x] = 0;
+      obj->normal[x] = 0;
       obj->v1[x] = 0;
       obj->v2[x++] = 0;
     }
@@ -72,10 +76,9 @@ void	init_single_elem(t_obj *obj)
   init_limits(obj->limit);
   obj->rayon = 0;
   obj->bright = 1.0;
-  obj->indice[0] = 0;
+  obj->texture = NULL;
   obj->indice[1] = 1;
-  obj->indice[2] = 0;
-  obj->indice[3] = 0;
+  obj->normal[3] = 0;
 }
 
 void    init_elem(t_obj *tab, t_pars *opt)

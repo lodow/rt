@@ -5,10 +5,11 @@
 ** Login   <adrien@Adrien>
 ** 
 ** Started on  Sat May  4 14:46:20 2013 Adrien
-** Last update Thu May  9 11:50:56 2013 Adrien Della Maggiora
+** Last update Sat May 11 17:31:33 2013 Adrien Della Maggiora
 */
 
 #include "main.h"
+#include "inter.h"
 
 double		circle(double *cam, double *vec, t_obj *ept)
 {
@@ -16,9 +17,8 @@ double		circle(double *cam, double *vec, t_obj *ept)
   double	test;
   double	pt[2];
 
-  if (vec[2] == ZERO || -(cam[2] / vec[2]) < ZERO)
+  if ((ret = plan(cam, vec, ept)) == -1)
     return (-1);
-  ret = -(cam[2] / vec[2]);
   pt[0] = vec[0] * ret + cam[0];
   pt[1] = vec[1] * ret + cam[1];
   test = pt[0] * pt[0] + pt[1] * pt[1];
@@ -34,9 +34,8 @@ double		square(double *cam, double *vec, t_obj *ept)
   double	ret;
   double	pt[2];
 
-  if (vec[2] == ZERO || -(cam[2] / vec[2]) < ZERO)
+  if ((ret = plan(cam, vec, ept)) == -1)
     return (-1);
-  ret = -(cam[2] / vec[2]);
   pt[0] = vec[0] * ret + cam[0];
   pt[1] = vec[1] * ret + cam[1];
   k2 = (ept->v1[0] * pt[1] - pt[0] * ept->v1[1])
@@ -54,9 +53,8 @@ double		triangle(double *cam, double *vec, t_obj *ept)
   double	ret;
   double	pt[2];
 
-  if (vec[2] == ZERO || -(cam[2] / vec[2]) < ZERO)
+  if ((ret = plan(cam, vec, ept)) == -1)
     return (-1);
-  ret = -(cam[2] / vec[2]);
   pt[0] = vec[0] * ret + cam[0];
   pt[1] = vec[1] * ret + cam[1];
   k2 = (ept->v1[0] * pt[1] - pt[0] * ept->v1[1])
