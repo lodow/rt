@@ -5,10 +5,11 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 11 00:40:17 2013 etienne debas
-** Last update Sat May 11 16:48:53 2013 luc sinet
+** Last update Sat May 11 17:04:38 2013 luc sinet
 */
 
 # include "solve_quad.h"
+# include "include/main.h"
 
 void		precalculate(double *value, double *coef, double delta)
 {
@@ -56,11 +57,10 @@ void		calculate_sol(double *value, double *sol, int *nb_sol)
     }
 }
 
-void		resolve_quad(double *coef)
+double		solve_quad(double *coef, double *res)
 {
   double	delta;
   double	value[11];
-  double	sol[4];
   int		nb_sol;
 
   nb_sol = 0;
@@ -73,5 +73,6 @@ void		resolve_quad(double *coef)
   C2 = -(powf(AA, 2.0) + 12.0 * CC) / 3.0;
   delta = powf(C2 / 3.0, 3.0) + powf(D2 / 2.0, 2.0);
   precalculate(value, coef, delta);
-  calculate_sol(value, sol, &nb_sol);
+  calculate_sol(value, res, &nb_sol);
+  return (get_min(coef, 4));
 }
