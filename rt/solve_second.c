@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Apr  9 14:49:14 2013 luc sinet
-** Last update Sat May 11 16:37:00 2013 luc sinet
+** Last update Sat May 11 17:38:31 2013 luc sinet
 */
 
 #include <math.h>
@@ -57,7 +57,7 @@ double		get_smallest(double a, double b)
   return (b);
 }
 
-int		solve_second(double *a, double *k)
+double		solve_second(double *a, double *k)
 {
   double	delta;
 

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Sat May 11 16:47:42 2013 etienne debas
+** Last update Sat May 11 17:38:11 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -126,7 +126,7 @@ double		*deref_cam(t_cam *cpt, double *cam);
 double		*deref_vec(t_vec *vpt, double *vec);
 double		get_min(double *k, int size);
 double		get_max(double *k, int size);
-int		solve_second(double *a, double *k);
+double		solve_second(double *a, double *k);
 int		get_color_diff(unsigned int pixel1, unsigned int pixel2);
 double		point_distance(double *p1, double *p2);
 double		test_limit(double *cam, double *vec, double *k, double *limit);
