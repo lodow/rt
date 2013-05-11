@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 11 00:40:17 2013 etienne debas
-** Last update Sat May 11 16:13:18 2013 etienne debas
+** Last update Sat May 11 16:48:53 2013 luc sinet
 */
 
 # include "solve_quad.h"
@@ -37,7 +37,7 @@ void		calculate_sol(double *value, double *sol, int *nb_sol)
   int		i;
 
   i = 1;
-  while (1)
+  while (i > -3)
     {
       delta = powf(R, 2) - 2.0 * T - (i * 4.0) * S;
       first = -(i * R) / 2.0;
@@ -52,7 +52,7 @@ void		calculate_sol(double *value, double *sol, int *nb_sol)
 	}
       if (i == -1)
 	return ;
-      i = -1;
+      i -= 2;
     }
 }
 
