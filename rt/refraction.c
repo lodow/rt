@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Mon Apr  1 12:31:29 2013 Adrien Della Maggiora
-** Last update Thu May  9 10:31:13 2013 Adrien Della Maggiora
+** Last update Sat May 11 15:28:36 2013 luc sinet
 */
 
 #include <math.h>
@@ -13,31 +13,37 @@
 #include "light.h"
 #include "change_color.h"
 
+double		get_positive_scalar(double *vec1, double *vec2)
+{
+  double	scal;
+
+  scal = scale(vec1, vec2);
+  if (scal < ZERO)
+    {
+      invert_vec(vec1);
+      scal = scale(vec2, vec1);
+    }
+  return (scal);
+}
+
 void		calc_refrac(t_rt *rpt, t_vec *vpt, t_lco *lpt,
 			    double k, double n)
 {
-  double        vec[3];
+  double        cvec[3];
   double        scal;
   double	tmp;
 
   get_inter_normal(rpt, vpt, k, lpt);
-  vec[0] = lpt->obj_coor[0] - rpt->cpt->pos[0];
-  vec[1] = lpt->obj_coor[1] - rpt->cpt->pos[1];
-  vec[2] = lpt->obj_coor[2] - rpt->cpt->pos[2];
-  rpt->cpt->pos[0] = lpt->obj_coor[0];
-  rpt->cpt->pos[1] = lpt->obj_coor[1];
-  rpt->cpt->pos[2] = lpt->obj_coor[2];
-  unitaire(vec);
+  cvec[0] = lpt->obj_coor[0] - rpt->cpt->pos[0];
+  cvec[1] = lpt->obj_coor[1] - rpt->cpt->pos[1];
+  cvec[2] = lpt->obj_coor[2] - rpt->cpt->pos[2];
+  copy_tab(lpt->obj_coor, rpt->cpt->pos, 3);
+  unitaire(cvec);
   unitaire(lpt->nvec);
-  scal = scale(vec, lpt->nvec);
-  if (scal < ZERO)
-    {
-      invert_vec(lpt->nvec);
-      scal = scale(vec, lpt->nvec);
-    }
+  scal = get_positive_scalar(lpt->nvec, cvec);
   tmp = 1 + (n * n) * ((scal * scal) - 1);
   tmp = (tmp > ZERO) ? sqrt(tmp) : 0;
-  vpt->vec[0] = n * vec[0] + (n * scal - tmp) * lpt->nvec[0];
-  vpt->vec[1] = n * vec[1] + (n * scal - tmp) * lpt->nvec[1];
-  vpt->vec[2] = n * vec[2] + (n * scal - tmp) * lpt->nvec[2];
+  vpt->vec[0] = n * cvec[0] + (n * scal - tmp) * lpt->nvec[0];
+  vpt->vec[1] = n * cvec[1] + (n * scal - tmp) * lpt->nvec[1];
+  vpt->vec[2] = n * cvec[2] + (n * scal - tmp) * lpt->nvec[2];
 }
