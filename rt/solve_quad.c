@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 11 00:40:17 2013 etienne debas
-** Last update Sat May 11 17:04:38 2013 luc sinet
+** Last update Sat May 11 20:08:49 2013 etienne debas
 */
 
 # include "solve_quad.h"
@@ -62,7 +62,9 @@ double		solve_quad(double *coef, double *res)
   double	delta;
   double	value[11];
   int		nb_sol;
+  int		i;
 
+  i = 0;
   nb_sol = 0;
   Z = coef[1] / (2.0 * coef[0]);
   AA = coef[2] / coef[0] - 3.0 * powf(Z, 2) / 2.0;
@@ -74,5 +76,8 @@ double		solve_quad(double *coef, double *res)
   delta = powf(C2 / 3.0, 3.0) + powf(D2 / 2.0, 2.0);
   precalculate(value, coef, delta);
   calculate_sol(value, res, &nb_sol);
+  printf("coef: %fx^4 + %fx^3 + %fx^2 + %fx + %f\n", coef[0], coef[1], coef[2], coef[3], coef[4]);
+  while (i < nb_sol)
+    printf("x%d: %f\n",i + 1, res[i++]);
   return (get_min(coef, 4));
 }

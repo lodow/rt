@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Fri May 10 21:28:51 2013 etienne debas
-** Last update Sat May 11 16:42:36 2013 etienne debas
+** Last update Sat May 11 20:55:19 2013 etienne debas
 */
 
 # include "solve_cube.h"
@@ -61,17 +61,35 @@ void		one_solution(double *res, double *pq,
   res[0] = (s + u) + v;
 }
 
-double		solve_third(double *coef, double *res)
+double		solve_cube(double *coef, double *res)
 {
-    double	discriminant;
-    double	pq[2];
+  double	discriminant;
+  double	pq[2];
+  int		i;
+  int		nb_sol;
 
-    get_pq_and_disc(coef, res, pq, &discriminant);
-    if (pq[0] == 0 && pq[1] == 0 && discriminant == 0)
+  i = 0;
+  get_pq_and_disc(coef, res, pq, &discriminant);
+  if (pq[0] == 0 && pq[1] == 0 && discriminant == 0)
+    {
+      nb_sol = 1;
       res[0] = -cbrt(coef[3] / coef[0]);
-    else if (discriminant <= 0)
+    }
+  else if (discriminant <= 0)
+    {
+      nb_sol = 3;
       three_solution(res, pq, coef, discriminant);
-    else if (discriminant > 0)
+    }
+  else if (discriminant > 0)
+    {
+      nb_sol = 1;
       one_solution(res, pq, coef, discriminant);
-    return (get_min(res, 4));
+    }
+  printf ("coef: %f %f %f %f\n", coef[0], coef[1], coef[2], coef[3]);
+  while (i < nb_sol)
+    {
+      printf ("x%d - inject: %f\n", i + 1, coef[0] * powf(res[i], 3) + coef[1] * powf(res[i], 2) + coef[2] * res[i] + coef[3]);
+      i++;
+    }
+  return (get_min(res, 4));
 }

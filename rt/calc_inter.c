@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Sat May 11 17:50:57 2013 luc sinet
+** Last update Sat May 11 20:43:54 2013 etienne debas
 */
 
 #include <math.h>
@@ -27,7 +27,7 @@ void	assign_function(t_rt *rpt)
   rpt->eptr[7] = &paraboloide;
   rpt->eptr[8] = &hyperboloide;
   rpt->eptr[9] = &moebius;
-  rpt->eptr[10] = &moebius;
+  rpt->eptr[10] = &tangle;
 }
 
 void		calc_inter(t_rt *rpt, double *kmin)
@@ -37,7 +37,7 @@ void		calc_inter(t_rt *rpt, double *kmin)
 
   i = 0;
   *kmin = -1;
-  while (rpt->obj[i].type >= 0 && rpt->obj[i].type < 10)
+  while (rpt->obj[i].type >= 0 && rpt->obj[i].type < 11)
     {
       k = move_cam(rpt, rpt->vpt, rpt->cpt, rpt->obj[i]);
       if (k > ZERO && (k < *kmin || *kmin == -1))

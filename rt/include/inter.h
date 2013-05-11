@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Feb 26 05:58:41 2013 luc sinet
-** Last update Sat May 11 17:51:38 2013 luc sinet
+** Last update Sat May 11 20:28:11 2013 etienne debas
 */
 
 #ifndef REND_H_
@@ -22,4 +22,7 @@ double	paraboloide(double *cam, double *vec, t_obj *ept);
 double	hyperboloide(double *cam, double *vec, t_obj *ept);
 double 	moebius(double *cam, double *vec, t_obj *ept);
 double 	tangle(double *cam, double *vec, t_obj *ept);
+double	solve_quad(double *coef, double *res);
+double	solve_cube(double *coef, double *res);
+
 #endif
