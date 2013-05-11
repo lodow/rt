@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Sat May 11 17:26:00 2013 Adrien Della Maggiora
+** Last update Sat May 11 17:34:55 2013 Adrien Della Maggiora
 */
 
 #include <stdio.h>
@@ -25,6 +25,7 @@ void	init_tab_names(char **shape)
   shape[7] = "Paraboloide";
   shape[8] = "Hyperboloide";
   shape[9] = "Moebius";
+  shape[10] = "Tangle";
 }
 
 void	init_limit_angle(double *pert, double *angle)

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 18:33:58 2013 luc sinet
-** Last update Fri May 10 17:25:26 2013 luc sinet
+** Last update Sat May 11 17:26:53 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -18,20 +18,20 @@
 int	check_shape(char *line, int *accol, int nb_line)
 {
   int	i;
-  char	*shape[16];
+  char	*shape[17];
 
   i = 0;
   init_shapes(shape);
-  while (i < 16 && my_strcmp(shape[i], line) != 0)
+  while (i < 17 && my_strcmp(shape[i], line) != 0)
     i++;
   *accol += T_ACCOL(i);
-  if (*accol > 1 || *accol < 0 || (i < 14 && *accol != 0))
+  if (*accol > 1 || *accol < 0 || (i < 15 && *accol != 0))
     {
       my_putstr("line ", 2);
       my_put_nbr(nb_line, 2);
       return (merror(", file is incorectly formatted\n", -1));
     }
-  return (i < 10 ? 1 : (i == 11) ? 2 : (i == 12) ? 3 : (i == 13) ? 4 : 0);
+  return (i < 11 ? 1 : (i == 12) ? 2 : (i == 13) ? 3 : (i == 14) ? 4 : 0);
 }
 
 int	get_size(t_pars *opt)
@@ -64,7 +64,6 @@ int	check_size(t_obj *tab)
   obj = 0;
   while (tab[obj].type != -1)
     {
-      printf("%d, %d\n", obj, tab[obj].type);
       i = 0;
       while (i < 3)
 	{

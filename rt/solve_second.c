@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Apr  9 14:49:14 2013 luc sinet
-** Last update Fri May 10 19:11:02 2013 etienne debas
+** Last update Sat May 11 16:37:00 2013 luc sinet
 */
 
 #include <math.h>
@@ -68,5 +68,5 @@ int		solve_second(double *a, double *k)
     return (get_smallest((-a[1] / (2.0 * a[0])), -1.0));
   k[0] = ((-a[1] + sqrt(delta)) / (2 * a[0]));
   k[1] = ((-a[1] - sqrt(delta)) / (2 * a[0]));
-  return (1);
+  return (get_min(k, 2));
 }
