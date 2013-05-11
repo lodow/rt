@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Sat May 11 16:47:42 2013 etienne debas
+** Last update Sat May 11 17:29:27 2013 Adrien Della Maggiora
 */
 
 #ifndef MAIN_H_
@@ -57,6 +57,7 @@ typedef struct	s_obj
   double	v1[3];
   double	v2[3];
   double	indice[4];
+  double	normal[4];
   t_bmp		*texture;
 }		t_obj;
 
@@ -143,11 +144,12 @@ void		fill_img_param(int *pos, unsigned int color,
 void		delta_neg_third(double *k, double delta, double *pq);
 void		delta_nul_third(double *k, double *pq);
 void		delta_pos_third(double *k, double *pq);
-unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
+unsigned int	transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
 			     double k);
 void		calc_refrac(t_rt *rpt, t_vec *vpt, t_lco *lpt,
 			    double k, double n);
 void		my_mem_cpy(void *dest, void *src, int size);
 void		*adjust_mem_size(void *mem, int size, int nsize, int dfree);
+void		link_text(t_obj *ept, char *line, t_text *text);
 
 #endif

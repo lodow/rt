@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Mar 16 23:19:04 2013 luc sinet
-** Last update Fri May 10 15:34:43 2013 Adrien Della Maggiora
+** Last update Sat May 11 15:21:44 2013 Adrien Della Maggiora
 */
 
 #include "main.h"
@@ -87,7 +87,7 @@ int	other_opt(char *line, t_obj *ept, t_text *text)
   int	(*objptr[3])(char *line, t_obj *ept, t_text *text);
 
   i = 0;
-  comp = "ANRc LO   SCBVT";
+  comp = "AnRc  LO    SCBVTN";
   if (my_strncmp(line, "Name = ", 7) == 0)
     return (0);
   objptr[0] = &indice;
@@ -95,5 +95,5 @@ int	other_opt(char *line, t_obj *ept, t_text *text)
   objptr[2] = &shape_carac;
   while (comp[i] && comp[i] != line[0])
     ++i;
-  return (!comp[i] ? -1 : objptr[i / 5](line, ept, text));
+  return (!comp[i] ? -1 : objptr[i / 6](line, ept, text));
 }
