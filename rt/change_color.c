@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 16:50:09 2013 luc sinet
-** Last update Thu May  9 10:32:44 2013 Adrien Della Maggiora
+** Last update Sat May 11 13:58:56 2013 luc sinet
 */
 
 #include <math.h>

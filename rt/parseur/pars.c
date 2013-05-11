@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 18:33:58 2013 luc sinet
-** Last update Fri May 10 14:21:32 2013 Adrien Della Maggiora
+** Last update Fri May 10 17:25:26 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -64,6 +64,7 @@ int	check_size(t_obj *tab)
   obj = 0;
   while (tab[obj].type != -1)
     {
+      printf("%d, %d\n", obj, tab[obj].type);
       i = 0;
       while (i < 3)
 	{
