@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr  7 19:07:11 2013 luc sinet
-** Last update Fri May 10 18:35:02 2013 etienne debas
+** Last update Sat May 11 14:22:50 2013 luc sinet
 */
 
 #include <math.h>
@@ -40,7 +40,7 @@ double		get_specular_coef(t_lco *lpt, double *cam_pos)
   double	lvec[3];
   double	cvec[3];
   double	rvec[3];
-  double	scal;
+  double	scal[2];
 
   copy_tab(lpt->lvec, lvec, 3);
   cvec[0] = cam_pos[0] - lpt->obj_coor[0];
@@ -48,11 +48,16 @@ double		get_specular_coef(t_lco *lpt, double *cam_pos)
   cvec[2] = cam_pos[2] - lpt->obj_coor[2];
   unitaire(lvec);
   unitaire(lpt->nvec);
-  scal = scale(lvec, lpt->nvec);
-  rvec[0] = lvec[0] - 2.0 * scal * lpt->nvec[0];
-  rvec[1] = lvec[1] - 2.0 * scal * lpt->nvec[1];
-  rvec[2] = lvec[2] - 2.0 * scal * lpt->nvec[2];
-  return (pow(cos_vector(rvec, cvec), 50));
+  scal[0] = scale(lvec, lpt->nvec);
+  rvec[0] = lvec[0] - 2.0 * scal[0] * lpt->nvec[0];
+  rvec[1] = lvec[1] - 2.0 * scal[0] * lpt->nvec[1];
+  rvec[2] = lvec[2] - 2.0 * scal[0] * lpt->nvec[2];
+  scal[1] = scale(rvec, cvec);
+  if (scal[1] < 0)
+    scal[1] += 360;
+  if (scal[1] < 90)
+    return (pow(cos_vector(rvec, cvec), 50));
+  return (0);
 }
 
 void		get_light_color(t_lig *light, t_lco *lpt,

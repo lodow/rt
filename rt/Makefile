@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sat May 11 16:19:12 2013 etienne debas
+## Last update Sat May 11 16:28:51 2013 etienne debas
 ##
 
 SRCS	= main.c \
@@ -54,7 +54,6 @@ SRCS	= main.c \
 	  antialiasing.c \
 	  ambient_light.c \
 	  shadows.c \
-	  shadows_modifications.c \
 	  check_passages.c \
 	  detect_edge.c \
 	  detect_shadows.c \
