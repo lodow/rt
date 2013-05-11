@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Thu May  9 11:37:21 2013 Adrien Della Maggiora
+** Last update Sat May 11 17:50:57 2013 luc sinet
 */
 
 #include <math.h>
@@ -27,6 +27,7 @@ void	assign_function(t_rt *rpt)
   rpt->eptr[7] = &paraboloide;
   rpt->eptr[8] = &hyperboloide;
   rpt->eptr[9] = &moebius;
+  rpt->eptr[10] = &moebius;
 }
 
 void		calc_inter(t_rt *rpt, double *kmin)

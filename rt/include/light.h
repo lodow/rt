@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Fri May 10 15:10:19 2013 luc sinet
+** Last update Sat May 11 17:54:53 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -71,6 +71,7 @@ void		sphere_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
 void		perturb_normal(double *nvec, double *obj_coor, double *pert);
 void		plan_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
 void		cone_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
+void		tangle_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
 void		moebius_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
 void		cylinder_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
 void		paraboloide_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);

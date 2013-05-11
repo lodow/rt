@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Thu May  9 14:00:22 2013 Adrien Della Maggiora
+** Last update Sat May 11 17:53:45 2013 luc sinet
 */
 
 #include <math.h>
@@ -25,11 +25,12 @@ void		init_normals_pointers(void (**nptr)(double *nvec, double *obj_coor, double
   nptr[7] = &paraboloide_normal;
   nptr[8] = &hyperboloide_normal;
   nptr[9] = &moebius_normal;
+  nptr[10] = &tangle_normal;
 }
 
 void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
 {
-  void		(*nptr[10])(double *nvec, double *obj_coor, double *pert, t_obj *obj);
+  void		(*nptr[11])(double *nvec, double *obj_coor, double *pert, t_obj *obj);
   double	vcam[6];
   t_obj		*obj;
 
