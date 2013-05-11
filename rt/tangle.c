@@ -5,14 +5,15 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri Mar 29 10:18:26 2013 luc sinet
-** Last update Fri Mar 29 10:55:07 2013 luc sinet
+** Last update Sat May 11 16:49:55 2013 luc sinet
 */
 
 double		tangle(double *cam, double *vec, t_obj *ept)
 {
   double	c[5];
-  double	p[3];
+  double	k[4];
 
+  tab_set(k, 4);
   c[0] = pow(vec[0], 4) + pow(vec[1], 4) + pow(vec[2], 4);
   c[1] = 4.0 * (pow(vec[0], 3) * cam[0] + pow(vec[1], 3) * cam[1]
 		+ pow(vec[2], 3) * cam[2]);
@@ -24,4 +25,5 @@ double		tangle(double *cam, double *vec, t_obj *ept)
     - 10.0 * (vec[0] * cam[0] + cam[1] * vec[1] + cam[1] * vec[1]);
   c[4] = pow(cam[0], 4) + pow(cam[1], 4) + pow(cam[2], 4)
     - 5.0 * (pow(cam[0], 2) + pow(cam[1], 2) + pow(cam[2], 2));
+  return (resolve_quad(c, k));
 }
