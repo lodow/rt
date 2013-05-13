@@ -10,7 +10,7 @@
 
 #include "main.h"
 
-void	calc_vec(double *point, t_obj *obj)
+void	calc_vec(double *point, double *normal, t_obj *obj)
 {
   obj->v1[0] = (point[0] - point[3]);
   obj->v1[1] = (point[1] - point[4]);
@@ -21,4 +21,7 @@ void	calc_vec(double *point, t_obj *obj)
   obj->pos[0] = point[0];
   obj->pos[1] = point[1];
   obj->pos[2] = point[2];
+  obj->normal[0] = normal[0];
+  obj->normal[1] = normal[1];
+  obj->normal[2] = normal[2];
 }
