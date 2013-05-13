@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 ** 
 ** Started on  Thu May  9 10:16:03 2013 Adrien Della Maggiora
-** Last update Mon May 13 11:52:11 2013 Adrien Della Maggiora
+** Last update Mon May 13 17:45:06 2013 Adrien Della Maggiora
 */
 
 #include <stdlib.h>
@@ -29,7 +29,6 @@ void	link_text(t_obj *ept, char *line, t_text *text)
     j++;
   if (!text->name)
     return ;
-  printf("text->name[j] = %s\n", text->name[j]);
   ept->texture = text->text[j];
 }
 
