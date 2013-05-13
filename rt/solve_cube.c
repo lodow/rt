@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Fri May 10 21:28:51 2013 etienne debas
-** Last update Sat May 11 20:55:19 2013 etienne debas
+** Last update Mon May 13 18:24:26 2013 etienne debas
 */
 
 # include "solve_cube.h"
@@ -69,6 +69,10 @@ double		solve_cube(double *coef, double *res)
   int		nb_sol;
 
   i = 0;
+  coef[0] /= 1000000;
+  coef[1] /= 1000000;
+  coef[2] /= 1000000;
+  coef[3] /= 1000000;
   get_pq_and_disc(coef, res, pq, &discriminant);
   if (pq[0] == 0 && pq[1] == 0 && discriminant == 0)
     {
@@ -85,11 +89,12 @@ double		solve_cube(double *coef, double *res)
       nb_sol = 1;
       one_solution(res, pq, coef, discriminant);
     }
-  printf ("coef: %f %f %f %f\n", coef[0], coef[1], coef[2], coef[3]);
-  while (i < nb_sol)
-    {
-      printf ("x%d - inject: %f\n", i + 1, coef[0] * powf(res[i], 3) + coef[1] * powf(res[i], 2) + coef[2] * res[i] + coef[3]);
-      i++;
-    }
+  printf ("min_cube = %f\n", get_min(res, 4));
+  /* printf ("coef: %f %f %f %f\n", coef[0], coef[1], coef[2], coef[3]); */
+  /* while (i < nb_sol) */
+  /*   { */
+  /*     printf ("x%d = %f - inject: %f\n", i + 1, res[i], coef[0] * powf(res[i], 3) + coef[1] * powf(res[i], 2) + coef[2] * res[i] + coef[3]); */
+  /*     i++; */
+  /*   } */
   return (get_min(res, 4));
 }

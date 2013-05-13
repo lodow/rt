@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 11 00:40:17 2013 etienne debas
-** Last update Sat May 11 20:08:49 2013 etienne debas
+** Last update Mon May 13 18:31:21 2013 etienne debas
 */
 
 # include "solve_quad.h"
@@ -66,6 +66,11 @@ double		solve_quad(double *coef, double *res)
 
   i = 0;
   nb_sol = 0;
+  coef[0] /= 1000000;
+  coef[1] /= 1000000;
+  coef[2] /= 1000000;
+  coef[3] /= 1000000;
+  coef[4] /= 1000000;
   Z = coef[1] / (2.0 * coef[0]);
   AA = coef[2] / coef[0] - 3.0 * powf(Z, 2) / 2.0;
   BB = coef[3] / coef[0] + powf(Z, 3.0) - coef[2] * Z / coef[0];
@@ -76,8 +81,9 @@ double		solve_quad(double *coef, double *res)
   delta = powf(C2 / 3.0, 3.0) + powf(D2 / 2.0, 2.0);
   precalculate(value, coef, delta);
   calculate_sol(value, res, &nb_sol);
-  printf("coef: %fx^4 + %fx^3 + %fx^2 + %fx + %f\n", coef[0], coef[1], coef[2], coef[3], coef[4]);
-  while (i < nb_sol)
-    printf("x%d: %f\n",i + 1, res[i++]);
+  printf("min_quad = %f\n", get_min(res, 4));
+  /* printf("coef: %fx^4 + %fx^3 + %fx^2 + %fx + %f\n", coef[0], coef[1], coef[2], coef[3], coef[4]); */
+  /* while (i < nb_sol) */
+  /*   printf("x%d: %f\n",i + 1, res[i++]); */
   return (get_min(coef, 4));
 }
