@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Sat May 11 17:34:55 2013 Adrien Della Maggiora
+** Last update Mon May 13 15:29:29 2013 luc sinet
 */
 
 #include <stdio.h>
@@ -74,7 +74,7 @@ void	init_single_elem(t_obj *obj)
     }
   init_limit_angle(obj->pert, obj->angle);
   init_limits(obj->limit);
-  obj->rayon = 0;
+  obj->size = 0;
   obj->bright = 1.0;
   obj->texture = NULL;
   obj->indice[1] = 1;

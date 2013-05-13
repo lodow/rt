@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Sat May 11 17:31:04 2013 luc sinet
+** Last update Mon May 13 15:38:22 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -14,6 +14,18 @@
 # define LIMIT(x, n1, n2) (x < n1) ? n1 : (x > n2) ? n2 : x
 # define BOOL(x) (x >= 1) ? 1 : 0
 # define T_ACCOL(x) (x == 15) ? 1 : (x == 16) ? -1 : 0
+
+#define SPHERE 0
+#define PLAN 1
+#define CONE 2
+#define CYLINDER 3
+#define CIRCLE 4
+#define SQUARE 5
+#define TRIANGLE 6
+#define PARABOLOIDE 7
+#define HYERBOLOIDE 8
+#define MOEBIUS 9
+#define TANGLE 10
 
 typedef struct	s_obj	t_obj;
 typedef struct	s_lig	t_lig;
@@ -48,6 +60,7 @@ int	pars(t_rt *rpt, char *fname, t_cam *cpt);
 void	fill_limits(char *line, double *limit);
 void	get_color(char *line, unsigned char *color);
 void	init_shapes(char **shape);
+void	init_triangle_size(t_obj *obj);
 void	init_cam(t_cam *cpt);
 void	skip_adds(char *line, int *i);
 int	light_carac(char *line, t_lig *ltab, int i);

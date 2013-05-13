@@ -1,11 +1,11 @@
 /*
 ** color.c for color in /home/adrien/Projet/rt/rt
-** 
+**
 ** Made by Adrien Della Maggiora
 ** Login   <adrien@mint>
-** 
+**
 ** Started on  Mon May 13 10:15:38 2013 Adrien Della Maggiora
-** Last update Mon May 13 18:31:36 2013 Adrien Della Maggiora
+** Last update Mon May 13 18:37:17 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
@@ -53,7 +53,7 @@ void	texture_plan(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
   unitaire(lpt->nvec);
  unitaire(nvec);
   vec[0] = nvec[1] * lpt->nvec[2] - nvec[2] * lpt->nvec[1];
-  vec[1] = nvec[2] * lpt->nvec[0] - nvec[0] * lpt->nvec[2]; 
+  vec[1] = nvec[2] * lpt->nvec[0] - nvec[0] * lpt->nvec[2];
   vec[2] = nvec[0] * lpt->nvec[1] - nvec[1] * lpt->nvec[0];
   u = scale(lpt->obj_coor, nvec);
   v = scale(lpt->obj_coor, vec);
@@ -64,7 +64,6 @@ void	get_color_texture(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
 {
   if (obj->texture == NULL)
     return ;
-  printf("%d, %d\n", obj->texture->height, obj->texture->widht);
   if (obj->type == 1)
     texture_plan(obj, lpt, k, rpt);
 }
