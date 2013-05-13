@@ -5,7 +5,7 @@
 ** Login   <adrien@Adrien>
 ** 
 ** Started on  Wed May  1 13:50:59 2013 Adrien
-** Last update Thu May  9 10:46:53 2013 Adrien Della Maggiora
+** Last update Mon May 13 11:00:51 2013 Adrien Della Maggiora
 */
 
 #include <stdlib.h>
@@ -68,6 +68,7 @@ void	fill_img(t_info_bmp *info, t_bmp *image, char *img)
     }
   image->height = info->height;
   image->widht = widht;
+  image->bpp = (info->deep_color[0] / 8);
 }
 
 t_bmp		*bmp_loader(char *path)

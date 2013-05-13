@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sat May 11 19:54:34 2013 etienne debas
+## Last update Mon May 13 10:17:06 2013 Adrien Della Maggiora
 ##
 
 SRCS	= main.c \
@@ -70,7 +70,8 @@ SRCS	= main.c \
 	  bmp_loader.c \
 	  solve_cube.c \
 	  solve_quad.c \
-	  tangle.c
+	  tangle.c \
+	  color.c
 
 OBJS	= $(SRCS:.c=.o)
 

@@ -5,13 +5,13 @@
 ** Login   <adrien@Adrien>
 **
 ** Started on  Wed May  1 14:21:15 2013 Adrien
-** Last update Thu May  9 10:43:25 2013 Adrien Della Maggiora
+** Last update Mon May 13 11:36:11 2013 Adrien Della Maggiora
 */
 
 #ifndef BMP_LOADER_H_
 # define BMP_LOADER_H_
 
-#pragma pack(1)
+# pragma pack(1)
 
 typedef	struct	s_info_bmp
 {
@@ -37,6 +37,7 @@ typedef	struct	s_bmp
   char		*texture;
   int		height;
   int		widht;
+  int		bpp;
 }		t_bmp;
 
 t_bmp	*bmp_loader(char *path);
