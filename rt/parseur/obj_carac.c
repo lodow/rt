@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat May  4 20:10:26 2013 luc sinet
-** Last update Sat May 11 16:19:09 2013 Adrien Della Maggiora
+** Last update Mon May 13 15:30:25 2013 luc sinet
 */
 
 #include "main.h"
@@ -42,7 +42,7 @@ int	deformation(char *line, t_obj *ept, t_text *text)
 int	shape_carac(char *line, t_obj *ept, t_text *text)
 {
   if (my_strncmp("Size = ", line, 7) == 0)
-    ept->rayon = my_getnbr(&line[7]);
+    ept->size = my_getnbr(&line[7]);
   else if (my_strncmp("Color = ", line, 8) == 0 &&
 	   my_strlen(line) > 10)
     get_color(&line[10], ept->color);

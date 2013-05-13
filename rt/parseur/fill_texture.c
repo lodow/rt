@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 ** 
 ** Started on  Thu May  9 10:16:03 2013 Adrien Della Maggiora
-** Last update Fri May 10 15:48:08 2013 Adrien Della Maggiora
+** Last update Mon May 13 11:52:11 2013 Adrien Della Maggiora
 */
 
 #include <stdlib.h>
@@ -29,6 +29,7 @@ void	link_text(t_obj *ept, char *line, t_text *text)
     j++;
   if (!text->name)
     return ;
+  printf("text->name[j] = %s\n", text->name[j]);
   ept->texture = text->text[j];
 }
 
@@ -70,14 +71,12 @@ int	fill_text(char **file, t_rt *rpt, int i)
   while (file[i] && my_strcmp(file[i], "}") != 0)
     {
       rpt->text->name[j] = get_textname(file[i]);
-      printf("%s || %d\n", rpt->text->name[j], j);
       rpt->text->text[j] = bmp_loader(rpt->text->name[j]);
-      if (!rpt->text->name[j] && !rpt->text->text[j])
-	return (-1);
+      if (!rpt->text->name[j] || !rpt->text->text[j])
+	return (merror("BMP Loader Failed.\n", -1));
       ++i;
       ++j;
     }
-  printf("%d\n", j);
   rpt->text->name[j] = NULL;
   rpt->text->text[j] = NULL;
   return (0);
