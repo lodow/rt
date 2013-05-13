@@ -59,7 +59,7 @@ int	shape_carac(char *line, t_obj *ept, t_text *text);
 void	skip_adds(char *line, int *i);
 void	init_tab_names(char **shape);
 void	skip_fnumber(char *str, int *i);
-void	calc_vec(double *point, t_obj *obj);
+void	calc_vec(double *point, double *normal, t_obj *obj);
 void	fill_vec(double vec[3], char *line);
 int	fill_texture(t_pars *opt, t_rt *rpt);
 int	fill_model(t_pars *opt, t_obj **tab);
