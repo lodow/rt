@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Mon May 13 10:17:06 2013 Adrien Della Maggiora
+## Last update Mon May 13 15:21:52 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -36,6 +36,7 @@ SRCS	= main.c \
 	  parseur/obj_carac.c \
 	  parseur/calc_vec.c \
 	  parseur/fill_texture.c \
+	  parseur/init_triangle_size.c \
 	  calc_inter.c \
 	  pp_image.c \
 	  inter.c \
