@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Mon May 13 10:50:54 2013 Adrien Della Maggiora
+** Last update Mon May 13 17:00:30 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
@@ -69,7 +69,7 @@ unsigned int	get_pixel_color(t_rt *rpt)
   distance = 200 * FOG_DIST;
   if (k != -1 && rpt->light[0].on == 1)
     {
-      color = get_color_texture(&rpt->obj[rpt->obj_num], &lpt, k, rpt);
+      get_color_texture(&rpt->obj[rpt->obj_num], &lpt, k, rpt);
       color = get_light(rpt, k, &rpt->obj[rpt->obj_num], &lpt);
       color = reflection(rpt, &lpt, color, k);
       color = transparency(rpt, &lpt, color, k);
