@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 23:14:34 2013 luc sinet
-** Last update Mon May 13 17:13:23 2013 luc sinet
+** Last update Tue May 14 00:55:46 2013 luc sinet
 */
 
 #include <math.h>
@@ -14,8 +14,8 @@
 
 double	point_distance(double *p1, double *p2)
 {
-  return (pow(p1[0] - p2[0], 2) + pow(p1[1] - p2[1], 2)
-	  + pow(p1[2] - p2[2], 2));
+  return (sqrt(pow(p1[0] - p2[0], 2) + pow(p1[1] - p2[1], 2)
+	      + pow(p1[2] - p2[2], 2)));
 }
 
 double		apply_distance(t_lco *lpt, t_lig *obj, double ratio_a)
