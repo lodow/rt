@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 14 17:09:58 2013 luc sinet
-** Last update Tue May 14 17:21:55 2013 luc sinet
+** Last update Tue May 14 17:49:35 2013 luc sinet
 */
 
 void	init_points(t_shadow *spt, t_lco *lpt)
