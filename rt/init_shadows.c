@@ -5,10 +5,10 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 14 17:09:58 2013 luc sinet
-** Last update Tue May 14 17:49:35 2013 luc sinet
+** Last update Tue May 14 18:08:22 2013 luc sinet
 */
 
-void	init_points(t_shadow *spt, t_lco *lpt)
+void	init_first_points(t_shadow *spt, t_lco *lpt)
 {
   int	i;
 
@@ -20,18 +20,20 @@ void	init_points(t_shadow *spt, t_lco *lpt)
       if (i < 3)
 	spt->points[0][i + 1] = lpt->obj_coor[i];
       spt->points[1][i] = -1;
+      ++i;
     }
 }
 
-void		handle_included_obj(t_shadow *spt)
+void	init_points(t_shadow *spt, t_lco *lpt)
 {
-  unsigned int	distance;
-  int		i;
+  int	i;
 
-  distance = point_distance(&spt->points[0][1], &spt->points[1][1]);
+  i = 0;
+  spt->i = 0;
+  spt->points[0][0] = 1;
   while (i < 4)
     {
-      spt->points[0][i] = spt->points[1][i];
+      spt->points[0][i] = -1;
       spt->points[1][i] = -1;
       ++i;
     }
