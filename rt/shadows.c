@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Sat May 11 15:22:53 2013 luc sinet
+** Last update Tue May 14 17:10:16 2013 luc sinet
 */
 
 #include <math.h>
@@ -22,18 +22,6 @@ unsigned int		darken_color(unsigned char *color, double sdw_coef)
   color[1] = ((1.0 - (sdw_coef * intensity)) * color[1]);
   color[2] = ((1.0 - (sdw_coef * intensity)) * color[2]);
   return (recomp_color(color));
-}
-
-void   	init_shadows(t_shadow *spt, t_rt *rpt, double *cpos, t_lco *lpt)
-{
-  spt->slpt = lpt;
-  spt->sdw_coef = 1.0;
-  spt->vpos = rpt->vpt->vec;
-  copy_tab(spt->vpos, spt->vec, 3);
-  copy_tab(cpos, spt->cam, 3);
-  copy_tab(lpt->obj_coor, spt->inter, 3);
-  spt->obj[0] = rpt->obj_num;
-  spt->hit = 0;
 }
 
 void	cam_to_inter(t_shadow *spt, int obj_num, double *cpos, double *lpos)
