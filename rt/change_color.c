@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 16:50:09 2013 luc sinet
-** Last update Sun May 12 14:09:11 2013 luc sinet
+** Last update Tue May 14 12:39:26 2013 luc sinet
 */
 
 #include <math.h>
@@ -46,20 +46,22 @@ unsigned int	apply_fog(unsigned int color, double *fog, double distance)
 {
   unsigned char	c[3];
   unsigned char	fog_color[3];
+  double	ratio;
 
-  decomp_color(color, c);
-  decomp_color((unsigned int)fog[0], fog_color);
   if (fog[1] > ZERO)
     {
-      decomp_color((int)(fog[0]), fog_color);
-      c[0] = fog_color[0] * (1.0 - exp(-(distance / fog[1])))
-	+ c[0] * exp(-(distance / fog[1]));
-      c[1] = fog_color[1] * (1.0 - exp(-(distance / fog[1])))
-	+ c[1] * exp(-(distance / fog[1]));
-      c[2] = fog_color[2] * (1.0 - exp(-(distance / fog[1])))
-	+ c[2] * exp(-(distance / fog[1]));
+      decomp_color(color, c);
+      decomp_color((unsigned int)(fog[0]), fog_color);
+      ratio = exp(-(distance / fog[1]));
+      c[0] = fog_color[0] * (1.0 - ratio)
+	+ c[0] * ratio;
+      c[1] = fog_color[1] * (1.0 - ratio)
+	+ c[1] * ratio;
+      c[2] = fog_color[2] * (1.0 - ratio)
+	+ c[2] * ratio;
+      return (recomp_color(c));
     }
-  return (recomp_color(c));
+  return (color);
 }
 
 unsigned int	recomp_color(unsigned char *color)
