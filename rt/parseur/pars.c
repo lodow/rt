@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 18:33:58 2013 luc sinet
-** Last update Mon May 13 15:21:24 2013 luc sinet
+** Last update Wed May 15 16:52:15 2013 Adrien Della Maggiora
 */
 
 #include <sys/types.h>
@@ -31,7 +31,8 @@ int	check_shape(char *line, int *accol, int nb_line)
       my_put_nbr(nb_line, 2);
       return (merror(", file is incorectly formatted\n", -1));
     }
-  return (i < 11 ? 1 : (i == 12) ? 2 : (i == 13) ? 3 : (i == 14) ? 4 : 0);
+  return (i < 11 ? 1 : (i == 11) ? 5 : (i == 12) ? 2
+	  : (i == 13) ? 3 : (i == 14) ? 4 : 0);
 }
 
 int	get_size(t_pars *opt)
@@ -51,9 +52,12 @@ int	get_size(t_pars *opt)
 	++opt->nb_cam;
       else if (opt->rv == 4)
 	++opt->nb_opt;
+      else if (opt->rv == 5)
+	++opt->nb_model;
       ++i;
     }
-  return ((opt->nb_shape == 0 || opt->accol != 0) ? -1 : opt->nb_shape + 1);
+  return (((opt->nb_shape == 0 && opt->nb_model == 0)
+	  || opt->accol != 0) ? -1 : opt->nb_shape + 1);
 }
 
 int	check_size(t_obj *tab)
@@ -84,8 +88,8 @@ int	check_size(t_obj *tab)
 
 int		check_blocks(t_pars *opt)
 {
-  if (opt->nb_shape == 0)
-    return (merror("Enter at least one shape\n", -1));
+  if (opt->nb_shape == 0 && opt->nb_model == 0)
+    return (merror("Enter at least one shape or a model\n", -1));
   if (opt->nb_cam != 1)
     return (merror("You must have (only / at least) one camera\n", -1));
   if (opt->nb_opt != 1)
@@ -101,16 +105,15 @@ int		pars(t_rt *rpt, char *fname, t_cam *cpt)
   init_cam(cpt);
   if (get_config_file(&opt, fname) < 0)
     return (-1);
-  if (get_size(&opt) < 0)
+  if (get_size(&opt) == -2 || check_blocks(&opt) == -1)
     return (-2);
-  check_blocks(&opt);
   if ((rpt->obj = malloc(sizeof(t_obj) * (opt.nb_shape + 1))) == NULL ||
       (rpt->light = malloc(sizeof(t_lig) * (opt.nb_light + 1))) == NULL)
     return (merror("Malloc failed\n", -1));
   init_elem(rpt->obj, &opt);
   init_light(rpt->light, &opt);
   if (fill_texture(&opt, rpt) == -1 ||
-      (fill_tab(&opt, rpt->obj) == -1) ||
+      fill_tab(&opt, rpt->obj) == -1 ||
       fill_light(&opt, rpt->light) == -1 ||
       fill_cam(&opt, cpt) == -1 ||
       fill_opt(&opt, rpt) == -1)

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 17:22:40 2013 luc sinet
-** Last update Sat May 11 17:15:41 2013 luc sinet
+** Last update Wed May 15 15:58:54 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
@@ -63,6 +63,7 @@ void	init_nb_obj(t_pars *opt)
   opt->nb_light = 0;
   opt->nb_cam = 0;
   opt->nb_opt = 0;
+  opt->nb_model = 0;
 }
 
 void	init_shapes(char **shape)
