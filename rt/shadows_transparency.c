@@ -5,8 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 14 18:05:07 2013 luc sinet
-** Last update Wed May 15 14:11:37 2013 luc sinet
+** Last update Wed May 15 14:34:34 2013 luc sinet
 */
+
+#include "main.h"
+#include "light.h"
+#include "change_color.h"
 
 void	get_cur_coor(double *cpos, double *vec, double k, double *coor)
 {
@@ -28,15 +32,17 @@ void		handle_transparency(t_shadow *spt, t_rt *rpt,
       get_cur_coor(rpt->cpt->pos, rpt->vpt->vec, k, cur_coor);
       if (find_in_tab(spt->pass, rpt->obj_num, &i) == 1)
 	{
-	  distance = point_distance(second_coor, &(spt->coor[i * 3]));
+	  distance = point_distance(cur_coor, &(spt->coor[i * 3]));
 	  remove_from_coor(spt, i);
 	  filter_light_color(spt->light->lcolor, obj, distance);
 	}
       else
 	{
+	  spt->sdw_coef *= obj->indice[0];
 	  add_to_coor(spt, i, cur_coor);
-	  spt->sdw_coef *= obj.indice[0];
 	}
       add_to_tab(spt->pass, rpt->obj_num);
    }
+  else
+    spt->sdw_coef *= obj->indice[0];
 }

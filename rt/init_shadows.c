@@ -5,8 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 14 17:09:58 2013 luc sinet
-** Last update Wed May 15 14:11:37 2013 luc sinet
+** Last update Wed May 15 14:34:34 2013 luc sinet
 */
+
+#include "main.h"
+#include "light.h"
 
 void	add_to_coor(t_shadow *spt, int i, double *coor)
 {
