@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 14 18:05:07 2013 luc sinet
-** Last update Wed May 15 14:34:34 2013 luc sinet
+** Last update Wed May 15 16:51:44 2013 luc sinet
 */
 
 #include "main.h"
@@ -25,6 +25,7 @@ void		handle_transparency(t_shadow *spt, t_rt *rpt,
   double	cur_coor[3];
   double	distance;
   int		i;
+  int		x;
 
   i = 0;
   if (obj->indice[0] > ZERO)
@@ -33,16 +34,11 @@ void		handle_transparency(t_shadow *spt, t_rt *rpt,
       if (find_in_tab(spt->pass, rpt->obj_num, &i) == 1)
 	{
 	  distance = point_distance(cur_coor, &(spt->coor[i * 3]));
-	  remove_from_coor(spt, i);
+	  remove_from_coor(&spt->coor[i * 3]);
 	  filter_light_color(spt->light->lcolor, obj, distance);
 	}
       else
-	{
-	  spt->sdw_coef *= obj->indice[0];
-	  add_to_coor(spt, i, cur_coor);
-	}
+	add_to_coor(&spt->coor[i * 3], cur_coor);
       add_to_tab(spt->pass, rpt->obj_num);
    }
-  else
-    spt->sdw_coef *= obj->indice[0];
 }

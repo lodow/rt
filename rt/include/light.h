@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Wed May 15 14:37:00 2013 luc sinet
+** Last update Wed May 15 15:19:48 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -46,7 +46,7 @@ typedef struct	s_shadow
   double	sdw_coef;
   int		obj[2];
   int		pass[256];
-  double	coor[256][3];
+  double	coor[256 * 3];
   int		hit;
 }		t_shadow;
 
@@ -88,8 +88,8 @@ void		copy_color(unsigned char *col1, unsigned char *col2);
 void		filter_light_color(unsigned char *lcolor, t_obj *obj,
 				   double distance);
 void		invert_vec(double *vec);
-void		add_to_coor(t_shadow *spt, int i, double *coor);
-void		remove_from_coor(t_shadow *spt, int i);
+void		add_to_coor(double *tab, double *coor);
+void		remove_from_coor(double *tab);
 void	   	init_shadows(t_shadow *spt, t_rt *rpt, double *cpos, t_lco *lpt);
 int		find_in_tab(int *tab, int nb, int *i);
 void		handle_transparency(t_shadow *spt, t_rt *rpt,
