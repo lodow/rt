@@ -5,38 +5,28 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 14 17:09:58 2013 luc sinet
-** Last update Tue May 14 18:08:22 2013 luc sinet
+** Last update Wed May 15 14:11:37 2013 luc sinet
 */
 
-void	init_first_points(t_shadow *spt, t_lco *lpt)
+void	add_to_coor(t_shadow *spt, int i, double *coor)
 {
-  int	i;
+  int	x;
 
-  i = 0;
-  spt->i = 1;
-  spt->points[0][0] = 1;
-  while (i < 4)
+  x = 0;
+  while (x < 3)
     {
-      if (i < 3)
-	spt->points[0][i + 1] = lpt->obj_coor[i];
-      spt->points[1][i] = -1;
-      ++i;
+      spt->coor[i][x] = coor[x];
+      ++x;
     }
 }
 
-void	init_points(t_shadow *spt, t_lco *lpt)
+void	remove_from_coor(t_shadow *spt, int i)
 {
-  int	i;
+  int	x;
 
-  i = 0;
-  spt->i = 0;
-  spt->points[0][0] = 1;
-  while (i < 4)
-    {
-      spt->points[0][i] = -1;
-      spt->points[1][i] = -1;
-      ++i;
-    }
+  x = 0;
+  while (x < 3)
+    spt->coor[i][x++] = -1;
 }
 
 void   	init_shadows(t_shadow *spt, t_rt *rpt, double *cpos, t_lco *lpt)
@@ -49,5 +39,4 @@ void   	init_shadows(t_shadow *spt, t_rt *rpt, double *cpos, t_lco *lpt)
   copy_tab(lpt->obj_coor, spt->inter, 3);
   spt->obj[0] = rpt->obj_num;
   spt->hit = 0;
-  init_points(spt, lpt);
 }

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Tue May 14 17:14:07 2013 luc sinet
+** Last update Wed May 15 13:44:29 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -42,13 +42,12 @@ typedef struct	s_shadow
   double	cam[3];
   double	vec[3];
   double	inter[3];
-  double	points[2][4];
   double	*vpos;
   double	sdw_coef;
   int		obj[2];
   int		pass[256];
+  double	coor[256][3];
   int		hit;
-  int		i;
 }		t_shadow;
 
 double		point_distance(double *p1, double *p2);

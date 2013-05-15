@@ -5,24 +5,38 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 14 18:05:07 2013 luc sinet
-** Last update Tue May 14 18:08:22 2013 luc sinet
+** Last update Wed May 15 14:11:37 2013 luc sinet
 */
 
-void		handle_included_obj(t_shadow *spt)
+void	get_cur_coor(double *cpos, double *vec, double k, double *coor)
 {
-  unsigned int	distance;
-  int		i;
-
-  distance = point_distance(&spt->points[0][1], &spt->points[1][1]);
-  while (i < 4)
-    {
-      spt->points[0][i] = spt->points[1][i];
-      spt->points[1][i] = -1;
-      ++i;
-    }
+  coor[0] = cpos[0] + k * vec[0];
+  coor[1] = cpos[1] + k * vec[1];
+  coor[2] = cpos[2] + k * vec[2];
 }
 
-void	handle_transparency(t_shadow *spt, t_rt *rpt, t_obj *obj)
+void		handle_transparency(t_shadow *spt, t_rt *rpt,
+				    t_obj *obj, double k)
 {
-  if ()
+  double	cur_coor[3];
+  double	distance;
+  int		i;
+
+  i = 0;
+  if (obj->indice[0] > ZERO)
+    {
+      get_cur_coor(rpt->cpt->pos, rpt->vpt->vec, k, cur_coor);
+      if (find_in_tab(spt->pass, rpt->obj_num, &i) == 1)
+	{
+	  distance = point_distance(second_coor, &(spt->coor[i * 3]));
+	  remove_from_coor(spt, i);
+	  filter_light_color(spt->light->lcolor, obj, distance);
+	}
+      else
+	{
+	  add_to_coor(spt, i, cur_coor);
+	  spt->sdw_coef *= obj.indice[0];
+	}
+      add_to_tab(spt->pass, rpt->obj_num);
+   }
 }

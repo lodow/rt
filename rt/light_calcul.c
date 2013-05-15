@@ -5,14 +5,14 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed May  8 18:39:21 2013 luc sinet
-** Last update Fri May 10 11:49:53 2013 luc sinet
+** Last update Wed May 15 14:11:37 2013 luc sinet
 */
 
 #include "include/main.h"
 #include "include/light.h"
 #include "include/change_color.h"
 
-void		filter_light_color(unsigned char *lcolor, t_obj *obj)
+void		filter_light_color(unsigned char *lcolor, t_obj *obj, double distance)
 {
   double	ratio;
 
