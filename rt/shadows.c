@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Wed May 15 15:59:12 2013 luc sinet
+** Last update Thu May 16 01:42:00 2013 luc sinet
 */
 
 #include <math.h>
@@ -55,6 +55,7 @@ double		shadows(t_rt *rpt, double *cpos, t_lig *light, t_lco *lpt)
 {
   t_shadow	spt;
   double	k;
+  double	shadow;
 
   init_shadows(&spt, rpt, cpos, lpt);
   spt.light = light;
@@ -68,5 +69,6 @@ double		shadows(t_rt *rpt, double *cpos, t_lig *light, t_lco *lpt)
   copy_tab(spt.cam, cpos, 3);
   copy_tab(spt.vec, spt.vpos, 3);
   rpt->obj_num = spt.obj[0];
-  return (1.0 - spt.sdw_coef);
+  shadow = LIMIT(1.1 * spt.sdw_coef, 0, 1);
+  return (1.0 - shadow);
 }
