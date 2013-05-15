@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 16:50:09 2013 luc sinet
-** Last update Tue May 14 12:39:26 2013 luc sinet
+** Last update Wed May 15 14:36:27 2013 luc sinet
 */
 
 #include <math.h>
@@ -14,7 +14,7 @@
 #include "change_color.h"
 
 void		apply_light_color(unsigned char *col_o, unsigned char *col_l,
-				  double lg_i, double spe)
+				  double lg_i)
 {
   double	a;
   double	b;

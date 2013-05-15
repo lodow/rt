@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Tue May 14 01:01:58 2013 luc sinet
+## Last update Wed May 15 14:27:42 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -43,7 +43,6 @@ SRCS	= main.c \
 	  copy.c \
 	  move_cam.c \
 	  light.c \
-	  light_calcul.c \
 	  change_color.c \
 	  math_coor.c \
 	  math_vec.c \
@@ -56,6 +55,9 @@ SRCS	= main.c \
 	  antialiasing.c \
 	  ambient_light.c \
 	  shadows.c \
+	  init_shadows.c \
+	  shadows_transparency.c \
+	  light_calcul.c \
 	  check_passages.c \
 	  detect_edge.c \
 	  detect_shadows.c \
