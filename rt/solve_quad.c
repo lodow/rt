@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 11 00:40:17 2013 etienne debas
-** Last update Mon May 13 18:31:21 2013 etienne debas
+** Last update Wed May 15 15:58:14 2013 etienne debas
 */
 
 # include "solve_quad.h"
@@ -41,11 +41,12 @@ void		calculate_sol(double *value, double *sol, int *nb_sol)
   while (i > -3)
     {
       delta = powf(R, 2) - 2.0 * T - (i * 4.0) * S;
+      /* printf ("delta: %f\n", delta); */
       first = -(i * R) / 2.0;
       if (BB > 0)
 	first = -first;
-      second = sqrt(fabs(delta)) / 2.0;
-      if (delta >= 0)
+      second = sqrtf(fabs(delta)) / 2.0;
+      if (delta >= (double)0)
 	{
 	  sol[*nb_sol] = first + second + DECAL;
 	  sol[*nb_sol + 1] = first - second + DECAL;
@@ -63,14 +64,20 @@ double		solve_quad(double *coef, double *res)
   double	value[11];
   int		nb_sol;
   int		i;
+  double	ratio;
 
+  ratio = get_pow(get_max(coef, 4)) * 100;
+  res[0] = -1;
+  res[1] = -1;
+  res[2] = -1;
+  res[3] = -1;
   i = 0;
   nb_sol = 0;
-  coef[0] /= 1000000;
-  coef[1] /= 1000000;
-  coef[2] /= 1000000;
-  coef[3] /= 1000000;
-  coef[4] /= 1000000;
+  coef[0] /= ratio;
+  coef[1] /= ratio;
+  coef[2] /= ratio;
+  coef[3] /= ratio;
+  coef[4] /= ratio;
   Z = coef[1] / (2.0 * coef[0]);
   AA = coef[2] / coef[0] - 3.0 * powf(Z, 2) / 2.0;
   BB = coef[3] / coef[0] + powf(Z, 3.0) - coef[2] * Z / coef[0];
@@ -81,9 +88,10 @@ double		solve_quad(double *coef, double *res)
   delta = powf(C2 / 3.0, 3.0) + powf(D2 / 2.0, 2.0);
   precalculate(value, coef, delta);
   calculate_sol(value, res, &nb_sol);
-  printf("min_quad = %f\n", get_min(res, 4));
+  /* printf("min_quad = %f - nb_sol = %d\n", get_min(res, 4), nb_sol); */
   /* printf("coef: %fx^4 + %fx^3 + %fx^2 + %fx + %f\n", coef[0], coef[1], coef[2], coef[3], coef[4]); */
   /* while (i < nb_sol) */
   /*   printf("x%d: %f\n",i + 1, res[i++]); */
-  return (get_min(coef, 4));
+  return (get_min(res, 4));
+  /* return (-1); */
 }

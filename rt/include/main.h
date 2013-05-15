@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Mon May 13 15:28:39 2013 luc sinet
+** Last update Tue May 14 16:51:24 2013 etienne debas
 */
 
 #ifndef MAIN_H_
@@ -151,5 +151,6 @@ void		calc_refrac(t_rt *rpt, t_vec *vpt, t_lco *lpt,
 void		my_mem_cpy(void *dest, void *src, int size);
 void		*adjust_mem_size(void *mem, int size, int nsize, int dfree);
 void		link_text(t_obj *ept, char *line, t_text *text);
+double		get_pow(double nb);
 
 #endif

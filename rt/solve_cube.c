@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Fri May 10 21:28:51 2013 etienne debas
-** Last update Mon May 13 18:24:26 2013 etienne debas
+** Last update Tue May 14 16:55:49 2013 etienne debas
 */
 
 # include "solve_cube.h"
@@ -33,7 +33,7 @@ void		three_solution(double *res, double *pq,
   double	n;
   double	p;
 
-  i = pow(pow(pq[1], 2) / 4 - discriminant, 0.5);
+  i = sqrtf(pow(pq[1], 2) / 4 - discriminant);
   j = cbrt(i);
   k = acos(-(pq[1] / (2 * i)));
   m = cos(k / 3);
@@ -53,9 +53,9 @@ void		one_solution(double *res, double *pq,
   double	u;
   double	v;
 
-  r = -(pq[1] / 2) + pow(discriminant, 0.5);
+  r = -(pq[1] / 2) + sqrtf(discriminant);
   s = cbrt(r);
-  t = -(pq[1] / 2) - pow(discriminant, 0.5);
+  t = -(pq[1] / 2) - sqrtf(discriminant);
   u = cbrt(t);
   v = -(coef[1] / (3 * coef[0]));
   res[0] = (s + u) + v;

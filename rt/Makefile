@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Mon May 13 18:31:11 2013 luc sinet
+## Last update Tue May 14 18:21:47 2013 etienne debas
 ##
 
 SRCS	= main.c \
@@ -73,11 +73,14 @@ SRCS	= main.c \
 	  solve_cube.c \
 	  solve_quad.c \
 	  tangle.c \
-	  color.c
+	  color.c \
+	  tore.c
 
 OBJS	= $(SRCS:.c=.o)
 
 OPT     = -L/usr/lib64 -lmlx_x86_64-linux -L/usr/lib64/X11 -lXext -lX11 -lm
+
+CFLAGS	+= --fast-math -ffast-math
 
 CC	= gcc -g -Wall -Wextra -I./include/
 
