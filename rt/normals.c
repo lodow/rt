@@ -5,12 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Mar 31 13:20:23 2013 luc sinet
-** Last update Sat May 11 18:06:49 2013 luc sinet
+** Last update Wed May 15 16:40:40 2013 etienne debas
 */
 
 #include <math.h>
 #include "main.h"
 #include "light.h"
+# define SIZE 1
 
 void	perturb_normal(double *nvec, double *obj_coor, double *pert)
 {
@@ -73,9 +74,24 @@ void	moebius_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 
 void	tangle_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 {
-  (void)(obj);
-  nvec[0] = obj_coor[0];
-  nvec[1] = obj_coor[1];
-  nvec[2] = obj_coor[2];
+  nvec[0] = (4.0 * obj_coor[0] * (powf(obj_coor[0], 2)
+				+ powf(obj_coor[1], 2)
+				+ powf(obj_coor[2], 2)
+				+ powf(obj->size, 2)
+				- powf((double)SIZE, 2))
+	     - (8.0 * powf((double)obj->size, 2) * powf(obj_coor[0], 2)));
+
+  nvec[1] = (4.0 * obj_coor[1] * (powf(obj_coor[0], 2)
+				+ powf(obj_coor[1], 2)
+				+ powf(obj_coor[2], 2)
+				+ powf(obj->size, 2)
+				- powf((double)SIZE, 2)));
+
+  nvec[2] = (4.0 * obj_coor[2] * (powf(obj_coor[0], 2)
+				+ powf(obj_coor[1], 2)
+				+ powf(obj_coor[2], 2)
+				+ powf(obj->size, 2)
+				- powf((double)SIZE, 2))
+	     - (8.0 * powf((double)obj->size, 2) * powf(obj_coor[2], 2)));
   perturb_normal(nvec, obj_coor, pert);
 }
