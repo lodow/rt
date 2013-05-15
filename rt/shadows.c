@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Wed May 15 14:11:37 2013 luc sinet
+** Last update Wed May 15 14:50:35 2013 luc sinet
 */
 
 #include <math.h>
@@ -37,14 +37,13 @@ void	get_inter_shadow(t_shadow *spt, t_rt *rpt, double k, double *cpos)
 {
   if (spt->obj[1] != rpt->obj_num && k > ZERO && k < 1)
     {
-	  handle_transparency(spt, rpt, rpt->obj[rpt->obj_num], k);
-	}
+      handle_transparency(spt, rpt, &rpt->obj[rpt->obj_num], k);
       if (spt->sdw_coef > 0)
 	get_impact(spt->inter, cpos, k, spt->vpos);
     }
   else if (spt->obj[1] == rpt->obj_num && k > ZERO && k < 1)
     {
-      add_to_tab(spt->pass, rpt->obj_num);
+      handle_transparency(spt, rpt, &rpt->obj[rpt->obj_num], k);
       get_impact(spt->inter, cpos, k, spt->vpos);
     }
   else

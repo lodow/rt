@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Wed May 15 13:44:29 2013 luc sinet
+** Last update Wed May 15 14:37:00 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -55,7 +55,7 @@ double		apply_distance(t_lco *lpt, t_lig *obj, double cosa);
 void		assign_normal1(t_lco *lpt, int type);
 void		assign_normal2(t_lco *lpt, int type);
 void		apply_light_color(unsigned char *col_o, unsigned char *col_l,
-				  double lg_i, double spe);
+				  double lg_i);
 void		get_obj_distance(t_obj *obj, double *cpos, double *hit);
 double		get_angle_specular(double lvec[3], double nvec[3], t_lco *lpt);
 void		*apply_ambient(t_lig *light, unsigned char *color,
@@ -85,7 +85,14 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt);
 int		add_to_tab(int *tab, int nb);
 void		tab_set(int *tab, int size);
 void		copy_color(unsigned char *col1, unsigned char *col2);
-void		filter_light_color(unsigned char *lcolor, t_obj *obj);
+void		filter_light_color(unsigned char *lcolor, t_obj *obj,
+				   double distance);
 void		invert_vec(double *vec);
+void		add_to_coor(t_shadow *spt, int i, double *coor);
+void		remove_from_coor(t_shadow *spt, int i);
+void	   	init_shadows(t_shadow *spt, t_rt *rpt, double *cpos, t_lco *lpt);
+int		find_in_tab(int *tab, int nb, int *i);
+void		handle_transparency(t_shadow *spt, t_rt *rpt,
+				    t_obj *obj, double k);
 
 #endif
