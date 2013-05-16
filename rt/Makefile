@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Thu May 16 13:24:10 2013 luc sinet
+## Last update Thu May 16 14:39:56 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -36,6 +36,7 @@ SRCS	= main.c \
 	  parseur/calc_vec.c \
 	  parseur/fill_texture.c \
 	  parseur/init_triangle_size.c \
+	  parseur/init_pars.c \
 	  parseur/pars_color.c \
 	  parseur/pars_disformations.c \
 	  parseur/pars_indice.c \
