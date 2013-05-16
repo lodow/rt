@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu May  9 13:47:30 2013 luc sinet
-** Last update Fri May 10 17:12:56 2013 luc sinet
+** Last update Mon May 13 16:17:27 2013 luc sinet
 */
 
 #include "main.h"
@@ -52,7 +52,7 @@ int		fill_model_struct(t_pars *opt, t_obj **tab, int *i)
   if ((file_name = get_model_name(opt->file, *i)) == NULL)
     return (merror("Missing model's name\n", -1));
   init_single_elem(&model);
-  model.type = 6;
+  model.type = TRIANGLE;
   if (get_args(&model, opt, i) == -1)
     return (-1);
   if ((obj = get_file_obj_model(file_name)) == NULL)

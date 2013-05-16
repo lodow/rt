@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Tue May  7 14:55:53 2013 Hugues
-** Last update Thu May  9 16:30:17 2013 luc sinet
+** Last update Thu May 16 14:53:07 2013 luc sinet
 */
 
 #ifndef MODEL_H_
@@ -16,12 +16,12 @@ typedef struct	s_model
   double	*raw_vertice;
   double	*raw_normal;
   double	*raw_uvs;
-  int		raw_size_vertice;
-  int		raw_size_normal;
-  int		raw_size_uvs;
   double	*fin_vertice;
   double	*fin_normal;
   double	*fin_uvs;
+  int		raw_size_vertice;
+  int		raw_size_normal;
+  int		raw_size_uvs;
   int		fin_size_vertice;
   int		fin_size_normal;
   int		fin_size_uvs;

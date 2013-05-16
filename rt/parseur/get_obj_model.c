@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Sun May  5 14:22:04 2013 Hugues
-** Last update Thu May  9 10:29:52 2013 Adrien Della Maggiora
+** Last update Thu May 16 15:27:39 2013 luc sinet
 */
 
 #include <unistd.h>
@@ -34,12 +34,10 @@ void		fill_model_tab(double **tab, int *size, char *line)
   *tab = tmp;
   tmp[tsize + 0] = my_fgetnbr(&line[i]);
   skip_fnumber(line, &i);
-  if (line[i] != '\0')
-    i++;
+  skip_space(line, &i);
   tmp[tsize + 1] = my_fgetnbr(&line[i]);
   skip_fnumber(line, &i);
-  if (line[i] != '\0')
-    i++;
+  skip_space(line, &i);
   tmp[tsize + 2] = my_fgetnbr(&line[i]);
   *size += 1;
 }
@@ -61,7 +59,7 @@ void		parse_model_indice_line(char *line, int *vert,
     {
       nb = my_getnbr(&line[j]);
       skip_fnumber(line, &j);
-      if (line[i] != '\0')
+      if (line[j] != '\0')
         j++;
       indice[i % 3][i / 3] = nb;
       i++;

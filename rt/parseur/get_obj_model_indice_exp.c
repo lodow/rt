@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu May  9 16:56:33 2013 luc sinet
+** Last update Thu May 16 15:27:40 2013 luc sinet
 */
 
 #include "str.h"
@@ -66,7 +66,7 @@ void		fill_model_tabs(t_model *obj, int *vert, int *uvs, int *norm)
 void		model_sizeup_fin_tab(t_model *obj)
 {
   int		tmpsize;
-  double		*tmptab;
+  double	*tmptab;
 
   tmpsize = obj->fin_size_vertice * 3;
   tmptab = obj->fin_vertice;
@@ -116,16 +116,16 @@ void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
 
 void		init_model_struct(t_model *model)
 {
-  model->fin_size_normal = 0;
-  model->fin_size_vertice = 0;
-  model->fin_size_uvs = 0;
-  model->raw_size_normal = 0;
-  model->raw_size_vertice = 0;
-  model->raw_size_uvs = 0;
-  model->fin_normal = NULL;
-  model->fin_uvs = NULL;
-  model->fin_vertice = NULL;
+  model->raw_vertice = NULL;
   model->raw_normal = NULL;
   model->raw_uvs = NULL;
-  model->raw_vertice = NULL;
+  model->fin_vertice = NULL;
+  model->fin_normal = NULL;
+  model->fin_uvs = NULL;
+  model->fin_size_vertice = 0;
+  model->fin_size_normal = 0;
+  model->fin_size_uvs = 0;
+  model->raw_size_vertice = 0;
+  model->raw_size_normal = 0;
+  model->raw_size_uvs = 0;
 }
