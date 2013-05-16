@@ -5,11 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 14 18:05:07 2013 luc sinet
-** Last update Wed May 15 16:51:44 2013 luc sinet
+** Last update Thu May 16 14:29:28 2013 luc sinet
 */
 
 #include "main.h"
 #include "light.h"
+#include "pars.h"
 #include "change_color.h"
 
 void	get_cur_coor(double *cpos, double *vec, double k, double *coor)
@@ -28,7 +29,9 @@ void		handle_transparency(t_shadow *spt, t_rt *rpt,
   int		x;
 
   i = 0;
-  if (obj->indice[0] > ZERO)
+  if (obj->type == PLAN)
+    filter_light_color(spt->light->lcolor, obj, PLAN_SIZE);
+  else if (obj->indice[0] > ZERO)
     {
       get_cur_coor(rpt->cpt->pos, rpt->vpt->vec, k, cur_coor);
       if (find_in_tab(spt->pass, rpt->obj_num, &i) == 1)

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Mon May 13 15:29:29 2013 luc sinet
+** Last update Thu May 16 14:28:36 2013 luc sinet
 */
 
 #include <stdio.h>
@@ -67,7 +67,6 @@ void	init_single_elem(t_obj *obj)
     {
       obj->pos[x] = IVAL;
       obj->color[x] = 0;
-      obj->indice[x] = 0;
       obj->normal[x] = 0;
       obj->v1[x] = 0;
       obj->v2[x++] = 0;
@@ -77,7 +76,10 @@ void	init_single_elem(t_obj *obj)
   obj->size = 0;
   obj->bright = 1.0;
   obj->texture = NULL;
-  obj->indice[1] = 1;
+  obj->indice[0] = 0.0;
+  obj->indice[1] = 1.0;
+  obj->indice[2] = 0.0;
+  obj->indice[3] = 0.5;
   obj->normal[3] = 0;
 }
 
