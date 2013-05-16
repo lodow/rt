@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Wed May 15 15:52:34 2013 Adrien Della Maggiora
+** Last update Thu May 16 13:21:52 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -78,5 +78,19 @@ void	fill_vec(double vec[3], char *line);
 int	fill_texture(t_pars *opt, t_rt *rpt);
 int	fill_model(t_pars *opt, t_obj **tab);
 int	get_args(t_obj *tab, t_pars *opt, int *y);
+void	pars_color(char *line, t_obj *ept, t_text *text);
+void	pars_brightness(char *line, t_obj *ept, t_text *text);
+void	pars_texture(char *line, t_obj *ept, t_text *text);
+void	pars_absorbance(char *line, t_obj *ept, t_text *text);
+void	pars_limits(char *line, t_obj *ept, t_text *text);
+void	pars_perturbations(char *line, t_obj *ept, t_text *text);
+void	pars_normal1(char *line, t_obj *ept, t_text *text);
+void	pars_normal2(char *line, t_obj *ept, t_text *text);
+void	pars_normal(char *line, t_obj *ept, t_text *text);
+void	pars_alpha(char *line, t_obj *ept, t_text *text);
+void	pars_refraction(char *line, t_obj *ept, t_text *text);
+void	pars_reflection(char *line, t_obj *ept, t_text *text);
+void	pars_cst(char *line, t_obj *ept, t_text *text);
+void	pars_size(char *line, t_obj *ept, t_text *text);
 
 #endif
