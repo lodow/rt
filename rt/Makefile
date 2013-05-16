@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Tue May 14 18:21:47 2013 etienne debas
+## Last update Thu May 16 13:24:10 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -33,17 +33,19 @@ SRCS	= main.c \
 	  parseur/nb.c \
 	  parseur/my_atof.c \
 	  parseur/light_carac.c \
-	  parseur/obj_carac.c \
 	  parseur/calc_vec.c \
 	  parseur/fill_texture.c \
 	  parseur/init_triangle_size.c \
+	  parseur/pars_color.c \
+	  parseur/pars_disformations.c \
+	  parseur/pars_indice.c \
+	  parseur/pars_size.c \
 	  calc_inter.c \
 	  pp_image.c \
 	  inter.c \
 	  copy.c \
 	  move_cam.c \
 	  light.c \
-	  light_calcul.c \
 	  change_color.c \
 	  math_coor.c \
 	  math_vec.c \
@@ -56,6 +58,9 @@ SRCS	= main.c \
 	  antialiasing.c \
 	  ambient_light.c \
 	  shadows.c \
+	  init_shadows.c \
+	  shadows_transparency.c \
+	  light_calcul.c \
 	  check_passages.c \
 	  detect_edge.c \
 	  detect_shadows.c \

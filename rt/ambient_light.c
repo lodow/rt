@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr  7 19:07:11 2013 luc sinet
-** Last update Mon May 13 17:28:37 2013 luc sinet
+** Last update Wed May 15 14:38:02 2013 luc sinet
 */
 
 #include <math.h>
@@ -27,7 +27,7 @@ void		*apply_ambient(t_lig *light, unsigned char *color,
       if (light[i].ambient == 1)
 	{
 	  cosa = light[i].intensity / 1.7;
-	  apply_light_color(color, light[i].lcolor, cosa, 0.0);
+	  apply_light_color(color, light[i].lcolor, cosa);
 	  *max_cos = MAX(*max_cos, cosa);
 	}
       ++i;
@@ -80,7 +80,6 @@ void		get_light_color(t_lig *light, t_lco *lpt,
 	cosa = coss;
       cosa = apply_distance(lpt, light, cosa);
     }
-  /* cosa = 0.25 * coss + 0.75 * cosa; */
-  apply_light_color(lpt->c_color, light->lcolor, cosa, 0);
+  apply_light_color(lpt->c_color, light->lcolor, cosa);
   lpt->mx_cos = MAX(lpt->mx_cos, cosa);
 }

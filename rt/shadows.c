@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Sat May 11 15:22:53 2013 luc sinet
+** Last update Thu May 16 01:42:00 2013 luc sinet
 */
 
 #include <math.h>
@@ -24,18 +24,6 @@ unsigned int		darken_color(unsigned char *color, double sdw_coef)
   return (recomp_color(color));
 }
 
-void   	init_shadows(t_shadow *spt, t_rt *rpt, double *cpos, t_lco *lpt)
-{
-  spt->slpt = lpt;
-  spt->sdw_coef = 1.0;
-  spt->vpos = rpt->vpt->vec;
-  copy_tab(spt->vpos, spt->vec, 3);
-  copy_tab(cpos, spt->cam, 3);
-  copy_tab(lpt->obj_coor, spt->inter, 3);
-  spt->obj[0] = rpt->obj_num;
-  spt->hit = 0;
-}
-
 void	cam_to_inter(t_shadow *spt, int obj_num, double *cpos, double *lpos)
 {
   spt->obj[1] = obj_num;
@@ -49,18 +37,14 @@ void	get_inter_shadow(t_shadow *spt, t_rt *rpt, double k, double *cpos)
 {
   if (spt->obj[1] != rpt->obj_num && k > ZERO && k < 1)
     {
-      if (add_to_tab(spt->pass, rpt->obj_num) == 1)
-	{
-	  spt->sdw_coef *= rpt->obj[rpt->obj_num].indice[0];
-	  if (rpt->obj[rpt->obj_num].indice[0] > ZERO)
-	    filter_light_color(spt->light->lcolor, &rpt->obj[rpt->obj_num]);
-	}
+      spt->sdw_coef *= rpt->obj[rpt->obj_num].indice[0];
+      handle_transparency(spt, rpt, &rpt->obj[rpt->obj_num], k);
       if (spt->sdw_coef > 0)
 	get_impact(spt->inter, cpos, k, spt->vpos);
     }
   else if (spt->obj[1] == rpt->obj_num && k > ZERO && k < 1)
     {
-      add_to_tab(spt->pass, rpt->obj_num);
+      handle_transparency(spt, rpt, &rpt->obj[rpt->obj_num], k);
       get_impact(spt->inter, cpos, k, spt->vpos);
     }
   else
@@ -71,6 +55,7 @@ double		shadows(t_rt *rpt, double *cpos, t_lig *light, t_lco *lpt)
 {
   t_shadow	spt;
   double	k;
+  double	shadow;
 
   init_shadows(&spt, rpt, cpos, lpt);
   spt.light = light;
@@ -84,5 +69,6 @@ double		shadows(t_rt *rpt, double *cpos, t_lig *light, t_lco *lpt)
   copy_tab(spt.cam, cpos, 3);
   copy_tab(spt.vec, spt.vpos, 3);
   rpt->obj_num = spt.obj[0];
-  return (1.0 - spt.sdw_coef);
+  shadow = LIMIT(1.1 * spt.sdw_coef, 0, 1);
+  return (1.0 - shadow);
 }
