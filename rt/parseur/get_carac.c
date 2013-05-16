@@ -5,11 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Mar 16 23:19:04 2013 luc sinet
-** Last update Sat May 11 15:21:44 2013 Adrien Della Maggiora
+** Last update Thu May 16 13:23:43 2013 luc sinet
 */
 
 #include "main.h"
 #include "pars.h"
+#include "str.h"
 #include "nb.h"
 
 void	fill_vec(double vec[3], char *line)
@@ -80,20 +81,49 @@ void	fill_angle(t_obj *ept, char *line)
     }
 }
 
+void	fill_carac_model(char **carac)
+{
+  carac[0] = "Color = ";
+  carac[1] = "Brightness = ";
+  carac[2] = "Texture = ";
+  carac[3] = "Absorbance = ";
+  carac[4] = "Limit = ";
+  carac[5] = "Ondulation = ";
+  carac[6] = "V1 = ";
+  carac[7] = "V2 = ";
+  carac[8] = "Normal = ";
+  carac[9] = "Alpha = ";
+  carac[10] = "N = ";
+  carac[11] = "Reflection = ";
+  carac[12] = "Cst = ";
+  carac[13] = "Size = ";
+}
+
 int	other_opt(char *line, t_obj *ept, t_text *text)
 {
   int	i;
-  char	*comp;
-  int	(*objptr[3])(char *line, t_obj *ept, t_text *text);
+  char	*carac[14];
+  void	(*objptr[14])(char *line, t_obj *ept, t_text *text);
 
   i = 0;
-  comp = "AnRc  LO    SCBVTN";
-  if (my_strncmp(line, "Name = ", 7) == 0)
-    return (0);
-  objptr[0] = &indice;
-  objptr[1] = deformation;
-  objptr[2] = &shape_carac;
-  while (comp[i] && comp[i] != line[0])
+  fill_carac_model(carac);
+  objptr[0] = &pars_color;
+  objptr[1] = &pars_brightness;
+  objptr[2] = &pars_texture;
+  objptr[3] = &pars_absorbance;
+  objptr[4] = &pars_limits;
+  objptr[5] = &pars_perturbations;
+  objptr[6] = &pars_normal1;
+  objptr[7] = &pars_normal2;
+  objptr[8] = &pars_normal;
+  objptr[9] = &pars_alpha;
+  objptr[10] = &pars_refraction;
+  objptr[11] = &pars_reflection;
+  objptr[12] = &pars_cst;
+  objptr[13] = &pars_size;
+  while (i < 14 && my_strncmp(carac[i], line, my_strlen(carac[i])) != 0)
     ++i;
-  return (!comp[i] ? -1 : objptr[i / 6](line, ept, text));
+  if (i < 14)
+    objptr[i](line, ept, text);
+  return (i == 14 ? -1 : 0);
 }
