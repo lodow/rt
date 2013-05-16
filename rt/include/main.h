@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Wed May 15 16:44:17 2013 luc sinet
+** Last update Thu May 16 12:51:07 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -56,7 +56,7 @@ typedef struct	s_obj
   double	dist;
   double	v1[3];
   double	v2[3];
-  double	indice[4];
+  double	indice[5];
   double	normal[4];
   t_bmp		*texture;
 }		t_obj;
