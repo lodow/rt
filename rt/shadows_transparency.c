@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 14 18:05:07 2013 luc sinet
-** Last update Fri May 17 16:48:43 2013 luc sinet
+** Last update Sat May 18 19:00:58 2013 luc sinet
 */
 
 #include "main.h"
@@ -26,7 +26,6 @@ void		handle_transparency(t_shadow *spt, t_rt *rpt,
   double	cur_coor[3];
   double	distance;
   int		i;
-  int		x;
 
   i = 0;
   if (obj->type == PLAN)

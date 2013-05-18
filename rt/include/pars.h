@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Thu May 16 14:40:30 2013 luc sinet
+** Last update Sat May 18 20:21:50 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -78,6 +78,7 @@ void	fill_vec(double vec[3], char *line);
 int	fill_texture(t_pars *opt, t_rt *rpt);
 int	fill_model(t_pars *opt, t_obj **tab);
 int	get_args(t_obj *tab, t_pars *opt, int *y);
+void	skip_space(char *line, int *i);
 void	pars_color(char *line, t_obj *ept, t_text *text);
 void	pars_brightness(char *line, t_obj *ept, t_text *text);
 void	pars_texture(char *line, t_obj *ept, t_text *text);
@@ -92,6 +93,7 @@ void	pars_refraction(char *line, t_obj *ept, t_text *text);
 void	pars_reflection(char *line, t_obj *ept, t_text *text);
 void	pars_cst(char *line, t_obj *ept, t_text *text);
 void	pars_size(char *line, t_obj *ept, t_text *text);
+void	pars_perlin(char *line, t_obj *ept, t_text *text);
 void	init_objptr(void (**objptr)(char *line, t_obj *ept, t_text *text));
 
 #endif

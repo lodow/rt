@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu May 16 10:51:03 2013 luc sinet
-** Last update Thu May 16 13:31:41 2013 luc sinet
+** Last update Sat May 18 20:20:10 2013 luc sinet
 */
 
 #include "main.h"
@@ -38,5 +38,5 @@ void	pars_cst(char *line, t_obj *ept, t_text *text)
 void	pars_absorbance(char *line, t_obj *ept, t_text *text)
 {
   (void)text;
-  ept->indice[3] = LIMIT(my_fgetnbr(&line[13]), 0, 1);
+  ept->indice[3] = LIMIT(2.0 * my_fgetnbr(&line[13]), 0, 2);
 }

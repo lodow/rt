@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri Apr  5 11:07:42 2013 luc sinet
-** Last update Sat May 18 18:48:46 2013 luc sinet
+** Last update Sat May 18 19:03:16 2013 luc sinet
 */
 
 #include <math.h>
@@ -73,7 +73,7 @@ unsigned int   	supersampling(t_rt *rpt, t_samp *spt, int x, int y)
 	{
 	  get_rand_pos(pos, r_pos, spacing);
 	  new_coor(rpt->vpt, rpt->cpt, r_pos[0], r_pos[1]);
-	  spt->pixel[i] = get_pixel_color(rpt, pos);
+	  spt->pixel[i] = get_pixel_color(rpt, (int *)pos);
 	  /* printf("y %f  x %f\n", r_pos[1], r_pos[0]); */
 	  pos[0] += spacing;
 	  ++i;
