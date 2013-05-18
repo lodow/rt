@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Mar 16 23:19:04 2013 luc sinet
-** Last update Thu May 16 14:39:36 2013 luc sinet
+** Last update Sat May 18 20:09:55 2013 luc sinet
 */
 
 #include "main.h"
@@ -97,22 +97,23 @@ void	fill_carac_model(char **carac)
   carac[11] = "Reflection = ";
   carac[12] = "Cst = ";
   carac[13] = "Size = ";
+  carac[14] = "Perlin = ";
 }
 
 int	other_opt(char *line, t_obj *ept, t_text *text)
 {
   int	i;
-  char	*carac[14];
-  void	(*objptr[14])(char *line, t_obj *ept, t_text *text);
+  char	*carac[15];
+  void	(*objptr[15])(char *line, t_obj *ept, t_text *text);
 
   i = 0;
   if (my_strncmp("Name = ", line, 7) == 0)
     return (0);
   fill_carac_model(carac);
   init_objptr(objptr);
-  while (i < 14 && my_strncmp(carac[i], line, my_strlen(carac[i])) != 0)
+  while (i < 15 && my_strncmp(carac[i], line, my_strlen(carac[i])) != 0)
     ++i;
-  if (i < 14)
+  if (i < 15)
     objptr[i](line, ept, text);
-  return (i == 14 ? -1 : 0);
+  return (i == 15 ? -1 : 0);
 }
