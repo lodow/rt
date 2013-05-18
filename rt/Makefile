@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sat May 18 20:20:26 2013 luc sinet
+## Last update Sat May 18 20:29:44 2013 etienne debas
 ##
 
 SRCS	= main.c \
@@ -81,7 +81,9 @@ SRCS	= main.c \
 	  solve_quad.c \
 	  tangle.c \
 	  color.c \
-	  tore.c
+	  tore.c \
+	  utils_color.c \
+	  perlin.c
 
 OBJS	= $(SRCS:.c=.o)
 

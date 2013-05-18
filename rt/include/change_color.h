@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 17:42:09 2013 luc sinet
-** Last update Mon May 13 17:00:00 2013 Adrien Della Maggiora
+** Last update Sat May 18 20:17:58 2013 etienne debas
 */
 
 #ifndef CHANGE_COLOR_H_
@@ -33,5 +33,8 @@ unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
 unsigned int   	darken_color(unsigned char *color, double sdw_coef);
 void		change_shadow_color(unsigned char *obj_color, t_obj *d_elem, t_lig *lpt);
 void		get_color_texture(t_obj *obj, t_lco *lpt, double k, t_rt *rpt);
-
+void		save_color_obj(unsigned char *color,
+			       unsigned char *save);
+void		reinit_color(unsigned char *color,
+			     unsigned char *save);
 #endif
