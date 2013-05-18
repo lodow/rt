@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Sat May 18 20:27:34 2013 etienne debas
+** Last update Sun May 19 00:29:21 2013 etienne debas
 */
 
 #include <math.h>
@@ -72,8 +72,9 @@ unsigned int	get_pixel_color(t_rt *rpt, int *pos)
   distance = 200 * FOG_DIST;
   if (k != -1 && rpt->light[0].on == 1)
     {
-      color = bruit_de_perlin(pos, rpt->obj[rpt->obj_num].color,
-			      rpt->obj[rpt->obj_num].perlin);
+      if (rpt->obj[rpt->obj_num].perlin != -1)
+	color = perlin(pos, rpt->obj[rpt->obj_num].color,
+		       rpt->obj[rpt->obj_num].perlin);
       get_color_texture(&rpt->obj[rpt->obj_num], &lpt, k, rpt);
       color = get_light(rpt, k, &rpt->obj[rpt->obj_num], &lpt);
       color = reflection(rpt, &lpt, color, k);

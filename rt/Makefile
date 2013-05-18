@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sat May 18 20:29:44 2013 etienne debas
+## Last update Sat May 18 22:59:50 2013 etienne debas
 ##
 
 SRCS	= main.c \
@@ -83,7 +83,8 @@ SRCS	= main.c \
 	  color.c \
 	  tore.c \
 	  utils_color.c \
-	  perlin.c
+	  perlin.c \
+	  perlin_effect.c
 
 OBJS	= $(SRCS:.c=.o)
 
