@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May  5 18:27:59 2013 luc sinet
-** Last update Sat May 11 14:42:17 2013 Adrien Della Maggiora
+** Last update Sat May 18 16:53:37 2013 luc sinet
 */
 
 #include <math.h>
@@ -28,6 +28,30 @@ unsigned int	calc_trans(unsigned int *all_color, double *alpha, int i,
   return (res);
 }
 
+double	get_refrac_ratio(t_obj *tab, t_obj *obj, int *pass, int obj_num)
+{
+  int	i;
+  int	found;
+
+  i = 0;
+  found = find_in_tab(pass, obj_num, &i);
+  add_to_tab(pass, obj_num);
+  if (!found)
+    {
+      if (i == 0)
+	return (obj->indice[1]);
+      else
+	return (obj->indice[1] / tab[pass[i - 1]].indice[1]);
+    }
+  else
+    {
+      if (i - 1 < 0)
+	return (AIR);
+      else
+	return (tab[pass[i - 1]].indice[1] / obj->indice[1]);
+    }
+}
+
 unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
 			     double k)
 {
@@ -38,9 +62,12 @@ unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
   double	vec[3];
   double	alpha[MAX_R];
   unsigned int	all_color[MAX_R];
+  int		pass[256];
+  double       	refrac;
 
   n = 1;
   save_obj = obj = rpt->obj_num;
+  my_memset(pass, -1, 256);
   copy_tab(rpt->vpt->vec, vec, 3);
   copy_tab(rpt->cpt->pos, rpt->cpt->ctmp, 3);
   i = 0;
@@ -49,7 +76,8 @@ unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
     {
       obj = rpt->obj_num;
       alpha[i] = rpt->obj[obj].indice[0];
-      calc_refrac(rpt, rpt->vpt, lpt, k, rpt->obj[obj].indice[1] / n);
+      refrac = get_refrac_ratio(rpt->obj, &rpt->obj[obj], pass, obj);
+      calc_refrac(rpt, rpt->vpt, lpt, k, refrac);
       n = rpt->obj[obj].indice[1];
       calc_inter(rpt, &k);
       if (k > ZERO && rpt->obj_num != obj)

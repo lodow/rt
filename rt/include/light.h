@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Thu May 16 14:31:08 2013 luc sinet
+** Last update Sat May 18 16:38:49 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -20,6 +20,7 @@
 # define SPE_SIZE 1
 # define MAX_DIST 80
 # define PLAN_SIZE 10
+# define AIR 1.0
 
 typedef struct	s_lig	t_lig;
 
