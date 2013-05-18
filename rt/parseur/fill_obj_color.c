@@ -5,17 +5,18 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 17:19:47 2013 luc sinet
-** Last update Thu May  9 10:27:52 2013 Adrien Della Maggiora
+** Last update Sat May 18 23:54:35 2013 luc sinet
 */
 
 #include "nb.h"
 
-void	get_color(char *line, unsigned char *color)
+void		get_color(char *line, unsigned char *color)
 {
-  int	fullcolor;
+  unsigned int	fullcolor;
 
   fullcolor = my_getnbr_base(line, "0123456789ABCDEF");
   color[2] = (fullcolor & 0xFF);
   color[1] = (fullcolor >> 8) & 0xFF;
   color[0] = (fullcolor >> 16) & 0xFF;
+
 }

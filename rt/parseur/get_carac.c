@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Mar 16 23:19:04 2013 luc sinet
-** Last update Sat May 18 20:09:55 2013 luc sinet
+** Last update Sat May 18 23:43:46 2013 luc sinet
 */
 
 #include "main.h"
@@ -40,7 +40,7 @@ void	fill_center(t_obj *ept, char *line)
   int	pl;
   int	x;
 
-  pl = 9;
+  pl = 0;
   x = 0;
   if (!line[pl])
     return ;
@@ -63,7 +63,7 @@ void	fill_angle(t_obj *ept, char *line)
   int	x;
   int	ang;
 
-  pl = 8;
+  pl = 0;
   if (!line[pl])
     return ;
   x = 0;
@@ -83,7 +83,7 @@ void	fill_angle(t_obj *ept, char *line)
 
 void	fill_carac_model(char **carac)
 {
-  carac[0] = "Color = ";
+  carac[0] = "Color = 0x";
   carac[1] = "Brightness = ";
   carac[2] = "Texture = ";
   carac[3] = "Absorbance = ";
@@ -114,6 +114,6 @@ int	other_opt(char *line, t_obj *ept, t_text *text)
   while (i < 15 && my_strncmp(carac[i], line, my_strlen(carac[i])) != 0)
     ++i;
   if (i < 15)
-    objptr[i](line, ept, text);
+    objptr[i](&line[my_strlen(carac[i])], ept, text);
   return (i == 15 ? -1 : 0);
 }

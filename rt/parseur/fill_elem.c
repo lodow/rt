@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 23:15:31 2013 luc sinet
-** Last update Thu May 16 11:40:42 2013 luc sinet
+** Last update Sat May 18 23:37:00 2013 luc sinet
 */
 
 #include "main.h"
@@ -25,9 +25,9 @@ int	get_args(t_obj *tab, t_pars *opt, int *y)
       while (line[s] == ' ')
 	++s;
       if (my_strncmp("Center = ", &line[s], 9) == 0)
-	fill_center(tab, &line[s]);
+	fill_center(tab, &line[s + 9]);
       else if (my_strncmp("Angle = ", &line[s], 8) == 0)
-	fill_angle(tab, &line[s]);
+	fill_angle(tab, &line[s + 8]);
       else if (other_opt(&line[s], tab, opt->text) == -1)
 	return (file_error(line, *y, -1));
        ++(*y);
