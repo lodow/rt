@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat May 18 20:10:33 2013 luc sinet
-** Last update Sat May 18 20:21:16 2013 luc sinet
+** Last update Sat May 18 23:33:28 2013 luc sinet
 */
 
 #include "main.h"
@@ -18,7 +18,7 @@ void	pars_perlin(char *line, t_obj *ept, t_text *text)
   int	x;
 
   (void)text;
-  i = 9;
+  i = 0;
   x = 0;
   type[0] = "Marble";
   type[1] = "Zebra";

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu May 16 11:20:43 2013 luc sinet
-** Last update Thu May 16 13:26:55 2013 luc sinet
+** Last update Sat May 18 23:55:01 2013 luc sinet
 */
 
 #include "main.h"
@@ -14,16 +14,16 @@
 void	pars_color(char *line, t_obj *ept, t_text *text)
 {
   (void)text;
-  get_color(&line[10], ept->color);
+  get_color(line, ept->color);
 }
 
 void	pars_brightness(char *line, t_obj *ept, t_text *text)
 {
   (void)text;
-  ept->bright = LIMIT(my_fgetnbr(&line[13]), 0, 1);
+  ept->bright = LIMIT(my_fgetnbr(line), 0, 1);
 }
 
 void	pars_texture(char *line, t_obj *ept, t_text *text)
 {
-  link_text(ept, &line[10], text);
+  link_text(ept, line, text);
 }

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu May 16 13:20:28 2013 luc sinet
-** Last update Thu May 16 13:25:14 2013 luc sinet
+** Last update Sat May 18 23:33:17 2013 luc sinet
 */
 
 #include "main.h"
@@ -14,5 +14,5 @@
 void	pars_size(char *line, t_obj *ept, t_text *text)
 {
   (void)text;
-  ept->size = my_fgetnbr(&line[7]);
+  ept->size = my_fgetnbr(line);
 }
