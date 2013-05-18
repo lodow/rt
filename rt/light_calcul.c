@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed May  8 18:39:21 2013 luc sinet
-** Last update Thu May 16 14:30:00 2013 luc sinet
+** Last update Sat May 18 17:09:04 2013 luc sinet
 */
 
 #include <math.h>
@@ -19,8 +19,8 @@ void		filter_light_color(unsigned char *lcolor, t_obj *obj, double distance)
   double	ratio_distance;
 
   ratio_distance = LIMIT(distance / MAX_DIST, 0, 1);
-  ratio = (((1.0 - obj->indice[0] + ratio_distance) / 2.0) * ratio_distance)
-    * obj->indice[3];
+  ratio = LIMIT(obj->indice[3] * (1.0 - obj->indice[0])
+		* ratio_distance, 0 , 1);
   lcolor[0] = (1.0 - ratio) * lcolor[0]
     + ratio * obj->color[0];
   lcolor[1] = (1.0 - ratio) * lcolor[1]
