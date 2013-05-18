@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Tue May 14 00:53:28 2013 luc sinet
+** Last update Sat May 18 18:46:56 2013 luc sinet
 */
 
 #include <math.h>
@@ -57,7 +57,7 @@ void		new_coor(t_vec *vpt, t_cam *cpt, double x, double y)
   rotate(vpt->vec, cpt->ccos, cpt->csin, 0);
 }
 
-unsigned int	get_pixel_color(t_rt *rpt)
+unsigned int	get_pixel_color(t_rt *rpt, int *pos)
 {
   double	k;
   double	distance;
@@ -96,7 +96,7 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
       while (pos[0] < WINX)
 	{
 	  new_coor(vpt, cpt, pos[0], pos[1]);
-	  color = get_pixel_color(rpt);
+	  color = get_pixel_color(rpt, pos);
 	  my_pixel_put_to_image(pos[0], pos[1], ppt, color);
 	  fill_img_param(pos, color, rpt, ppt);
 	  ++pos[0];
@@ -104,7 +104,7 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
       print_i(ppt);
       ++pos[1];
     }
-  exit(0);
+  /* exit(0); */
   detect_edge(rpt, ppt);
   apply_supersampling(rpt, ppt, &spt);
 }
