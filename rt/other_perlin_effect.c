@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May 19 18:38:43 2013 luc sinet
-** Last update Sun May 19 18:42:11 2013 luc sinet
+** Last update Sun May 19 20:15:16 2013 luc sinet
 */
 
 #include <math.h>
@@ -22,6 +22,7 @@ unsigned int	perlin_disco(int *coor_pixel, unsigned char *color_obj,
   double	pn_v;
   double	pn_b;
 
+  (void)ppt;
   pn_r = get_perlin(coor_pixel[0] / (double)WINX,
 		    coor_pixel[1] / (double)WINY,
 		    50, 0.2, 2, 3);

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May 19 09:59:16 2013 luc sinet
-** Last update Sun May 19 18:19:03 2013 luc sinet
+** Last update Sun May 19 20:14:18 2013 luc sinet
 */
 
 #include "main.h"
@@ -59,6 +59,8 @@ void	middle_interpol(unsigned char *color_obj, double pn,
 void	upper_interpol(unsigned char *color_obj, double pn,
 			  double *sval, double *col)
 {
+  (void)pn;
+  (void)sval;
   color_obj[2] = C1_B;
   color_obj[1] = C1_G;
   color_obj[0] = C1_R;

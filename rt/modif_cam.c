@@ -5,20 +5,24 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Thu Mar 21 23:31:20 2013 etienne debas
-** Last update Thu May  9 10:31:37 2013 Adrien Della Maggiora
+** Last update Sun May 19 20:11:45 2013 luc sinet
 */
 
 #include "main.h"
 #include "light.h"
 
-void   	copy_tab(double *tab, double *ctab, int size)
+void		copy_tab(void *tab, void *ctab, int size)
 {
-  int	i;
+  double	*ptr1;
+  double	*ptr2;
+  int		i;
 
+  ptr1 = tab;
+  ptr2 = ctab;
   i = 0;
   while (i < size)
     {
-      ctab[i] = tab[i];
+      ptr2[i] = ptr1[i];
       ++i;
     }
 }

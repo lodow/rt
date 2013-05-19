@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat May 18 20:10:33 2013 luc sinet
-** Last update Sat May 18 23:33:28 2013 luc sinet
+** Last update Sun May 19 19:57:13 2013 luc sinet
 */
 
 #include "main.h"
@@ -25,8 +25,8 @@ void	pars_perlin(char *line, t_obj *ept, t_text *text)
   type[2] = "Cloud";
   type[3] = "Wood";
   type[4] = "Mercury";
-  type[5] = "Fire";
-  type[6] = "Disco";
+  type[5] = "Disco";
+  type[6] = "Fire";
   skip_space(line, &i);
   while (x < 7 && my_strncmp(&line[i], type[x], my_strlen(type[x])) != 0)
     ++x;

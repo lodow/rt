@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May 19 10:03:06 2013 luc sinet
-** Last update Sun May 19 18:45:50 2013 luc sinet
+** Last update Sun May 19 20:13:35 2013 luc sinet
 */
 
 #ifndef PERLIN_H_
@@ -37,5 +37,7 @@ unsigned int	perlin_zebra(int *coor_pixel, unsigned char *color_obj,
 void		fill_tab_from_str(double *tab, char *str, int size);
 double		get_perlin(double x, double y, double z,
 		  double alpha, double beta, int n);
+void	interpolation(unsigned char *color_obj, double pn,
+		      double *sval, double *col);
 
 #endif

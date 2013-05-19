@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Sat May 18 22:58:07 2013 etienne debas
+** Last update Sun May 19 20:12:08 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -120,7 +120,7 @@ void		rotate_x(double *p, double cosin, double sinus);
 void		rotate_y(double *p, double cosin, double sinus);
 void		rotate_z(double *p, double cosin, double sinus);
 unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt);
-void		copy_tab(double *tab, double *ctab, int size);
+void		copy_tab(void *tab, void *ctab, int size);
 void		modif_cam(double *c_pos, double *o_pos);
 void		rotate(double *p, double *cosin, double *sinus, char opt);
 void		new_coor(t_vec *vpt, t_cam *cpt, double x, double y);
@@ -137,6 +137,7 @@ double		test_side_limit(double *cam, double *vec,
 double		test_depth_limit(double *cam, double *vec,
 				double *limit, double *k);
 unsigned int	get_pixel_color(t_rt *rpt, int *pos);
+void		get_impact(double *imp, double *cam, double k, double *vec);
 void		get_inter(double *cam, double *vec, double k, double *inter);
 void		detect_edge(t_rt *rpt, t_par *ppt);
 void		apply_supersampling(t_rt *rpt, t_par *ppt, t_samp *spt);
