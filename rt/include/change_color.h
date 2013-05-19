@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 17:42:09 2013 luc sinet
-** Last update Sat May 18 20:17:58 2013 etienne debas
+** Last update Mon May 20 01:17:32 2013 luc sinet
 */
 
 #ifndef CHANGE_COLOR_H_
@@ -37,4 +37,7 @@ void		save_color_obj(unsigned char *color,
 			       unsigned char *save);
 void		reinit_color(unsigned char *color,
 			     unsigned char *save);
+void		checkerboard_color(t_rt *rpt, double k,
+				   unsigned char *color);
+
 #endif
