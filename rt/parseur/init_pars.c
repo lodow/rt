@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu May 16 14:37:50 2013 luc sinet
-** Last update Sat May 18 20:10:19 2013 luc sinet
+** Last update Mon May 20 01:23:48 2013 luc sinet
 */
 
 #include "main.h"
@@ -28,4 +28,5 @@ void	init_objptr(void (**objptr)(char *line, t_obj *ept, t_text *text))
   objptr[12] = &pars_cst;
   objptr[13] = &pars_size;
   objptr[14] = &pars_perlin;
+  objptr[15] = &pars_checker;
 }

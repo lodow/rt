@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Sat May 18 20:21:50 2013 luc sinet
+** Last update Mon May 20 01:25:30 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -94,6 +94,7 @@ void	pars_reflection(char *line, t_obj *ept, t_text *text);
 void	pars_cst(char *line, t_obj *ept, t_text *text);
 void	pars_size(char *line, t_obj *ept, t_text *text);
 void	pars_perlin(char *line, t_obj *ept, t_text *text);
+void	pars_checker(char *line, t_obj *ept, t_text *text);
 void	init_objptr(void (**objptr)(char *line, t_obj *ept, t_text *text));
 
 #endif
