@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May  5 18:27:59 2013 luc sinet
-** Last update Sat May 18 16:53:37 2013 luc sinet
+** Last update Sun May 19 22:59:53 2013 luc sinet
 */
 
 #include <math.h>
@@ -60,6 +60,7 @@ unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
   int		save_obj;
   double	n;
   double	vec[3];
+  double	ctmp[3];
   double	alpha[MAX_R];
   unsigned int	all_color[MAX_R];
   int		pass[256];
@@ -69,7 +70,7 @@ unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
   save_obj = obj = rpt->obj_num;
   my_memset(pass, -1, 256);
   copy_tab(rpt->vpt->vec, vec, 3);
-  copy_tab(rpt->cpt->pos, rpt->cpt->ctmp, 3);
+  copy_tab(rpt->cpt->pos, ctmp, 3);
   i = 0;
   while (i < MAX_R && rpt->obj[rpt->obj_num].indice[0] > ZERO && n > ZERO
 	 && k > ZERO)
@@ -81,11 +82,11 @@ unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
       n = rpt->obj[obj].indice[1];
       calc_inter(rpt, &k);
       if (k > ZERO && rpt->obj_num != obj)
-	all_color[i++] = get_light(rpt, k, &rpt->obj[rpt->obj_num], lpt);
+	all_color[i++] = modifie_p_color(rpt, k, 1);
       else if (k == -1)
 	all_color[i++]  = 0x000000;
     }
-  copy_tab(rpt->cpt->ctmp, rpt->cpt->pos, 3);
+  copy_tab(ctmp, rpt->cpt->pos, 3);
   copy_tab(vec, rpt->vpt->vec, 3);
   rpt->obj_num = save_obj;
   return ((i > 0) ? calc_trans(all_color, alpha, i - 1, color) : color);

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Sun May 19 22:42:23 2013 luc sinet
+** Last update Sun May 19 23:01:13 2013 luc sinet
 */
 
 #include <math.h>
@@ -34,33 +34,38 @@ void		calc_inter(t_rt *rpt, double *kmin)
     }
 }
 
+unsigned int	modifie_p_color(t_rt *rpt, double k, char opt)
+{
+  unsigned int	color;
+  t_lco		lpt;
+
+  /* if (rpt->obj[rpt->obj_num].perlin != -1) */
+  /*   color = perlin(pos, rpt->obj[rpt->obj_num].color, */
+  /* 		   rpt->obj[rpt->obj_num].perlin); */
+  get_color_texture(&rpt->obj[rpt->obj_num], &lpt, k, rpt);
+  color = get_light(rpt, k, &rpt->obj[rpt->obj_num], &lpt);
+  if (opt != 2)
+    color = reflection(rpt, &lpt, color, k);
+  if (opt != 1)
+    color = transparency(rpt, &lpt, color, k);
+  return (color);
+}
+
 unsigned int	get_pixel_color(t_rt *rpt, int *pos)
 {
   double	k;
   double	distance;
-  t_lco		lpt;
   unsigned int	color;
-  unsigned char	save_color[3];
 
   color = 0x000000;
   calc_inter(rpt, &k);
-  if (rpt->obj[rpt->obj_num].perlin != -1)
-    save_color_obj(rpt->obj[rpt->obj_num].color, save_color);
   distance = 200 * FOG_DIST;
   if (k != -1 && rpt->light[0].on == 1)
     {
-      if (rpt->obj[rpt->obj_num].perlin != -1)
-	color = perlin(pos, rpt->obj[rpt->obj_num].color,
-		       rpt->obj[rpt->obj_num].perlin);
-      get_color_texture(&rpt->obj[rpt->obj_num], &lpt, k, rpt);
-      color = get_light(rpt, k, &rpt->obj[rpt->obj_num], &lpt);
-      color = reflection(rpt, &lpt, color, k);
-      color = transparency(rpt, &lpt, color, k);
+      color = modifie_p_color(rpt, k, 0);
       distance = rpt->obj[rpt->obj_num].dist;
     }
   color = apply_fog(color, rpt->opt->fog, distance);
-  if (rpt->obj[rpt->obj_num].perlin != -1)
-    reinit_color(rpt->obj[rpt->obj_num].color, save_color);
   return (color);
 }
 

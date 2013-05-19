@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Sun May 19 20:12:08 2013 luc sinet
+** Last update Sun May 19 23:03:53 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -111,6 +111,8 @@ typedef struct	s_rt
 }		t_rt;
 
 void		calc_inter(t_rt *rpt, double *kmin);
+unsigned int	modifie_p_color(t_rt *rpt, double k, char opt);
+void		assign_function(t_rt *rpt);
 void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt);
 int		print_i(t_par *ppt);
 int		merror(char *msg, int ret);

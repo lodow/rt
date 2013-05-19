@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Tue Apr  2 18:25:49 2013 etienne debas
-** Last update Thu May  9 10:31:18 2013 Adrien Della Maggiora
+** Last update Sun May 19 22:59:52 2013 luc sinet
 */
 
 #include <math.h>
@@ -50,24 +50,24 @@ unsigned int	apply_indice(unsigned int color, unsigned int obj_color,
 unsigned int	reflection(t_rt *rpt, t_lco *lpt, unsigned int color, double k)
 {
   double	indice;
+  double	ctmp[3];
   int		i;
   int		obj;
 
   i = 0;
   indice = 1;
   obj = rpt->obj_num;
-  copy_tab(rpt->cpt->pos, rpt->cpt->ctmp, 3);
+  copy_tab(rpt->cpt->pos, ctmp, 3);
   while (i < MAX_R && rpt->obj[rpt->obj_num].indice[2] >= ZERO && k > ZERO)
     {
       indice *= rpt->obj[rpt->obj_num].indice[2];
       calc_reflec_vector(rpt, rpt->vpt, lpt, k);
       calc_inter(rpt, &k);
       color = apply_indice(color, (k > ZERO) ?
-			       get_light(rpt, k, &rpt->obj[rpt->obj_num], lpt)
-			       : 0x000000, indice);
+  			   modifie_p_color(rpt, k, 2) : 0x000000, indice);
       ++i;
     }
-  copy_tab(rpt->cpt->ctmp, rpt->cpt->pos, 3);
+  copy_tab(ctmp, rpt->cpt->pos, 3);
   rpt->obj_num = obj;
   return (color);
 }
