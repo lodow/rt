@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sun May 19 18:46:27 2013 luc sinet
+## Last update Sun May 19 22:42:03 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -43,6 +43,7 @@ SRCS	= main.c \
 	  parseur/pars_size.c \
 	  parseur/pars_perlin.c \
 	  calc_inter.c \
+	  reset_calc.c \
 	  pp_image.c \
 	  inter.c \
 	  copy.c \
