@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May 19 09:59:16 2013 luc sinet
-** Last update Sun May 19 18:14:35 2013 luc sinet
+** Last update Sun May 19 18:19:03 2013 luc sinet
 */
 
 #include "main.h"
@@ -13,18 +13,18 @@
 #include "nb.h"
 #include "perlin.h"
 
-void	fill_tab_from_str(double *tab, char *str)
+void	fill_tab_from_str(double *tab, char *str, int size)
 {
   int	i;
   int	x;
 
   i = 0;
   x = 0;
-  while (str[i])
+  while (str[i] && x < size)
     {
       tab[x++] = my_fgetnbr(&str[i]);
-      skip_fnumber(line, &i);
-      skip_space(line, &i);
+      skip_fnumber(str, &i);
+      skip_space(str, &i);
     }
 }
 
