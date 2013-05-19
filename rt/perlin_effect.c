@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 18 22:44:56 2013 etienne debas
-** Last update Sun May 19 18:48:50 2013 luc sinet
+** Last update Sun May 19 18:52:21 2013 luc sinet
 */
 
 #include <math.h>
@@ -49,10 +49,10 @@ unsigned int	perlin_mercury(int *coor_pixel, unsigned char *color_obj,
 			       t_perl *ppt)
 {
   fill_tab_from_str(ppt->sval, "0.001, 0.4, 0.6", 3);
-  fill_tab_from_str(ppt->col, "84, 255, 95, 255, 127, 48, 255, 37, 17", 9);
+  fill_tab_from_str(ppt->col, "84, 255, 95, 28, 59, 255, 255, 37, 17", 9);
   ppt->pn = get_perlin(coor_pixel[0] / (double)WINX,
 		       coor_pixel[1] / (double)WINY,
-		       0.1, 0.7, 2.5, 2.8);
+		       0.1, 0.7, 3, 3.8);
   interpolation(color_obj, ppt->pn, ppt->sval, ppt->col);
   return (recomp_color(color_obj));
 }
