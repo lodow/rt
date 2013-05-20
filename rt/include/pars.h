@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Mon May 20 01:25:30 2013 luc sinet
+** Last update Mon May 20 20:55:51 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -13,7 +13,7 @@
 
 # define LIMIT(x, n1, n2) (x < n1) ? n1 : (x > n2) ? n2 : x
 # define BOOL(x) (x >= 1) ? 1 : 0
-# define T_ACCOL(x) (x == 15) ? 1 : (x == 16) ? -1 : 0
+# define T_ACCOL(x) (x == 16) ? 1 : (x == 17) ? -1 : 0
 
 #define SPHERE 0
 #define PLAN 1
