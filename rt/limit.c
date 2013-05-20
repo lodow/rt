@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Apr  9 18:33:23 2013 luc sinet
-** Last update Mon May 20 18:50:07 2013 luc sinet
+** Last update Mon May 20 20:18:44 2013 luc sinet
 */
 
 #include "main.h"
@@ -22,7 +22,7 @@ double		test_up_limit(double *cam, double *vec,
     {
       mk[1] = get_max(k, 2);
       get_inter(cam, vec, mk[1], inter);
-      if (inter[2] > limit[8])
+      if (inter[2] > limit[8] || inter[2] < limit[7])
 	return (-1);
       else
 	return (mk[1]);
@@ -42,7 +42,7 @@ double		test_down_limit(double *cam, double *vec,
     {
       mk[1] = get_max(k, 2);
       get_inter(cam, vec, mk[1], inter);
-      if (inter[2] < limit[7])
+      if (inter[2] < limit[7] || inter[2] > limit[8])
 	return (-1);
       else
 	return (mk[1]);
@@ -75,16 +75,14 @@ double		test_limit(double *cam, double *vec, double *k, double *limit)
 
   min = get_min(k , 2);
   get_impact(inter, cam, min, vec);
-  printf("%f %f %f\n", inter[0], inter[1], inter[2]);
   if (limit[6] == 3 && min > 0)
     current = test_heigh_limit(cam, vec, limit, k);
   min = GMAX(min, current);
   if (limit[3] == 2 && min > 0)
     current = test_side_limit(cam, vec, limit, k);
-  min = current;
-  /* min = GMAX(min, current); */
-  /* if (limit[0] == 1 && min > 0 && */
-  /*     ((current = test_depth_limit(cam, vec, limit, k)) > min || current < 0)) */
-  /*   min = current; */
+  min = GMAX(min, current);
+  if (limit[0] == 1 && min > 0)
+    current = test_depth_limit(cam, vec, limit, k);
+  min = GMAX(min, current);
   return (min);
 }

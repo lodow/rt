@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 22:20:26 2013 luc sinet
-** Last update Mon May 20 18:51:27 2013 luc sinet
+** Last update Mon May 20 20:17:52 2013 luc sinet
 */
 
 #include "main.h"
@@ -22,7 +22,7 @@ double		test_left_limit(double *cam, double *vec,
     {
       mk[1] = get_max(k, 2);
       get_inter(cam, vec, mk[1], inter);
-      if (inter[1] > limit[5])
+      if (inter[1] > limit[5] || inter[1] < limit[4])
 	return (-1);
       else
 	return (mk[1]);
@@ -42,7 +42,7 @@ double		test_right_limit(double *cam, double *vec,
     {
       mk[1] = get_max(k, 2);
       get_inter(cam, vec, mk[1], inter);
-      if (inter[1] < limit[4])
+      if (inter[1] < limit[4] || inter[1] > limit[5])
 	return (-1);
       else
 	return (mk[1]);
