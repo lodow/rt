@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 22:20:26 2013 luc sinet
-** Last update Thu May  9 10:31:58 2013 Adrien Della Maggiora
+** Last update Mon May 20 18:51:27 2013 luc sinet
 */
 
 #include "main.h"
@@ -58,10 +58,10 @@ double		test_side_limit(double *cam, double *vec,
 
   min = get_min(k, 2);
   current = min;
-  if (limit[4] != IVAL)
+  if (min > 0 && limit[4] != IVAL)
     current = test_right_limit(cam, vec, k, limit);
   min = GMAX(min, current);
-  if (min >= 0 && limit[5] != IVAL)
+  if (min > 0 && limit[5] != IVAL)
     current = test_left_limit(cam, vec, k, limit);
   min = GMAX(min, current);
   return (min);
