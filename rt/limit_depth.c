@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 22:20:26 2013 luc sinet
-** Last update Thu May  9 10:32:06 2013 Adrien Della Maggiora
+** Last update Mon May 20 20:19:06 2013 luc sinet
 */
 
 #include "main.h"
@@ -18,13 +18,11 @@ double		test_forw_limit(double *cam, double *vec,
 
   mk[0] = get_min(k, 2);
   get_inter(cam, vec, mk[0], inter);
-  /* printf("inter[0] = %f\n", inter[0]); */
   if (inter[0] < limit[1])
     {
       mk[1] = get_max(k, 2);
       get_inter(cam, vec, mk[1], inter);
-      /* printf("sinter[0] = %f\n\n", inter[0]); */
-      if (inter[0] < limit[1])
+      if (inter[0] < limit[1] || inter[0] > limit[2])
 	return (-1);
       else
 	return (mk[1]);
@@ -35,7 +33,6 @@ double		test_forw_limit(double *cam, double *vec,
 double		test_back_limit(double *cam, double *vec,
 				double *k, double *limit)
 {
-
   double       	mk[2];
   double	inter[3];
 
@@ -45,7 +42,7 @@ double		test_back_limit(double *cam, double *vec,
     {
       mk[1] = get_max(k, 2);
       get_inter(cam, vec, mk[1], inter);
-      if (inter[0] > limit[2])
+      if (inter[0] > limit[2] || inter[0] < limit[1])
 	return (-1);
       else
 	return (mk[1]);
@@ -61,10 +58,10 @@ double		test_depth_limit(double *cam, double *vec,
 
   min = get_min(k, 2);
   current = min;
-  if (limit[1] != IVAL)
+  if (min > 0 && limit[1] != IVAL)
     current = test_forw_limit(cam, vec, k, limit);
   min = GMAX(min, current);
-  if (min >= 0 && limit[2] != IVAL)
+  if (min > 0 && limit[2] != IVAL)
     current = test_back_limit(cam, vec, k, limit);
   min = GMAX(min, current);
   return (min);
