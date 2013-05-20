@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May 19 22:41:07 2013 luc sinet
-** Last update Sun May 19 23:03:54 2013 luc sinet
+** Last update Mon May 20 14:48:13 2013 luc sinet
 */
 
 #include "main.h"
@@ -24,6 +24,7 @@ void	assign_function(t_rt *rpt)
   rpt->eptr[8] = &hyperboloide;
   rpt->eptr[9] = &moebius;
   rpt->eptr[10] = &tangle;
+  rpt->eptr[11] = &tore;
 }
 
 void		new_coor(t_vec *vpt, t_cam *cpt, double x, double y)

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Mon May 20 11:43:33 2013 luc sinet
+** Last update Mon May 20 14:53:55 2013 luc sinet
 */
 
 #include <math.h>
@@ -22,7 +22,7 @@ void		calc_inter(t_rt *rpt, double *kmin)
 
   i = 0;
   *kmin = -1;
-  while (rpt->obj[i].type >= 0 && rpt->obj[i].type < 11)
+  while (rpt->obj[i].type >= 0 && rpt->obj[i].type < 12)
     {
       k = move_cam(rpt, rpt->vpt, rpt->cpt, rpt->obj[i]);
       if (k > ZERO && (k < *kmin || *kmin == -1))
@@ -34,6 +34,18 @@ void		calc_inter(t_rt *rpt, double *kmin)
     }
 }
 
+void		get_obj_color(t_rt *rpt, t_obj *obj, double k, t_lco *lpt)
+{
+  double       	inter[3];
+
+  get_impact(inter, rpt->cpt->pos, k, rpt->vpt->vec);
+  if (obj->checker != 0)
+    checkerboard_color(inter, obj->color, obj->checker);
+  else if (obj->perlin != -1)
+    perlin(inter, obj->color, obj->perlin);
+  get_color_texture(obj, lpt, k, rpt);
+}
+
 unsigned int	modifie_p_color(t_rt *rpt, double k, char opt)
 {
   unsigned int	color;
@@ -41,12 +53,7 @@ unsigned int	modifie_p_color(t_rt *rpt, double k, char opt)
   t_obj		*obj;
 
   obj = &rpt->obj[rpt->obj_num];
-  /* if (rpt->obj[rpt->obj_num].perlin != -1) */
-  /*   color = perlin(pos, rpt->obj[rpt->obj_num].color, */
-  /* 		   rpt->obj[rpt->obj_num].perlin); */
-  if (obj->checker != 0)
-    checkerboard_color(rpt, k, obj->color, obj->checker);
-  get_color_texture(obj, &lpt, k, rpt);
+  get_obj_color(rpt, obj, k, &lpt);
   color = get_light(rpt, k, obj, &lpt);
   if (opt != 2)
     color = reflection(rpt, &lpt, color, k);
@@ -55,7 +62,7 @@ unsigned int	modifie_p_color(t_rt *rpt, double k, char opt)
   return (color);
 }
 
-unsigned int	get_pixel_color(t_rt *rpt, int *pos)
+unsigned int	get_pixel_color(t_rt *rpt)
 {
   double	k;
   double	distance;
@@ -66,10 +73,11 @@ unsigned int	get_pixel_color(t_rt *rpt, int *pos)
   distance = 200 * FOG_DIST;
   if (k != -1 && rpt->light[0].on == 1)
     {
-      color = modifie_p_color(rpt, k, 0);
-      distance = rpt->obj[rpt->obj_num].dist;
+      color = recomp_color(rpt->obj[rpt->obj_num].color);
+      /* color = modifie_p_color(rpt, k, 0); */
+      /* distance = rpt->obj[rpt->obj_num].dist; */
     }
-  color = apply_fog(color, rpt->opt->fog, distance);
+  /* color = apply_fog(color, rpt->opt->fog, distance); */
   return (color);
 }
 
@@ -90,7 +98,7 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
       while (pos[0] < WINX)
 	{
 	  new_coor(vpt, cpt, pos[0], pos[1]);
-	  color = get_pixel_color(rpt, pos);
+	  color = get_pixel_color(rpt);
 	  my_pixel_put_to_image(pos[0], pos[1], ppt, color);
 	  fill_img_param(pos, color, rpt, ppt);
 	  ++pos[0];
@@ -100,5 +108,5 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
     }
   /* exit(0); */
   detect_edge(rpt, ppt);
-  /* apply_supersampling(rpt, ppt, &spt); */
+  apply_supersampling(rpt, ppt, &spt);
 }

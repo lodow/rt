@@ -5,13 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Mar 31 13:20:23 2013 luc sinet
-** Last update Wed May 15 16:40:40 2013 etienne debas
+** Last update Mon May 20 14:41:36 2013 luc sinet
 */
 
 #include <math.h>
 #include "main.h"
 #include "light.h"
-# define SIZE 1
+# define SIZE 10
 
 void	perturb_normal(double *nvec, double *obj_coor, double *pert)
 {

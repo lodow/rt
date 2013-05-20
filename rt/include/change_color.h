@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 17:42:09 2013 luc sinet
-** Last update Mon May 20 11:42:07 2013 luc sinet
+** Last update Mon May 20 13:14:24 2013 luc sinet
 */
 
 #ifndef CHANGE_COLOR_H_
@@ -31,13 +31,13 @@ unsigned int	apply_indice(unsigned int color, unsigned int obj_color,
 unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
 			     double k);
 unsigned int   	darken_color(unsigned char *color, double sdw_coef);
-void		change_shadow_color(unsigned char *obj_color, t_obj *d_elem, t_lig *lpt);
+void		change_shadow_color(unsigned char *obj_color,
+				    t_obj *d_elem, t_lig *lpt);
 void		get_color_texture(t_obj *obj, t_lco *lpt, double k, t_rt *rpt);
 void		save_color_obj(unsigned char *color,
 			       unsigned char *save);
 void		reinit_color(unsigned char *color,
 			     unsigned char *save);
-void		checkerboard_color(t_rt *rpt, double k,
-				   unsigned char *color, int size);
+void		checkerboard_color(double *inter, unsigned char *col, int size);
 
 #endif

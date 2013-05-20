@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 23:15:31 2013 luc sinet
-** Last update Sat May 18 23:37:00 2013 luc sinet
+** Last update Mon May 20 14:47:39 2013 luc sinet
 */
 
 #include "main.h"
@@ -37,17 +37,17 @@ int	get_args(t_obj *tab, t_pars *opt, int *y)
 
 int	fill_shape(t_pars *opt, int *y, t_obj *tab, int i)
 {
-  char	*shape[11];
+  char	*shape[12];
   char	*line;
   int	x;
 
   init_tab_names(shape);
-  x = 11;
-  while (x == 11 && opt->file[*y])
+  x = 12;
+  while (x == 12 && opt->file[*y])
     {
       line = opt->file[*y];
       x = 0;
-      while (x < 11 && my_strcmp(shape[x], line) != 0)
+      while (x < 12 && my_strcmp(shape[x], line) != 0)
 	x++;
       ++(*y);
     }

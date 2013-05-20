@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 18 22:44:56 2013 etienne debas
-** Last update Sun May 19 20:14:50 2013 luc sinet
+** Last update Mon May 20 13:43:17 2013 luc sinet
 */
 
 #include <math.h>
@@ -68,17 +68,15 @@ unsigned int	perlin_mercury(int *coor_pixel, unsigned char *color_obj,
   return (recomp_color(color_obj));
 }
 
-unsigned int	perlin(int *coor_pixel, unsigned char *color_obj,
+unsigned int	perlin(double *inter, unsigned char *color_obj,
 		       int effect)
 {
   t_perl	ppt;
   int		i;
-  int		copy_coor[2];
-  unsigned int	(*ptr[7])(int *coor_pixel, unsigned char *color_obj,
+  unsigned int	(*ptr[7])(int *inter, unsigned char *color_obj,
 			  t_perl *ppt);
 
   i = 0;
-  copy_tab(coor_pixel, copy_coor, 2);
   ptr[0] = &perlin_marble;
   ptr[1] = &perlin_zebra;
   ptr[2] = &perlin_cloud;
@@ -88,5 +86,5 @@ unsigned int	perlin(int *coor_pixel, unsigned char *color_obj,
   ptr[6] = &perlin_fire;
   while (i < 7 && i != effect)
     ++i;
-  return (ptr[i](copy_coor, color_obj, &ppt));
+  return (ptr[i]((int *)inter, color_obj, &ppt));
 }

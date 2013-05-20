@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Mon May 20 00:11:12 2013 luc sinet
+** Last update Mon May 20 14:48:49 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -108,7 +108,7 @@ typedef struct	s_rt
   t_lig		*light;
   t_opt		*opt;
   t_text	*text;
-  double	(*eptr[11])(double *cam, double *vec, t_obj *opt);
+  double	(*eptr[12])(double *cam, double *vec, t_obj *opt);
 }		t_rt;
 
 void		calc_inter(t_rt *rpt, double *kmin);
@@ -139,7 +139,7 @@ double		test_side_limit(double *cam, double *vec,
 				double *limit, double *k);
 double		test_depth_limit(double *cam, double *vec,
 				double *limit, double *k);
-unsigned int	get_pixel_color(t_rt *rpt, int *pos);
+unsigned int	get_pixel_color(t_rt *rpt);
 void		get_impact(double *imp, double *cam, double k, double *vec);
 void		get_inter(double *cam, double *vec, double k, double *inter);
 void		detect_edge(t_rt *rpt, t_par *ppt);
@@ -158,7 +158,7 @@ void		*adjust_mem_size(void *mem, int size, int nsize, int dfree);
 void		link_text(t_obj *ept, char *line, t_text *text);
 double		get_pow(double nb);
 void		my_memset(void *elem, int val, int size);
-unsigned int	perlin(int *coor_pixel, unsigned char *color_obj,
+unsigned int	perlin(double *inter, unsigned char *color_obj,
 		       int effect);
 
 #endif
