@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Mon May 20 14:53:55 2013 luc sinet
+** Last update Mon May 20 16:19:48 2013 luc sinet
 */
 
 #include <math.h>
@@ -74,10 +74,10 @@ unsigned int	get_pixel_color(t_rt *rpt)
   if (k != -1 && rpt->light[0].on == 1)
     {
       color = recomp_color(rpt->obj[rpt->obj_num].color);
-      /* color = modifie_p_color(rpt, k, 0); */
-      /* distance = rpt->obj[rpt->obj_num].dist; */
+      color = modifie_p_color(rpt, k, 0);
+      distance = rpt->obj[rpt->obj_num].dist;
     }
-  /* color = apply_fog(color, rpt->opt->fog, distance); */
+  color = apply_fog(color, rpt->opt->fog, distance);
   return (color);
 }
 
