@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Mar 31 13:20:23 2013 luc sinet
-** Last update Mon May 20 14:41:36 2013 luc sinet
+** Last update Mon May 20 20:37:37 2013 etienne debas
 */
 
 #include <math.h>
@@ -75,23 +75,46 @@ void	moebius_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 void	tangle_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 {
   nvec[0] = (4.0 * obj_coor[0] * (powf(obj_coor[0], 2)
-				+ powf(obj_coor[1], 2)
-				+ powf(obj_coor[2], 2)
-				+ powf(obj->size, 2)
-				- powf((double)SIZE, 2))
-	     - (8.0 * powf((double)obj->size, 2) * powf(obj_coor[0], 2)));
-
+				  + powf(obj_coor[1], 2)
+				  + powf(obj_coor[2], 2)
+				  - powf((double)obj->size, 2)
+				  - powf((double)SIZE, 2)));
   nvec[1] = (4.0 * obj_coor[1] * (powf(obj_coor[0], 2)
-				+ powf(obj_coor[1], 2)
-				+ powf(obj_coor[2], 2)
-				+ powf(obj->size, 2)
-				- powf((double)SIZE, 2)));
-
+				  + powf(obj_coor[1], 2)
+				  + powf(obj_coor[2], 2)
+				  - powf((double)obj->size, 2)
+				  - powf((double)SIZE, 2)));
   nvec[2] = (4.0 * obj_coor[2] * (powf(obj_coor[0], 2)
-				+ powf(obj_coor[1], 2)
-				+ powf(obj_coor[2], 2)
-				+ powf(obj->size, 2)
-				- powf((double)SIZE, 2))
-	     - (8.0 * powf((double)obj->size, 2) * powf(obj_coor[2], 2)));
+				  + powf(obj_coor[1], 2)
+				  + powf(obj_coor[2], 2)
+				  - powf((double)obj->size, 2)
+				  - powf((double)SIZE, 2))
+	     + (8.0 * powf((double)obj->size, 2) * powf(obj_coor[2], 2)));
+  perturb_normal(nvec, obj_coor, pert);
+}
+
+void	tore_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
+{
+  int	a;
+
+  a = 1;
+  if (obj_coor[2] < obj->pos[2])
+    a = -1;
+  nvec[0] = (4.0 * obj_coor[0] * (powf(obj_coor[0], 2)
+				  + powf(obj_coor[1], 2)
+				  + powf(obj_coor[2], 2)
+				  - powf((double)obj->size, 2)
+				  - powf((double)SIZE, 2)));
+  nvec[1] = (4.0 * obj_coor[1] * (powf(obj_coor[0], 2)
+				  + powf(obj_coor[1], 2)
+				  + powf(obj_coor[2], 2)
+				  - powf((double)obj->size, 2)
+				  - powf((double)SIZE, 2)));
+  nvec[2] = a * (4.0 * obj_coor[2] * (powf(obj_coor[0], 2)
+				      + powf(obj_coor[1], 2)
+				      + powf(obj_coor[2], 2)
+				      - powf((double)obj->size, 2)
+				      - powf((double)SIZE, 2))
+		 + (8.0 * powf((double)obj->size, 2) * powf(obj_coor[2], 2)));
   perturb_normal(nvec, obj_coor, pert);
 }
