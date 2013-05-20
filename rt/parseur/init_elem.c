@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Sat May 18 20:24:57 2013 luc sinet
+** Last update Mon May 20 11:40:02 2013 luc sinet
 */
 
 #include <stdio.h>
@@ -82,6 +82,7 @@ void	init_single_elem(t_obj *obj)
   obj->indice[3] = 0.5;
   obj->normal[3] = 0;
   obj->perlin = -1;
+  obj->checker = 0;
 }
 
 void    init_elem(t_obj *tab, t_pars *opt)

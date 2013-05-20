@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Mon May 20 01:25:50 2013 luc sinet
+** Last update Mon May 20 11:43:33 2013 luc sinet
 */
 
 #include <math.h>
@@ -44,8 +44,8 @@ unsigned int	modifie_p_color(t_rt *rpt, double k, char opt)
   /* if (rpt->obj[rpt->obj_num].perlin != -1) */
   /*   color = perlin(pos, rpt->obj[rpt->obj_num].color, */
   /* 		   rpt->obj[rpt->obj_num].perlin); */
-  if (obj->checker)
-    checkerboard_color(rpt, k, obj->color);
+  if (obj->checker != 0)
+    checkerboard_color(rpt, k, obj->color, obj->checker);
   get_color_texture(obj, &lpt, k, rpt);
   color = get_light(rpt, k, obj, &lpt);
   if (opt != 2)
