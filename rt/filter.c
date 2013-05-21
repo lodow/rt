@@ -5,9 +5,10 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 21 13:57:11 2013 luc sinet
-** Last update Tue May 21 15:10:30 2013 luc sinet
+** Last update Tue May 21 16:47:01 2013 luc sinet
 */
 
+#include <math.h>
 #include "main.h"
 #include "change_color.h"
 #include "pars.h"
@@ -42,6 +43,28 @@ unsigned int	filter_grey(unsigned int color)
   return (recomp_color(o_color));
 }
 
+double	encode_srgb(double comp, double gamma)
+{
+  if (comp < 0.0031308)
+    return (12.92 * comp);
+  else
+    return (255.0 * pow(comp / 255, gamma));
+}
+
+unsigned int	gamma_filter(unsigned int color)
+{
+  unsigned char	comp[3];
+  double        gamma;
+
+  gamma = 1.5;
+  gamma = 1.0 / gamma;
+  decomp_color(color, comp);
+  comp[0] = LIMIT(encode_srgb(comp[0], gamma), 0, 255);
+  comp[1] = LIMIT(encode_srgb(comp[1], gamma), 0, 255);
+  comp[2] = LIMIT(encode_srgb(comp[2], gamma), 0, 255);
+  return (recomp_color(comp));
+}
+
 unsigned int	filter_color(unsigned int color, int type)
 {
   unsigned int	fin_color;
@@ -50,6 +73,7 @@ unsigned int	filter_color(unsigned int color, int type)
   if (type == 1)
     fin_color = filter_sepia(color);
   else if (type == 2)
-    fin_color = filter_grey(color);
+    fin_color = gamma_filter(color);
+    /* fin_color = filter_grey(color); */
   return (fin_color);
 }
