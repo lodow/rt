@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sun May 19 18:46:27 2013 luc sinet
+## Last update Mon May 20 01:18:57 2013 etienne debas
 ##
 
 SRCS	= main.c \
@@ -83,7 +83,7 @@ SRCS	= main.c \
 	  color.c \
 	  tore.c \
 	  utils_color.c \
-	  perlin.c \
+	  perlin3.c \
 	  perlin_effect.c \
 	  other_perlin_effect.c \
 	  interpolation.c

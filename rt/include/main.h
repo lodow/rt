@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Sun May 19 20:12:08 2013 luc sinet
+** Last update Mon May 20 02:34:33 2013 etienne debas
 */
 
 #ifndef MAIN_H_
@@ -155,7 +155,7 @@ void		*adjust_mem_size(void *mem, int size, int nsize, int dfree);
 void		link_text(t_obj *ept, char *line, t_text *text);
 double		get_pow(double nb);
 void		my_memset(void *elem, int val, int size);
-unsigned int	perlin(int *coor_pixel, unsigned char *color_obj,
+unsigned int	perlin(double *inter, unsigned char *color_obj,
 		       int effect);
 
 #endif
