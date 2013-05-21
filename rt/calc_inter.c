@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Mon May 20 20:12:20 2013 etienne debas
+** Last update Tue May 21 15:13:15 2013 luc sinet
 */
 
 #include <math.h>
@@ -78,6 +78,7 @@ unsigned int	get_pixel_color(t_rt *rpt)
       distance = rpt->obj[rpt->obj_num].dist;
     }
   color = apply_fog(color, rpt->opt->fog, distance);
+  color = filter_color(color, rpt->opt->filter);
   return (color);
 }
 

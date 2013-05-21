@@ -51,20 +51,20 @@ torre
 fichier .bmp en input
 gestion transparence et reflection sur un meme rayon
 bruit de perlin (2d)
+Filtres
 
 en cour
 
 parseur .obj
 textures
 bruit de perlin (3d)
-bump mappin (3d)
+bump mapping (3d)
 
 A faire
 
 Reflection de la lumiere
 Lumiere directe
 Createur de fichier de conf
-Filtres
 Blur sur les ombres
 Flou de profondeur
 Output en .bmp
