@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Tue May 21 18:28:36 2013 luc sinet
+** Last update Tue May 21 21:05:18 2013 etienne debas
 */
 
 #ifndef MAIN_H_
