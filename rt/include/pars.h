@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Mon May 20 20:55:51 2013 luc sinet
+** Last update Tue May 21 17:49:04 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -96,5 +96,12 @@ void	pars_size(char *line, t_obj *ept, t_text *text);
 void	pars_perlin(char *line, t_obj *ept, t_text *text);
 void	pars_checker(char *line, t_obj *ept, t_text *text);
 void	init_objptr(void (**objptr)(char *line, t_obj *ept, t_text *text));
+void	get_opt_filter(t_opt *opt, char *line, int l);
+void	get_opt_fog(t_opt *opt, char *line, int l);
+void   	get_gamma_coef(t_opt *opt, char *line, int l);
+void   	get_aa_coef(t_opt *opt, char *line, int l);
+void	init_opt(t_opt *opt);
+void	init_opt_carac(char **tab);
+void	init_opt_pt(void (**fptr)(t_opt *opt, char *line, int l));
 
 #endif

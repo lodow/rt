@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Fri Apr 12 15:50:58 2013 Adrien Della Maggiora
-** Last update Thu May  9 10:27:56 2013 Adrien Della Maggiora
+** Last update Tue May 21 18:02:28 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -15,44 +15,28 @@
 #include "get_next_line.h"
 #include "pars.h"
 
-void	init_opt(t_opt *opt)
+int		get_opt_carac(t_pars *ppt, t_opt *opt, int *x)
 {
-  opt->aa = 1;
-  opt->fog[0] = 0x000000;
-  opt->fog[1] = -1;
-}
-
-void	get_opt_fog(t_opt *opt, char *line)
-{
-  int	i;
-
-  i = 0;
-  if (my_strncmp(line, "0x", 2) == 0)
-    i += 2;
-  opt->fog[0] = my_getnbr_base(&line[i], "0123456789ABCDEF");
-  while (line[i] != 0 && (line[i] != ','))
-    ++i;
-  skip_adds(line, &i);
-  opt->fog[1] = my_fgetnbr(&line[i]);
-}
-
-int	get_opt_carac(t_pars *ppt, t_opt *opt, int *x)
-{
-  int	i;
-  char	*line;
+  void		(*optptr[4])(t_opt *opt, char *line, int l);
+  int		i[2];
+  char		*line;
+  char		*tabopt[4];
 
   (*x) += 2;
+  init_opt_carac(tabopt);
+  init_opt_pt(optptr);
   while (my_strcmp(ppt->file[*x], "}") != 0)
     {
       line = ppt->file[*x];
-      i = 0;
-      while (line[i] == ' ')
-        ++i;
-      if (my_strncmp(&line[i], "AA = ", 5) == 0)
-	opt->aa = my_getnbr(&line[i + 5]);
-      else if (my_strncmp(&line[i], "FOG = ", 6) == 0
-	       && my_strlen(&line[i]) > 11)
-	get_opt_fog(opt, &line[i + 6]);
+      i[0] = 0;
+      while (line[i[0]] == ' ')
+        ++i[0];
+      i[1] = 0;
+      while (i[1] < 4 && my_strncmp(tabopt[i[1]], &line[i[0]],
+				    my_strlen(tabopt[i[1]])) != 0)
+	++i[1];
+      if (i[1] < 4)
+	optptr[i[1]](opt, &line[my_strlen(tabopt[i[1]]) + i[0]], *x);
       else
 	return (file_error(line, *x, -1));
       ++(*x);
