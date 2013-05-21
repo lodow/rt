@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 21 13:57:11 2013 luc sinet
-** Last update Tue May 21 16:47:01 2013 luc sinet
+** Last update Tue May 21 18:31:36 2013 luc sinet
 */
 
 #include <math.h>
@@ -51,12 +51,10 @@ double	encode_srgb(double comp, double gamma)
     return (255.0 * pow(comp / 255, gamma));
 }
 
-unsigned int	gamma_filter(unsigned int color)
+unsigned int	gamma_filter(unsigned int color, double gamma)
 {
   unsigned char	comp[3];
-  double        gamma;
 
-  gamma = 1.5;
   gamma = 1.0 / gamma;
   decomp_color(color, comp);
   comp[0] = LIMIT(encode_srgb(comp[0], gamma), 0, 255);
@@ -65,15 +63,13 @@ unsigned int	gamma_filter(unsigned int color)
   return (recomp_color(comp));
 }
 
-unsigned int	filter_color(unsigned int color, int type)
+unsigned int	filter_color(unsigned int color, t_opt *opt)
 {
-  unsigned int	fin_color;
-
-  fin_color = color;
-  if (type == 1)
-    fin_color = filter_sepia(color);
-  else if (type == 2)
-    fin_color = gamma_filter(color);
-    /* fin_color = filter_grey(color); */
-  return (fin_color);
+  if (opt->filter == 1)
+    color = filter_sepia(color);
+  else if (opt->filter == 2)
+    color = filter_grey(color);
+  if (opt->gamma != -1)
+    color = gamma_filter(color, opt->gamma);
+  return (color);
 }

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Tue May 21 17:51:28 2013 luc sinet
+** Last update Tue May 21 18:28:36 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -84,7 +84,7 @@ typedef struct	s_opt
   int		aa;
   double	fog[2];
   int		filter;
-  int		gamma;
+  double       	gamma;
 }		t_opt;
 
 typedef struct	s_vec
@@ -162,6 +162,6 @@ double		get_pow(double nb);
 void		my_memset(void *elem, int val, int size);
 unsigned int	perlin(double *inter, unsigned char *color_obj,
 		       int effect);
-unsigned int	filter_color(unsigned int color, int type);
+unsigned int	filter_color(unsigned int color, t_opt *opt);
 
 #endif
