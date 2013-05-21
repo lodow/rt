@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 18 22:44:56 2013 etienne debas
-** Last update Tue May 21 21:06:32 2013 etienne debas
+** Last update Tue May 21 22:05:01 2013 etienne debas
 */
 
 #include <math.h>
@@ -53,10 +53,6 @@ unsigned int	perlin_fire(double *inter, unsigned char *color_obj,
 unsigned int	perlin_wood(double *inter, unsigned char *color_obj,
 			    t_perl *ppt)
 {
-  float		retcol;
-  int		level;
-
-  level = 0;
   ppt->pn = 0;
   fill_tab_from_str(ppt->sval, "0.2, 0.4, 0.6", 3);
   fill_tab_from_str(ppt->col, "206, 103, 0, 128, 64, 0, 89, 45, 0", 9);

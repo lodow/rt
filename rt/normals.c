@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Mar 31 13:20:23 2013 luc sinet
-** Last update Tue May 21 21:04:55 2013 etienne debas
+** Last update Tue May 21 22:04:04 2013 etienne debas
 */
 
 #include <math.h>
@@ -13,21 +13,6 @@
 #include "light.h"
 #include "perlin.h"
 # define SIZE 10
-
-float InvSqrtF(float x)
-{
-  // Initial approximation by Greg Walsh.
-  int i  = * ( int* ) &x;
-  i  = 0x5f3759df - ( i >> 1 );
-  float y  = * ( float * ) &i;
-  // Two iterations of Newton-Raphson's method to refine the initial estimate.
-  x *= 0.5f;
-  float f = 1.5F;
-  y  = y * ( f - ( x * y * y ) );
-  y  = y * ( f - ( x * y * y ) );
-  * ( int * )(&y) += 0x13; // More magic.
-  return y;
-}
 
 void	perturb_normal(double *nvec, double *obj_coor, double *pert)
 {
@@ -49,7 +34,7 @@ void	sphere_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
   double	temp;
   double	bump;
 
-  bump = 0.5 * 0.8;
+  bump = -0.5 * 0.8;
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];
   nvec[2] = obj_coor[2];
@@ -74,15 +59,11 @@ void	sphere_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 void	plan_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 {
   (void)(obj);
-  double	X,Y,Z;
-  double	x,y,z;
   double	bump_vec[3];
   double	temp;
   double	bump;
-  double	e;
 
-  e = 0.01;
-  bump = 0.5 * 0.8;
+  bump = -0.5 * 0.8;
   nvec[0] = obj->normal[0];
   nvec[1] = obj->normal[1];
   nvec[2] = obj->normal[2];
