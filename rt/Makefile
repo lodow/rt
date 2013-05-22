@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Wed May 22 16:32:22 2013 etienne debas
+## Last update Thu May 23 00:52:05 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -99,7 +99,7 @@ OBJS	= $(SRCS:.c=.o)
 
 OPT     = -L/usr/lib64 -lmlx_x86_64-linux -L/usr/lib64/X11 -lXext -lX11 -lm
 
-CFLAGS	+= --fast-math -ffast-math -O3 -march=native
+CFLAGS	+= --fast-math -ffast-math -O2 -march=native
 
 CC	= gcc -g -Wall -Wextra -I./include/
 
