@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Wed May 22 11:58:16 2013 luc sinet
+** Last update Wed May 22 14:34:49 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -59,6 +59,7 @@ typedef struct	s_obj
   double	indice[5];
   double	normal[4];
   double       	perlin[2];
+  double	bump;
   int		checker;
   t_bmp		*texture;
 }		t_obj;
@@ -163,5 +164,6 @@ void		my_memset(void *elem, int val, int size);
 unsigned int	perlin(double *inter, unsigned char *color_obj,
 		       double *carac);
 unsigned int	filter_color(unsigned int color, t_opt *opt);
+void		apply_bump(double *nvec, double *obj_coor, double ratio);
 
 #endif
