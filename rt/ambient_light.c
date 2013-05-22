@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr  7 19:07:11 2013 luc sinet
-** Last update Wed May 15 14:38:02 2013 luc sinet
+** Last update Tue May 21 20:44:19 2013 luc sinet
 */
 
 #include <math.h>
@@ -77,7 +77,9 @@ void		get_light_color(t_lig *light, t_lco *lpt,
       cosa *= light->intensity;
       cosa *= 0.8;
       if (coss > cosa)
-	cosa = coss;
+	{
+	  cosa = coss;
+	}
       cosa = apply_distance(lpt, light, cosa);
     }
   apply_light_color(lpt->c_color, light->lcolor, cosa);

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May 19 10:03:06 2013 luc sinet
-** Last update Wed May 22 10:30:31 2013 etienne debas
+** Last update Wed May 22 12:00:33 2013 luc sinet
 */
 
 #ifndef PERLIN_H_
@@ -29,11 +29,11 @@ typedef struct s_perl
 }		t_perl;
 
 unsigned int	perlin_disco(double *inter, unsigned char *color_obj,
-			     t_perl *ppt);
+			     t_perl *ppt, double frequency);
 unsigned int	perlin_marble(double *inter, unsigned char *color_obj,
-			      t_perl *ppt);
+			      t_perl *ppt, double frequency);
 unsigned int	perlin_zebra(double *inter, unsigned char *color_obj,
-			     t_perl *ppt);
+			     t_perl *ppt, double frequency);
 void		fill_tab_from_str(double *tab, char *str, int size);
 double		get_perlin(double x, double y, double z);
 void		interpolation(unsigned char *color_obj, double pn,

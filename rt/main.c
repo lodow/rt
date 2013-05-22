@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Mon May 20 21:04:48 2013 luc sinet
+** Last update Wed May 22 14:41:53 2013 luc sinet
 */
 
 #include "main.h"
@@ -82,8 +82,6 @@ int		main(int ac, char **av)
     return (merror("You need to specifie a config file in argument\n", -1));
   if (pars(&rpt, av[1], &cpt) < 0 || creat_win(&ppt) == -1)
     return (-1);
-  /* int	i; */
-  /* for(i=0;rpt->obj) */
   init_cos(rpt.obj);
   calc_pixel(&rpt, &cpt, &vpt, &ppt);
   free_all(&rpt, &ppt);

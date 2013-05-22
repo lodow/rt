@@ -5,11 +5,25 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat May 18 20:10:33 2013 luc sinet
-** Last update Sun May 19 19:57:13 2013 luc sinet
+** Last update Wed May 22 14:52:09 2013 luc sinet
 */
 
 #include "main.h"
 #include "pars.h"
+
+void   	pars_perlin_frequency(char *line, double *frequency)
+{
+  int	i;
+
+  i = 0;
+  skip_adds(line, &i);
+  skip_space(line, &i);
+  if (line[i] != '\0')
+    {
+      *frequency = LIMIT(my_fgetnbr(&line[i]), 0 , 100);
+      *frequency /= 3000;
+    }
+}
 
 void	pars_perlin(char *line, t_obj *ept, t_text *text)
 {
@@ -33,5 +47,16 @@ void	pars_perlin(char *line, t_obj *ept, t_text *text)
   if (x == 7)
     my_putstr("Invalid perlin's type option, setted to Marble type\n", 2);
   else
-    ept->perlin = x;
+    {
+      ept->perlin[0] = x;
+      pars_perlin_frequency(&line[my_strlen(type[x])], &ept->perlin[1]);
+    }
+}
+
+void	pars_bump(char *line, t_obj *ept, t_text *text)
+{
+  (void)text;
+
+  ept->bump = LIMIT(my_fgetnbr(line), 0 , 100);
+  ept->bump /= 100;
 }

@@ -5,14 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Mar 31 13:20:23 2013 luc sinet
-** Last update Wed May 22 14:50:08 2013 etienne debas
+** Last update Wed May 22 15:22:07 2013 etienne debas
 */
 
 #include <math.h>
 #include "main.h"
 #include "light.h"
-#include "perlin.h"
-# define SIZE 10
+#define SIZE 10
 
 void	perturb_normal(double *nvec, double *obj_coor, double *pert)
 {
@@ -29,29 +28,21 @@ void	perturb_normal(double *nvec, double *obj_coor, double *pert)
 
 void	sphere_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 {
-  (void)(obj);
-  double	bump_coef;
-
-  bump_coef = 0;
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];
   nvec[2] = obj_coor[2];
-  if (bump_coef > ZERO && bump_coef < 1.0)
-    bump_normal(nvec, obj_coor, bump_coef);
+  if (obj->bump > ZERO)
+    apply_bump(nvec, obj_coor, obj->bump);
   perturb_normal(nvec, obj_coor, pert);
 }
 
 void	plan_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 {
-  (void)(obj);
-  double	bump_coef;
-
-  bump_coef = -0.5 * 0.8;
   nvec[0] = obj->normal[0];
   nvec[1] = obj->normal[1];
   nvec[2] = obj->normal[2];
-  if (bump_coef > ZERO && bump_coef < 1.0)
-    bump_normal(nvec, obj_coor, bump_coef);
+  if (obj->bump > ZERO)
+    apply_bump(nvec, obj_coor, obj->bump);
   perturb_normal(nvec, obj_coor, pert);
 }
 

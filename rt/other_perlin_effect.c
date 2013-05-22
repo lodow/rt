@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May 19 18:38:43 2013 luc sinet
-** Last update Wed May 22 10:32:17 2013 etienne debas
+** Last update Wed May 22 12:00:06 2013 luc sinet
 */
 
 #include <math.h>
@@ -16,7 +16,7 @@
 #include "change_color.h"
 
 unsigned int	perlin_disco(double *inter, unsigned char *color_obj,
-			     t_perl *ppt)
+			     t_perl *ppt, double frequency)
 {
   double	pn_r;
   double	pn_v;
@@ -39,7 +39,7 @@ unsigned int	perlin_disco(double *inter, unsigned char *color_obj,
 }
 
 unsigned int	perlin_marble(double *inter, unsigned char *color_obj,
-			      t_perl *ppt)
+			      t_perl *ppt, double frequency)
 {
   int		level;
 
@@ -61,7 +61,7 @@ unsigned int	perlin_marble(double *inter, unsigned char *color_obj,
 }
 
 unsigned int	perlin_zebra(double *inter, unsigned char *color_obj,
-			     t_perl *ppt)
+			     t_perl *ppt, double frequency)
 {
   ppt->pn = cos(get_perlin(0.02 * inter[0],
 			   0.02 * inter[1],

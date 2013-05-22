@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Wed May 22 11:57:48 2013 etienne debas
+## Last update Wed May 22 15:22:55 2013 etienne debas
 ##
 
 SRCS	= main.c \
@@ -93,7 +93,7 @@ SRCS	= main.c \
 	  interpolation.c \
 	  checkerboard.c \
 	  filter.c \
-	  bump.c
+	  bump_mapping.c
 
 OBJS	= $(SRCS:.c=.o)
 
