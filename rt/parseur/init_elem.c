@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Wed May 22 14:21:29 2013 luc sinet
+** Last update Wed May 22 16:23:35 2013 luc sinet
 */
 
 #include <stdio.h>
@@ -83,7 +83,7 @@ void	init_single_elem(t_obj *obj)
   obj->indice[3] = 0.5;
   obj->normal[3] = 0;
   obj->perlin[0] = -1;
-  obj->perlin[1] = 0.3;
+  obj->perlin[1] = 0.02;
   obj->checker = 0;
   obj->bump = 0;
 }
