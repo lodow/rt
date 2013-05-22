@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May 19 10:03:06 2013 luc sinet
-** Last update Mon May 20 02:44:45 2013 etienne debas
+** Last update Wed May 22 10:30:31 2013 etienne debas
 */
 
 #ifndef PERLIN_H_
@@ -32,7 +32,7 @@ unsigned int	perlin_disco(double *inter, unsigned char *color_obj,
 			     t_perl *ppt);
 unsigned int	perlin_marble(double *inter, unsigned char *color_obj,
 			      t_perl *ppt);
-unsigned int	perlin_zebra(int *coor_pixel, unsigned char *color_obj,
+unsigned int	perlin_zebra(double *inter, unsigned char *color_obj,
 			     t_perl *ppt);
 void		fill_tab_from_str(double *tab, char *str, int size);
 double		get_perlin(double x, double y, double z);

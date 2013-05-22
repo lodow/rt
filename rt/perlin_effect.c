@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 18 22:44:56 2013 etienne debas
-** Last update Wed May 22 10:18:19 2013 etienne debas
+** Last update Wed May 22 10:29:32 2013 etienne debas
 */
 
 #include <math.h>
@@ -87,7 +87,7 @@ unsigned int	perlin(double *inter, unsigned char *color_obj,
   i = 0;
   /* copy_tab(coor_pixel, copy_coor, 2); */
   ptr[0] = &perlin_marble;
-  /* ptr[1] = &perlin_zebra; */
+  ptr[1] = &perlin_zebra;
   /* ptr[2] = &perlin_cloud; */
   ptr[3] = &perlin_wood;
   /* ptr[4] = &perlin_mercury; */
