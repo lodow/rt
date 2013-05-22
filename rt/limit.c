@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Apr  9 18:33:23 2013 luc sinet
-** Last update Mon May 20 20:18:44 2013 luc sinet
+** Last update Wed May 22 16:50:37 2013 luc sinet
 */
 
 #include "main.h"
@@ -75,6 +75,7 @@ double		test_limit(double *cam, double *vec, double *k, double *limit)
 
   min = get_min(k , 2);
   get_impact(inter, cam, min, vec);
+  current = min;
   if (limit[6] == 3 && min > 0)
     current = test_heigh_limit(cam, vec, limit, k);
   min = GMAX(min, current);
