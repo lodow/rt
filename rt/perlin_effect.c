@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 18 22:44:56 2013 etienne debas
-** Last update Wed May 22 15:20:51 2013 etienne debas
+** Last update Wed May 22 16:15:44 2013 luc sinet
 */
 
 #include <math.h>
@@ -14,12 +14,6 @@
 #include "pp_image.h"
 #include "pars.h"
 #include "change_color.h"
-#define Limit(x) ((x>255)?(255):((x<0)?(0):(x)))
-
-/* random */
-/* épaisseur */
-/* floutage */
-/* bullshit bouger le dessin */
 
 unsigned int	perlin_fire(double *inter, unsigned char *color_obj,
 			     t_perl *ppt, double frequency)
@@ -29,9 +23,9 @@ unsigned int	perlin_fire(double *inter, unsigned char *color_obj,
   ppt->pn = fabs(get_perlin(frequency * inter[0],
   			    frequency * inter[1],
   			    frequency * inter[2]));
-  color_obj[2] = Limit((c1_b * ppt->pn) + c2_b * ((1 - ppt->pn)));
-  color_obj[1] = Limit((c1_g * ppt->pn) + c2_g * ((1 - ppt->pn)));
-  color_obj[0] = Limit((c1_r * ppt->pn) + c2_r * ((1 - ppt->pn)));
+  color_obj[2] = LIMIT((c1_b * ppt->pn) + c2_b * ((1 - ppt->pn)), 0, 255);
+  color_obj[1] = LIMIT((c1_g * ppt->pn) + c2_g * ((1 - ppt->pn)), 0, 255);
+  color_obj[0] = LIMIT((c1_r * ppt->pn) + c2_r * ((1 - ppt->pn)), 0, 255);
   return (recomp_color(color_obj));
 }
 

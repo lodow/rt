@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May 19 18:38:43 2013 luc sinet
-** Last update Wed May 22 12:00:06 2013 luc sinet
+** Last update Wed May 22 16:25:48 2013 luc sinet
 */
 
 #include <math.h>
@@ -23,15 +23,15 @@ unsigned int	perlin_disco(double *inter, unsigned char *color_obj,
   double	pn_b;
 
   (void)ppt;
-  pn_r = get_perlin(inter[0] * 0.1,
-		    inter[1] * 0.1,
-		    inter[2] * 0.1);
-  pn_v = get_perlin(inter[0] * 0.3,
-		    inter[1] * 0.3,
-		    inter[2] * 0.3);
-  pn_b = get_perlin(inter[0] * 0.5,
-		    inter[1] * 0.5,
-		    inter[2] * 0.5);
+  pn_r = get_perlin(inter[0] * 0.1 * frequency * 7,
+		    inter[1] * 0.1 * frequency * 7,
+		    inter[2] * 0.1 * frequency * 7);
+  pn_v = get_perlin(inter[0] * 0.3 * frequency * 7,
+		    inter[1] * 0.3 * frequency * 7,
+		    inter[2] * 0.3 * frequency * 7);
+  pn_b = get_perlin(inter[0] * 0.5 * frequency * 7,
+		    inter[1] * 0.5 * frequency * 7,
+		    inter[2] * 0.5 * frequency * 7);
   color_obj[0] = LIMIT(pn_r * 200 + 100, 0, 255);
   color_obj[1] = LIMIT(pn_v * 200 + 50, 0, 255);
   color_obj[2] = LIMIT(pn_b * 200 + 50, 0, 255);
