@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 18 22:44:56 2013 etienne debas
-** Last update Wed May 22 10:29:32 2013 etienne debas
+** Last update Wed May 22 12:02:10 2013 luc sinet
 */
 
 #include <math.h>
@@ -22,16 +22,16 @@
 /* bullshit bouger le dessin */
 
 unsigned int	perlin_fire(double *inter, unsigned char *color_obj,
-			     t_perl *ppt)
+			     t_perl *ppt, double frequency)
 {
   /* fill_tab_from_str(ppt->sval, "0.1, 0.4, 0.6", 3); */
   /* fill_tab_from_str(ppt->col, "192, 15, 5, 255, 204, 0", 6); */
 
   double c1_r = 192, c1_g = 15, c1_b = 5;
   double c2_r = 255, c2_g = 180, c2_b = 0;
-  ppt->pn = fabs(get_perlin(0.05 * inter[0],
-  			    0.05 * inter[1],
-  			    0.05 * inter[2]));
+  ppt->pn = fabs(get_perlin(frequency * inter[0],
+  			    frequency * inter[1],
+  			    frequency * inter[2]));
   color_obj[2] = Limit((c1_b * ppt->pn) + c2_b * ((1 - ppt->pn)));
   color_obj[1] = Limit((c1_g * ppt->pn) + c2_g * ((1 - ppt->pn)));
   color_obj[0] = Limit((c1_r * ppt->pn) + c2_r * ((1 - ppt->pn)));
@@ -51,14 +51,14 @@ unsigned int	perlin_fire(double *inter, unsigned char *color_obj,
 /* } */
 
 unsigned int	perlin_wood(double *inter, unsigned char *color_obj,
-			    t_perl *ppt)
+			    t_perl *ppt, double frequency)
 {
   ppt->pn = 0;
   fill_tab_from_str(ppt->sval, "0.2, 0.4, 0.6", 3);
   fill_tab_from_str(ppt->col, "206, 103, 0, 128, 64, 0, 89, 45, 0", 9);
-  ppt->pn += 20 * fabs((get_perlin(0.02 * inter[0],
-				   0.02 * inter[1],
-				   0.02 * inter[2])));
+  ppt->pn += 20 * fabs((get_perlin(frequency * inter[0],
+				   frequency * inter[1],
+				   frequency * inter[2])));
   ppt->pn = ppt->pn - (int)ppt->pn;
   interpolation(color_obj, ppt->pn, ppt->sval, ppt->col);
   return (recomp_color(color_obj));
@@ -77,12 +77,12 @@ unsigned int	perlin_wood(double *inter, unsigned char *color_obj,
 /* } */
 
 unsigned int	perlin(double *inter, unsigned char *color_obj,
-		       int effect)
+		       double *carac)
 {
   t_perl	ppt;
   int		i;
   unsigned int	(*ptr[7])(double *inter, unsigned char *color_obj,
-			  t_perl *ppt);
+			  t_perl *ppt, double frequency);
 
   i = 0;
   /* copy_tab(coor_pixel, copy_coor, 2); */
@@ -93,7 +93,7 @@ unsigned int	perlin(double *inter, unsigned char *color_obj,
   /* ptr[4] = &perlin_mercury; */
   ptr[5] = &perlin_disco;
   ptr[6] = &perlin_fire;
-  while (i < 7 && i != effect)
+  while (i < 7 && i != carac[0])
     ++i;
-  return (ptr[i](inter, color_obj, &ppt));
+  return (ptr[i](inter, color_obj, &ppt, carac[1]));
 }
