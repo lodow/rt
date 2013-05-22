@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 18 22:44:56 2013 etienne debas
-** Last update Wed May 22 16:15:44 2013 luc sinet
+** Last update Wed May 22 16:35:48 2013 etienne debas
 */
 
 #include <math.h>
@@ -30,7 +30,7 @@ unsigned int	perlin_fire(double *inter, unsigned char *color_obj,
 }
 
 unsigned int	perlin_cloud(double *inter, unsigned char *color_obj,
-			     t_perl *ppt)
+			     t_perl *ppt, double frequency)
 {
   fill_tab_from_str(ppt->sval, "0.01, 0.4, 0.6", 3);
   fill_tab_from_str(ppt->col,
