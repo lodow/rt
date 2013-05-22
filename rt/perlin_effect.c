@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 18 22:44:56 2013 etienne debas
-** Last update Wed May 22 16:32:54 2013 luc sinet
+** Last update Wed May 22 16:42:30 2013 luc sinet
 */
 
 #include <math.h>
@@ -58,17 +58,17 @@ unsigned int	perlin_wood(double *inter, unsigned char *color_obj,
   return (recomp_color(color_obj));
 }
 
-/* unsigned int	perlin_mercury(double *inter, unsigned char *color_obj, */
-/* 			       t_perl *ppt) */
-/* { */
-/*   fill_tab_from_str(ppt->sval, "0.01, 0.4, 0.6", 3); */
-/*   fill_tab_from_str(ppt->col, "84, 255, 95, 28, 59, 255, 100, 37, 17", 9); */
-/*   ppt->pn = get_perlin(0.05 * inter[0], */
-/* 		       0.05 * inter[1], */
-/* 		       0.05 * inter[2]); */
-/*   interpolation(color_obj, ppt->pn, ppt->sval, ppt->col); */
-/*   return (recomp_color(color_obj)); */
-/* } */
+unsigned int	perlin_mercury(double *inter, unsigned char *color_obj,
+			       t_perl *ppt)
+{
+  fill_tab_from_str(ppt->sval, "0.01, 0.4, 0.6", 3);
+  fill_tab_from_str(ppt->col, "84, 255, 95, 28, 59, 255, 100, 37, 17", 9);
+  ppt->pn = get_perlin(0.05 * inter[0],
+		       0.05 * inter[1],
+		       0.05 * inter[2]);
+  interpolation(color_obj, ppt->pn, ppt->sval, ppt->col);
+  return (recomp_color(color_obj));
+}
 
 unsigned int	perlin(double *inter, unsigned char *color_obj,
 		       double *carac)
@@ -84,7 +84,7 @@ unsigned int	perlin(double *inter, unsigned char *color_obj,
   ptr[1] = &perlin_zebra;
   ptr[2] = &perlin_cloud;
   ptr[3] = &perlin_wood;
-  /* ptr[4] = &perlin_mercury; */
+  ptr[4] = &perlin_mercury;
   ptr[5] = &perlin_disco;
   ptr[6] = &perlin_fire;
   while (i < 7 && i != carac[0])
