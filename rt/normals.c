@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Mar 31 13:20:23 2013 luc sinet
-** Last update Tue May 21 22:04:04 2013 etienne debas
+** Last update Wed May 22 10:04:02 2013 etienne debas
 */
 
 #include <math.h>
@@ -87,23 +87,10 @@ void	plan_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 
 void	cone_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 {
-  double	X,Y,Z;
-  double	x,y,z;
-
   (void)(obj);
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];
   nvec[2] = -0.6 * obj_coor[2];
-  unitaire(nvec);
-  X = nvec[0] + obj_coor[0];
-  Y = 50 * nvec[1] + 100 * obj_coor[1];
-  Z = nvec[2] + obj_coor[2];
-  x = get_perlin(X - 0.1, Y, Z) - get_perlin(X + 0.1, Y, Z);
-  y = get_perlin(X, Y - 0.1, Z) - get_perlin(X, Y + 0.1, Z);
-  z = get_perlin(X, Y, Z - 0.1) - get_perlin(X, Y, Z + 0.1);
-  nvec[0] = nvec[0] + x;
-  nvec[1] = nvec[1] + y;
-  nvec[2] = nvec[2] + z;
   perturb_normal(nvec, obj_coor, pert);
 }
 

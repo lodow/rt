@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 18 22:44:56 2013 etienne debas
-** Last update Tue May 21 22:05:01 2013 etienne debas
+** Last update Wed May 22 10:18:19 2013 etienne debas
 */
 
 #include <math.h>
@@ -29,9 +29,9 @@ unsigned int	perlin_fire(double *inter, unsigned char *color_obj,
 
   double c1_r = 192, c1_g = 15, c1_b = 5;
   double c2_r = 255, c2_g = 180, c2_b = 0;
-  ppt->pn = fabs(get_perlin(0.09 * inter[0],
-  			    0.09 * inter[1],
-  			    0.09 * inter[2]));
+  ppt->pn = fabs(get_perlin(0.05 * inter[0],
+  			    0.05 * inter[1],
+  			    0.05 * inter[2]));
   color_obj[2] = Limit((c1_b * ppt->pn) + c2_b * ((1 - ppt->pn)));
   color_obj[1] = Limit((c1_g * ppt->pn) + c2_g * ((1 - ppt->pn)));
   color_obj[0] = Limit((c1_r * ppt->pn) + c2_r * ((1 - ppt->pn)));
@@ -64,14 +64,14 @@ unsigned int	perlin_wood(double *inter, unsigned char *color_obj,
   return (recomp_color(color_obj));
 }
 
-/* unsigned int	perlin_mercury(int *coor_pixel, unsigned char *color_obj, */
+/* unsigned int	perlin_mercury(double *inter, unsigned char *color_obj, */
 /* 			       t_perl *ppt) */
 /* { */
-/*   fill_tab_from_str(ppt->sval, "0.001, 0.4, 0.6", 3); */
-/*   fill_tab_from_str(ppt->col, "84, 255, 95, 28, 59, 255, 255, 37, 17", 9); */
-/*   ppt->pn = get_perlin(coor_pixel[0] / (double)WINX, */
-/* 		       coor_pixel[1] / (double)WINY, */
-/* 		       0.1, 0.7, 3, 3.8); */
+/*   fill_tab_from_str(ppt->sval, "0.01, 0.4, 0.6", 3); */
+/*   fill_tab_from_str(ppt->col, "84, 255, 95, 28, 59, 255, 100, 37, 17", 9); */
+/*   ppt->pn = get_perlin(0.05 * inter[0], */
+/* 		       0.05 * inter[1], */
+/* 		       0.05 * inter[2]); */
 /*   interpolation(color_obj, ppt->pn, ppt->sval, ppt->col); */
 /*   return (recomp_color(color_obj)); */
 /* } */
@@ -91,7 +91,7 @@ unsigned int	perlin(double *inter, unsigned char *color_obj,
   /* ptr[2] = &perlin_cloud; */
   ptr[3] = &perlin_wood;
   /* ptr[4] = &perlin_mercury; */
-  /* ptr[5] = &perlin_disco; */
+  ptr[5] = &perlin_disco;
   ptr[6] = &perlin_fire;
   while (i < 7 && i != effect)
     ++i;
