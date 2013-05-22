@@ -5,15 +5,15 @@
 ** Login   <adrien@Adrien>
 ** 
 ** Started on  Wed May  1 13:50:59 2013 Adrien
-** Last update Mon May 13 11:00:51 2013 Adrien Della Maggiora
+** Last update Thu May 16 17:03:42 2013 Adrien Della Maggiora
 */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 #include "bmp_loader.h"
 
 void	my_memcpy(void *mem1, void *mem2, int size)
@@ -34,13 +34,13 @@ int	check_bmp(t_info_bmp *info, char **img, int fd, t_bmp *image)
 
   if ((info->deep_color[0] != 0x18 && info->deep_color[1] != 0) ||
       (info->magic_nb[0] != 'B' && info->magic_nb[1] != 'M') ||
-      (*img = malloc((info->widht + info->widht % 4)
-		     * (info->deep_color[0] / 8) * info->deep_color[0]
+      (*img = malloc((info->widht + info->widht % 4) * (info->deep_color[0] / 8)
 		     * info->height)) == NULL ||
-      (image->texture = malloc(info->widht_image * (info->deep_color[0] / 8)
-			       * info->height_image)) == NULL
-      || ((ret = read(fd, *img, (info->widht + info->widht % 4)
-		      * info->deep_color[0] * info->height)) == -1)
+      (image->texture = malloc(info->widht * (info->deep_color[0] / 8)
+			       * info->height)) == NULL
+      || (info->offset - 54 < info->height && read(fd, *img, info->offset - 54) < info->offset - 54)
+      || ((ret = read(fd, *img, (info->widht + info->widht % 4) * (info->deep_color[0] / 8)
+		      * info->height)) == -1)
       || (ret < ((info->widht + info->widht % 4) * (info->deep_color[0] / 8))
 	  * info->height))
     return (-1);
@@ -68,7 +68,6 @@ void	fill_img(t_info_bmp *info, t_bmp *image, char *img)
     }
   image->height = info->height;
   image->widht = widht;
-  image->bpp = (info->deep_color[0] / 8);
 }
 
 t_bmp		*bmp_loader(char *path)
@@ -88,5 +87,6 @@ t_bmp		*bmp_loader(char *path)
       (check_bmp(&info, &img, fd, image)) == -1)
     return (NULL);
   fill_img(&info, image, img);
+  free(img);
   return (image);
 }

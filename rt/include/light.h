@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Mon May 20 20:11:43 2013 etienne debas
+** Last update Tue May 21 13:52:05 2013 Adrien Della Maggiora
 */
 
 #ifndef LIG_H_
@@ -97,5 +97,6 @@ void	   	init_shadows(t_shadow *spt, t_rt *rpt, double *cpos, t_lco *lpt);
 int		find_in_tab(int *tab, int nb, int *i);
 void		handle_transparency(t_shadow *spt, t_rt *rpt,
 				    t_obj *obj, double k);
+void		vec_mult(double *vec1, double *vec2, double *vecr);
 
 #endif

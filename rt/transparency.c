@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May  5 18:27:59 2013 luc sinet
-** Last update Mon May 20 12:34:46 2013 luc sinet
+** Last update Wed May 22 11:34:36 2013 Adrien Della Maggiora
 */
 
 #include <math.h>
@@ -52,42 +52,42 @@ double	get_refrac_ratio(t_obj *tab, t_obj *obj, int *pass, int obj_num)
     }
 }
 
+void		transparency_loop(t_rt *rpt, t_lco *lpt, t_trans *trans,
+				  double k)
+{
+  double	refrac;
+  int		obj;
+
+  obj = rpt->obj_num;
+  trans->alpha[trans->count] = rpt->obj[obj].indice[0];
+  refrac = get_refrac_ratio(rpt->obj, &rpt->obj[obj],
+			    trans->pass, obj);
+  calc_refrac(rpt, rpt->vpt, lpt, k, refrac);
+  calc_inter(rpt, &k);
+  if (k > ZERO && rpt->obj_num != obj)
+    trans->color[trans->count++] = modifie_p_color(rpt, k, 1);
+  else if (k == -1)
+    trans->color[trans->count++]  = 0x000000;
+}
+
 unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
 			     double k)
 {
-  int		obj;
-  int		i;
   int		save_obj;
-  double	n;
   double	vec[3];
   double	ctmp[3];
-  double	alpha[MAX_R];
-  unsigned int	all_color[MAX_R];
-  int		pass[256];
-  double       	refrac;
+  t_trans	trans;
 
-  n = 1;
-  save_obj = obj = rpt->obj_num;
-  my_memset(pass, -1, 256);
+  trans.count = 0;
+  save_obj = rpt->obj_num;
+  my_memset(trans.pass, -1, 256);
   copy_tab(rpt->vpt->vec, vec, 3);
   copy_tab(rpt->cpt->pos, ctmp, 3);
-  i = 0;
-  while (i < MAX_R && rpt->obj[rpt->obj_num].indice[0] > ZERO && n > ZERO
-	 && k > ZERO)
-    {
-      obj = rpt->obj_num;
-      alpha[i] = rpt->obj[obj].indice[0];
-      refrac = get_refrac_ratio(rpt->obj, &rpt->obj[obj], pass, obj);
-      calc_refrac(rpt, rpt->vpt, lpt, k, refrac);
-      n = rpt->obj[obj].indice[1];
-      calc_inter(rpt, &k);
-      if (k > ZERO && rpt->obj_num != obj)
-	all_color[i++] = modifie_p_color(rpt, k, 1);
-      else if (k == -1)
-	all_color[i++]  = 0x000000;
-    }
+  while (trans.count < MAX_R && rpt->obj[rpt->obj_num].indice[0] > ZERO && k > ZERO)
+    transparency_loop(rpt, lpt, &trans, k);
   copy_tab(ctmp, rpt->cpt->pos, 3);
   copy_tab(vec, rpt->vpt->vec, 3);
   rpt->obj_num = save_obj;
-  return ((i > 0) ? calc_trans(all_color, alpha, i - 1, color) : color);
+  return ((trans.count > 0) ? calc_trans(trans.color, trans.alpha,
+					 trans.count - 1, color) : color);
 }
