@@ -5,12 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Wed May 22 14:41:53 2013 luc sinet
+** Last update Thu May 23 17:16:58 2013 Adrien Della Maggiora
 */
 
 #include "main.h"
 #include "pars.h"
 #include "mlx.h"
+#include "bmp_loader.h"
 
 void	free_all(t_rt *rpt, t_par *ppt)
 {
@@ -84,6 +85,7 @@ int		main(int ac, char **av)
     return (-1);
   init_cos(rpt.obj);
   calc_pixel(&rpt, &cpt, &vpt, &ppt);
+  output_bmp(&ppt);
   free_all(&rpt, &ppt);
   mlx_key_hook(ppt.win_ptr, key_event, &rpt);
   mlx_expose_hook(ppt.win_ptr, print_i, &ppt);

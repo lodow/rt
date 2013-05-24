@@ -53,15 +53,15 @@ Objets exotiques
 torre
 fichier .bmp en input
 gestion transparence et reflection sur un meme rayon
-bruit de perlin (2d)
 Filtres
+bruit de perlin (3d)
+bump mapping (3d)
+Output en .bmp
 
 en cour
 
 parseur .obj
 textures
-bruit de perlin (3d)
-bump mapping (3d)
 
 A faire
 
@@ -70,4 +70,3 @@ Lumiere directe
 Createur de fichier de conf
 Blur sur les ombres
 Flou de profondeur
-Output en .bmp
