@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr  7 19:07:11 2013 luc sinet
-** Last update Thu May 23 01:17:38 2013 luc sinet
+** Last update Fri May 24 18:00:57 2013 luc sinet
 */
 
 #include <math.h>
@@ -53,8 +53,6 @@ double		get_specular_coef(t_lco *lpt, double *cam_pos)
   rvec[1] = lvec[1] - 2.0 * scal[0] * lpt->nvec[1];
   rvec[2] = lvec[2] - 2.0 * scal[0] * lpt->nvec[2];
   scal[1] = scale(rvec, cvec);
-  if (scal[1] < 0)
-    scal[1] += 360;
   if (scal[1] < 90)
     return (pow(cos_vector(rvec, cvec), 20));
   return (0);
