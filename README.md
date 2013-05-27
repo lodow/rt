@@ -28,6 +28,9 @@ http://www.yosefk.com/blog/checkedthreads-bug-free-shared-memory-parallelism.htm
 ! PDF super cool -> http://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=10&ved=0CGQQFjAJ&url=http%3A%2F%2Fgregory.corgie.free.fr%2Fdotclear%2Fimages%2FRaytracing%2FRapport_Raytracing.pdf&ei=kWBgUcyeEYq1PY2igYAO&usg=AFQjCNExtNTopPrSJflPzjGV0q0sTQ92eA&bvm=bv.44770516,d.ZWU
 
 
+Swap de variable
+http://fvirtman.free.fr/recueil/01_08_01_07_swaphack.c.html
+
 Bonus:
 
 Lumière ambiente
@@ -50,15 +53,15 @@ Objets exotiques
 torre
 fichier .bmp en input
 gestion transparence et reflection sur un meme rayon
-bruit de perlin (2d)
 Filtres
+bruit de perlin (3d)
+bump mapping (3d)
+Output en .bmp
 
 en cour
 
 parseur .obj
 textures
-bruit de perlin (3d)
-bump mapping (3d)
 
 A faire
 
@@ -67,4 +70,3 @@ Lumiere directe
 Createur de fichier de conf
 Blur sur les ombres
 Flou de profondeur
-Output en .bmp
