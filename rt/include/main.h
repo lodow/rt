@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Wed May 22 15:22:32 2013 etienne debas
+** Last update Mon May 27 14:55:36 2013 adrien dellamaggiora
 */
 
 #ifndef MAIN_H_
@@ -54,9 +54,10 @@ typedef struct	s_obj
   double	limit[9];
   double	pert[6];
   double	dist;
+  double	cst;
   double	v1[3];
   double	v2[3];
-  double	indice[5];
+  double	indice[4];
   double	normal[4];
   double       	perlin[2];
   double	bump;
