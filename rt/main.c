@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Fri May 24 17:33:16 2013 luc sinet
+** Last update Mon May 27 21:12:43 2013 maxime lavandier
 */
 
 #include "main.h"
@@ -33,7 +33,7 @@ int	key_event(int key, t_rt *rpt)
 {
   (void)rpt;
   if (key == K_ESC)
-    exit (0);
+    exit(0);
   return (0);
 }
 
@@ -90,7 +90,6 @@ int		main(int ac, char **av)
   free_all(&rpt, &ppt);
   mlx_key_hook(ppt.win_ptr, key_event, &rpt);
   mlx_expose_hook(ppt.win_ptr, print_i, &ppt);
-  mlx_key_hook(ppt.win_ptr, key_event, &rpt);
   mlx_loop(ppt.mlx_ptr);
   return (0);
 }
