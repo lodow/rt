@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Mar 16 23:19:04 2013 luc sinet
-** Last update Wed May 22 14:33:01 2013 luc sinet
+** Last update Mon May 27 09:44:18 2013 adrien dellamaggiora
 */
 
 #include "main.h"
@@ -89,8 +89,8 @@ void	fill_carac_model(char **carac)
   carac[3] = "Absorbance = ";
   carac[4] = "Limit = ";
   carac[5] = "Ondulation = ";
-  carac[6] = "V1 = ";
-  carac[7] = "V2 = ";
+  carac[6] = "Vector 1 = ";
+  carac[7] = "Vector 2 = ";
   carac[8] = "Normal = ";
   carac[9] = "Alpha = ";
   carac[10] = "N = ";
