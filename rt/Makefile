@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Thu May 23 14:19:46 2013 Adrien Della Maggiora
+## Last update Mon May 27 13:21:48 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -109,7 +109,7 @@ RM	= rm -f
 NAME	= rt
 
 $(NAME): 	$(OBJS)
-	$(CC) $(SRCS) -o $(NAME) $(OPT)
+	$(CC) $(OBJS) -o $(NAME) $(OPT)
 
 all: $(NAME)
 
