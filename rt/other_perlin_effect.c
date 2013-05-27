@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May 19 18:38:43 2013 luc sinet
-** Last update Wed May 22 16:25:48 2013 luc sinet
+** Last update Thu May 23 14:48:06 2013 etienne debas
 */
 
 #include <math.h>
@@ -23,6 +23,7 @@ unsigned int	perlin_disco(double *inter, unsigned char *color_obj,
   double	pn_b;
 
   (void)ppt;
+  frequency *= 2.0;
   pn_r = get_perlin(inter[0] * 0.1 * frequency * 7,
 		    inter[1] * 0.1 * frequency * 7,
 		    inter[2] * 0.1 * frequency * 7);
