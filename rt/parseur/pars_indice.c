@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu May 16 10:51:03 2013 luc sinet
-** Last update Mon May 20 01:25:33 2013 luc sinet
+** Last update Mon May 27 09:31:04 2013 adrien dellamaggiora
 */
 
 #include "main.h"
@@ -32,7 +32,7 @@ void	pars_reflection(char *line, t_obj *ept, t_text *text)
 void	pars_cst(char *line, t_obj *ept, t_text *text)
 {
   (void)text;
-  ept->indice[4] = my_fgetnbr(line);
+  ept->cst = my_fgetnbr(line);
 }
 
 void	pars_absorbance(char *line, t_obj *ept, t_text *text)

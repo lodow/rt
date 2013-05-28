@@ -5,7 +5,7 @@
 ** Login   <adrien@Adrien>
 ** 
 ** Started on  Wed May  1 13:50:59 2013 Adrien
-** Last update Thu May 16 17:03:42 2013 Adrien Della Maggiora
+** Last update Fri May 24 16:48:59 2013 Adrien Della Maggiora
 */
 
 #include <sys/types.h>
@@ -57,12 +57,12 @@ void	fill_img(t_info_bmp *info, t_bmp *image, char *img)
   widht = info->widht * (info->deep_color[0] / 8);
   while (j >= 0)
     {
-      i = widht - 1;
-      while (i >= 0)
+      i = 0;
+      while (i < widht)
 	{
-	  image->texture[((info->height - 1) - j) * widht + ((widht - 1) - i)]
+	  image->texture[((info->height - 1) - j) * widht + i]
 	    = img[widht * j + i];
-	  --i;
+	  ++i;
 	}
       --j;
     }
