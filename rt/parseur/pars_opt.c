@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 21 17:23:06 2013 luc sinet
-** Last update Tue May 21 18:02:55 2013 luc sinet
+** Last update Tue May 28 13:54:12 2013 luc sinet
 */
 
 #include "main.h"
@@ -13,7 +13,7 @@
 
 void	get_opt_filter(t_opt *opt, char *line, int l)
 {
-  char	*types[2];
+  char	*types[3];
   int	i;
   int	x;
 
@@ -21,10 +21,11 @@ void	get_opt_filter(t_opt *opt, char *line, int l)
   x = 0;
   types[0] = "Sepia";
   types[1] = "Grey";
+  types[2] = "Reverse";
   skip_space(line, &x);
-  while (i < 2 && my_strncmp(types[i], &line[x], my_strlen(types[i])) != 0)
+  while (i < 3 && my_strncmp(types[i], &line[x], my_strlen(types[i])) != 0)
     ++i;
-  if (i == 2)
+  if (i == 3)
     {
       my_putstr("line ", 2);
       my_put_nbr(l, 2);
