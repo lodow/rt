@@ -5,7 +5,7 @@
 ** Login   <adrien@Adrien>
 **
 ** Started on  Wed May  1 13:50:59 2013 Adrien
-** Last update Wed May 29 11:57:23 2013 adrien dellamaggiora
+** Last update Wed May 29 13:19:03 2013 adrien dellamaggiora
 */
 
 #include <sys/types.h>
@@ -24,7 +24,7 @@ void	my_memcpy(void *mem1, void *mem2, int size)
   while (i < size)
     {
       ((char *)mem2)[i] = ((char *)mem1)[i];
-      i++;
+      ++i;
     }
 }
 
@@ -63,7 +63,7 @@ void	fill_img(t_info_bmp *info, t_bmp *image, char *img)
 	  image->texture[((info->height - 1) - j) * widht + i + 2] = img[widht * j + i];
 	  image->texture[((info->height - 1) - j) * widht + i + 1] = img[widht * j + i + 1];
 	  image->texture[((info->height - 1) - j) * widht + i] = img[widht * j + i + 2];
-	  ++i;
+	  i += 3;
 	}
       --j;
     }

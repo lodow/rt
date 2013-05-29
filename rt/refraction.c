@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Mon Apr  1 12:31:29 2013 Adrien Della Maggiora
-** Last update Sat May 11 15:28:36 2013 luc sinet
+** Last update Wed May 29 19:30:13 2013 luc sinet
 */
 
 #include <math.h>
@@ -26,14 +26,16 @@ double		get_positive_scalar(double *vec1, double *vec2)
   return (scal);
 }
 
-void		calc_refrac(t_rt *rpt, t_vec *vpt, t_lco *lpt,
+void		calc_refrac(t_rt *rpt, t_lco *lpt,
 			    double k, double n)
 {
   double        cvec[3];
+  double	*vec;
   double        scal;
   double	tmp;
 
-  get_inter_normal(rpt, vpt, k, lpt);
+  vec = rpt->vpt->vec;
+  get_inter_normal(rpt, rpt->vpt, k, lpt);
   cvec[0] = lpt->obj_coor[0] - rpt->cpt->pos[0];
   cvec[1] = lpt->obj_coor[1] - rpt->cpt->pos[1];
   cvec[2] = lpt->obj_coor[2] - rpt->cpt->pos[2];
@@ -43,7 +45,7 @@ void		calc_refrac(t_rt *rpt, t_vec *vpt, t_lco *lpt,
   scal = get_positive_scalar(lpt->nvec, cvec);
   tmp = 1 + (n * n) * ((scal * scal) - 1);
   tmp = (tmp > ZERO) ? sqrt(tmp) : 0;
-  vpt->vec[0] = n * cvec[0] + (n * scal - tmp) * lpt->nvec[0];
-  vpt->vec[1] = n * cvec[1] + (n * scal - tmp) * lpt->nvec[1];
-  vpt->vec[2] = n * cvec[2] + (n * scal - tmp) * lpt->nvec[2];
+  vec[0] = n * cvec[0] + (n * scal - tmp) * lpt->nvec[0];
+  vec[1] = n * cvec[1] + (n * scal - tmp) * lpt->nvec[1];
+  vec[2] = n * cvec[2] + (n * scal - tmp) * lpt->nvec[2];
 }
