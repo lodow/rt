@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Mon May 13 10:15:38 2013 Adrien Della Maggiora
-** Last update Wed May 29 16:47:00 2013 etienne debas
+** Last update Wed May 29 17:12:28 2013 adrien dellamaggiora
 */
 
 #include <math.h>
@@ -45,23 +45,25 @@ void		texture_sphere(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
 
 void	texture_plan(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
 {
-  double	vec[3];
-  double	dist;
-  double	nvec[3];
   double	u;
   double	v;
 
   get_inter_normal(rpt, rpt->vpt, k, lpt);
-  /* nvec[0] = lpt->nvec[1]; */
-  /* nvec[1] = lpt->nvec[2]; */
-  /* nvec[2] = -lpt->nvec[0]; */
-  /* vec[0] = nvec[1] * lpt->nvec[2] - nvec[2] * lpt->nvec[1]; */
-  /* vec[1] = nvec[2] * lpt->nvec[0] - nvec[0] * lpt->nvec[2]; */
-  /* vec[2] = nvec[0] * lpt->nvec[1] - nvec[1] * lpt->nvec[0]; */
-  /* u = scale(lpt->obj_coor, nvec); */
-  /* v = scale(lpt->obj_coor, vec); */
-  unitaire(lpt->obj_coor);
-  texture_color(obj, lpt->obj_coor[1], lpt->obj_coor[0]);
+  u = lpt->obj_coor[1];
+  if (u < ZERO)
+    while (u < ZERO)
+      u += obj->texture->widht;
+  if (u >= obj->texture->widht)
+    while (u >= obj->texture->widht)
+      u -= obj->texture->widht;
+  v = lpt->obj_coor[0];
+  if (v < ZERO)
+    while (v < ZERO)
+      v += obj->texture->height;
+  if (v >= obj->texture->height)
+    while (v >= obj->texture->height)
+      v -= obj->texture->height;
+  texture_color(obj, u / obj->texture->widht, v / obj->texture->height);
 }
 
 void	get_color_texture(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
