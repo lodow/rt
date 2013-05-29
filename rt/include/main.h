@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Wed May 29 18:30:05 2013 luc sinet
+** Last update Wed May 29 19:24:37 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -155,8 +155,6 @@ void		delta_nul_third(double *k, double *pq);
 void		delta_pos_third(double *k, double *pq);
 unsigned int	transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
 			     double k);
-void		calc_refrac(t_rt *rpt, t_vec *vpt, t_lco *lpt,
-			    double k, double n);
 void		my_mem_cpy(void *dest, void *src, int size);
 void		*adjust_mem_size(void *mem, int size, int nsize, int dfree);
 void		link_text(t_obj *ept, char *line, t_text *text);

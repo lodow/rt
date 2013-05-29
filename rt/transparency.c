@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May  5 18:27:59 2013 luc sinet
-** Last update Wed May 22 11:34:36 2013 Adrien Della Maggiora
+** Last update Wed May 29 19:26:34 2013 luc sinet
 */
 
 #include <math.h>
@@ -62,7 +62,7 @@ void		transparency_loop(t_rt *rpt, t_lco *lpt, t_trans *trans,
   trans->alpha[trans->count] = rpt->obj[obj].indice[0];
   refrac = get_refrac_ratio(rpt->obj, &rpt->obj[obj],
 			    trans->pass, obj);
-  calc_refrac(rpt, rpt->vpt, lpt, k, refrac);
+  calc_refrac(rpt, lpt, k, refrac);
   calc_inter(rpt, &k);
   if (k > ZERO && rpt->obj_num != obj)
     trans->color[trans->count++] = modifie_p_color(rpt, k, 1);
