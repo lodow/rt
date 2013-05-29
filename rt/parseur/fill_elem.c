@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 23:15:31 2013 luc sinet
-** Last update Wed May 29 13:04:43 2013 luc sinet
+** Last update Wed May 29 13:29:53 2013 luc sinet
 */
 
 #include "main.h"
@@ -35,7 +35,7 @@ int	get_args(t_obj *obj, t_pars *opt, int *y)
   return (0);
 }
 
-int	fill_shape(t_pars *opt, int *y, t_obj *tab, int i)
+int	fill_shape(t_pars *opt, int *y, t_obj *obj)
 {
   char	*shape[12];
   char	*line;
@@ -51,8 +51,8 @@ int	fill_shape(t_pars *opt, int *y, t_obj *tab, int i)
 	x++;
       ++(*y);
     }
-  tab[i].type = x;
-  return (get_args(&tab[i], opt, y));
+  obj->type = x;
+  return (get_args(obj, opt, y));
 }
 
 int	fill_tab(t_pars *opt, t_obj *tab)
@@ -64,7 +64,7 @@ int	fill_tab(t_pars *opt, t_obj *tab)
   y = 0;
   while (i < opt->nb_shape)
     {
-      if (fill_shape(opt, &y, tab, i) == -1)
+      if (fill_shape(opt, &y, &tab[i]) == -1)
 	return (-1);
       i++;
     }
