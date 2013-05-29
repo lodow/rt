@@ -5,14 +5,14 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 23:15:31 2013 luc sinet
-** Last update Mon May 20 14:47:39 2013 luc sinet
+** Last update Wed May 29 13:04:43 2013 luc sinet
 */
 
 #include "main.h"
 #include "pars.h"
 #include "model.h"
 
-int	get_args(t_obj *tab, t_pars *opt, int *y)
+int	get_args(t_obj *obj, t_pars *opt, int *y)
 {
   char	*line;
   int	s;
@@ -25,10 +25,10 @@ int	get_args(t_obj *tab, t_pars *opt, int *y)
       while (line[s] == ' ')
 	++s;
       if (my_strncmp("Center = ", &line[s], 9) == 0)
-	fill_center(tab, &line[s + 9]);
+	fill_center(obj, &line[s + 9]);
       else if (my_strncmp("Angle = ", &line[s], 8) == 0)
-	fill_angle(tab, &line[s + 8]);
-      else if (other_opt(&line[s], tab, opt->text) == -1)
+	fill_angle(obj, &line[s + 8]);
+      else if (other_opt(&line[s], obj, opt->text) == -1)
 	return (file_error(line, *y, -1));
        ++(*y);
     }
