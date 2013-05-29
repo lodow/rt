@@ -14,56 +14,36 @@
 #include "model.h"
 #include "pars.h"
 
-void		cpy_model_xyz(double *dest, int pos, double *src, int posrc)
+void	fill_model_tabs(int* indice_tab, int *size,
+                      double *fin_tab, double *raw_tab)
 {
-  int		j;
-
-  j = 0;
-  while (j < 3)
-    {
-      dest[pos + j] = src[posrc + j];
-      j++;
-    }
-}
-
-void		fill_model_tabs(t_model *obj, int *vert, int *uvs, int *norm)
-{
-  int		i;
-  int		tmpind;
+  int	i;
+  int	j;
+  int	tmpind;
+  int	raw_size;
+  int	fin_size;
 
   i = 0;
+  raw_size = size[0];
+  fin_size = size[1];
   while (i < 3)
     {
-      tmpind = vert[i] - 1;
-      if ((tmpind * 3) < obj->raw_size_vertice && tmpind >= 0)
-        cpy_model_xyz(obj->fin_vertice, obj->fin_size_vertice * 3,
-                      obj->raw_vertice, tmpind * 3);
+      tmpind = indice_tab[i] - 1;
+      if ((tmpind * 3) < (raw_size * 3) && (tmpind >= 0))
+        {
+          j = 0;
+          while (j < 3)
+            {
+              fin_tab[fin_size * 3 + j] = raw_tab[tmpind * 3 + j];
+              j++;
+            }
+        }
       i++;
     }
-  obj->fin_size_vertice += 3;
-  /* i = 0;
-   while (i < 3)
-     {
-       tmpind = uvs[i] - 1;
-       if ((tmpind * 3) < obj->raw_size_uvs && tmpind >= 0)
-         cpy_model_xyz(obj->fin_uvs, obj->fin_size_uvs * 3,
-                       obj->raw_uvs, tmpind * 3);
-       i++;
-     }
-   obj->fin_size_uvs += 3;*/
-  i = 0;
-  while (i < 3)
-    {
-      tmpind = norm[i] - 1;
-      if ((tmpind * 3) < obj->raw_size_normal && tmpind >= 0)
-        cpy_model_xyz(obj->fin_normal, obj->fin_size_normal * 3,
-                      obj->raw_normal, tmpind * 3);
-      i++;
-    }
-  obj->fin_size_normal += 3;
+  size[1] += 3;
 }
 
-void		model_sizeup_fin_tab(t_model *obj)
+void		model_sizeup_fin_tab(t_model * obj)
 {
   int		tmpsize;
   double	*tmptab;
@@ -88,7 +68,7 @@ void		model_sizeup_fin_tab(t_model *obj)
   obj->fin_normal = tmptab;
 }
 
-void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
+void		raw_model_t_obj(t_obj **objtab, t_model * model, t_obj * baseobj)
 {
   int		nb_tri;
   int		sizeobj;
@@ -114,7 +94,7 @@ void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
   (*objtab)[i + sizeobj].type = -1;
 }
 
-void		init_model_struct(t_model *model)
+void		init_model_struct(t_model * model)
 {
   model->raw_vertice = NULL;
   model->raw_normal = NULL;

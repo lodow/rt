@@ -102,7 +102,7 @@ OBJS	= $(SRCS:.c=.o)
 
 OPT     = -L/usr/lib64 -lmlx_x86_64-linux -L/usr/lib64/X11 -lXext -lX11 -lm
 
-CFLAGS	+= --fast-math -ffast-math -O2 -march=native
+CFLAGS	+= -ffast-math
 
 CC	= gcc -g -Wall -Wextra -I./include/
 

@@ -71,10 +71,22 @@ void		model_indice_stuff(t_model *obj, char *line)
   int		tabvert[3];
   int		tabuvs[3];
   int		tabnorm[3];
+  int		tmpsizetab[2];
 
   parse_model_indice_line(line, tabvert, tabuvs, tabnorm);
   model_sizeup_fin_tab(obj);
-  fill_model_tabs(obj, tabvert, tabuvs, tabnorm);
+  tmpsizetab[0] = obj->raw_size_vertice;
+  tmpsizetab[1] = obj->fin_size_vertice;
+  fill_model_tabs(tabvert, tmpsizetab, obj->fin_vertice, obj->raw_vertice);
+  obj->fin_size_vertice = tmpsizetab[1];
+  tmpsizetab[0] = obj->raw_size_uvs;
+  tmpsizetab[1] = obj->fin_size_uvs;
+  fill_model_tabs(tabuvs, tmpsizetab, obj->fin_uvs, obj->raw_uvs);
+  obj->fin_size_uvs = tmpsizetab[1];
+  tmpsizetab[0] = obj->raw_size_normal;
+  tmpsizetab[1] = obj->fin_size_normal;
+  fill_model_tabs(tabnorm, tmpsizetab, obj->fin_normal, obj->raw_normal);
+  obj->fin_size_normal = tmpsizetab[1];
 }
 
 void		parse_model(t_model *obj, const int fd)
@@ -111,7 +123,7 @@ t_model		*get_file_obj_model(const char *filename)
   free(obj->raw_vertice);
   free(obj->raw_normal);
   free(obj->raw_uvs);
-  if (obj->fin_vertice == NULL || obj->fin_size_vertice <= 0)
+  if ((obj->fin_vertice == NULL) || (obj->fin_size_vertice <= 0))
     {
       free(obj);
       return (NULL);
