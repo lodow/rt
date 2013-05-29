@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Wed May 22 11:54:10 2013 luc sinet
+** Last update Wed May 29 18:52:19 2013 luc sinet
 */
 
 #include <math.h>
@@ -17,20 +17,23 @@
 
 void		calc_inter(t_rt *rpt, double *kmin)
 {
+  t_obj		*obj;
   double	k;
   int		i;
 
   i = 0;
+  obj = &(rpt->obj[i]);
   *kmin = -1;
-  while (rpt->obj[i].type >= 0 && rpt->obj[i].type < 12)
+  while (obj->type >= 0 && obj->type < 12)
     {
-      k = move_cam(rpt, rpt->vpt, rpt->cpt, rpt->obj[i]);
+      k = move_cam(rpt, rpt->vpt, rpt->cpt, obj);
       if (k > ZERO && (k < *kmin || *kmin == -1))
 	{
 	  *kmin = k;
 	  rpt->obj_num = i;
 	}
       ++i;
+      obj = &(rpt->obj[i]);
     }
 }
 

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Tue May 28 13:48:56 2013 luc sinet
+** Last update Wed May 29 18:30:05 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -121,7 +121,7 @@ void		assign_function(t_rt *rpt);
 void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt);
 int		print_i(t_par *ppt);
 int		merror(char *msg, int ret);
-double		move_cam(t_rt *rpt, t_vec *vpt, t_cam *cpt, t_obj obj);
+double		move_cam(t_rt *rpt, t_vec *vpt, t_cam *cpt, t_obj *obj);
 void		init_cos(t_obj *tab);
 void		rotate_x(double *p, double cosin, double sinus);
 void		rotate_y(double *p, double cosin, double sinus);
