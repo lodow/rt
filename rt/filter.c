@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 21 13:57:11 2013 luc sinet
-** Last update Tue May 21 18:31:36 2013 luc sinet
+** Last update Tue May 28 13:45:55 2013 luc sinet
 */
 
 #include <math.h>
@@ -67,9 +67,11 @@ unsigned int	filter_color(unsigned int color, t_opt *opt)
 {
   if (opt->filter == 1)
     color = filter_sepia(color);
-  else if (opt->filter == 2)
+  if (opt->filter == 2)
     color = filter_grey(color);
   if (opt->gamma != -1)
     color = gamma_filter(color, opt->gamma);
+  if (opt->filter == 3)
+    color = revers_filter(color, opt);
   return (color);
 }

@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Wed May 22 15:36:03 2013 luc sinet
+** Last update Mon May 27 16:20:32 2013 luc sinet
 */
 
 #include <math.h>
@@ -37,7 +37,7 @@ void	get_inter_shadow(t_shadow *spt, t_rt *rpt, double k, double *cpos)
 {
   if (spt->obj[1] != rpt->obj_num && k > ZERO && k < 1)
     {
-      spt->sdw_coef *= rpt->obj[rpt->obj_num].indice[0];
+      spt->sdw_coef -= (1.0 - rpt->obj[rpt->obj_num].indice[0]);
       if (spt->sdw_coef < 0.2)
 	spt->sdw_coef = 0.2;
       handle_transparency(spt, rpt, &rpt->obj[rpt->obj_num], k);
@@ -58,6 +58,7 @@ double		shadows(t_rt *rpt, double *cpos, t_lig *light, t_lco *lpt)
   t_shadow	spt;
   double	k;
   double	shadow;
+  double	s_coef;
 
   init_shadows(&spt, rpt, cpos, lpt);
   spt.light = light;
@@ -65,8 +66,11 @@ double		shadows(t_rt *rpt, double *cpos, t_lig *light, t_lco *lpt)
   while (spt.sdw_coef > 0.3 && spt.hit == 0)
     {
       cam_to_inter(&spt, rpt->obj_num, cpos, light->pos);
+      /* s_coef = shadow_supersampling(rpt, cpos, &spt, lpt); */
       calc_inter(rpt, &k);
       get_inter_shadow(&spt, rpt, k, cpos);
+      /* printf("\NfINAL : %f  ss: %f\n", spt.sdw_coef, s_coef); */
+      /* spt.sdw_coef = s_coef; */
    }
   copy_tab(spt.cam, cpos, 3);
   copy_tab(spt.vec, spt.vpos, 3);

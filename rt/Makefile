@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Thu May 23 14:19:46 2013 Adrien Della Maggiora
+## Last update Tue May 28 13:46:14 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -94,7 +94,9 @@ SRCS	= main.c \
 	  checkerboard.c \
 	  filter.c \
 	  bump_mapping.c \
-	  bmp_output.c
+	  bmp_output.c \
+	  shadows_supersampling.c \
+	  other_filter.c
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -109,7 +111,7 @@ RM	= rm -f
 NAME	= rt
 
 $(NAME): 	$(OBJS)
-	$(CC) $(SRCS) -o $(NAME) $(OPT)
+	$(CC) $(OBJS) -o $(NAME) $(OPT)
 
 all: $(NAME)
 

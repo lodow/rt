@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Mon May 27 14:55:36 2013 adrien dellamaggiora
+** Last update Tue May 28 13:48:56 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -166,5 +166,6 @@ unsigned int	perlin(double *inter, unsigned char *color_obj,
 		       double *carac);
 unsigned int	filter_color(unsigned int color, t_opt *opt);
 void		apply_bump(double *nvec, double *obj_coor, double ratio);
+int		output_bmp(t_par *ppt, char *name);
 
 #endif
