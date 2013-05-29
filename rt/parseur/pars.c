@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 18:33:58 2013 luc sinet
-** Last update Mon May 20 20:55:34 2013 luc sinet
+** Last update Wed May 29 13:26:36 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -116,8 +116,8 @@ int		pars(t_rt *rpt, char *fname, t_cam *cpt)
       fill_tab(&opt, rpt->obj) == -1 ||
       fill_light(&opt, rpt->light) == -1 ||
       fill_cam(&opt, cpt) == -1 ||
-      fill_opt(&opt, rpt) == -1)
+      fill_opt(&opt, rpt) == -1 ||
+      fill_model(&opt, &rpt->obj) == -1)
     return (-1);
-  fill_model(&opt, &rpt->obj);
   return (check_size(rpt->obj));
 }
