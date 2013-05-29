@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Wed May 29 13:56:59 2013 luc sinet
+## Last update Wed May 29 19:00:56 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -84,7 +84,7 @@ SRCS	= main.c \
 	  solve_cube.c \
 	  solve_quad.c \
 	  tangle.c \
-	  color.c \
+	  texture.c \
 	  tore.c \
 	  utils_color.c \
 	  perlin.c \
