@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr  7 19:07:11 2013 luc sinet
-** Last update Wed May 29 13:13:25 2013 luc sinet
+** Last update Wed May 29 13:23:46 2013 luc sinet
 */
 
 #include <math.h>
@@ -60,7 +60,7 @@ double		get_specular_coef(t_lco *lpt, double *cam_pos)
   return (0);
 }
 
-void	apply_speculaire(unsigned char *comp, double coss)
+void		apply_speculaire(unsigned char *comp, double coss)
 {
   double	ratio;
 
