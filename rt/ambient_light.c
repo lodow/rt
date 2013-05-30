@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr  7 19:07:11 2013 luc sinet
-** Last update Wed May 29 21:44:50 2013 luc sinet
+** Last update Thu May 30 15:07:58 2013 luc sinet
 */
 
 #include <math.h>
@@ -64,7 +64,7 @@ void		apply_speculaire(unsigned char *comp, double coss)
 {
   double	ratio;
 
-  ratio = pow(coss, 20) / 4.0;
+  ratio = pow(coss, 10);
   comp[0] = (1.0 - ratio) * comp[0] + ratio * 255;
   comp[1] = (1.0 - ratio) * comp[1] + ratio * 255;
   comp[2] = (1.0 - ratio) * comp[2] + ratio * 255;
@@ -84,11 +84,9 @@ void		get_light_color(t_lig *light, t_lco *lpt,
       if (rpt->obj[rpt->obj_num].indice[2])
 	coss = get_specular_coef(lpt, rpt->cpt->pos);
       cosa *= light->intensity;
-      cosa *= 0.9;
       cosa = apply_distance(lpt, light, cosa);
       if (coss > cosa && cosa > 0.5)
       	{
-	  coss = LIMIT(coss * 1.1, 0.0, 1.0);
 	  cosa = coss;
 	  apply_speculaire(lpt->c_color, coss);
 	}
