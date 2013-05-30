@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Mon May 27 21:12:43 2013 maxime lavandier
+** Last update Thu May 30 11:59:51 2013 luc sinet
 */
 
 #include "main.h"
@@ -34,6 +34,8 @@ int	key_event(int key, t_rt *rpt)
   (void)rpt;
   if (key == K_ESC)
     exit(0);
+  else if (key == K_P)
+    output_bmp(rpt->ppt);
   return (0);
 }
 
@@ -79,14 +81,13 @@ int		main(int ac, char **av)
   rpt.cpt = &cpt;
   rpt.opt = &opt;
   rpt.text = &text;
+  rpt.ppt = &ppt;
   if (ac == 1)
     return (merror("You need to specifie a config file in argument\n", -1));
   if (pars(&rpt, av[1], &cpt) < 0 || creat_win(&ppt) == -1)
     return (-1);
   init_cos(rpt.obj);
   calc_pixel(&rpt, &cpt, &vpt, &ppt);
-  if (ac == 3)
-    output_bmp(&ppt, av[2]);
   free_all(&rpt, &ppt);
   mlx_key_hook(ppt.win_ptr, key_event, &rpt);
   mlx_expose_hook(ppt.win_ptr, print_i, &ppt);

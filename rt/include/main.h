@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Wed May 29 19:24:37 2013 luc sinet
+** Last update Thu May 30 11:59:36 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -26,6 +26,7 @@
 # define DIST 1000
 # define K_ESC 65307
 # define GMAX(y, x) (y < 0 || x < 0) ? -1 : (x > y) ? x : y
+# define K_P 65293
 
 typedef struct	s_samp	t_samp;
 typedef struct	s_lco	t_lco;
@@ -112,6 +113,7 @@ typedef struct	s_rt
   t_lig		*light;
   t_opt		*opt;
   t_text	*text;
+  t_par		*ppt;
   double	(*eptr[12])(double *cam, double *vec, t_obj *opt);
 }		t_rt;
 
@@ -163,7 +165,8 @@ void		my_memset(void *elem, int val, int size);
 unsigned int	perlin(double *inter, unsigned char *color_obj,
 		       double *carac);
 unsigned int	filter_color(unsigned int color, t_opt *opt);
+unsigned int	revers_filter(unsigned int color, t_opt *opt);
 void		apply_bump(double *nvec, double *obj_coor, double ratio);
-int		output_bmp(t_par *ppt, char *name);
+int		output_bmp(t_par *ppt);
 
 #endif

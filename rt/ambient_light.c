@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr  7 19:07:11 2013 luc sinet
-** Last update Wed May 29 13:23:46 2013 luc sinet
+** Last update Wed May 29 21:44:50 2013 luc sinet
 */
 
 #include <math.h>
@@ -56,7 +56,7 @@ double		get_specular_coef(t_lco *lpt, double *cam_pos)
   if (scal[1] < 0)
     scal[1] += 360;
   if (scal[1] < 90)
-    return (ABS(pow(cos_vector(rvec, cvec), 5)));
+    return (ABS(pow(cos_vector(rvec, cvec), 15)));
   return (0);
 }
 
@@ -64,7 +64,7 @@ void		apply_speculaire(unsigned char *comp, double coss)
 {
   double	ratio;
 
-  ratio = pow(coss, 20) / 2.0;
+  ratio = pow(coss, 20) / 4.0;
   comp[0] = (1.0 - ratio) * comp[0] + ratio * 255;
   comp[1] = (1.0 - ratio) * comp[1] + ratio * 255;
   comp[2] = (1.0 - ratio) * comp[2] + ratio * 255;
@@ -78,20 +78,20 @@ void		get_light_color(t_lig *light, t_lco *lpt,
 
   light->intensity *= lpower;
   cosa = get_light_vector(lpt, light->pos);
+  coss = 0;
   if (cosa > 0)
     {
       if (rpt->obj[rpt->obj_num].indice[2])
 	coss = get_specular_coef(lpt, rpt->cpt->pos);
-      else
-	coss = 0;
       cosa *= light->intensity;
       cosa *= 0.9;
-      if (coss > cosa)
+      cosa = apply_distance(lpt, light, cosa);
+      if (coss > cosa && cosa > 0.5)
       	{
+	  coss = LIMIT(coss * 1.1, 0.0, 1.0);
 	  cosa = coss;
 	  apply_speculaire(lpt->c_color, coss);
 	}
-      cosa = apply_distance(lpt, light, cosa);
     }
   apply_light_color(lpt->c_color, light->lcolor, cosa);
   lpt->mx_cos = MAX(lpt->mx_cos, cosa);

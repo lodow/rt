@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Wed May 22 16:27:01 2013 Adrien Della Maggiora
-** Last update Fri May 24 17:35:47 2013 luc sinet
+** Last update Thu May 30 11:55:37 2013 luc sinet
 */
 
 #include <fcntl.h>
@@ -76,23 +76,17 @@ void	fill_bmp(char *img, int fd, t_info_bmp *info, int octet)
     }
 }
 
-int		output_bmp(t_par *ppt, char *name)
+int		output_bmp(t_par *ppt)
 {
-  char		*fullname;
   t_info_bmp	image;
   int		fd;
 
-  if ((fullname = malloc(my_strlen(name + 5))) == NULL)
-    return (merror("Can't open the output file\n", -1));
-  my_strcpy(fullname, name);
-  my_strcat(fullname, ".bmp");
   if (ppt->bpp != 32 && ppt->bpp != 24)
     return (merror("Color not coded on 32 or 24 bits\n", -1));
   init_bmp(&image);
-  if ((fd = open(fullname, O_WRONLY | O_CREAT | O_TRUNC, 0664)) == -1)
+  if ((fd = open("display.bmp", O_WRONLY | O_CREAT | O_TRUNC, 0664)) == -1)
     return (merror("Can't creat the file\n", -1));
   fill_bmp(ppt->data, fd, &image, ppt->bpp / 8);
   close(fd);
-  free(fullname);
   return (0);
 }
