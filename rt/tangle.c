@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri Mar 29 10:18:26 2013 luc sinet
-** Last update Tue May 14 17:55:44 2013 etienne debas
+** Last update Thu May 30 14:39:45 2013 luc sinet
 */
 
 #include <math.h>
@@ -18,6 +18,7 @@ double		tangle(double *cam, double *vec, t_obj *ept)
   double	c[5];
   double	k[4];
 
+  (void)ept;
   c[0] = pow(vec[0], 4) + pow(vec[1], 4) + pow(vec[2], 4);
   c[1] = 4.0 * (pow(vec[0], 3) * cam[0] + pow(vec[1], 3) * cam[1]
 		+ pow(vec[2], 3) * cam[2]);
