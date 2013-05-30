@@ -5,13 +5,13 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sun May 19 18:23:43 2013 etienne debas
-** Last update Tue May 21 17:01:45 2013 etienne debas
+** Last update Thu May 30 13:02:39 2013 luc sinet
 */
 
 #include <math.h>
 #include <stdio.h>
 
-static int p[512];
+static int table[512];
 static int permutation[] =
   {
     151,160,137,91,90,15,
@@ -29,55 +29,75 @@ static int permutation[] =
     138,236,205,93,222,114,67,29,24,72,243,141,128,195,78,66,215,61,156,180
   };
 
-void init_noise()
+void	init_noise(int *c_unit, double *x, double *y, double *z)
 {
-  int i;
-  for(i = 0; i < 256 ; i++)
-    p[256+i] = p[i] = permutation[i];
+  int	i;
+
+  i = 0;
+  while (i < 256)
+    {
+      table[i] = permutation[i];
+      table[256 + i] = table[i];
+      ++i;
+    }
+  c_unit[0] = (int)floor(*x) & 255;
+  c_unit[1] = (int)floor(*y) & 255;
+  c_unit[2] = (int)floor(*z) & 255;
+  *x -= floor(*x);
+  *y -= floor(*y);
+  *z -= floor(*z);
 }
 
-double fade(double t)
+double	fade(double curve)
 {
-  return t * t * t * (t * (t * 6 - 15) + 10);
-}
-double lerp(double t, double a, double b)
-{
-  return a + t * (b - a);
+  return (curve * curve * curve * (curve * (curve * 6 - 15) + 10));
 }
 
-double grad(int hash, double x, double y, double z)
+double	lerp(double curve, double a, double b)
 {
-    int h = hash & 15;                      // CONVERT LO 4 BITS OF HASH CODE
-    double u = h<8||h==12||h==13 ? x : y,   // INTO 12 GRADIENT DIRECTIONS.
-            v = h < 4||h==12||h==13 ? y : z;
-    return ((h&1) == 0 ? u : -u) + ((h&2) == 0 ? v : -v);
+  return (a + curve * (b - a));
 }
 
-double get_perlin(double x, double y, double z)
+double		grad(int hash, double x, double y, double z)
 {
-  init_noise();
-  int   X = (int)floor(x) & 255,             /* FIND UNIT CUBE THAT */
-    Y = (int)floor(y) & 255,             /* CONTAINS POINT.     */
-    Z = (int)floor(z) & 255;
-  x -= floor(x);                             /* FIND RELATIVE X,Y,Z */
-  y -= floor(y);                             /* OF POINT IN CUBE.   */
-  z -= floor(z);
-  double  u = fade(x),                       /* COMPUTE FADE CURVES */
-    v = fade(y),                       /* FOR EACH OF X,Y,Z.  */
-    w = fade(z);
-  int  A = p[X]+Y,
-    AA = p[A]+Z,
-    AB = p[A+1]+Z, /* HASH COORDINATES OF */
-    B = p[X+1]+Y,
-    BA = p[B]+Z,
-    BB = p[B+1]+Z; /* THE 8 CUBE CORNERS, */
+  int		h;
+  double	vec1;
+  double	vec2;
 
-  return lerp(w, lerp(v, lerp(u, grad(p[AA  ], x  , y  , z   ),  // AND ADD
-                                    grad(p[BA  ], x-1, y  , z   )), // BLENDED
-                            lerp(u, grad(p[AB  ], x  , y-1, z   ),  // RESULTS
-                                    grad(p[BB  ], x-1, y-1, z   ))),// FROM  8
-                    lerp(v, lerp(u, grad(p[AA+1], x  , y  , z-1 ),  // CORNERS
-                                    grad(p[BA+1], x-1, y  , z-1 )), // OF CUBE
-                            lerp(u, grad(p[AB+1], x  , y-1, z-1 ),
-                                    grad(p[BB+1], x-1, y-1, z-1 ))));
+  h = hash & 15;
+  if (h < 8 || h == 12 || h == 13)
+    vec1 = x;
+  else
+    vec1 = y;
+  if (h < 4 || h == 12 || h == 13)
+    vec2 = y;
+  else
+    vec2 = z;
+  return (((h & 1) == 0 ? vec1 : -vec1) + ((h & 2) == 0 ? vec2 : -vec2));
+}
+
+double		get_perlin(double x, double y, double z)
+{
+  double	vec[3];
+  int		c_unit[3];
+  int       	coor[6];
+
+  init_noise(c_unit, &x, &y, &z);
+  vec[0] = fade(x);
+  vec[1] = fade(y);
+  vec[2] = fade(z);
+  coor[0] = table[c_unit[0]] + c_unit[1];
+  coor[1] = table[coor[0]] + c_unit[2];
+  coor[2] = table[coor[0] + 1] + c_unit[2];
+  coor[3] = table[c_unit[0] + 1] + c_unit[1];
+  coor[4] = table[coor[3]] + c_unit[2];
+  coor[5] = table[coor[3] + 1] + c_unit[2];
+  return (lerp(vec[2], lerp(vec[1], lerp(vec[0], grad(table[coor[1]], x, y, z),
+					 grad(table[coor[4]], x - 1, y, z)),
+			    lerp(vec[0], grad(table[coor[2]], x, y - 1, z),
+				 grad(table[coor[5]], x - 1, y - 1, z))),
+	       lerp(vec[1], lerp(vec[0], grad(table[coor[1] + 1], x, y, z - 1),
+				 grad(table[coor[4] + 1], x-1, y  , z - 1)),
+		    lerp(vec[0], grad(table[coor[2] + 1], x  , y - 1, z - 1),
+			 grad(table[coor[5] + 1], x - 1, y - 1, z - 1)))));
 }
