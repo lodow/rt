@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Mon May 13 10:15:38 2013 Adrien Della Maggiora
-** Last update Wed May 29 17:12:28 2013 adrien dellamaggiora
+** Last update Thu May 30 15:09:07 2013 adrien dellamaggiora
 */
 
 #include <math.h>
@@ -22,7 +22,8 @@ void		texture_color(t_obj *obj, double u, double v)
 
   x = (u * obj->texture->widht);
   y = (v * obj->texture->height);
-  color = ((y * obj->texture->widht + x) * 3) % (obj->texture->widht * obj->texture->height);
+  color = ((y * obj->texture->widht + x) * 3) %
+    (obj->texture->widht * obj->texture->height);
   obj->color[0] = obj->texture->texture[color];
   obj->color[1] = obj->texture->texture[color + 1];
   obj->color[2] = obj->texture->texture[color + 2];
@@ -63,7 +64,18 @@ void	texture_plan(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
   if (v >= obj->texture->height)
     while (v >= obj->texture->height)
       v -= obj->texture->height;
-  texture_color(obj, u / obj->texture->widht, v / obj->texture->height);
+  texture_color(obj, (u + obj->texture->widht / 2) / obj->texture->widht,
+		((obj->texture->height - v) + obj->texture->height / 2)
+		/ obj->texture->height);
+}
+
+void	texture_cylinder(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
+{
+  double	u;
+  double	v;
+
+  get_inter_normal(rpt, rpt->vpt, k, lpt);
+  u = (atan(lpt->obj_coor[2] / lpt->obj_coor[1]) / (2 * M_PI));
 }
 
 void	get_color_texture(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
