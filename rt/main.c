@@ -5,9 +5,10 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Thu May 30 11:59:51 2013 luc sinet
+** Last update Thu May 30 21:14:46 2013 luc sinet
 */
 
+#include <time.h>
 #include "main.h"
 #include "pars.h"
 #include "mlx.h"
