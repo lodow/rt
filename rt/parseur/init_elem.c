@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Wed May 22 16:23:35 2013 luc sinet
+** Last update Thu May 30 21:22:26 2013 luc sinet
 */
 
 #include <stdio.h>
@@ -77,15 +77,8 @@ void	init_single_elem(t_obj *obj)
   obj->size = 0;
   obj->bright = 1.0;
   obj->texture = NULL;
-  obj->indice[0] = 0.0;
-  obj->indice[1] = 1.0;
-  obj->indice[2] = 0.0;
-  obj->indice[3] = 0.5;
   obj->normal[3] = 0;
-  obj->perlin[0] = -1;
-  obj->perlin[1] = 0.02;
-  obj->checker = 0;
-  obj->bump = 0;
+  init_elem_indices(obj);
 }
 
 void    init_elem(t_obj *tab, t_pars *opt)

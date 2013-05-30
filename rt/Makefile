@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Thu May 30 14:39:06 2013 luc sinet
+## Last update Thu May 30 21:21:58 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -19,6 +19,7 @@ SRCS	= main.c \
 	  parseur/fill_model.c \
 	  parseur/init.c \
 	  parseur/init_elem.c \
+	  parseur/init_elem_indice.c \
 	  parseur/init_cam.c \
 	  parseur/get_carac.c \
 	  parseur/get_obj_model.c \
@@ -96,7 +97,8 @@ SRCS	= main.c \
 	  bump_mapping.c \
 	  bmp_output.c \
 	  shadows_supersampling.c \
-	  other_filter.c
+	  other_filter.c \
+	  perlin_permutation.c
 
 OBJS	= $(SRCS:.c=.o)
 
