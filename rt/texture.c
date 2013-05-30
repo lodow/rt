@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Mon May 13 10:15:38 2013 Adrien Della Maggiora
-** Last update Thu May 30 15:09:07 2013 adrien dellamaggiora
+** Last update Thu May 30 21:43:45 2013 etienne debas
 */
 
 #include <math.h>
@@ -19,11 +19,13 @@ void		texture_color(t_obj *obj, double u, double v)
   int		color;
   int		x;
   int		y;
+  int		len;
 
+  len = obj->texture->widht * obj->texture->height;
   x = (u * obj->texture->widht);
   y = (v * obj->texture->height);
-  color = ((y * obj->texture->widht + x) * 3) %
-    (obj->texture->widht * obj->texture->height);
+  color = ((y * obj->texture->widht + x) * 2) % len;
+  color = color - color % 3;
   obj->color[0] = obj->texture->texture[color];
   obj->color[1] = obj->texture->texture[color + 1];
   obj->color[2] = obj->texture->texture[color + 2];
