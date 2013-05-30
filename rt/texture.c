@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Mon May 13 10:15:38 2013 Adrien Della Maggiora
-** Last update Thu May 30 21:43:45 2013 etienne debas
+** Last update Fri May 31 01:32:42 2013 etienne debas
 */
 
 #include <math.h>
@@ -24,7 +24,7 @@ void		texture_color(t_obj *obj, double u, double v)
   len = obj->texture->widht * obj->texture->height;
   x = (u * obj->texture->widht);
   y = (v * obj->texture->height);
-  color = ((y * obj->texture->widht + x) * 2) % len;
+  color = ((y * obj->texture->widht + x) * 20) % len;
   color = color - color % 3;
   obj->color[0] = obj->texture->texture[color];
   obj->color[1] = obj->texture->texture[color + 1];
@@ -35,9 +35,6 @@ void		texture_sphere(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
 {
   double	v;
   double	u;
-  int		x;
-  int		y;
-  int		p;
 
   get_inter_normal(rpt, rpt->vpt, k, lpt);
   unitaire(lpt->nvec);
@@ -75,9 +72,20 @@ void	texture_cylinder(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
 {
   double	u;
   double	v;
+  double	angle;
+  double	repere_vec[3];
 
+  repere_vec[0] = 0;
+  repere_vec[1] = 1;
+  repere_vec[2] = 0;
   get_inter_normal(rpt, rpt->vpt, k, lpt);
-  u = (atan(lpt->obj_coor[2] / lpt->obj_coor[1]) / (2 * M_PI));
+  angle = 180 * acos(cos_vector(repere_vec, lpt->nvec)) / M_PI;
+  v = (ABS((int)lpt->obj_coor[2]) % obj->texture->height)
+    / (double)obj->texture->height;
+  if (lpt->obj_coor[2] > 0.0f)
+    v = 1.0 - v;
+  u = (angle / 360.0);
+  texture_color(obj, u, v);
 }
 
 void	get_color_texture(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
@@ -88,4 +96,6 @@ void	get_color_texture(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
     texture_plan(obj, lpt, k, rpt);
   else if (obj->type == 0)
     texture_sphere(obj, lpt, k, rpt);
+  else if (obj->type == 3)
+    texture_cylinder(obj, lpt, k, rpt);
 }
