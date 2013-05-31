@@ -18,12 +18,14 @@
 
 # Denote all files that are truly binary and should not be modified.
 
+*.obj binary
+*.xpm binary
 *.bmp binary
 *.png binary
 *.jpg binary
 *.dll binary
 *.so binary
 *.a binary
-*.exe
-*.o
+*.exe binary
+*.o binary
 
