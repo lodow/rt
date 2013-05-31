@@ -39,7 +39,7 @@ Effect de distance sur les lumières
 Brouillard
 Damier
 Triangles
-Antialiasing
+Antialiasing (Adaptatif supersampling)
 Objets limités
 Perturbation de la normale
 Fichier de conf
@@ -53,15 +53,16 @@ Objets exotiques
 torre
 fichier .bmp en input
 gestion transparence et reflection sur un meme rayon
-Filtres
-bruit de perlin (3d)
+Filtres (gray alpha sepia)
+bruit de perlin (3d) (tous les effets avec)
 bump mapping (3d)
 Output en .bmp
+Textures
+Gamma
 
 en cour
 
 parseur .obj
-textures
 
 A faire
 
