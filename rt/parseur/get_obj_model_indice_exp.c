@@ -38,12 +38,13 @@ void	fill_model_tabs(int* indice_tab, int *size,
               j++;
             }
         }
+      fin_size += 1;
       i++;
     }
-  size[1] += 3;
+  size[1] = fin_size;
 }
 
-void		model_sizeup_fin_tab(t_model * obj)
+void		model_sizeup_fin_tab(t_model *obj)
 {
   int		tmpsize;
   double	*tmptab;
@@ -68,7 +69,7 @@ void		model_sizeup_fin_tab(t_model * obj)
   obj->fin_normal = tmptab;
 }
 
-void		raw_model_t_obj(t_obj **objtab, t_model * model, t_obj * baseobj)
+void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
 {
   int		nb_tri;
   int		sizeobj;
@@ -79,7 +80,7 @@ void		raw_model_t_obj(t_obj **objtab, t_model * model, t_obj * baseobj)
   baseobj->type = 6;
   while ((*objtab)[sizeobj].type != -1)
     sizeobj++;
-  if (((*objtab) = adjust_mem_size((void *)*objtab, sizeobj * sizeof(t_obj),
+  if (((*objtab) = adjust_mem_size((void*)*objtab, sizeobj * sizeof(t_obj),
                                    (sizeobj + nb_tri + 1) * sizeof(t_obj), 1))
       == NULL)
     return ;
@@ -94,7 +95,7 @@ void		raw_model_t_obj(t_obj **objtab, t_model * model, t_obj * baseobj)
   (*objtab)[i + sizeobj].type = -1;
 }
 
-void		init_model_struct(t_model * model)
+void		init_model_struct(t_model *model)
 {
   model->raw_vertice = NULL;
   model->raw_normal = NULL;
