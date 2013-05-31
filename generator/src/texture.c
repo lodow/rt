@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Fri May 31 09:45:06 2013 remi
-** Last update Fri May 31 13:48:40 2013 remi robert
+** Last update Fri May 31 20:25:03 2013 remi robert
 */
 
 #include "my_func.h"
@@ -39,11 +39,11 @@ int	init_texture(t_param *param)
 			     "texture/panel_config.xpm",
 			     &(param->panel_control.y),
 			     &(param->panel_control.x))) == NULL ||
-      (param->fleche.img =
+      (param->textbox.img =
        mlx_xpm_file_to_image(param->window.p,
-			     "texture/fleche.xpm",
-			     &(param->fleche.y),
-			     &(param->fleche.x))) == NULL)
+			     "texture/textbox.xpm",
+			     &(param->textbox.y),
+			     &(param->textbox.x))) == NULL)
     return (0);
   return (1);
 }

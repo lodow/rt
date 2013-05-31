@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 13:29:07 2013 remi
-** Last update Fri May 31 17:30:48 2013 remi robert
+** Last update Fri May 31 21:54:10 2013 remi robert
 */
 
 #include "my_func.h"
@@ -38,6 +38,10 @@ void	add_elem_on_click(t_param *param, int x, int y)
   mlx_put_image_to_window(param->window.p, param->window.id,
 			  param->panel_control.img,
 			  165, 10);
+  mlx_string_put(param->window.p, param->window.id, 450, 50,
+		 0xFFFFFFFF, "conf z : ");
+  mlx_put_image_to_window(param->window.p, param->window.id,
+			  param->textbox.img, 450, 60);
   if ((add_object(&param->phead, type)) == 0)
     return ;
   param->on_click = type;
@@ -47,6 +51,13 @@ void	add_elem_on_click(t_param *param, int x, int y)
 
 void	gere_menu_param(t_param *param, int x, int y)
 {
+  if (param->saisi.check == 1)
+    return ;
+  if (x >= 450 && x <= 600 && y >= 60 && y <= 110)
+    {
+      param->saisi.check = 1;
+      return ;
+    }
   if (x >= 160 && x <= 600 && y >= 450 && y <= 500)
     {
       param->click_menu = 0;

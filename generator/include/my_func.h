@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Fri May 31 17:00:06 2013 remi robert
+** Last update Fri May 31 21:36:42 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -64,11 +64,19 @@ typedef struct		s_texture
   t_image		*img;
 }			t_texture;
 
+typedef struct		saisi
+{
+  char			buff[12];
+  int			indice;
+  int			check;
+}			t_saisi;
+
 typedef struct		s_param
 {
+  t_saisi		saisi;
   char			click_menu;
   t_texture		panel_control;
-  t_texture		fleche;
+  t_texture		textbox;
   t_texture		*tab_texture_menu;
   char			on_click;
   t_object		*phead;
