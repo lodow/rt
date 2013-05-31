@@ -5,10 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 17:22:40 2013 luc sinet
-** Last update Mon May 20 20:56:20 2013 luc sinet
+** Last update Fri May 31 13:33:30 2013 luc sinet
 */
 
 #include <math.h>
+#include <stdlib.h>
 #include "main.h"
 #include "pars.h"
 

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 21 16:49:47 2013 luc sinet
-** Last update Tue May 28 13:56:57 2013 luc sinet
+** Last update Fri May 31 13:34:33 2013 luc sinet
 */
 
 #include "main.h"
@@ -26,6 +26,7 @@ void	init_opt_carac(char **tab)
   tab[1] = "Fog = ";
   tab[2] = "AA = ";
   tab[3] = "Gamma = ";
+  tab[4] = "Seed = ";
 }
 
 void	init_opt_pt(void (**fptr)(t_opt *opt, char *line, int l))
@@ -34,4 +35,5 @@ void	init_opt_pt(void (**fptr)(t_opt *opt, char *line, int l))
   fptr[1] = &get_opt_fog;
   fptr[2] = &get_aa_coef;
   fptr[3] = &get_gamma_coef;
+  fptr[4] = &get_seed;
 }
