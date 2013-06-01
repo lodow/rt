@@ -34,11 +34,11 @@ void	fill_model_tabs(int* indice_tab, int *size,
           j = 0;
           while (j < 3)
             {
-              fin_tab[fin_size * 3 + j] = raw_tab[tmpind * 3 + j];
+              fin_tab[fin_size + j] = raw_tab[tmpind * 3 + j];
               j++;
             }
         }
-      fin_size += 1;
+      fin_size += 3;
       i++;
     }
   size[1] = fin_size;
@@ -49,19 +49,19 @@ void		model_sizeup_fin_tab(t_model *obj)
   int		tmpsize;
   double	*tmptab;
 
-  tmpsize = obj->fin_size_vertice * 3;
+  tmpsize = obj->fin_size_vertice;
   tmptab = obj->fin_vertice;
   if ((tmptab = adjust_mem_size((void*)tmptab, tmpsize * sizeof(double),
                                 (tmpsize + 9) * sizeof(double), 1)) == NULL)
     return ;
   obj->fin_vertice = tmptab;
-  tmpsize = obj->fin_size_uvs * 3;
+  tmpsize = obj->fin_size_uvs;
   tmptab = obj->fin_uvs;
   if ((tmptab = adjust_mem_size((void*)tmptab, tmpsize * sizeof(double),
                                 (tmpsize + 9) * sizeof(double), 1)) == NULL)
     return ;
   obj->fin_uvs = tmptab;
-  tmpsize = obj->fin_size_normal * 3;
+  tmpsize = obj->fin_size_normal;
   tmptab = obj->fin_normal;
   if ((tmptab = adjust_mem_size((void*)tmptab, tmpsize * sizeof(double),
                                 (tmpsize + 9) * sizeof(double), 1)) == NULL)
@@ -75,7 +75,7 @@ void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
   int		sizeobj;
   int		i;
 
-  nb_tri = model->fin_size_vertice / 3;
+  nb_tri = model->fin_size_vertice / 9;
   sizeobj = 0;
   while ((*objtab)[sizeobj].type != -1)
     sizeobj++;
@@ -87,7 +87,7 @@ void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
   while (i < nb_tri)
     {
       (*objtab)[i + sizeobj] = *baseobj;
-      calc_vec(&(model->fin_vertice[i * 3]), &(model->fin_normal[i * 3]),
+      calc_vec(&(model->fin_vertice[i * 9]), &(model->fin_normal[i * 9]),
                &((*objtab)[i + sizeobj]));
       i++;
     }
