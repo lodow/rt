@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Fri May 31 13:03:04 2013 luc sinet
+** Last update Sat Jun  1 15:04:19 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -106,5 +106,6 @@ void   	get_aa_coef(t_opt *opt, char *line, int l);
 void	init_opt(t_opt *opt);
 void	init_opt_carac(char **tab);
 void	init_opt_pt(void (**fptr)(t_opt *opt, char *line, int l));
+int   	link_text(t_obj *ept, char *line, t_text *text);
 
 #endif

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Fri May 31 13:30:57 2013 luc sinet
+** Last update Sat Jun  1 15:04:19 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -63,6 +63,7 @@ typedef struct	s_obj
   double       	perlin[2];
   double	bump;
   int		checker;
+  int		rate;
   t_bmp		*texture;
 }		t_obj;
 
@@ -159,7 +160,6 @@ unsigned int	transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
 			     double k);
 void		my_mem_cpy(void *dest, void *src, int size);
 void		*adjust_mem_size(void *mem, int size, int nsize, int dfree);
-void		link_text(t_obj *ept, char *line, t_text *text);
 double		get_pow(double nb);
 void		my_memset(void *elem, int val, int size);
 unsigned int	perlin(double *inter, unsigned char *color_obj,
