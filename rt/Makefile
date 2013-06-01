@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Fri May 31 12:58:18 2013 luc sinet
+## Last update Sat Jun  1 00:50:24 2013 etienne debas
 ##
 
 SRCS	= main.c \
@@ -99,7 +99,7 @@ SRCS	= main.c \
 	  bmp_output.c \
 	  shadows_supersampling.c \
 	  other_filter.c \
-	  perlin_permutation.c
+	  perlin_permutation.c \
 
 OBJS	= $(SRCS:.c=.o)
 

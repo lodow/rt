@@ -28,7 +28,7 @@ void	fill_model_tabs(int* indice_tab, int *size,
   fin_size = size[1];
   while (i < 3)
     {
-      tmpind = indice_tab[i] - 1;
+      tmpind = indice_tab[i];
       if ((tmpind * 3) < (raw_size * 3) && (tmpind >= 0))
         {
           j = 0;
@@ -77,7 +77,6 @@ void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
 
   nb_tri = model->fin_size_vertice / 3;
   sizeobj = 0;
-  baseobj->type = 6;
   while ((*objtab)[sizeobj].type != -1)
     sizeobj++;
   if (((*objtab) = adjust_mem_size((void*)*objtab, sizeobj * sizeof(t_obj),
@@ -93,6 +92,20 @@ void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
       i++;
     }
   (*objtab)[i + sizeobj].type = -1;
+}
+
+void		free_obj_model(t_model *model)
+{
+  if (model != NULL)
+    {
+      free(model->fin_vertice);
+      free(model->fin_normal);
+      free(model->fin_uvs);
+      free(model->raw_normal);
+      free(model->raw_uvs);
+      free(model->raw_vertice);
+      free(model);
+    }
 }
 
 void		init_model_struct(t_model *model)

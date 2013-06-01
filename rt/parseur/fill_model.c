@@ -59,6 +59,7 @@ int		fill_model_struct(t_pars *opt, t_obj **tab, int *i)
     return (merror("Failed to get the model's informations\n", -1));
   free(file_name);
   raw_model_t_obj(tab, obj, &model);
+  free_obj_model(obj);
   return (0);
 }
 

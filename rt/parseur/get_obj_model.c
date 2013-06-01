@@ -61,7 +61,7 @@ void		parse_model_indice_line(char *line, int *vert,
       skip_fnumber(line, &j);
       if (line[j] != '\0')
         j++;
-      indice[i % 3][i / 3] = nb;
+      indice[i % 3][i / 3] = nb - 1;
       i++;
     }
 }
@@ -121,8 +121,11 @@ t_model		*get_file_obj_model(const char *filename)
   parse_model(obj, fd);
   close(fd);
   free(obj->raw_vertice);
+  obj->raw_vertice = NULL;
   free(obj->raw_normal);
+  obj->raw_normal = NULL;
   free(obj->raw_uvs);
+  obj->raw_uvs = NULL;
   if ((obj->fin_vertice == NULL) || (obj->fin_size_vertice <= 0))
     {
       free(obj);

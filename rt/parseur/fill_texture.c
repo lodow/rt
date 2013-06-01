@@ -1,11 +1,11 @@
 /*
 ** fill_texture.c for fill_texture in /home/adrien/Projet/rt/rt/parseur
-** 
+**
 ** Made by Adrien Della Maggiora
 ** Login   <adrien@mint>
-** 
+**
 ** Started on  Thu May  9 10:16:03 2013 Adrien Della Maggiora
-** Last update Mon May 13 17:45:06 2013 Adrien Della Maggiora
+** Last update Fri May 31 11:26:03 2013 adrien dellamaggiora
 */
 
 #include <stdlib.h>
@@ -72,7 +72,7 @@ int	fill_text(char **file, t_rt *rpt, int i)
       rpt->text->name[j] = get_textname(file[i]);
       rpt->text->text[j] = bmp_loader(rpt->text->name[j]);
       if (!rpt->text->name[j] || !rpt->text->text[j])
-	return (merror("BMP Loader Failed.\n", -1));
+	return (-1);
       ++i;
       ++j;
     }
