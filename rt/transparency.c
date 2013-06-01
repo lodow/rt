@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May  5 18:27:59 2013 luc sinet
-** Last update Thu May 30 13:57:15 2013 adrien dellamaggiora
+** Last update Sat Jun  1 13:25:02 2013 luc sinet
 */
 
 #include <math.h>
@@ -65,9 +65,10 @@ void		transparency_loop(t_rt *rpt, t_lco *lpt, t_trans *trans,
   calc_refrac(rpt, lpt, k, refrac);
   calc_inter(rpt, &k);
   if (k > ZERO && rpt->obj_num != obj)
-    trans->color[trans->count++] = modifie_p_color(rpt, k, 1);
+    trans->color[trans->count] = modifie_p_color(rpt, k, 1);
   else if (k == -1)
-    trans->color[trans->count++]  = 0x000000;
+    trans->color[trans->count] = 0x000000;
+  ++trans->count;
 }
 
 unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
@@ -89,6 +90,7 @@ unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
   copy_tab(ctmp, rpt->cpt->pos, 3);
   copy_tab(vec, rpt->vpt->vec, 3);
   rpt->obj_num = save_obj;
+  printf("\n");
   return ((trans.count > 0) ? calc_trans(trans.color, trans.alpha,
 					 trans.count - 1, color) : color);
 }
