@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Wed May 29 18:52:19 2013 luc sinet
+** Last update Sat Jun  1 14:57:01 2013 luc sinet
 */
 
 #include <math.h>
@@ -24,6 +24,7 @@ void		calc_inter(t_rt *rpt, double *kmin)
   i = 0;
   obj = &(rpt->obj[i]);
   *kmin = -1;
+  rpt->obj_num = 0;
   while (obj->type >= 0 && obj->type < 12)
     {
       k = move_cam(rpt, rpt->vpt, rpt->cpt, obj);
@@ -95,7 +96,6 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
   assign_function(rpt);
   if ((spt.pixel = malloc(sizeof(int) * rpt->opt->aa)) == NULL)
     return ;
-  rpt->obj_num = 0;
   while (pos[1] < WINY)
     {
       pos[0] = 0;

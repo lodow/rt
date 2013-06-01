@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Mon May 13 10:15:38 2013 Adrien Della Maggiora
-** Last update Fri May 31 01:32:42 2013 etienne debas
+** Last update Sat Jun  1 11:33:40 2013 luc sinet
 */
 
 #include <math.h>
@@ -24,7 +24,7 @@ void		texture_color(t_obj *obj, double u, double v)
   len = obj->texture->widht * obj->texture->height;
   x = (u * obj->texture->widht);
   y = (v * obj->texture->height);
-  color = ((y * obj->texture->widht + x) * 20) % len;
+  color = ((y * obj->texture->widht + x) * obj->rate) % len;
   color = color - color % 3;
   obj->color[0] = obj->texture->texture[color];
   obj->color[1] = obj->texture->texture[color + 1];
@@ -43,7 +43,7 @@ void		texture_sphere(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
   texture_color(obj, u, v);
 }
 
-void	texture_plan(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
+void		texture_plan(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
 {
   double	u;
   double	v;
