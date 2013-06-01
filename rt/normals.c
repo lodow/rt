@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Mar 31 13:20:23 2013 luc sinet
-** Last update Fri May 31 23:54:00 2013 etienne debas
+** Last update Sat Jun  1 04:52:18 2013 etienne debas
 */
 
 #include <math.h>
@@ -82,29 +82,18 @@ void	tangle_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
   perturb_normal(nvec, obj_coor, pert);
 }
 
-void	tore_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
+void		tore_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 {
-  int	a;
+  double	k;
 
-  a = 1;
-  if (obj_coor[2] < obj->pos[2])
-    a = -1;
-  nvec[0] = (4.0 * obj_coor[0] * (powf(obj_coor[0], 2)
-				  + powf(obj_coor[1], 2)
-				  + powf(obj_coor[2], 2)
-				  - powf((double)obj->size, 2)
-				  - powf((double)SIZE, 2)));
-  nvec[1] = (4.0 * obj_coor[1] * (powf(obj_coor[0], 2)
-				  + powf(obj_coor[1], 2)
-				  + powf(obj_coor[2], 2)
-				  - powf((double)obj->size, 2)
-				  - powf((double)SIZE, 2)));
-  nvec[2] = a * (4.0 * obj_coor[2] * (powf(obj_coor[0], 2)
-				      + powf(obj_coor[1], 2)
-				      + powf(obj_coor[2], 2)
-				      - powf((double)obj->size, 2)
-				      - powf((double)SIZE, 2))
-		 + (8.0 * powf((double)obj->size, 2) * powf(obj_coor[2], 2)));
+  k = 4 * (pow(obj_coor[0], 2)
+	   + pow(obj_coor[1], 2)
+	   + pow(obj_coor[2], 2)
+	   + pow(obj->size, 2)
+	   - pow(SIZE, 2));
+  nvec[0] = obj_coor[0] * k - 8.0 * pow(obj->size, 2) * obj_coor[0];
+  nvec[1] = obj_coor[1] * k - 8.0 * pow(obj->size, 2) * obj_coor[1];
+  nvec[2] = obj_coor[2] * k;
   perturb_normal(nvec, obj_coor, pert);
 }
 
