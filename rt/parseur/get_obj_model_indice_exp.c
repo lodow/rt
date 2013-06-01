@@ -82,7 +82,10 @@ void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
   if (((*objtab) = adjust_mem_size((void*)*objtab, sizeobj * sizeof(t_obj),
                                    (sizeobj + nb_tri + 1) * sizeof(t_obj), 1))
       == NULL)
-    return ;
+    {
+      my_putstr("Malloc error\n", 2);
+      return ;
+    }
   i = 0;
   while (i < nb_tri)
     {
