@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Thu May  9 10:16:03 2013 Adrien Della Maggiora
-** Last update Fri May 31 11:26:03 2013 adrien dellamaggiora
+** Last update Sat Jun  1 15:06:44 2013 luc sinet
 */
 
 #include <stdlib.h>
@@ -14,22 +14,30 @@
 #include "pars.h"
 #include "bmp_loader.h"
 
-void	link_text(t_obj *ept, char *line, t_text *text)
+int	link_text(t_obj *ept, char *line, t_text *text)
 {
   int	i;
   int	j;
 
   i = 0;
-  while (line[i] && line[i] == ' ')
+  j = 0;
+  if (!text->name)
+    return (merror("No texture declarated in the Texture block\n", -1));
+  while (line[i] == ' ')
     ++i;
   if (!line[i])
-    return ;
-  j = 0;
-  while (text->name && text->name[j] && my_strcmp(text->name[j], &line[i]) != 0)
+    return (merror("Warning: No texture specified\n", -1));
+  while (text->name[j] && my_strncmp(text->name[j], &line[i],
+				     my_strlen(text->name[j])) != 0)
     j++;
-  if (!text->name)
-    return ;
+  if (!text->name[j])
+    return (merror("Warning: texture not found\n", -1));
   ept->texture = text->text[j];
+  while (line[i] && !(line[i] >= '0' && line[i] <= '9'))
+    ++i;
+  if (line[i])
+    ept->rate = my_getnbr(&line[i]);
+  return (0);
 }
 
 char	*get_textname(char *line)
