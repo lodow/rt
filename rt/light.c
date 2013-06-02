@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Fri May 31 18:52:29 2013 luc sinet
+** Last update Sun Jun  2 12:36:29 2013 luc sinet
 */
 
 #include <math.h>
@@ -96,8 +96,8 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt)
       if (rpt->light[i].ambient == 0)
 	{
 	  if ((state = shadows(rpt, rpt->cpt->pos, &tlight,
-			       lpt)) < 1.0);
-	  get_light_color(&tlight, lpt, rpt, 1.0 - state);
+			       lpt)) < 1.0)
+	    get_light_color(&tlight, lpt, rpt, 1.0 - state);
 	  nb_shadow += state;
 	}
       ++i;

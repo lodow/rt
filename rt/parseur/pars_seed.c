@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri May 31 12:54:07 2013 luc sinet
-** Last update Fri May 31 18:29:48 2013 luc sinet
+** Last update Sun Jun  2 12:36:07 2013 luc sinet
 */
 
 #include <stdlib.h>
@@ -34,6 +34,7 @@ int	seed_generator(char *str)
 void	get_seed(t_opt *opt, char *line, int l)
 {
   (void)l;
+  (void)opt;
   if (my_strncmp("Random", line, 6) == 0)
     srand(time(NULL));
   else
