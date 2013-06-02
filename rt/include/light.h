@@ -5,15 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Wed May 29 19:23:59 2013 luc sinet
+** Last update Sun Jun  2 11:31:36 2013 luc sinet
 */
 
 #ifndef LIG_H_
 # define LIG_H_
 
-# define NX(type, xp) (type == 1) ? 0.0 : xp;
-# define NY(type, yp) (type == 1) ? 0.0 : yp;
-# define NZ(t, c, zp) (t == 1) ? 100 : (t == 2) ? (-c * zp) : (t == 3) ? 0 : zp
 # define MAX(x, y) (x > y) ? x : y
 # define LIMIT(x, n1, n2) (x < n1) ? n1 : (x > n2) ? n2 : x
 # define DISTP 5000
@@ -70,16 +67,26 @@ void		get_light_color(t_lig *light, t_lco *lpt,
 				t_rt *rpt, double lpower);
 double		shadows(t_rt *rpt, double *cpos, t_lig *light, t_lco *lpt);
 double		vec_norme(double *vector);
-void		sphere_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
-void		perturb_normal(double *nvec, double *obj_coor, double *pert);
-void		plan_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
-void		cone_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
-void		tangle_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
-void		tore_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
-void		moebius_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
-void		cylinder_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
-void		paraboloide_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
-void		hyperboloide_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj);
+void		sphere_normal(double *nvec, double *obj_coor,
+			      double *pert, t_obj *obj);
+void		perturb_normal(double *nvec, double *obj_coor,
+			       double *pert);
+void		plan_normal(double *nvec, double *obj_coor,
+			    double *pert, t_obj *obj);
+void		cone_normal(double *nvec, double *obj_coor,
+			    double *pert, t_obj *obj);
+void		tangle_normal(double *nvec, double *obj_coor,
+			      double *pert, t_obj *obj);
+void		tore_normal(double *nvec, double *obj_coor,
+			    double *pert, t_obj *obj);
+void		moebius_normal(double *nvec, double *obj_coor,
+			       double *pert, t_obj *obj);
+void		cylinder_normal(double *nvec, double *obj_coor,
+				double *pert, t_obj *obj);
+void		paraboloide_normal(double *nvec, double *obj_coor,
+				   double *pert, t_obj *obj);
+void		hyperboloide_normal(double *nvec, double *obj_coor,
+				    double *pert, t_obj *obj);
 void		unitaire(double *vec);
 double		norme_vec(double *vec);
 double		scale(double *vec1, double *vec2);
@@ -93,12 +100,14 @@ void		filter_light_color(unsigned char *lcolor, t_obj *obj,
 void		invert_vec(double *vec);
 void		add_to_coor(double *tab, double *coor);
 void		remove_from_coor(double *tab);
-void	   	init_shadows(t_shadow *spt, t_rt *rpt, double *cpos, t_lco *lpt);
+void	   	init_shadows(t_shadow *spt, t_rt *rpt,
+			     double *cpos, t_lco *lpt);
 int		find_in_tab(int *tab, int nb, int *i);
 void		handle_transparency(t_shadow *spt, t_rt *rpt,
 				    t_obj *obj, double k);
 void		vec_mult(double *vec1, double *vec2, double *vecr);
 void		calc_refrac(t_rt *rpt, t_lco *lpt,
 			    double k, double n);
+double		shadow_supersampling(t_rt *rpt, double *cpos, t_shadow *spt);
 
 #endif
