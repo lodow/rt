@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Sun Jun  2 11:32:06 2013 luc sinet
+** Last update Sun Jun  2 13:02:55 2013 luc sinet
 */
 
 #include <math.h>
@@ -55,7 +55,6 @@ double		shadows(t_rt *rpt, double *cpos, t_lig *light, t_lco *lpt)
 {
   t_shadow	spt;
   double	k;
-  double	s_coef;
 
   init_shadows(&spt, rpt, cpos, lpt);
   spt.light = light;
@@ -63,10 +62,12 @@ double		shadows(t_rt *rpt, double *cpos, t_lig *light, t_lco *lpt)
   while (spt.sdw_coef > 0.0 && spt.hit == 0)
     {
       cam_to_inter(&spt, rpt->obj_num, cpos, light->pos);
-      s_coef = shadow_supersampling(rpt, cpos, &spt);
+      if (rpt->opt->shadows_type == 2)
+	shadow_supersampling(rpt, cpos, &spt);
       calc_inter(rpt, &k);
       get_inter_shadow(&spt, rpt, k, cpos);
-      spt.sdw_coef = s_coef;
+      if (rpt->opt->shadows_type == 2)
+	spt.sdw_coef = spt.s_coef;
     }
   copy_tab(spt.cam, cpos, 3);
   copy_tab(spt.vec, spt.vpos, 3);

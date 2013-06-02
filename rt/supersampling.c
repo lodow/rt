@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri Apr  5 11:07:42 2013 luc sinet
-** Last update Thu May 30 16:48:25 2013 luc sinet
+** Last update Sun Jun  2 12:28:31 2013 luc sinet
 */
 
 #include <math.h>
@@ -42,7 +42,6 @@ unsigned int   	supersampling(t_rt *rpt, t_samp *spt, int x, int y)
 {
   double	spacing;
   double	pos[2];
-  double	r_pos[2];
   int		i;
   int		ssp;
 

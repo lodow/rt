@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Sat Jun  1 15:04:19 2013 luc sinet
+** Last update Sun Jun  2 13:00:08 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -89,6 +89,7 @@ typedef struct	s_opt
   double	fog[2];
   int		filter;
   double       	gamma;
+  int		shadows_type;
 }		t_opt;
 
 typedef struct	s_vec
