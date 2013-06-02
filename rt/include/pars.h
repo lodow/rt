@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Sun Jun  2 13:01:20 2013 luc sinet
+** Last update Sun Jun  2 16:54:02 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -26,7 +26,7 @@
 # define HYERBOLOIDE 8
 # define MOEBIUS 9
 # define TANGLE 10
-# define NB_OPT 6
+# define NB_OPT 7
 
 typedef struct	s_obj	t_obj;
 typedef struct	s_lig	t_lig;
@@ -105,6 +105,7 @@ void	get_opt_fog(t_opt *opt, char *line, int l);
 void   	get_gamma_coef(t_opt *opt, char *line, int l);
 void   	get_aa_coef(t_opt *opt, char *line, int l);
 void   	get_shadows_type(t_opt *opt, char *line, int l);
+void   	get_contrast(t_opt *opt, char *line, int l);
 void	init_opt(t_opt *opt);
 void	init_opt_carac(char **tab);
 void	init_opt_pt(void (**fptr)(t_opt *opt, char *line, int l));
