@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 17:42:09 2013 luc sinet
-** Last update Wed May 22 11:34:47 2013 Adrien Della Maggiora
+** Last update Sun Jun  2 11:53:52 2013 luc sinet
 */
 
 #ifndef CHANGE_COLOR_H_

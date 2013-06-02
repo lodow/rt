@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Sun Jun  2 11:31:36 2013 luc sinet
+** Last update Sun Jun  2 11:46:39 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -18,6 +18,8 @@
 # define MAX_DIST 80
 # define PLAN_SIZE 10
 # define AIR 1.0
+# define SDW_SS 64
+# define RAY_DIST 15
 
 typedef struct	s_lig	t_lig;
 
@@ -47,6 +49,7 @@ typedef struct	s_shadow
   int		obj[2];
   int		pass[256];
   double	coor[256 * 3];
+  double	s_coef;
   int		hit;
 }		t_shadow;
 
