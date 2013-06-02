@@ -18,6 +18,12 @@ int	merror(char *error, int val)
   return (val);
 }
 
+void	*merrorptr(char *error, void *val)
+{
+  my_putstr(error, 2);
+  return (val);
+}
+
 int	file_error(char *line, int lnb, int ret)
 {
   int	i;

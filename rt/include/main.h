@@ -124,6 +124,7 @@ void		assign_function(t_rt *rpt);
 void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt);
 int		print_i(t_par *ppt);
 int		merror(char *msg, int ret);
+void		*merrorptr(char *error, void *val);
 double		move_cam(t_rt *rpt, t_vec *vpt, t_cam *cpt, t_obj *obj);
 void		init_cos(t_obj *tab);
 void		rotate_x(double *p, double cosin, double sinus);

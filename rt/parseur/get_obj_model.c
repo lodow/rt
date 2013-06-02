@@ -30,7 +30,10 @@ void		fill_model_tab(double **tab, int *size, char *line)
   tmp = *tab;
   if ((tmp = adjust_mem_size((void*)tmp, tsize * sizeof(double),
                              (tsize + 3) * sizeof(double), 1)) == NULL)
-    return ;
+    {
+      my_putstr("Malloc error\n", 2);
+      return ;
+    }
   *tab = tmp;
   tmp[tsize + 0] = my_fgetnbr(&line[i]);
   skip_fnumber(line, &i);
@@ -114,9 +117,9 @@ t_model		*get_file_obj_model(const char *filename)
   int		fd;
 
   if ((fd = open(filename, O_RDONLY)) == -1)
-    return (NULL);
+    return (merrorptr("Can't open file model file\n", NULL));
   if ((obj = malloc(1 * sizeof(t_model))) == NULL)
-    return (NULL);
+    return (merrorptr("Malloc error\n", NULL));
   init_model_struct(obj);
   parse_model(obj, fd);
   close(fd);
@@ -129,7 +132,7 @@ t_model		*get_file_obj_model(const char *filename)
   if ((obj->fin_vertice == NULL) || (obj->fin_size_vertice <= 0))
     {
       free(obj);
-      return (NULL);
+      return (merrorptr("Model file is empty/wrong formatted\n", NULL));
     }
   return (obj);
 }
