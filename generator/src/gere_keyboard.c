@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 09:35:28 2013 remi
-** Last update Fri May 31 21:58:52 2013 remi robert
+** Last update Mon Jun  3 13:02:27 2013 remi robert
 */
 
 #include "my_func.h"
@@ -57,7 +57,7 @@ void	gere_saisi_buff(t_param *param, int keycode)
 
 int	gere_keyboard(int keycode, t_param *param)
 {
-  if (keycode == 65293 || keycode == 65421)
+  if ((keycode == 65293 || keycode == 65421) && param->saisi.check == 1)
     {
       printf("saisi accepted : %s\n", param->saisi.buff);
       param->saisi.check = 0;
