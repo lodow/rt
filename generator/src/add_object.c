@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 13:36:07 2013 remi
-** Last update Thu May 30 15:17:20 2013 remi
+** Last update Mon Jun  3 14:15:48 2013 remi robert
 */
 
 #include "my_func.h"
@@ -25,6 +25,12 @@ void	list_object(t_object *phead)
     }
 }
 
+void		init_elem_in_the_object(t_object **pobject)
+{
+  (*pobject)->x = 0;
+  (*pobject)->y = 0;
+}
+
 int		add_object(t_object **phead, char type)
 {
   t_object	*pcurrent;
@@ -34,6 +40,7 @@ int		add_object(t_object **phead, char type)
     {
       if ((*phead = malloc(sizeof(t_object))) == NULL)
 	return (0);
+      init_elem_in_the_object(phead);
       (*phead)->type = type;
       (*phead)->next = NULL;
       return (1);
@@ -44,6 +51,7 @@ int		add_object(t_object **phead, char type)
   while (pcurrent->next != NULL)
     pcurrent = pcurrent->next;
   pcurrent->next = elem;
+  init_elem_in_the_object(&elem);
   elem->type = type;
   elem->next = NULL;
   return (1);
