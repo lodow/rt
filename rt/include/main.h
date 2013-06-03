@@ -46,7 +46,7 @@ typedef struct	s_obj
   double	pos[3];
   double	angle[4];
   unsigned char	color[3];
-  double	size;
+  double	size[2];
   double	bright;
   double	ocos[4];
   double	osin[4];

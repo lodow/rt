@@ -29,20 +29,20 @@ double		tangle(double *cam, double *vec, t_obj *obj)
   c[2] = 6 * ((pow(vec[0], 2) * pow(cam[0], 2))
 	      + (pow(vec[1], 2) * pow(cam[1], 2))
 	      + (pow(vec[2], 2) * pow(cam[2], 2)))
-    - 10 * pow(obj->size, 2) * (pow(vec[0] , 2)
+    - 10 * pow(obj->size[0], 2) * (pow(vec[0] , 2)
 				   + pow(vec[1] , 2) + pow(vec[2], 2));
 
   c[3] = 4 * (pow(cam[0], 3) * vec[0]
 	      + pow(cam[1], 3) * vec[1]
 	      + pow(cam[2], 3) * vec[2])
-    - 20 * pow(obj->size, 2) * (vec[0] * cam[0]
+    - 20 * pow(obj->size[0], 2) * (vec[0] * cam[0]
 				   + vec[1] * cam[1]
 				   + vec[2] * cam[2]);
 
   c[4] = pow(cam[0], 4) + pow(cam[1], 4) + pow(cam[2], 4)
-    - 10 * pow(obj->size, 2) * (pow(cam[0], 2)
+    - 10 * pow(obj->size[0], 2) * (pow(cam[0], 2)
 				   + pow(cam[1], 2)
-				   + pow(cam[2], 2)) + 40 * pow(obj->size, 4);
+				   + pow(cam[2], 2)) + 40 * pow(obj->size[0], 4);
 
   return (solve_quad(c, k));
 }

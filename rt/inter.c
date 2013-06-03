@@ -19,7 +19,7 @@ double		sphere(double *cam, double *vec, t_obj *ept)
   a[0] = vec[0] * vec[0] + vec[1] * vec[1] + vec[2] * vec[2];
   a[1] = 2.0 * (cam[0] * vec[0] + cam[1] * vec[1] + cam[2] * vec[2]);
   a[2] = cam[0] * cam[0] + cam[1] * cam[1] + cam[2]
-    * cam[2] - ept->size * ept->size;
+    * cam[2] - ept->size[0] * ept->size[0];
   if (solve_second(a, k) == -1)
     return (-1);
   return (test_limit(cam, vec, k, ept->limit));
@@ -67,7 +67,7 @@ double		cylinder(double *cam, double *vec, t_obj *ept)
 
   a[0] = vec[0] * vec[0] + vec[1] * vec[1];
   a[1] = 2.0 * (cam[0] * vec[0] + cam[1] * vec[1]);
-  a[2] = cam[0] * cam[0] + cam[1] * cam[1] - ept->size * ept->size;
+  a[2] = cam[0] * cam[0] + cam[1] * cam[1] - ept->size[0] * ept->size[0];
   if (solve_second(a, k) == -1)
     return (-1);
   return (test_limit(cam, vec, k, ept->limit));

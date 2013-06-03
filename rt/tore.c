@@ -30,21 +30,21 @@ double		tore(double *cam, double *vec, t_obj *obj)
     * pow(vec[0] * cam[0] + vec[1] * cam[1] + vec[2] * cam[2], 2)
     + 2.0
     * (pow(cam[0], 2) + pow(cam[1], 2) + pow(cam[2], 2)
-	+ pow((double)obj->size, 2) - pow((double)SIZE, 2))
+	+ pow((double)obj->size[0], 2) - pow((double)SIZE, 2))
        * (pow(vec[0], 2) + pow(vec[1], 2) + pow(vec[2], 2))
-    - (4.0 * pow((double)obj->size, 2))
+    - (4.0 * pow((double)obj->size[0], 2))
     * (pow(vec[0], 2) + pow(vec[1], 2));
 
   c[3] = 2.0
     * (pow(cam[0], 2) + pow(cam[1], 2) + pow(cam[2], 2)
-       + pow((double)obj->size, 2) - pow((double)SIZE, 2))
+       + pow((double)obj->size[0], 2) - pow((double)SIZE, 2))
     * (2.0 * (vec[0] * cam[0] + vec[1] * cam[1] + vec[2] * cam[2]))
-    - (4.0 * pow((double)obj->size, 2))
+    - (4.0 * pow((double)obj->size[0], 2))
     * (2.0 * vec[0] * cam[0] + 2.0 * vec[1] * cam[1]);
 
   c[4] = pow(pow(cam[0], 2) + pow(cam[1], 2) + pow(cam[2], 2)
-	      + pow((double)obj->size, 2) - pow((double)SIZE, 2), 2)
-    - (4.0 * pow((double)obj->size, 2))
+	      + pow((double)obj->size[0], 2) - pow((double)SIZE, 2), 2)
+    - (4.0 * pow((double)obj->size[0], 2))
     * (pow(cam[0], 2) + pow(cam[1], 2));
   return (solve_quad(c, k));
 }

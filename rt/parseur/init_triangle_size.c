@@ -24,8 +24,8 @@ void	init_triangle_size(t_obj *obj)
 	  x = 0;
 	  while (x < 3)
 	    {
-	      obj[i].v1[x] *= obj[i].size;
-	      obj[i].v2[x] *= obj[i].size;
+	      obj[i].v1[x] *= obj[i].size[0];
+	      obj[i].v2[x] *= obj[i].size[0];
 	      ++x;
 	    }
 	}

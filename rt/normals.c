@@ -76,9 +76,9 @@ void	moebius_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 
 void	tangle_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 {
-  nvec[0] = 4 * pow(obj_coor[0], 3) - 20 * pow(obj->size, 2) * obj_coor[0];
-  nvec[1] = 4 * pow(obj_coor[1], 3) - 20 * pow(obj->size, 2) * obj_coor[1];
-  nvec[2] = 4 * pow(obj_coor[2], 3) - 20 * pow(obj->size, 2) * obj_coor[2];
+  nvec[0] = 4 * pow(obj_coor[0], 3) - 20 * pow(obj->size[0], 2) * obj_coor[0];
+  nvec[1] = 4 * pow(obj_coor[1], 3) - 20 * pow(obj->size[0], 2) * obj_coor[1];
+  nvec[2] = 4 * pow(obj_coor[2], 3) - 20 * pow(obj->size[0], 2) * obj_coor[2];
   perturb_normal(nvec, obj_coor, pert);
 }
 
@@ -89,10 +89,10 @@ void		tore_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
   k = 4 * (pow(obj_coor[0], 2)
 	   + pow(obj_coor[1], 2)
 	   + pow(obj_coor[2], 2)
-	   + pow(obj->size, 2)
+	   + pow(obj->size[0], 2)
 	   - pow(SIZE, 2));
-  nvec[0] = obj_coor[0] * k - 8.0 * pow(obj->size, 2) * obj_coor[0];
-  nvec[1] = obj_coor[1] * k - 8.0 * pow(obj->size, 2) * obj_coor[1];
+  nvec[0] = obj_coor[0] * k - 8.0 * pow(obj->size[0], 2) * obj_coor[0];
+  nvec[1] = obj_coor[1] * k - 8.0 * pow(obj->size[0], 2) * obj_coor[1];
   nvec[2] = obj_coor[2] * k;
   perturb_normal(nvec, obj_coor, pert);
 }
