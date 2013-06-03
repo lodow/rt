@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Fri May 31 21:36:42 2013 remi robert
+** Last update Mon Jun  3 12:50:02 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -66,6 +66,8 @@ typedef struct		s_texture
 
 typedef struct		saisi
 {
+  int			x;
+  int			y;
   char			buff[12];
   int			indice;
   int			check;
@@ -104,5 +106,6 @@ int	init_texture(t_param *param);
 char	*get_texture_menu(int nb);
 char	*convert_number_char(int number, char *tab);
 int	my_strlen(char *str);
+void	draw_conf(t_param *param);
 
 #endif

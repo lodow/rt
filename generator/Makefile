@@ -4,7 +4,7 @@
 ## Login   <robert_r@epitech.net>
 ## 
 ## Started on  Fri Nov 30 10:59:19 2012 remi robert
-## Last update Fri May 31 16:59:34 2013 remi robert
+## Last update Mon Jun  3 12:49:42 2013 remi robert
 ##
 
 SRCPATH	=	src/
@@ -25,6 +25,7 @@ SRC	=	$(SRCPATH)main.c \
 		$(SRCPATH)texture.c \
 		$(SRCPATH)return_char.c \
 		$(SRCPATH)my_strlen.c \
+		$(SRCPATH)draw_conf.c \
 
 OBJ	=	$(SRC:.c=.o)
 
