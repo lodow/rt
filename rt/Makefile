@@ -34,7 +34,7 @@ SRCS	= main.c \
 	  parseur/nb.c \
 	  parseur/my_atof.c \
 	  parseur/light_carac.c \
-	  parseur/calc_vec.c \
+	  parseur/convert_model_tri.c \
 	  parseur/fill_texture.c \
 	  parseur/init_triangle_size.c \
 	  parseur/init_pars.c \

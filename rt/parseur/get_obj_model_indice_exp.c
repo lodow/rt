@@ -69,6 +69,14 @@ void		model_sizeup_fin_tab(t_model *obj)
   obj->fin_normal = tmptab;
 }
 
+void		face_t_objtri(t_obj *obj, t_model *model, int i)
+{
+  convert_model_t_obj(&(model->fin_vertice[i * 9]),
+                      &(model->fin_normal[i * 9]),
+                      &(model->fin_uvs[i * 9]),
+                      obj);
+}
+
 void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
 {
   int		nb_tri;
@@ -90,25 +98,10 @@ void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
   while (i < nb_tri)
     {
       (*objtab)[i + sizeobj] = *baseobj;
-      calc_vec(&(model->fin_vertice[i * 9]), &(model->fin_normal[i * 9]),
-               &((*objtab)[i + sizeobj]));
+      face_t_objtri(&((*objtab)[i + sizeobj]), model, i);
       i++;
     }
   (*objtab)[i + sizeobj].type = -1;
-}
-
-void		free_obj_model(t_model *model)
-{
-  if (model != NULL)
-    {
-      free(model->fin_vertice);
-      free(model->fin_normal);
-      free(model->fin_uvs);
-      free(model->raw_normal);
-      free(model->raw_uvs);
-      free(model->raw_vertice);
-      free(model);
-    }
 }
 
 void		init_model_struct(t_model *model)
