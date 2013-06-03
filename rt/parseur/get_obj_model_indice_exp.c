@@ -71,10 +71,25 @@ void		model_sizeup_fin_tab(t_model *obj)
 
 void		face_t_objtri(t_obj *obj, t_model *model, int i)
 {
-  convert_model_t_obj(&(model->fin_vertice[i * 9]),
-                      &(model->fin_normal[i * 9]),
-                      &(model->fin_uvs[i * 9]),
-                      obj);
+  double	empty_array[9];
+  int	j;
+  double	*vert;
+  double	*norm;
+  double	*uvs;
+
+  j = 0;
+  while (j < 9)
+    {
+      empty_array[j] = 0.0;
+      j++;
+    }
+  vert = ((i * 9 < model->fin_size_vertice) ? (&(model->fin_vertice[i * 9]))
+          : empty_array);
+  norm = ((i * 9 < model->fin_size_normal) ? (&(model->fin_normal[i * 9]))
+          : empty_array);
+  uvs = ((i * 9 < model->fin_size_uvs) ? (&(model->fin_uvs[i * 9]))
+         : empty_array);
+  convert_model_t_obj(vert, norm, uvs, obj);
 }
 
 void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
