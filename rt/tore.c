@@ -5,19 +5,23 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Tue May 14 17:26:07 2013 etienne debas
-** Last update Mon May 20 20:18:32 2013 etienne debas
+** Last update Mon Jun  3 21:00:39 2013 etienne debas
 */
 
 #include <math.h>
 #include "main.h"
 #include "inter.h"
 #include "light.h"
+#include "solve.h"
 #define SIZE 10
+
+double		solveQuarticEquation(double *c, double *res);
 
 double		tore(double *cam, double *vec, t_obj *obj)
 {
   double	c[5];
   double	k[4];
+  int		nb_sol;
 
   tab_set((int *)k, 4);
   c[0] = pow(pow(vec[0], 2) + pow(vec[1], 2) + pow(vec[2], 2), 2);
@@ -46,5 +50,9 @@ double		tore(double *cam, double *vec, t_obj *obj)
 	      + pow((double)obj->size, 2) - pow((double)SIZE, 2), 2)
     - (4.0 * pow((double)obj->size, 2))
     * (pow(cam[0], 2) + pow(cam[1], 2));
-  return (solve_quad(c, k));
+  nb_sol = solve_quartic(c, k);
+  if (nb_sol == 0)
+    return (-1);
+  return (get_min(k, nb_sol));
+  /* return (solve_quad(c, k)); */
 }
