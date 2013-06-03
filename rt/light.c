@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Sun Jun  2 12:36:29 2013 luc sinet
+** Last update Mon Jun  3 20:42:55 2013 luc sinet
 */
 
 #include <math.h>
@@ -88,7 +88,7 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt)
   nb_shadow = 0;
   get_inter_normal(rpt, rpt->vpt, k, lpt);
   copy_color(obj->color, lpt->c_color);
-  apply_ambient(rpt->light, lpt->c_color, &lpt->mx_cos);
+  apply_ambient(rpt->light, lpt->c_color, &lpt->mx_cos, obj->bright);
   while (rpt->light[i].on == 1)
     {
       lpt->light = &rpt->light[i];
@@ -102,5 +102,5 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt)
 	}
       ++i;
     }
-  return (apply_light(lpt->c_color, lpt->mx_cos, nb_shadow / (double)i, obj));
+  return (apply_light(lpt->c_color, lpt->mx_cos, nb_shadow / (double)i));
 }

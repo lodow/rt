@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 17:42:09 2013 luc sinet
-** Last update Mon Jun  3 14:10:59 2013 adrien dellamaggiora
+** Last update Mon Jun  3 20:37:54 2013 luc sinet
 */
 
 #ifndef CHANGE_COLOR_H_
@@ -29,7 +29,7 @@ typedef	struct	s_trans
 }		t_trans;
 
 unsigned int	apply_light(unsigned char *c, double cosa,
-			    double sdw_coef, t_obj *ept);
+			    double sdw_coef);
 void	   	decomp_color(unsigned int color, unsigned char *ncolor);
 unsigned int	recomp_color(unsigned char *color);
 unsigned int	refrac(t_rt *rpt, t_cam *cpt, t_lco *lpt, unsigned int color);
