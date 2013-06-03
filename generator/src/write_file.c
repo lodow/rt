@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Jun  3 14:25:35 2013 remi robert
-** Last update Mon Jun  3 15:15:58 2013 remi robert
+** Last update Mon Jun  3 21:44:46 2013 remi robert
 */
 
 #include "my_func.h"
@@ -16,7 +16,8 @@ void	write_struct(t_object *pcourant, int fd)
 
   s = get_name_file_object(pcourant->type);
   if (write(fd, s, my_strlen(s)) == -1 ||
-      write(fd, "\n", 1) == -1)
+      write(fd, "\n{", 2) == -1 ||
+      write(fd, "\n}\n\n", 4) == -1)
     return ;
 }
 
