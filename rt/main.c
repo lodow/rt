@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Fri May 31 12:48:22 2013 luc sinet
+** Last update Fri May 31 19:03:54 2013 luc sinet
 */
 
 #include <time.h>
@@ -32,7 +32,6 @@ void	free_all(t_rt *rpt, t_par *ppt)
 
 int	key_event(int key, t_rt *rpt)
 {
-  (void)rpt;
   if (key == K_ESC)
     exit(0);
   else if (key == K_P)
@@ -87,7 +86,6 @@ int		main(int ac, char **av)
     return (merror("You need to specifie a config file in argument\n", -1));
   if (pars(&rpt, av[1], &cpt) < 0 || creat_win(&ppt) == -1)
     return (-1);
-  init_perlin(&opt);
   init_cos(rpt.obj);
   calc_pixel(&rpt, &cpt, &vpt, &ppt);
   free_all(&rpt, &ppt);

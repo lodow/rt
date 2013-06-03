@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Fri May 31 12:49:57 2013 luc sinet
+** Last update Sun Jun  2 16:55:12 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -63,6 +63,7 @@ typedef struct	s_obj
   double       	perlin[2];
   double	bump;
   int		checker;
+  int		rate;
   t_bmp		*texture;
 }		t_obj;
 
@@ -88,7 +89,8 @@ typedef struct	s_opt
   double	fog[2];
   int		filter;
   double       	gamma;
-  int		seed[2];
+  double	contrast;
+  int		shadows_type;
 }		t_opt;
 
 typedef struct	s_vec
@@ -124,6 +126,7 @@ void		assign_function(t_rt *rpt);
 void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt);
 int		print_i(t_par *ppt);
 int		merror(char *msg, int ret);
+void		*merrorptr(char *error, void *val);
 double		move_cam(t_rt *rpt, t_vec *vpt, t_cam *cpt, t_obj *obj);
 void		init_cos(t_obj *tab);
 void		rotate_x(double *p, double cosin, double sinus);
@@ -160,13 +163,13 @@ unsigned int	transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
 			     double k);
 void		my_mem_cpy(void *dest, void *src, int size);
 void		*adjust_mem_size(void *mem, int size, int nsize, int dfree);
-void		link_text(t_obj *ept, char *line, t_text *text);
 double		get_pow(double nb);
 void		my_memset(void *elem, int val, int size);
 unsigned int	perlin(double *inter, unsigned char *color_obj,
 		       double *carac);
 unsigned int	filter_color(unsigned int color, t_opt *opt);
 unsigned int	revers_filter(unsigned int color, t_opt *opt);
+unsigned int	apply_contrast(unsigned int color, t_opt *opt);
 void		apply_bump(double *nvec, double *obj_coor, double ratio);
 int		output_bmp(t_par *ppt);
 double		fade(double curve);

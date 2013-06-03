@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May  5 18:27:59 2013 luc sinet
-** Last update Thu May 30 13:57:15 2013 adrien dellamaggiora
+** Last update Mon Jun  3 11:09:53 2013 adrien dellamaggiora
 */
 
 #include <math.h>
@@ -52,7 +52,7 @@ double	get_refrac_ratio(t_obj *tab, t_obj *obj, int *pass, int obj_num)
     }
 }
 
-void		transparency_loop(t_rt *rpt, t_lco *lpt, t_trans *trans,
+double		transparency_loop(t_rt *rpt, t_lco *lpt, t_trans *trans,
 				  double k)
 {
   double	refrac;
@@ -67,7 +67,10 @@ void		transparency_loop(t_rt *rpt, t_lco *lpt, t_trans *trans,
   if (k > ZERO && rpt->obj_num != obj)
     trans->color[trans->count++] = modifie_p_color(rpt, k, 1);
   else if (k == -1)
-    trans->color[trans->count++]  = 0x000000;
+    trans->color[trans->count++] = 0x000000;
+  else
+    ++trans->count;
+  return (k);
 }
 
 unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
@@ -85,7 +88,7 @@ unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
   copy_tab(rpt->cpt->pos, ctmp, 3);
   while (trans.count < MAX_R &&
 	 rpt->obj[rpt->obj_num].indice[0] > ZERO && k > ZERO)
-    transparency_loop(rpt, lpt, &trans, k);
+    k = transparency_loop(rpt, lpt, &trans, k);
   copy_tab(ctmp, rpt->cpt->pos, 3);
   copy_tab(vec, rpt->vpt->vec, 3);
   rpt->obj_num = save_obj;

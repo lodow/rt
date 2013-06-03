@@ -1,11 +1,11 @@
 /*
 ** fill_texture.c for fill_texture in /home/adrien/Projet/rt/rt/parseur
-** 
+**
 ** Made by Adrien Della Maggiora
 ** Login   <adrien@mint>
-** 
+**
 ** Started on  Thu May  9 10:16:03 2013 Adrien Della Maggiora
-** Last update Mon May 13 17:45:06 2013 Adrien Della Maggiora
+** Last update Sat Jun  1 15:06:44 2013 luc sinet
 */
 
 #include <stdlib.h>
@@ -14,22 +14,30 @@
 #include "pars.h"
 #include "bmp_loader.h"
 
-void	link_text(t_obj *ept, char *line, t_text *text)
+int	link_text(t_obj *ept, char *line, t_text *text)
 {
   int	i;
   int	j;
 
   i = 0;
-  while (line[i] && line[i] == ' ')
+  j = 0;
+  if (!text->name)
+    return (merror("No texture declarated in the Texture block\n", -1));
+  while (line[i] == ' ')
     ++i;
   if (!line[i])
-    return ;
-  j = 0;
-  while (text->name && text->name[j] && my_strcmp(text->name[j], &line[i]) != 0)
+    return (merror("Warning: No texture specified\n", -1));
+  while (text->name[j] && my_strncmp(text->name[j], &line[i],
+				     my_strlen(text->name[j])) != 0)
     j++;
-  if (!text->name)
-    return ;
+  if (!text->name[j])
+    return (merror("Warning: texture not found\n", -1));
   ept->texture = text->text[j];
+  while (line[i] && !(line[i] >= '0' && line[i] <= '9'))
+    ++i;
+  if (line[i])
+    ept->rate = my_getnbr(&line[i]);
+  return (0);
 }
 
 char	*get_textname(char *line)
@@ -72,7 +80,7 @@ int	fill_text(char **file, t_rt *rpt, int i)
       rpt->text->name[j] = get_textname(file[i]);
       rpt->text->text[j] = bmp_loader(rpt->text->name[j]);
       if (!rpt->text->name[j] || !rpt->text->text[j])
-	return (merror("BMP Loader Failed.\n", -1));
+	return (-1);
       ++i;
       ++j;
     }

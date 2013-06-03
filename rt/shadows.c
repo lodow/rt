@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Mon May 27 16:20:32 2013 luc sinet
+** Last update Sun Jun  2 13:21:01 2013 luc sinet
 */
 
 #include <math.h>
@@ -38,10 +38,8 @@ void	get_inter_shadow(t_shadow *spt, t_rt *rpt, double k, double *cpos)
   if (spt->obj[1] != rpt->obj_num && k > ZERO && k < 1)
     {
       spt->sdw_coef -= (1.0 - rpt->obj[rpt->obj_num].indice[0]);
-      if (spt->sdw_coef < 0.2)
-	spt->sdw_coef = 0.2;
       handle_transparency(spt, rpt, &rpt->obj[rpt->obj_num], k);
-      if (spt->sdw_coef > 0)
+      if (spt->sdw_coef > 0.2)
 	get_impact(spt->inter, cpos, k, spt->vpos);
     }
   else if (spt->obj[1] == rpt->obj_num && k > ZERO && k < 1)
@@ -57,24 +55,23 @@ double		shadows(t_rt *rpt, double *cpos, t_lig *light, t_lco *lpt)
 {
   t_shadow	spt;
   double	k;
-  double	shadow;
-  double	s_coef;
 
   init_shadows(&spt, rpt, cpos, lpt);
   spt.light = light;
   tab_set(spt.pass, 256);
-  while (spt.sdw_coef > 0.3 && spt.hit == 0)
+  while (spt.sdw_coef > 0.0 && spt.hit == 0)
     {
       cam_to_inter(&spt, rpt->obj_num, cpos, light->pos);
-      /* s_coef = shadow_supersampling(rpt, cpos, &spt, lpt); */
+      if (rpt->opt->shadows_type == 2)
+	shadow_supersampling(rpt, cpos, &spt);
       calc_inter(rpt, &k);
       get_inter_shadow(&spt, rpt, k, cpos);
-      /* printf("\NfINAL : %f  ss: %f\n", spt.sdw_coef, s_coef); */
-      /* spt.sdw_coef = s_coef; */
-   }
+      if (rpt->opt->shadows_type == 2)
+	spt.sdw_coef = spt.s_coef;
+    }
   copy_tab(spt.cam, cpos, 3);
   copy_tab(spt.vec, spt.vpos, 3);
   rpt->obj_num = spt.obj[0];
-  shadow = LIMIT(1.1 * spt.sdw_coef, 0, 1);
-  return (1.0 - shadow);
+  spt.sdw_coef = LIMIT(1.1 * spt.sdw_coef, 0.2, 1);
+  return (1.0 - spt.sdw_coef);
 }

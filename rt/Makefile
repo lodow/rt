@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Fri May 31 12:58:18 2013 luc sinet
+## Last update Sun Jun  2 16:57:50 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -46,6 +46,7 @@ SRCS	= main.c \
 	  parseur/pars_other_indice.c \
 	  parseur/pars_opt.c \
 	  parseur/pars_seed.c \
+	  parseur/pars_contrast.c \
 	  parseur/init_opt.c \
 	  calc_inter.c \
 	  reset_calc.c \

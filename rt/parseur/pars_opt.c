@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 21 17:23:06 2013 luc sinet
-** Last update Tue May 28 13:54:12 2013 luc sinet
+** Last update Sun Jun  2 16:53:23 2013 luc sinet
 */
 
 #include "main.h"
@@ -76,4 +76,15 @@ void		get_aa_coef(t_opt *opt, char *line, int l)
       my_putstr(" the aa coeficient must be superior to 0\n", 2);
     }
   opt->aa = LIMIT(aa_coef, 0, 8192);
+}
+
+void		get_shadows_type(t_opt *opt, char *line, int l)
+{
+  if ((opt->shadows_type = my_fgetnbr(line)) < 1 || opt->shadows_type > 2)
+    {
+      my_putstr("Warning: line ", 2);
+      my_put_nbr(l, 2);
+      my_putstr(" the shadows type must equal to 1 or 2\n", 2);
+    }
+  opt->shadows_type = LIMIT(opt->shadows_type, 1, 2);
 }

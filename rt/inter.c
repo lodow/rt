@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Feb 26 04:22:07 2013 luc sinet
-** Last update Tue May 21 12:48:21 2013 luc sinet
+** Last update Sun Jun  2 12:27:57 2013 luc sinet
 */
 
 #include <math.h>
@@ -46,7 +46,6 @@ double		cone(double *cam, double *vec, t_obj *ept)
 double		plan(double *cam, double *vec, t_obj *ept)
 {
   double	a[3];
-  double	k[2];
 
   (void)(*ept);
   a[1] = ept->normal[0] * vec[0] + ept->normal[1] * vec[1]
@@ -56,9 +55,6 @@ double		plan(double *cam, double *vec, t_obj *ept)
 	+ (-(ept->pos[0] * ept->normal[0] + ept->pos[1] * ept->normal[1]
 	     + ept->pos[2] * ept->normal[2])));
   a[0] = 0;
-  /* if (solve_second(a, k) == -1) */
-  /*   return (-1); */
-  /* return (test_limit(cam, vec, k, ept->limit)); */
   if (a[1] > ZERO || a[1] < ZERO)
     return (a[2] / a[1]);
   return (-1.0);

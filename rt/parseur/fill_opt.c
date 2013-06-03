@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Fri Apr 12 15:50:58 2013 Adrien Della Maggiora
-** Last update Tue May 28 13:57:38 2013 luc sinet
+** Last update Fri May 31 12:52:37 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -17,10 +17,10 @@
 
 int		get_opt_carac(t_pars *ppt, t_opt *opt, int *x)
 {
-  void		(*optptr[4])(t_opt *opt, char *line, int l);
+  void		(*optptr[NB_OPT])(t_opt *opt, char *line, int l);
   int		i[2];
   char		*line;
-  char		*tabopt[4];
+  char		*tabopt[NB_OPT];
 
   (*x) += 2;
   init_opt_carac(tabopt);
@@ -32,10 +32,10 @@ int		get_opt_carac(t_pars *ppt, t_opt *opt, int *x)
       while (line[i[0]] == ' ')
         ++i[0];
       i[1] = 0;
-      while (i[1] < 4 && my_strncmp(tabopt[i[1]], &line[i[0]],
-				    my_strlen(tabopt[i[1]])) != 0)
+      while (i[1] < NB_OPT && my_strncmp(tabopt[i[1]], &line[i[0]],
+					 my_strlen(tabopt[i[1]])) != 0)
 	++i[1];
-      if (i[1] < 4)
+      if (i[1] < NB_OPT)
 	optptr[i[1]](opt, &line[my_strlen(tabopt[i[1]]) + i[0]], *x);
       else
 	return (file_error(line, *x, -1));

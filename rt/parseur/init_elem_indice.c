@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu May 30 21:18:05 2013 luc sinet
-** Last update Thu May 30 21:22:25 2013 luc sinet
+** Last update Sun Jun  2 12:35:16 2013 luc sinet
 */
 
 #include "main.h"
@@ -21,4 +21,5 @@ void	init_elem_indices(t_obj *obj)
   obj->perlin[1] = 0.02;
   obj->checker = 0;
   obj->bump = 0;
+  obj->rate = 1;
 }
