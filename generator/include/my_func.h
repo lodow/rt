@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Mon Jun  3 12:50:02 2013 remi robert
+** Last update Mon Jun  3 15:15:56 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -15,6 +15,9 @@
 # include <stdio.h>
 # include <mlx.h>
 # include <unistd.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 # define X		1500
 # define Y		900
@@ -107,5 +110,7 @@ char	*get_texture_menu(int nb);
 char	*convert_number_char(int number, char *tab);
 int	my_strlen(char *str);
 void	draw_conf(t_param *param);
+char	*get_name_file_object(int nb);
+void	write_file(t_param *param);
 
 #endif
