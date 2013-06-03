@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr  7 19:07:11 2013 luc sinet
-** Last update Thu May 30 15:07:58 2013 luc sinet
+** Last update Mon Jun  3 20:39:40 2013 luc sinet
 */
 
 #include <math.h>
@@ -14,7 +14,7 @@
 #include "light.h"
 
 void		*apply_ambient(t_lig *light, unsigned char *color,
-			      double *max_cos)
+			       double *max_cos, double bright)
 {
   int		i;
   double	cosa;
@@ -27,7 +27,7 @@ void		*apply_ambient(t_lig *light, unsigned char *color,
       if (light[i].ambient == 1)
 	{
 	  cosa = light[i].intensity / 1.7;
-	  apply_light_color(color, light[i].lcolor, cosa);
+	  apply_light_color(color, light[i].lcolor, cosa, bright);
 	  *max_cos = MAX(*max_cos, cosa);
 	}
       ++i;
@@ -91,6 +91,7 @@ void		get_light_color(t_lig *light, t_lco *lpt,
 	  apply_speculaire(lpt->c_color, coss);
 	}
     }
-  apply_light_color(lpt->c_color, light->lcolor, cosa);
+  /* cosa *= rpt->obj[rpt->obj_num].bright; */
+  apply_light_color(lpt->c_color, light->lcolor, cosa, rpt->obj[rpt->obj_num].bright);
   lpt->mx_cos = MAX(lpt->mx_cos, cosa);
 }
