@@ -19,7 +19,7 @@ double		sphere(double *cam, double *vec, t_obj *ept)
   a[0] = vec[0] * vec[0] + vec[1] * vec[1] + vec[2] * vec[2];
   a[1] = 2.0 * (cam[0] * vec[0] + cam[1] * vec[1] + cam[2] * vec[2]);
   a[2] = cam[0] * cam[0] + cam[1] * cam[1] + cam[2]
-    * cam[2] - ept->size * ept->size;
+    * cam[2] - ept->size[0] * ept->size[0];
   if (solve_second(a, k) == -1)
     return (-1);
   return (test_limit(cam, vec, k, ept->limit));
@@ -43,11 +43,10 @@ double		cone(double *cam, double *vec, t_obj *ept)
   return (test_limit(cam, vec, k, ept->limit));
 }
 
-double		plan(double *cam, double *vec, t_obj *ept)
+double		plan(double *cam, double *vec, UNUSED t_obj *ept)
 {
   double	a[3];
 
-  (void)(*ept);
   a[1] = ept->normal[0] * vec[0] + ept->normal[1] * vec[1]
     + ept->normal[2] * vec[2];
   a[2] = -(ept->normal[0] * cam[0] + ept->normal[1] * cam[1]
@@ -67,7 +66,7 @@ double		cylinder(double *cam, double *vec, t_obj *ept)
 
   a[0] = vec[0] * vec[0] + vec[1] * vec[1];
   a[1] = 2.0 * (cam[0] * vec[0] + cam[1] * vec[1]);
-  a[2] = cam[0] * cam[0] + cam[1] * cam[1] - ept->size * ept->size;
+  a[2] = cam[0] * cam[0] + cam[1] * cam[1] - ept->size[0] * ept->size[0];
   if (solve_second(a, k) == -1)
     return (-1);
   return (test_limit(cam, vec, k, ept->limit));

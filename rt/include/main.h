@@ -18,6 +18,8 @@
 #include "str.h"
 #include "nb.h"
 
+# define UNUSED __attribute__((unused))
+
 # define ZERO 0.00000001
 # define IVAL -1000000
 # define RANG(ang) (ang < 0) ? (ang * -1) : ang
@@ -46,7 +48,7 @@ typedef struct	s_obj
   double	pos[3];
   double	angle[4];
   unsigned char	color[3];
-  double	size;
+  double	size[2];
   double	bright;
   double	ocos[4];
   double	osin[4];
@@ -174,5 +176,6 @@ void		apply_bump(double *nvec, double *obj_coor, double ratio);
 int		output_bmp(t_par *ppt);
 double		fade(double curve);
 double		lerp(double curve, double a, double b);
+unsigned int	xorus_filter(unsigned int color, t_opt *opt);
 
 #endif

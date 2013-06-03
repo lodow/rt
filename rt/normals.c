@@ -17,13 +17,13 @@ void	perturb_normal(double *nvec, double *obj_coor, double *pert)
 {
   if ((int)pert[0] == 1)
     nvec[0] = nvec[0] + cos(obj_coor[0] / pert[1])
-      * (norme_vec(nvec) / pert[1]);
+              * (norme_vec(nvec) / pert[1]);
   if ((int)pert[2] == 1)
     nvec[1] = nvec[1] + cos(obj_coor[1] / pert[3])
-      * (norme_vec(nvec) / pert[3]);
+              * (norme_vec(nvec) / pert[3]);
   if ((int)pert[4] == 1)
     nvec[2] = nvec[2] + cos(obj_coor[2] / pert[5])
-      * (norme_vec(nvec) / pert[5]);
+              * (norme_vec(nvec) / pert[5]);
 }
 
 void	sphere_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
@@ -46,9 +46,9 @@ void	plan_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
   perturb_normal(nvec, obj_coor, pert);
 }
 
-void	cone_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
+void	cone_normal(double *nvec, double *obj_coor,
+                  double *pert, UNUSED t_obj *obj)
 {
-  (void)(obj);
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];
   nvec[2] = -0.6 * obj_coor[2];
@@ -56,18 +56,17 @@ void	cone_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 }
 
 void	cylinder_normal(double *nvec, double *obj_coor, double *pert,
-			t_obj *obj)
+                      UNUSED t_obj *obj)
 {
-  (void)(obj);
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];
   nvec[2] = 0;
   perturb_normal(nvec, obj_coor, pert);
 }
 
-void	moebius_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
+void	moebius_normal(double *nvec, double *obj_coor,
+                     double *pert, UNUSED t_obj *obj)
 {
-  (void)(obj);
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];
   nvec[2] = obj_coor[2];
@@ -76,9 +75,9 @@ void	moebius_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 
 void	tangle_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 {
-  nvec[0] = 4 * pow(obj_coor[0], 3) - 20 * pow(obj->size, 2) * obj_coor[0];
-  nvec[1] = 4 * pow(obj_coor[1], 3) - 20 * pow(obj->size, 2) * obj_coor[1];
-  nvec[2] = 4 * pow(obj_coor[2], 3) - 20 * pow(obj->size, 2) * obj_coor[2];
+  nvec[0] = 4 * pow(obj_coor[0], 3) - 20 * pow(obj->size[0], 2) * obj_coor[0];
+  nvec[1] = 4 * pow(obj_coor[1], 3) - 20 * pow(obj->size[0], 2) * obj_coor[1];
+  nvec[2] = 4 * pow(obj_coor[2], 3) - 20 * pow(obj->size[0], 2) * obj_coor[2];
   perturb_normal(nvec, obj_coor, pert);
 }
 
@@ -87,12 +86,12 @@ void		tore_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
   double	k;
 
   k = 4 * (pow(obj_coor[0], 2)
-	   + pow(obj_coor[1], 2)
-	   + pow(obj_coor[2], 2)
-	   + pow(obj->size, 2)
-	   - pow(SIZE, 2));
-  nvec[0] = obj_coor[0] * k - 8.0 * pow(obj->size, 2) * obj_coor[0];
-  nvec[1] = obj_coor[1] * k - 8.0 * pow(obj->size, 2) * obj_coor[1];
+           + pow(obj_coor[1], 2)
+           + pow(obj_coor[2], 2)
+           + pow(obj->size[0], 2)
+           - pow(SIZE, 2));
+  nvec[0] = obj_coor[0] * k - 8.0 * pow(obj->size[0], 2) * obj_coor[0];
+  nvec[1] = obj_coor[1] * k - 8.0 * pow(obj->size[0], 2) * obj_coor[1];
   nvec[2] = obj_coor[2] * k;
   perturb_normal(nvec, obj_coor, pert);
 }

@@ -74,7 +74,7 @@ void	init_single_elem(t_obj *obj)
     }
   init_limit_angle(obj->pert, obj->angle);
   init_limits(obj->limit);
-  obj->size = 0;
+  obj->size[0] = 0;
   obj->bright = 1.0;
   obj->texture = NULL;
   obj->normal[3] = 0;

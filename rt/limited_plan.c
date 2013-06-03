@@ -22,7 +22,7 @@ double		circle(double *cam, double *vec, t_obj *ept)
   pt[0] = vec[0] * ret + cam[0];
   pt[1] = vec[1] * ret + cam[1];
   test = pt[0] * pt[0] + pt[1] * pt[1];
-  if (test < (ept->size * ept->size))
+  if (test < (ept->size[0] * ept->size[0]))
     return (ret);
   return (-1);
 }

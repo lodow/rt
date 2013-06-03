@@ -37,20 +37,19 @@ void	check_y_value(double **img, int *timg)
 }
 
 void		fill_img_param(int *pos, unsigned int color,
-			       t_rt *rpt, t_par *ppt)
+                       UNUSED t_rt *rpt, t_par *ppt)
 {
   ppt->img_obj[pos[1] * WINX + pos[0]][0] = rpt->obj_num;
   ppt->timg_obj[pos[1] * WINX + pos[0]] = rpt->obj_num;
   ppt->img_obj[pos[1] * WINX + pos[0]][1] = color;
 }
 
-void		detect_edge(t_rt *rpt, t_par *ppt)
+void		detect_edge(UNUSED t_rt *rpt, t_par *ppt)
 {
   double	**img;
   int		*timg;
   int		pos[2];
 
-  (void)*rpt;
   img = ppt->img_obj;
   timg = ppt->timg_obj;
   pos[1] = 0;
@@ -59,13 +58,13 @@ void		detect_edge(t_rt *rpt, t_par *ppt)
     {
       pos[0] = 0;
       while (pos[0] < WINX - 1)
-	{
-	  check_x_value(&img[pos[1] * WINX + pos[0]],
-	  		&timg[pos[1] * WINX + pos[0]]);
-	  check_y_value(&img[pos[1] * WINX + pos[0]],
-			&timg[pos[1] * WINX + pos[0]]);
-	  ++pos[0];
-	}
+        {
+          check_x_value(&img[pos[1] * WINX + pos[0]],
+                        &timg[pos[1] * WINX + pos[0]]);
+          check_y_value(&img[pos[1] * WINX + pos[0]],
+                        &timg[pos[1] * WINX + pos[0]]);
+          ++pos[0];
+        }
       ++pos[1];
     }
 }

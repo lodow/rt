@@ -32,7 +32,7 @@ unsigned int	perlin_fire(double *inter, unsigned char *color_obj,
 }
 
 unsigned int	perlin_cloud(double *inter, unsigned char *color_obj,
-			     t_perl *ppt, double frequency)
+			     t_perl *ppt, UNUSED double frequency)
 {
   fill_tab_from_str(ppt->sval, "0.01, 0.4, 0.6", 3);
   fill_tab_from_str(ppt->col,
@@ -59,7 +59,7 @@ unsigned int	perlin_wood(double *inter, unsigned char *color_obj,
 }
 
 unsigned int	perlin_mercury(double *inter, unsigned char *color_obj,
-			       t_perl *ppt)
+			       t_perl *ppt, UNUSED double frequency)
 {
   fill_tab_from_str(ppt->sval, "0.01, 0.4, 0.6", 3);
   fill_tab_from_str(ppt->col, "84, 255, 95, 28, 59, 255, 100, 37, 17", 9);
