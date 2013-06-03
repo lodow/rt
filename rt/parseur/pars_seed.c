@@ -31,10 +31,8 @@ int	seed_generator(char *str)
   return (res);
 }
 
-void	get_seed(t_opt *opt, char *line, int l)
+void	get_seed(UNUSED t_opt *opt, char *line, UNUSED int l)
 {
-  (void)l;
-  (void)opt;
   if (my_strncmp("Random", line, 6) == 0)
     srand(time(NULL));
   else

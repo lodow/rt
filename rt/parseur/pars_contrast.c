@@ -11,8 +11,7 @@
 #include "main.h"
 #include "pars.h"
 
-void   	get_contrast(t_opt *opt, char *line, int l)
+void   	get_contrast(t_opt *opt, char *line, UNUSED int l)
 {
-  (void)l;
   opt->contrast = my_fgetnbr(line);
 }

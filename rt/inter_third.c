@@ -13,7 +13,7 @@
 #include "inter.h"
 #include "light.h"
 
-double		moebius(double *cam, double *vec, t_obj *ept)
+double		moebius(double *cam, double *vec, UNUSED t_obj *ept)
 {
   double	a[4];
   double	k[4];

@@ -26,9 +26,9 @@ int	check_header(t_info_bmp *info, int fd)
 
   size = 0;
   while ((ret = read(fd, &buffer[size], sizeof(t_info_bmp) - size)) != -1
-	 && size + ret < sizeof(t_info_bmp))
+	 && size + ret < (int)sizeof(t_info_bmp))
     size += ret;
-  if (size + ret < sizeof(t_info_bmp))
+  if (size + ret < (int)sizeof(t_info_bmp))
     return (merror("BMP Loader: Bad size of the Header in bmp file\n", -1));
   my_mem_cpy((void *)info, (void *)buffer, sizeof(t_info_bmp));
   if (info->deep_color[0] != 0x18 && info->deep_color[1] != 0)
