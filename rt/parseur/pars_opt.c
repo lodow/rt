@@ -13,7 +13,7 @@
 
 void	get_opt_filter(t_opt *opt, char *line, int l)
 {
-  char	*types[3];
+  char	*types[4];
   int	i;
   int	x;
 
@@ -22,10 +22,11 @@ void	get_opt_filter(t_opt *opt, char *line, int l)
   types[0] = "Sepia";
   types[1] = "Grey";
   types[2] = "Reverse";
+  types[3] = "Xorus";
   skip_space(line, &x);
-  while (i < 3 && my_strncmp(types[i], &line[x], my_strlen(types[i])) != 0)
+  while (i < 4 && my_strncmp(types[i], &line[x], my_strlen(types[i])) != 0)
     ++i;
-  if (i == 3)
+  if (i == 4)
     {
       my_putstr("line ", 2);
       my_put_nbr(l, 2);

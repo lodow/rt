@@ -30,10 +30,17 @@ unsigned int	apply_contrast(unsigned int color, t_opt *opt)
 
   decomp_color(color, comp);
   comp[0] = LIMIT((((double)comp[0] / 255 - 0.5) * opt->contrast + 0.5)
-		  * 255, 0, 255);
+                  * 255, 0, 255);
   comp[1] = LIMIT((((double)comp[1] / 255 - 0.5) * opt->contrast + 0.5)
-		  * 255, 0, 255);
+                  * 255, 0, 255);
   comp[2] = LIMIT((((double)comp[2] / 255 - 0.5) * opt->contrast + 0.5)
-		  * 255, 0, 255);
+                  * 255, 0, 255);
   return (recomp_color(comp));
+}
+
+unsigned int	xorus_filter(unsigned int color, t_opt *opt)
+{
+  (void)opt;
+  color = (color ^ 0x64a8bdfe);
+  return (color);
 }

@@ -174,5 +174,6 @@ void		apply_bump(double *nvec, double *obj_coor, double ratio);
 int		output_bmp(t_par *ppt);
 double		fade(double curve);
 double		lerp(double curve, double a, double b);
+unsigned int	xorus_filter(unsigned int color, t_opt *opt);
 
 #endif
