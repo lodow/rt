@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sun Jun  2 16:57:50 2013 luc sinet
+## Last update Mon Jun  3 21:09:08 2013 etienne debas
 ##
 
 SRCS	= main.c \
@@ -85,7 +85,6 @@ SRCS	= main.c \
 	  transform_vec.c \
 	  bmp_loader.c \
 	  solve_cube.c \
-	  solve_quad.c \
 	  tangle.c \
 	  texture.c \
 	  tore.c \
@@ -100,7 +99,10 @@ SRCS	= main.c \
 	  bmp_output.c \
 	  shadows_supersampling.c \
 	  other_filter.c \
-	  perlin_permutation.c
+	  perlin_permutation.c \
+	  solve_cubic.c \
+	  solve_quartic.c \
+	  solve_quadratic.c \
 
 OBJS	= $(SRCS:.c=.o)
 
