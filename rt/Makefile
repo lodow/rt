@@ -100,7 +100,7 @@ SRCS	= main.c \
 	  bmp_output.c \
 	  shadows_supersampling.c \
 	  other_filter.c \
-	  perlin_permutation.c \
+	  perlin_permutation.c
 
 OBJS	= $(SRCS:.c=.o)
 
