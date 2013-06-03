@@ -12,11 +12,10 @@
 #include "change_color.h"
 #include "pars.h"
 
-unsigned int	revers_filter(unsigned int color, t_opt *opt)
+unsigned int	revers_filter(unsigned int color, UNUSED t_opt *opt)
 {
   unsigned char	comp[3];
 
-  (void)opt;
   decomp_color(color, comp);
   comp[0] = LIMIT(2.0 * (128 - comp[0]) + comp[0], 0, 255);
   comp[1] = LIMIT(2.0 * (128 - comp[1]) + comp[1], 0, 255);
@@ -38,9 +37,8 @@ unsigned int	apply_contrast(unsigned int color, t_opt *opt)
   return (recomp_color(comp));
 }
 
-unsigned int	xorus_filter(unsigned int color, t_opt *opt)
+unsigned int	xorus_filter(unsigned int color, UNUSED t_opt *opt)
 {
-  (void)opt;
   color = (color ^ 0x64a8bdfe);
   return (color);
 }

@@ -11,15 +11,13 @@
 #include "main.h"
 #include "pars.h"
 
-void	pars_color(char *line, t_obj *ept, t_text *text)
+void	pars_color(char *line, t_obj *ept, UNUSED t_text *text)
 {
-  (void)text;
   get_color(line, ept->color);
 }
 
-void	pars_brightness(char *line, t_obj *ept, t_text *text)
+void	pars_brightness(char *line, t_obj *ept, UNUSED t_text *text)
 {
-  (void)text;
   ept->bright = LIMIT(my_fgetnbr(line), 0, 1);
 }
 

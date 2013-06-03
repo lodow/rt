@@ -11,8 +11,7 @@
 #include "main.h"
 #include "pars.h"
 
-void	pars_checker(char *line, t_obj *ept, t_text *text)
+void	pars_checker(char *line, t_obj *ept, UNUSED t_text *text)
 {
-  (void)text;
   ept->checker = LIMIT(my_getnbr(line), 0 , 1000);
 }

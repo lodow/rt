@@ -14,12 +14,11 @@
 #include "light.h"
 #define SIZE 10
 
-double		tangle(double *cam, double *vec, t_obj *obj)
+double		tangle(double *cam, double *vec, UNUSED t_obj *obj)
 {
   double	c[5];
   double	k[4];
 
-  (void)obj;
   c[0] = pow(vec[0], 4) + pow(vec[1], 4) + pow(vec[2], 4);
 
   c[1] = 4 * ((pow(vec[0], 3) * cam[0])

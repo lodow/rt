@@ -18,6 +18,8 @@
 #include "str.h"
 #include "nb.h"
 
+# define UNUSED __attribute__((unused))
+
 # define ZERO 0.00000001
 # define IVAL -1000000
 # define RANG(ang) (ang < 0) ? (ang * -1) : ang

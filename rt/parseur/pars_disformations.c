@@ -11,32 +11,27 @@
 #include "main.h"
 #include "pars.h"
 
-void	pars_limits(char *line, t_obj *ept, t_text *text)
+void	pars_limits(char *line, t_obj *ept, UNUSED t_text *text)
 {
-  (void)text;
   fill_limits(line, ept->limit);
 }
 
-void	pars_perturbations(char *line, t_obj *ept, t_text *text)
+void	pars_perturbations(char *line, t_obj *ept, UNUSED t_text *text)
 {
-  (void)text;
   fill_pert(line, ept->pert);
 }
 
-void	pars_normal1(char *line, t_obj *ept, t_text *text)
+void	pars_normal1(char *line, t_obj *ept, UNUSED t_text *text)
 {
-  (void)text;
   fill_vec(ept->v1, line);
 }
 
-void	pars_normal2(char *line, t_obj *ept, t_text *text)
+void	pars_normal2(char *line, t_obj *ept, UNUSED t_text *text)
 {
-  (void)text;
   fill_vec(ept->v2, line);
 }
 
-void	pars_normal(char *line, t_obj *ept, t_text *text)
+void	pars_normal(char *line, t_obj *ept, UNUSED t_text *text)
 {
-  (void)text;
   fill_vec(ept->normal, line);
 }

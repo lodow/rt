@@ -25,13 +25,12 @@ void   	pars_perlin_frequency(char *line, double *frequency)
     }
 }
 
-void	pars_perlin(char *line, t_obj *ept, t_text *text)
+void	pars_perlin(char *line, t_obj *ept, UNUSED t_text *text)
 {
   char	*type[7];
   int	i;
   int	x;
 
-  (void)text;
   i = 0;
   x = 0;
   type[0] = "Marble";
@@ -53,10 +52,8 @@ void	pars_perlin(char *line, t_obj *ept, t_text *text)
     }
 }
 
-void	pars_bump(char *line, t_obj *ept, t_text *text)
+void	pars_bump(char *line, t_obj *ept, UNUSED t_text *text)
 {
-  (void)text;
-
   ept->bump = LIMIT(my_fgetnbr(line), 0 , 100);
   ept->bump /= 80;
 }

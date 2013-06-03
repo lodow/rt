@@ -11,32 +11,27 @@
 #include "main.h"
 #include "pars.h"
 
-void	pars_alpha(char *line, t_obj *ept, t_text *text)
+void	pars_alpha(char *line, t_obj *ept, UNUSED t_text *text)
 {
-  (void)text;
   ept->indice[0] = LIMIT(my_fgetnbr(line), 0, 1);
 }
 
-void	pars_refraction(char *line, t_obj *ept, t_text *text)
+void	pars_refraction(char *line, t_obj *ept, UNUSED t_text *text)
 {
-  (void)text;
   ept->indice[1] = my_fgetnbr(line);
 }
 
-void	pars_reflection(char *line, t_obj *ept, t_text *text)
+void	pars_reflection(char *line, t_obj *ept, UNUSED t_text *text)
 {
-  (void)text;
   ept->indice[2] = LIMIT(my_fgetnbr(line), 0, 1);
 }
 
-void	pars_cst(char *line, t_obj *ept, t_text *text)
+void	pars_cst(char *line, t_obj *ept, UNUSED t_text *text)
 {
-  (void)text;
   ept->cst = my_fgetnbr(line);
 }
 
-void	pars_absorbance(char *line, t_obj *ept, t_text *text)
+void	pars_absorbance(char *line, t_obj *ept, UNUSED t_text *text)
 {
-  (void)text;
   ept->indice[3] = LIMIT(2.0 * my_fgetnbr(line), 0, 2);
 }

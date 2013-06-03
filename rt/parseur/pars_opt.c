@@ -38,11 +38,10 @@ void	get_opt_filter(t_opt *opt, char *line, int l)
     opt->filter = i + 1;
 }
 
-void	get_opt_fog(t_opt *opt, char *line, int l)
+void	get_opt_fog(t_opt *opt, char *line, UNUSED int l)
 {
   int	i;
 
-  (void)l;
   i = 0;
   if (my_strncmp(line, "0x", 2) == 0)
     i += 2;
