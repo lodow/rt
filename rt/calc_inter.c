@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Sat Jun  1 14:57:01 2013 luc sinet
+** Last update Mon Jun  3 09:40:29 2013 luc sinet
 */
 
 #include <math.h>
@@ -53,35 +53,35 @@ void		get_obj_color(t_rt *rpt, t_obj *obj, double k, t_lco *lpt)
 unsigned int	modifie_p_color(t_rt *rpt, double k, char opt)
 {
   unsigned int	color;
+  double	distance;
   t_lco		lpt;
   t_obj		*obj;
 
+  distance = 200 * FOG_DIST;
   obj = &rpt->obj[rpt->obj_num];
   get_obj_color(rpt, obj, k, &lpt);
   color = get_light(rpt, k, obj, &lpt);
+  distance = rpt->obj[rpt->obj_num].dist;
   if (opt != 2)
     color = reflection(rpt, &lpt, color, k);
   if (opt != 1)
     color = transparency(rpt, &lpt, color, k);
+  color = apply_fog(color, rpt->opt->fog, distance);
   return (color);
 }
 
 unsigned int	get_pixel_color(t_rt *rpt)
 {
   double	k;
-  double	distance;
   unsigned int	color;
 
   color = 0x000000;
   calc_inter(rpt, &k);
-  distance = 200 * FOG_DIST;
   if (k != -1 && rpt->light[0].on == 1)
     {
       color = recomp_color(rpt->obj[rpt->obj_num].color);
       color = modifie_p_color(rpt, k, 0);
-      distance = rpt->obj[rpt->obj_num].dist;
     }
-  color = apply_fog(color, rpt->opt->fog, distance);
   color = filter_color(color, rpt->opt);
   return (color);
 }
