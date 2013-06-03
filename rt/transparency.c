@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May  5 18:27:59 2013 luc sinet
-** Last update Mon Jun  3 11:09:53 2013 adrien dellamaggiora
+** Last update Mon Jun  3 14:19:32 2013 adrien dellamaggiora
 */
 
 #include <math.h>
@@ -68,8 +68,7 @@ double		transparency_loop(t_rt *rpt, t_lco *lpt, t_trans *trans,
     trans->color[trans->count++] = modifie_p_color(rpt, k, 1);
   else if (k == -1)
     trans->color[trans->count++] = 0x000000;
-  else
-    ++trans->count;
+  ++trans->nb_obj;
   return (k);
 }
 
@@ -82,11 +81,12 @@ unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
   t_trans	trans;
 
   trans.count = 0;
+  trans.nb_obj = 0;
   save_obj = rpt->obj_num;
   my_memset(trans.pass, -1, 256);
   copy_tab(rpt->vpt->vec, vec, 3);
   copy_tab(rpt->cpt->pos, ctmp, 3);
-  while (trans.count < MAX_R &&
+  while (trans.nb_obj < MAX_R &&
 	 rpt->obj[rpt->obj_num].indice[0] > ZERO && k > ZERO)
     k = transparency_loop(rpt, lpt, &trans, k);
   copy_tab(ctmp, rpt->cpt->pos, 3);
