@@ -1,5 +1,15 @@
-Paraboloid
+Cam
 {
-   Center = 605,495,0
+   Center = 0,0,0
+}
+
+Option
+{
+   AA = 3;
+}
+
+Plan
+{
+   Center = 0,0,0
 }
 

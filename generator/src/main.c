@@ -5,17 +5,18 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:49:52 2013 remi
-** Last update Mon Jun  3 15:14:59 2013 remi robert
+** Last update Tue Jun  4 11:14:51 2013 remi robert
 */
 
 #include "my_func.h"
 
-int		main(int argc, char **argv)
+int		main(int argc, char **argv, char **envp)
 {
   t_param	param;
 
   (void)argc;
   (void)argv;
+  (void)envp;
   if (init_window(&param) == 0)
     return (0);
   main_loop(&param);

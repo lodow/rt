@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Tue Jun  4 10:15:32 2013 remi robert
+** Last update Tue Jun  4 11:00:17 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -79,6 +79,7 @@ typedef struct		saisi
 
 typedef struct		s_param
 {
+  t_object		cam;
   t_saisi		saisi;
   char			click_menu;
   t_texture		panel_control;
@@ -113,5 +114,6 @@ int	my_strlen(char *str);
 void	draw_conf(t_param *param);
 char	*get_name_file_object(int nb);
 void	write_file(t_param *param);
+int	str_cmp(char *str, char *str2);
 
 #endif

@@ -5,17 +5,17 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Jun  3 14:25:35 2013 remi robert
-** Last update Tue Jun  4 10:30:30 2013 remi robert
+** Last update Tue Jun  4 11:02:03 2013 remi robert
 */
 
 #include "my_func.h"
 
-void	write_center_object(t_object *pcourant, int fd)
+void	write_center_object(char *str, t_object *pcourant, int fd)
 {
   char	buff[10];
   int	i;
 
-  my_putstr("   Center = ", fd, -1);
+  my_putstr(str, fd, -1);
   convert_number_char(pcourant->x, buff);
   i = -1;
   while (buff[++i] != '\0' && buff[i + 1] != '\0' &&  buff[i] == '0');
@@ -32,14 +32,16 @@ void	write_center_object(t_object *pcourant, int fd)
   my_putstr(&buff[i], fd, -1);
 }
 
-void	write_struct(t_object *pcourant, int fd)
+void	write_struct(char *str, t_object *pcourant, int fd)
 {
-  char	*s;
-
-  s = get_name_file_object(pcourant->type);
-  my_putstr(s, fd, -1);
+  if (str_cmp(str, "Option") == 1)
+    {
+      my_putstr("Option\n{\n   AA = 3;\n}\n\n", fd, -1);
+      return ;
+    }
+  my_putstr(str, fd, -1);
   my_putstr("\n{\n", fd, -1);
-  write_center_object(pcourant, fd);
+  write_center_object("   Center = ", pcourant, fd);
   my_putstr("\n}\n\n", fd, -1);
 }
 
@@ -52,9 +54,11 @@ void		write_file(t_param *param)
       (fd = open("test.file", O_RDWR | O_CREAT | O_TRUNC)) == -1)
     return ;
   pcourant = param->phead;
+  write_struct("Cam", pcourant, fd);
+  write_struct("Option", pcourant, fd);
   while (pcourant != NULL)
     {
-      write_struct(pcourant, fd);
+      write_struct(get_name_file_object(pcourant->type), pcourant, fd);
       pcourant = pcourant->next;
     }
 }

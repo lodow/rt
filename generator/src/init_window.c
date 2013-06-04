@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:51:46 2013 remi
-** Last update Fri May 31 21:35:39 2013 remi robert
+** Last update Tue Jun  4 10:34:47 2013 remi robert
 */
 
 #include "my_func.h"
@@ -37,6 +37,9 @@ int	init_window(t_param *param)
   param->saisi.check = 0;
   param->saisi.indice = 0;
   param->saisi.buff[0] = '\0';
+  param->cam.x = -400;
+  param->cam.x = 0;
+  param->cam.x = 200;
   init_img(param);
   if (init_texture(param) == 0)
     return (0);
