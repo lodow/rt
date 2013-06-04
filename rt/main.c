@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Tue Jun  4 14:09:36 2013 luc sinet
+** Last update Tue Jun  4 14:28:20 2013 luc sinet
 */
 
 #include <time.h>
@@ -32,7 +32,6 @@ void	free_all(t_rt *rpt, t_par *ppt)
 
 int	key_event(int key, t_rt *rpt)
 {
-  printf("key: %d p: %d\n", key, K_P);
   if (key == K_ESC)
     exit(0);
   else if (key == K_P)

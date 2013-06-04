@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Wed May 22 16:27:01 2013 Adrien Della Maggiora
-** Last update Thu May 30 11:55:37 2013 luc sinet
+** Last update Tue Jun  4 14:29:50 2013 luc sinet
 */
 
 #include <fcntl.h>
@@ -76,15 +76,49 @@ void	fill_bmp(char *img, int fd, t_info_bmp *info, int octet)
     }
 }
 
+void	nb_to_str(char *str, int nb, int size)
+{
+  int	i;
+
+  i = 0;
+  while (size > 0)
+    {
+      ++i;
+      size /= 10;
+    }
+  size = i;
+  nb *= 10;
+  while (nb >= 10 && i > 0)
+    {
+      nb /= 10;
+      str[--i] = nb % 10 + '0';
+    }
+  str[size] = '\0';
+}
+
 int		output_bmp(t_par *ppt)
 {
   t_info_bmp	image;
   int		fd;
+  int		i;
+  char		name[17];
+  char		num[5];
 
+  i = 0;
   if (ppt->bpp != 32 && ppt->bpp != 24)
     return (merror("Color not coded on 32 or 24 bits\n", -1));
   init_bmp(&image);
-  if ((fd = open("display.bmp", O_WRONLY | O_CREAT | O_TRUNC, 0664)) == -1)
+  while (i == 0 || (i < 1000 && access(name, F_OK) == 0))
+    {
+      my_strcpy(name, "./display");
+      nb_to_str(num, i, i);
+      my_strcat(name, num);
+      my_strcat(name, ".bmp");
+      ++i;
+    }
+  if (i == 1000)
+    return (merror("Too much picture\n", -1));
+  if ((fd = open(&name[2], O_WRONLY | O_CREAT | O_TRUNC, 0664)) == -1)
     return (merror("Can't creat the file\n", -1));
   fill_bmp(ppt->data, fd, &image, ppt->bpp / 8);
   close(fd);
