@@ -42,14 +42,18 @@ void	init_bmp(t_info_bmp *image, t_par *ppt)
 
 void	fill_with_zero(int fd, int rest)
 {
+  void	*zero;
   int	i;
 
   i = 0;
+  if ((zero = malloc(rest)) == NULL)
+    return ;
   while (i < rest)
     {
-      my_putchar(0x0, fd);
+      ((char*)zero)[i] = 0x0;
       ++i;
     }
+  my_putbyte(zero, fd, rest);
 }
 
 void	fill_bmp(char *img, int fd, t_info_bmp *info, t_par *ppt)
@@ -59,7 +63,7 @@ void	fill_bmp(char *img, int fd, t_info_bmp *info, t_par *ppt)
   int		octet;
 
   octet = ppt->bpp / 8;
-  write(fd, (void *)info, sizeof(t_info_bmp));
+  my_putbyte((void *)info, fd, sizeof(t_info_bmp));
   y = ppt->imgheight - 1;
   while (y >= 0)
     {
@@ -68,9 +72,7 @@ void	fill_bmp(char *img, int fd, t_info_bmp *info, t_par *ppt)
         {
           if ((octet == 4 && x % 4 != 3) || octet == 3)
             {
-              my_putchar(img[y * (octet * ppt->imgwidth) + (x)], fd);
-              my_putchar(img[y * (octet * ppt->imgwidth) + (x + 1)], fd);
-              my_putchar(img[y * (octet * ppt->imgwidth) + (x + 2)], fd);
+              my_putbyte((&(img[(y * octet * ppt->imgwidth)])), fd, 3);
               x += 3;
             }
           ++x;

@@ -163,6 +163,7 @@ void		delta_nul_third(double *k, double *pq);
 void		delta_pos_third(double *k, double *pq);
 unsigned int	transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
                            double k);
+void		my_putbyte(const void *ptr, int fd, int strlen);
 void		my_mem_cpy(void *dest, void *src, int size);
 void		*adjust_mem_size(void *mem, int size, int nsize, int dfree);
 double		get_pow(double nb);

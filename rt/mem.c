@@ -8,7 +8,37 @@
 ** Last update Wed May 15 16:44:17 2013 luc sinet
 */
 
-#include <stdlib.h>
+#include <unistd.h>
+#include "main.h"
+
+void	my_putbyte(const void *ptr, int fd, int strlen)
+{
+  int	len;
+  char	*str;
+
+  len = 0;
+  str = (char*)ptr;
+  if (str != NULL)
+    {
+      if (strlen == -1)
+        {
+          while (str[len] != '\0')
+            len++;
+          strlen = len;
+        }
+      while ((len = write(fd, str, strlen)) != strlen)
+        {
+          if (len == -1)
+            {
+              my_putstr("Write error\n", 2);
+              return ;
+            }
+          str = &(str[len]);
+          strlen -= len;
+        }
+
+    }
+}
 
 void	my_memset(void *elem, int val, int size)
 {
