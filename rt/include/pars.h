@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Sun Jun  2 16:54:02 2013 luc sinet
+** Last update Tue Jun  4 11:52:23 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -50,8 +50,8 @@ int	other_opt(char *line, t_obj *ept, t_text *text);
 void	fill_angle(t_obj *ept, char *line);
 void	fill_center(t_obj *ept, char *line);
 void	init_light(t_lig *ltab, t_pars *opt);
-void	init_elem(t_obj *tab, t_pars *opt);
-void	init_elem_indices(t_obj *obj);
+int	init_elem(t_obj *tab, t_pars *opt);
+void	init_elem_indices(t_indice *ipt);
 void	init_single_elem(t_obj *obj);
 void	init_nb_obj(t_pars *opt);
 int	fill_tab(t_pars *opt, t_obj *tab);

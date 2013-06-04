@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr  7 19:07:11 2013 luc sinet
-** Last update Tue Jun  4 11:12:13 2013 luc sinet
+** Last update Tue Jun  4 11:39:35 2013 luc sinet
 */
 
 #include <math.h>
@@ -81,7 +81,7 @@ void		get_light_color(t_lig *light, t_lco *lpt,
   coss = 0;
   if (cosa > 0)
     {
-      if (rpt->obj[rpt->obj_num].indice[2])
+      if (rpt->obj[rpt->obj_num].ipt->indice[2])
 	coss = get_specular_coef(lpt, rpt->cpt->pos);
       cosa *= light->intensity;
       cosa = apply_distance(lpt, light, cosa);

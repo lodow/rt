@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu May 23 21:40:41 2013 luc sinet
-** Last update Sun Jun  2 11:53:50 2013 luc sinet
+** Last update Tue Jun  4 11:42:04 2013 luc sinet
 */
 
 #include <math.h>
@@ -37,7 +37,7 @@ int		throw_rays(t_rt *rpt, t_shadow *spt,
   rpt->vpt->vec[2] = spt->light->pos[2] - cpos[2];
   calc_inter(rpt, &k);
   if (spt->obj[1] != rpt->obj_num && k > ZERO && k < 1)
-    spt->s_coef -= ((1.0 - rpt->obj[rpt->obj_num].indice[0])
+    spt->s_coef -= ((1.0 - rpt->obj[rpt->obj_num].ipt->indice[0])
 		    / (double)SDW_SS);
   sinter[0] += sinter[6];
   return (1);

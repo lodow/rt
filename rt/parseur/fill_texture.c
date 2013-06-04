@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Thu May  9 10:16:03 2013 Adrien Della Maggiora
-** Last update Sat Jun  1 15:06:44 2013 luc sinet
+** Last update Tue Jun  4 11:29:30 2013 luc sinet
 */
 
 #include <stdlib.h>
@@ -36,7 +36,7 @@ int	link_text(t_obj *ept, char *line, t_text *text)
   while (line[i] && !(line[i] >= '0' && line[i] <= '9'))
     ++i;
   if (line[i])
-    ept->rate = my_getnbr(&line[i]);
+    ept->ipt->rate = my_getnbr(&line[i]);
   return (0);
 }
 

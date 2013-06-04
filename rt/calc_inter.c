@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Mon Jun  3 23:52:35 2013 luc sinet
+** Last update Tue Jun  4 11:33:58 2013 luc sinet
 */
 
 #include <math.h>
@@ -43,10 +43,10 @@ void		get_obj_color(t_rt *rpt, t_obj *obj, double k, t_lco *lpt)
   double       	inter[3];
 
   get_impact(inter, rpt->cpt->pos, k, rpt->vpt->vec);
-  if (obj->checker != 0)
-    checkerboard_color(inter, obj->color, obj->checker);
-  else if (obj->perlin[0] != -1)
-    perlin(inter, obj->color, obj->perlin);
+  if (obj->ipt->checker != 0)
+    checkerboard_color(inter, obj->color, obj->ipt->checker);
+  else if (obj->ipt->perlin[0] != -1)
+    perlin(inter, obj->color, obj->ipt->perlin);
   get_color_texture(obj, lpt, k, rpt);
 }
 

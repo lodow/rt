@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May  5 18:27:59 2013 luc sinet
-** Last update Mon Jun  3 19:48:14 2013 luc sinet
+** Last update Tue Jun  4 11:39:21 2013 luc sinet
 */
 
 #include <math.h>
@@ -38,16 +38,16 @@ double	get_refrac_ratio(t_obj *tab, t_obj *obj, int *pass, int obj_num)
   if (!found)
     {
       if (i == 0)
-	return (obj->indice[1]);
+	return (obj->ipt->indice[1]);
       else
-	return (obj->indice[1] / tab[pass[i - 1]].indice[1]);
+	return (obj->ipt->indice[1] / tab[pass[i - 1]].ipt->indice[1]);
     }
   else
     {
       if (i - 1 < 0)
 	return (AIR);
       else
-	return (tab[pass[i - 1]].indice[1] / obj->indice[1]);
+	return (tab[pass[i - 1]].ipt->indice[1] / obj->ipt->indice[1]);
     }
 }
 
@@ -61,7 +61,7 @@ double		transparency_loop(t_rt *rpt, t_lco *lpt, t_trans *trans,
 
   i = 0;
   obj = rpt->obj_num;
-  trans->alpha[trans->count] = rpt->obj[obj].indice[0];
+  trans->alpha[trans->count] = rpt->obj[obj].ipt->indice[0];
   refrac = get_refrac_ratio(rpt->obj, &rpt->obj[obj],
 			    trans->pass, obj);
   calc_refrac(rpt, lpt, k, refrac);
@@ -86,13 +86,13 @@ unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
   trans.count = 1;
   trans.nb_obj = 0;
   save_obj = rpt->obj_num;
-  trans.alpha[trans.nb_obj] = rpt->obj[save_obj].indice[0];
+  trans.alpha[trans.nb_obj] = rpt->obj[save_obj].ipt->indice[0];
   trans.color[trans.nb_obj++] = color;
   my_memset(trans.pass, -1, 256);
   copy_tab(rpt->vpt->vec, vec, 3);
   copy_tab(rpt->cpt->pos, ctmp, 3);
   while (trans.nb_obj < MAX_R &&
-	 rpt->obj[rpt->obj_num].indice[0] > ZERO && k > ZERO)
+	 rpt->obj[rpt->obj_num].ipt->indice[0] > ZERO && k > ZERO)
     k = transparency_loop(rpt, lpt, &trans, k);
   copy_tab(ctmp, rpt->cpt->pos, 3);
   copy_tab(vec, rpt->vpt->vec, 3);

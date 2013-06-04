@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 14 18:05:07 2013 luc sinet
-** Last update Sat May 18 19:00:58 2013 luc sinet
+** Last update Tue Jun  4 11:40:12 2013 luc sinet
 */
 
 #include "main.h"
@@ -30,7 +30,7 @@ void		handle_transparency(t_shadow *spt, t_rt *rpt,
   i = 0;
   if (obj->type == PLAN)
     filter_light_color(spt->light->lcolor, obj, PLAN_SIZE);
-  else if (obj->indice[0] > ZERO)
+  else if (obj->ipt->indice[0] > ZERO)
     {
       get_cur_coor(rpt->cpt->pos, rpt->vpt->vec, k, cur_coor);
       if (find_in_tab(spt->pass, rpt->obj_num, &i) == 1)

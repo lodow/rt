@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Sun Jun  2 13:21:01 2013 luc sinet
+** Last update Tue Jun  4 11:39:54 2013 luc sinet
 */
 
 #include <math.h>
@@ -37,7 +37,7 @@ void	get_inter_shadow(t_shadow *spt, t_rt *rpt, double k, double *cpos)
 {
   if (spt->obj[1] != rpt->obj_num && k > ZERO && k < 1)
     {
-      spt->sdw_coef -= (1.0 - rpt->obj[rpt->obj_num].indice[0]);
+      spt->sdw_coef -= (1.0 - rpt->obj[rpt->obj_num].ipt->indice[0]);
       handle_transparency(spt, rpt, &rpt->obj[rpt->obj_num], k);
       if (spt->sdw_coef > 0.2)
 	get_impact(spt->inter, cpos, k, spt->vpos);

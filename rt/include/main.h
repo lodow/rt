@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Sun Jun  2 16:55:12 2013 luc sinet
+** Last update Tue Jun  4 14:14:22 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -28,7 +28,7 @@
 # define DIST 1000
 # define K_ESC 65307
 # define GMAX(y, x) (y < 0 || x < 0) ? -1 : (x > y) ? x : y
-# define K_P 65293
+# define K_P 112
 
 typedef struct	s_samp	t_samp;
 typedef struct	s_lco	t_lco;
@@ -41,6 +41,15 @@ typedef struct	s_cam
   double	csin[3];
   double	ctmp[3];
 }		t_cam;
+
+typedef struct	s_indice
+{
+  double	indice[4];
+  double       	perlin[2];
+  double	bump;
+  int		checker;
+  int		rate;
+}		t_indice;
 
 typedef struct	s_obj
 {
@@ -60,13 +69,9 @@ typedef struct	s_obj
   double	cst;
   double	v1[3];
   double	v2[3];
-  double	indice[4];
   double	normal[4];
-  double       	perlin[2];
-  double	bump;
-  int		checker;
-  int		rate;
   t_bmp		*texture;
+  t_indice	*ipt;
 }		t_obj;
 
 /*

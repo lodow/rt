@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Thu May 30 21:22:26 2013 luc sinet
+** Last update Tue Jun  4 11:50:56 2013 luc sinet
 */
 
 #include <stdio.h>
@@ -78,17 +78,20 @@ void	init_single_elem(t_obj *obj)
   obj->bright = 1.0;
   obj->texture = NULL;
   obj->normal[3] = 0;
-  init_elem_indices(obj);
+  init_elem_indices(obj->ipt);
 }
 
-void    init_elem(t_obj *tab, t_pars *opt)
+int    init_elem(t_obj *tab, t_pars *opt)
 {
   int   i;
 
   i = 0;
   while (i <= opt->nb_shape)
     {
+      if ((tab[i].ipt = malloc(sizeof(t_indice))) == NULL)
+	return (merror("Malloc error\n", -1));
       init_single_elem(&tab[i]);
       ++i;
     }
+  return (0);
 }
