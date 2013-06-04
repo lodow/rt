@@ -16,22 +16,24 @@
 #include "pp_image.h"
 #include "bmp_loader.h"
 
-void	init_bmp(t_info_bmp *image)
+void	init_bmp(t_info_bmp *image, t_par *ppt)
 {
   image->magic_nb[0] = 0x42;
   image->magic_nb[1] = 0x4D;
-  image->size = ((WINX * 3) + ((WINX * 3) % 4)) * WINY + 54;
+  image->size = ((ppt->imgwidth * 3) + ((ppt->imgwidth * 3) % 4))
+                * ppt->imgheight + 54;
   image->reserve = 0;
   image->offset = 54;
   image->size_info = 40;
-  image->widht = WINX;
-  image->height = WINY;
+  image->widht = ppt->imgwidth;
+  image->height = ppt->imgheight;
   image->un[0] = 1;
   image->un[1] = 0;
   image->deep_color[0] = 0x18;
   image->deep_color[1] = 0;
   image->compression = 0;
-  image->size_image = ((WINX + WINX % 4) * 3) * WINY;
+  image->size_image = ((ppt->imgwidth + ppt->imgwidth % 4) * 3)
+                      * ppt->imgheight;
   image->widht_image = 2833;
   image->height_image = 2833;
   image->color = 0;
@@ -50,28 +52,30 @@ void	fill_with_zero(int fd, int rest)
     }
 }
 
-void	fill_bmp(char *img, int fd, t_info_bmp *info, int octet)
+void	fill_bmp(char *img, int fd, t_info_bmp *info, t_par *ppt)
 {
   int		x;
   int		y;
+  int		octet;
 
+  octet = ppt->bpp / 8;
   write(fd, (void *)info, sizeof(t_info_bmp));
-  y = WINY - 1;
+  y = ppt->imgheight - 1;
   while (y >= 0)
     {
       x = 0;
-      while (x < (WINX * octet))
-	{
-	  if ((octet == 4 && x % 4 != 3) || octet == 3)
-	    {
-	      my_putchar(img[y * (octet * WINX) + (x)], fd);
-	      my_putchar(img[y * (octet * WINX) + (x + 1)], fd);
-	      my_putchar(img[y * (octet * WINX) + (x + 2)], fd);
-	      x += 3;
-	    }
-	  ++x;
-	}
-      fill_with_zero(fd, (WINX * 3) % 4);
+      while (x < (ppt->imgwidth * octet))
+        {
+          if ((octet == 4 && x % 4 != 3) || octet == 3)
+            {
+              my_putchar(img[y * (octet * ppt->imgwidth) + (x)], fd);
+              my_putchar(img[y * (octet * ppt->imgwidth) + (x + 1)], fd);
+              my_putchar(img[y * (octet * ppt->imgwidth) + (x + 2)], fd);
+              x += 3;
+            }
+          ++x;
+        }
+      fill_with_zero(fd, (ppt->imgwidth * 3) % 4);
       --y;
     }
 }
@@ -82,11 +86,11 @@ int		output_bmp(t_par *ppt)
   int		fd;
 
   if (ppt->bpp != 32 && ppt->bpp != 24)
-    return (merror("Color not coded on 32 or 24 bits\n", -1));
-  init_bmp(&image);
+    return (merror("Color should be coded on 32 or 24 bits\n", -1));
+  init_bmp(&image, ppt);
   if ((fd = open("display.bmp", O_WRONLY | O_CREAT | O_TRUNC, 0664)) == -1)
-    return (merror("Can't creat the file\n", -1));
-  fill_bmp(ppt->data, fd, &image, ppt->bpp / 8);
+    return (merror("Couldn’t create the file\n", -1));
+  fill_bmp(ppt->data, fd, &image, ppt);
   close(fd);
   return (0);
 }

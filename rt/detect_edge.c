@@ -12,7 +12,7 @@
 #include "supersampling.h"
 #include "pp_image.h"
 
-void	check_x_value(double **img, int *timg)
+void	check_x_value(double **img, int *timg, UNUSED t_par *ppt)
 {
   int	diff;
 
@@ -24,24 +24,28 @@ void	check_x_value(double **img, int *timg)
     }
 }
 
-void	check_y_value(double **img, int *timg)
+void	check_y_value(double **img, int *timg, t_par *ppt)
 {
   int	diff;
 
-  diff = get_color_diff(img[0][1], img[WINX][1]);
-  if (img[0][0] != img[WINX][0] || diff > 20)
+  diff = get_color_diff(img[0][1], img[ppt->imgwidth][1]);
+  if (img[0][0] != img[ppt->imgwidth][0] || diff > 20)
     {
       timg[0] = -1;
-      timg[WINX] = -1;
+      timg[ppt->imgwidth] = -1;
     }
 }
 
-void		fill_img_param(int *pos, unsigned int color,
+void		fill_img_param(double *dpos, unsigned int color,
                        UNUSED t_rt *rpt, t_par *ppt)
 {
-  ppt->img_obj[pos[1] * WINX + pos[0]][0] = rpt->obj_num;
-  ppt->timg_obj[pos[1] * WINX + pos[0]] = rpt->obj_num;
-  ppt->img_obj[pos[1] * WINX + pos[0]][1] = color;
+  int		pos[2];
+
+  pos[0] = dpos[0];
+  pos[1] = dpos[1];
+  ppt->img_obj[pos[1] * ppt->imgwidth + pos[0]][0] = rpt->obj_num;
+  ppt->timg_obj[pos[1] * ppt->imgwidth + pos[0]] = rpt->obj_num;
+  ppt->img_obj[pos[1] * ppt->imgwidth + pos[0]][1] = color;
 }
 
 void		detect_edge(UNUSED t_rt *rpt, t_par *ppt)
@@ -54,15 +58,15 @@ void		detect_edge(UNUSED t_rt *rpt, t_par *ppt)
   timg = ppt->timg_obj;
   pos[1] = 0;
   print_i(ppt);
-  while (pos[1] < WINY - 1)
+  while (pos[1] < ppt->imgheight - 1)
     {
       pos[0] = 0;
-      while (pos[0] < WINX - 1)
+      while (pos[0] < ppt->imgwidth - 1)
         {
-          check_x_value(&img[pos[1] * WINX + pos[0]],
-                        &timg[pos[1] * WINX + pos[0]]);
-          check_y_value(&img[pos[1] * WINX + pos[0]],
-                        &timg[pos[1] * WINX + pos[0]]);
+          check_x_value(&img[pos[1] * ppt->imgwidth + pos[0]],
+                        &timg[pos[1] * ppt->imgwidth + pos[0]], ppt);
+          check_y_value(&img[pos[1] * ppt->imgwidth + pos[0]],
+                        &timg[pos[1] * ppt->imgwidth + pos[0]], ppt);
           ++pos[0];
         }
       ++pos[1];
