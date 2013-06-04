@@ -9,8 +9,8 @@ Option
    AA = 3;
 }
 
-Cylindre
+Cone
 {
-   Center = 738,357,0
+   Center = 386,473,8528596
 }
 

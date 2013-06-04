@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 13:29:07 2013 remi
-** Last update Tue Jun  4 10:15:59 2013 remi robert
+** Last update Tue Jun  4 13:01:19 2013 remi robert
 */
 
 #include "my_func.h"
@@ -52,7 +52,8 @@ void	gere_menu_param(t_param *param, int x, int y)
     return ;
   if (x >= 450 && x <= 600 && y >= 60 && y <= 110)
     {
-      param->saisi.check = 1;
+      detect_box(param, x, y);
+      /* param->saisi.check = 1; */
       return ;
     }
   if (x >= 160 && x <= 600 && y >= 450 && y <= 500)

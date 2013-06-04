@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 09:35:28 2013 remi
-** Last update Mon Jun  3 13:45:45 2013 remi robert
+** Last update Tue Jun  4 13:13:29 2013 remi robert
 */
 
 #include "my_func.h"
@@ -39,7 +39,7 @@ void	gere_saisi_buff(t_param *param, int keycode)
 {
   char	aff[2];
 
-  if (keycode >= 65429 && keycode <= 65438)
+  if (param->saisi.check == 1 && keycode >= 65429 && keycode <= 65438)
     {
       printf("OKOK => %d\n", param->saisi.indice);
       if (param->saisi.indice >= 11)
@@ -49,10 +49,23 @@ void	gere_saisi_buff(t_param *param, int keycode)
       param->saisi.buff[param->saisi.indice] = aff[0];
       param->saisi.indice += 1;
       param->saisi.buff[param->saisi.indice] = '\0';
-      mlx_string_put(param->window.p, param->window.id, 460 +
-		     (param->saisi.indice * 10), 80,
+      mlx_string_put(param->window.p, param->window.id, param->saisi.x +
+		     (param->saisi.indice * 10), param->saisi.y,
 		     0x0, aff);
    }
+}
+
+void		validate_saisie(t_param *param)
+{
+  t_object	*pcourant;
+
+  if (param->phead == NULL)
+    return ;
+  pcourant = param->phead;
+  while (pcourant->next != NULL)
+    pcourant = pcourant->next;
+  if (param->saisi.type == 1)
+    pcourant->z = my_getnbr(param->saisi.buff);
 }
 
 int	gere_keyboard(int keycode, t_param *param)
@@ -60,6 +73,7 @@ int	gere_keyboard(int keycode, t_param *param)
   if ((keycode == 65293 || keycode == 65421) && param->saisi.check == 1)
     {
       printf("saisi accepted : %s\n", param->saisi.buff);
+      validate_saisie(param);
       param->saisi.check = 0;
       param->saisi.indice = 0;
       param->saisi.buff[0] = '\0';

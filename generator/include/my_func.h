@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Tue Jun  4 12:51:07 2013 remi robert
+** Last update Tue Jun  4 13:12:37 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -38,6 +38,8 @@
 typedef struct		s_object
 {
   char			type;
+  int			color;
+  int			angle;
   int			z;
   int			x;
   int			y;
@@ -116,5 +118,7 @@ void	draw_conf(t_param *param);
 char	*get_name_file_object(int nb);
 void	write_file(t_param *param);
 int	str_cmp(char *str, char *str2);
+void	detect_box(t_param *param, int x, int y);
+int	my_getnbr(char *str);
 
 #endif

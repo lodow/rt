@@ -4,7 +4,7 @@
 ## Login   <robert_r@epitech.net>
 ## 
 ## Started on  Fri Nov 30 10:59:19 2012 remi robert
-## Last update Tue Jun  4 11:00:00 2013 remi robert
+## Last update Tue Jun  4 13:08:50 2013 remi robert
 ##
 
 SRCPATH	=	src/
@@ -29,6 +29,8 @@ SRC	=	$(SRCPATH)main.c \
 		$(SRCPATH)write_file.c \
 		$(SRCPATH)get_name_file_object.c \
 		$(SRCPATH)str_cmp.c \
+		$(SRCPATH)detect_box.c \
+		$(SRCPATH)my_getnbr.c \
 
 OBJ	=	$(SRC:.c=.o)
 
