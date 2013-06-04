@@ -44,7 +44,7 @@ void	parse_win_size(char *str, t_rt *rpt)
   str[i] = '\0';
   nwidht = my_getnbr(str);
   nheight = my_getnbr(height);
-  if ((nwidht > 1) && (nheight > 1) && (nwidht < 10000) && (nheight < 10000))
+  if ((nwidht > 1) && (nheight > 1) && (nwidht < 4096) && (nheight < 4096))
     {
       rpt->ppt->imgwidth = nwidht;
       rpt->ppt->imgheight = nheight;
