@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Apr  7 19:07:11 2013 luc sinet
-** Last update Mon Jun  3 20:39:40 2013 luc sinet
+** Last update Tue Jun  4 11:12:13 2013 luc sinet
 */
 
 #include <math.h>
@@ -91,7 +91,7 @@ void		get_light_color(t_lig *light, t_lco *lpt,
 	  apply_speculaire(lpt->c_color, coss);
 	}
     }
-  /* cosa *= rpt->obj[rpt->obj_num].bright; */
-  apply_light_color(lpt->c_color, light->lcolor, cosa, rpt->obj[rpt->obj_num].bright);
+  apply_light_color(lpt->c_color, light->lcolor,
+		    cosa, rpt->obj[rpt->obj_num].bright);
   lpt->mx_cos = MAX(lpt->mx_cos, cosa);
 }

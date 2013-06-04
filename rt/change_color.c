@@ -5,11 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 16:50:09 2013 luc sinet
-** Last update Mon Jun  3 20:48:08 2013 luc sinet
+** Last update Tue Jun  4 11:08:24 2013 luc sinet
 */
 
 #include <math.h>
 #include "main.h"
+#include "pars.h"
 #include "light.h"
 #include "change_color.h"
 
@@ -19,12 +20,8 @@ void		apply_light_color(unsigned char *col_o, unsigned char *col_l,
   double	a;
   double	b;
 
-  a = 0.6 * lg_i;
+  a = LIMIT(0.6 * lg_i * bright, 0.0, 1.0);
   b = 1.0 - a;
-  bright /= 10;
-  col_o[0] = col_o[0] * (1.0 - bright) + col_l[0] * bright;
-  col_o[1] = col_o[1] * (1.0 - bright) + col_l[1] * bright;
-  col_o[2] = col_o[2] * (1.0 - bright) + col_l[2] * bright;
   col_o[0] = b * (double)col_o[0] + a * (double)col_l[0];
   col_o[1] = b * (double)col_o[1] + a * (double)col_l[1];
   col_o[2] = b * (double)col_o[2] + a * (double)col_l[2];
