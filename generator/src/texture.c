@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Fri May 31 09:45:06 2013 remi
-** Last update Fri May 31 20:25:03 2013 remi robert
+** Last update Tue Jun  4 10:16:22 2013 remi robert
 */
 
 #include "my_func.h"
@@ -22,8 +22,8 @@ int	load_texture(t_param *param)
 			       &(param->tab_texture_menu[indice].y),
 			       &(param->tab_texture_menu[indice].x))) == NULL)
       {
-	my_putstr("Error load texture : ");
-	my_putstr(get_texture_menu(indice));
+	my_putstr("Error load texture : ", 2, -1);
+	my_putstr(get_texture_menu(indice), 2, -1);
 	return (0);
       }
   return (1);

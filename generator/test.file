@@ -1,12 +1,5 @@
-Square
+Paraboloid
 {
-}
-
-Circle
-{
-}
-
-Triangle
-{
+   Center = 605,495,0
 }
 

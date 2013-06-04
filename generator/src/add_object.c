@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 13:36:07 2013 remi
-** Last update Mon Jun  3 14:15:48 2013 remi robert
+** Last update Tue Jun  4 10:10:02 2013 remi robert
 */
 
 #include "my_func.h"
@@ -29,6 +29,7 @@ void		init_elem_in_the_object(t_object **pobject)
 {
   (*pobject)->x = 0;
   (*pobject)->y = 0;
+  (*pobject)->z = 0;
 }
 
 int		add_object(t_object **phead, char type)

@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Mon Jun  3 15:15:56 2013 remi robert
+** Last update Tue Jun  4 10:15:32 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -38,6 +38,7 @@
 typedef struct		s_object
 {
   char			type;
+  int			z;
   int			x;
   int			y;
   struct s_object	*next;
@@ -92,7 +93,7 @@ typedef struct		s_param
 int	gere_expose(t_param *param);
 void	print_menu(t_param *param);
 void	list_object(t_object *phead);
-void	my_putstr(char *str);
+void	my_putstr(const char *str, int fd, int len);
 int	gere_mouse(int button, int x, int y, t_param *param);
 void	draw_ui(t_param *param);
 void    init_img(t_param *param);

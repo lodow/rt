@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 13:29:07 2013 remi
-** Last update Mon Jun  3 12:49:27 2013 remi robert
+** Last update Tue Jun  4 10:15:59 2013 remi robert
 */
 
 #include "my_func.h"
@@ -61,7 +61,7 @@ void	gere_menu_param(t_param *param, int x, int y)
       gere_expose(param);
     }
   if (x > 605 || y > 505)
-    my_putstr("please, submit the configuration\n");
+    my_putstr("please, submit the configuration\n", 1, -1);
 }
 
 void		pos_elem(t_param *param, int x, int y)
