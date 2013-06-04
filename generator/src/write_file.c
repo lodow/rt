@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Jun  3 14:25:35 2013 remi robert
-** Last update Tue Jun  4 11:02:03 2013 remi robert
+** Last update Tue Jun  4 12:54:58 2013 remi robert
 */
 
 #include "my_func.h"
@@ -34,9 +34,13 @@ void	write_center_object(char *str, t_object *pcourant, int fd)
 
 void	write_struct(char *str, t_object *pcourant, int fd)
 {
-  if (str_cmp(str, "Option") == 1)
+  if (str_cmp(str, "Option") == 1 || str_cmp(str, "Cam") == 1)
     {
-      my_putstr("Option\n{\n   AA = 3;\n}\n\n", fd, -1);
+      if (str[0] == 'O')
+	my_putstr("Option\n{\n   AA = 3;\n}\n\n", fd, -1);
+      if (str[0] == 'C')
+	my_putstr("Cam\n{\n   Center = -400,0,200;\n   Angle = 0,0,0;\n}\n\n",
+		  fd, -1);
       return ;
     }
   my_putstr(str, fd, -1);

@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Tue Jun  4 11:00:17 2013 remi robert
+** Last update Tue Jun  4 12:51:07 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -75,6 +75,7 @@ typedef struct		saisi
   char			buff[12];
   int			indice;
   int			check;
+  int			type;
 }			t_saisi;
 
 typedef struct		s_param

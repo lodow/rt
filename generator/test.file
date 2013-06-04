@@ -1,6 +1,7 @@
 Cam
 {
-   Center = 0,0,0
+   Center = -400,0,200;
+   Angle = 0,0,0;
 }
 
 Option
@@ -8,8 +9,8 @@ Option
    AA = 3;
 }
 
-Plan
+Cylindre
 {
-   Center = 0,0,0
+   Center = 738,357,0
 }
 
