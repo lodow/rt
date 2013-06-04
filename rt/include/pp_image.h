@@ -11,11 +11,10 @@
 #ifndef PP_H_
 # define PP_H_
 
-# define WINX 1650
-# define WINY 1024
-
 typedef struct	s_par
 {
+  int		imgwidth;
+  int		imgheight;
   void		*win_ptr;
   void		*mlx_ptr;
   void		*img_ptr;

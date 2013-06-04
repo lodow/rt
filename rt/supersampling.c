@@ -54,7 +54,7 @@ unsigned int   	supersampling(t_rt *rpt, t_samp *spt, int x, int y)
       pos[0] = x;
       while (i < ssp && pos[0] < x + 1)
 	{
-	  new_coor(rpt->vpt, rpt->cpt, pos[0], pos[1]);
+	  new_coor(rpt->vpt, rpt->cpt, rpt->ppt, pos);
 	  spt->pixel[i] = get_pixel_color(rpt);
 	  pos[0] += spacing;
 	  ++i;

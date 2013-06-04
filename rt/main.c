@@ -21,7 +21,7 @@ void	free_all(t_rt *rpt, t_par *ppt)
   i = 0;
   free(rpt->obj);
   free(rpt->light);
-  while (i < WINX * WINY)
+  while (i < ppt->imgwidth * ppt->imgheight)
     {
       free(ppt->img_obj[i]);
       ++i;
@@ -52,19 +52,22 @@ int	creat_win(t_par *ppt)
   y = 0;
   if ((ppt->mlx_ptr = mlx_init()) == NULL)
     return (merror("Couldn't init mlx\n", -1));
-  else if ((ppt->img_obj = malloc(sizeof(double *) * (WINY * WINX))) == NULL ||
-	   (ppt->timg_obj = malloc(sizeof(int) * (WINY * WINX))) == NULL)
+  else if ((ppt->img_obj = malloc(sizeof(double*)
+                                  * (ppt->imgheight * ppt->imgwidth))) == NULL
+           || (ppt->timg_obj = malloc((ppt->imgheight * ppt->imgwidth)
+                                      * sizeof(int))) == NULL)
     return (merror("Malloc error\n", -1));
-  while (y < WINY * WINX)
+  while (y < (ppt->imgheight * ppt->imgwidth))
     {
       if ((ppt->img_obj[y] = malloc(sizeof(double) * 3)) == NULL)
-	return (merror("Malloc error\n", -1));
+        return (merror("Malloc error\n", -1));
       ++y;
     }
-  ppt->win_ptr =  mlx_new_window(ppt->mlx_ptr, WINX, WINY, " rt ");
-  ppt->img_ptr = mlx_new_image(ppt->mlx_ptr, WINX, WINY);
+  ppt->win_ptr =  mlx_new_window(ppt->mlx_ptr, ppt->imgwidth,
+                                 ppt->imgheight, " rt ");
+  ppt->img_ptr = mlx_new_image(ppt->mlx_ptr,  ppt->imgwidth, ppt->imgheight);
   ppt->data = mlx_get_data_addr(ppt->img_ptr,
-				&ppt->bpp, &ppt->sizeline, &ppt->endian);
+                                &ppt->bpp, &ppt->sizeline, &ppt->endian);
   return (0);
 }
 
@@ -83,8 +86,9 @@ int		main(int ac, char **av)
   rpt.text = &text;
   rpt.ppt = &ppt;
   if (ac == 1)
-    return (merror("You need to specifie a config file in argument\n", -1));
-  if (pars(&rpt, av[1], &cpt) < 0 || creat_win(&ppt) == -1)
+    return (merror("You need to specifies at least a config file"
+                   " in argument\n", -1));
+  if (pars(&rpt, &(av[1]), &cpt) < 0 || creat_win(&ppt) == -1)
     return (-1);
   init_cos(rpt.obj);
   calc_pixel(&rpt, &cpt, &vpt, &ppt);

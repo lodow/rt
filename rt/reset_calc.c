@@ -27,10 +27,10 @@ void	assign_function(t_rt *rpt)
   rpt->eptr[11] = &tore;
 }
 
-void		new_coor(t_vec *vpt, t_cam *cpt, double x, double y)
+void		new_coor(t_vec *vpt, t_cam *cpt, t_par *ppt, double *pos)
 {
   vpt->vec[0] = DIST - cpt->pos[0];
-  vpt->vec[1] = (WINX / 2.0 - x) - cpt->pos[1];
-  vpt->vec[2] = (WINY / 2.0 - y) - cpt->pos[2];
+  vpt->vec[1] = (ppt->imgwidth / 2.0 - pos[0]) - cpt->pos[1];
+  vpt->vec[2] = (ppt->imgheight / 2.0 - pos[1]) - cpt->pos[2];
   rotate(vpt->vec, cpt->ccos, cpt->csin, 0);
 }

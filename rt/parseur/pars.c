@@ -32,7 +32,7 @@ int	check_shape(char *line, int *accol, int nb_line)
       return (merror(", file is incorectly formatted\n", -1));
     }
   return (i < 12 ? 1 : (i == 12) ? 5 : (i == 13) ? 2
-	  : (i == 14) ? 3 : (i == 15) ? 4 : 0);
+          : (i == 14) ? 3 : (i == 15) ? 4 : 0);
 }
 
 int	get_size(t_pars *opt)
@@ -43,21 +43,21 @@ int	get_size(t_pars *opt)
   while (opt->file[i])
     {
       if ((opt->rv = check_shape(opt->file[i], &opt->accol, i)) == -1)
-	return (-2);
+        return (-2);
       if (opt->rv == 1)
-	++opt->nb_shape;
+        ++opt->nb_shape;
       else if (opt->rv == 2)
-	++opt->nb_light;
+        ++opt->nb_light;
       else if (opt->rv == 3)
-	++opt->nb_cam;
+        ++opt->nb_cam;
       else if (opt->rv == 4)
-	++opt->nb_opt;
+        ++opt->nb_opt;
       else if (opt->rv == 5)
-	++opt->nb_model;
+        ++opt->nb_model;
       ++i;
     }
   return (((opt->nb_shape == 0 && opt->nb_model == 0)
-	  || opt->accol != 0) ? -1 : opt->nb_shape + 1);
+           || opt->accol != 0) ? -1 : opt->nb_shape + 1);
 }
 
 int	check_size(t_obj *tab)
@@ -71,16 +71,16 @@ int	check_size(t_obj *tab)
     {
       i = 0;
       while (i < 3)
-	{
-	  if (tab[obj].angle[i] == IVAL || tab[obj].pos[i] == IVAL)
-	    return (merror("Not enough informations specified\n"
-			   "Missing position or angle information\n", -1));
-	  ++i;
-	}
+        {
+          if (tab[obj].angle[i] == IVAL || tab[obj].pos[i] == IVAL)
+            return (merror("Not enough informations specified\n"
+                           "Missing position or angle information\n", -1));
+          ++i;
+        }
       if (tab[obj].type == 2 && tab[obj].angle[3] == IVAL)
-	return (merror("Missing angle info for the Cone\n", -1));
+        return (merror("Missing angle info for the Cone\n", -1));
       if (tab[obj].type != 1 && tab[obj].type == IVAL)
-	return (merror("Missing size's information\n", -1));
+        return (merror("Missing size's information\n", -1));
       obj++;
     }
   return (0);
@@ -97,28 +97,30 @@ int		check_blocks(t_pars *opt)
   return (0);
 }
 
-int		pars(t_rt *rpt, char *fname, t_cam *cpt)
+int		pars(t_rt *rpt, char **av, t_cam *cpt)
 {
   t_pars	opt;
+  char	*config_file;
 
   init_nb_obj(&opt);
   init_cam(cpt);
-  if (get_config_file(&opt, fname) < 0)
+  if ((parse_argv(av, rpt, &config_file) < 0)
+      || (get_config_file(&opt, config_file) < 0))
     return (-1);
-  if (get_size(&opt) == -2 || check_blocks(&opt) == -1)
+  if ((get_size(&opt) == -2) || (check_blocks(&opt) == -1))
     return (-2);
-  if ((rpt->obj = malloc(sizeof(t_obj) * (opt.nb_shape + 1))) == NULL ||
-      (rpt->light = malloc(sizeof(t_lig) * (opt.nb_light + 1))) == NULL)
+  if ((rpt->obj = malloc(sizeof(t_obj) * (opt.nb_shape + 1))) == NULL
+      || (rpt->light = malloc(sizeof(t_lig) * (opt.nb_light + 1))) == NULL)
     return (merror("Malloc failed\n", -1));
   if (init_elem(rpt->obj, &opt) == -1)
     return (-1);
   init_light(rpt->light, &opt);
-  if (fill_texture(&opt, rpt) == -1 ||
-      fill_tab(&opt, rpt->obj) == -1 ||
-      fill_light(&opt, rpt->light) == -1 ||
-      fill_cam(&opt, cpt) == -1 ||
-      fill_opt(&opt, rpt) == -1 ||
-      fill_model(&opt, &rpt->obj) == -1)
+  if (fill_texture(&opt, rpt) == -1
+      || fill_tab(&opt, rpt->obj) == -1
+      || fill_light(&opt, rpt->light) == -1
+      || fill_cam(&opt, cpt) == -1
+      || fill_opt(&opt, rpt) == -1
+      || fill_model(&opt, &rpt->obj) == -1)
     return (-1);
   return (check_size(rpt->obj));
 }

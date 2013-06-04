@@ -48,6 +48,7 @@ SRCS	= main.c \
 	  parseur/pars_seed.c \
 	  parseur/pars_contrast.c \
 	  parseur/init_opt.c \
+	  parseur/parse_argv.c \
 	  calc_inter.c \
 	  reset_calc.c \
 	  pp_image.c \

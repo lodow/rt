@@ -29,10 +29,10 @@ void		calc_inter(t_rt *rpt, double *kmin)
     {
       k = move_cam(rpt, rpt->vpt, rpt->cpt, obj);
       if (k > ZERO && (k < *kmin || *kmin == -1))
-	{
-	  *kmin = k;
-	  rpt->obj_num = i;
-	}
+        {
+          *kmin = k;
+          rpt->obj_num = i;
+        }
       ++i;
       obj = &(rpt->obj[i]);
     }
@@ -94,23 +94,23 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
 {
   t_samp	spt;
   unsigned int	color;
-  int		pos[2];
+  double		pos[2];
 
   pos[1] = 0;
   assign_function(rpt);
   if ((spt.pixel = malloc(sizeof(int) * rpt->opt->aa)) == NULL)
     return ;
-  while (pos[1] < WINY)
+  while (pos[1] < ppt->imgheight)
     {
       pos[0] = 0;
-      while (pos[0] < WINX)
-	{
-	  new_coor(vpt, cpt, pos[0], pos[1]);
-	  color = get_pixel_color(rpt);
-	  my_pixel_put_to_image(pos[0], pos[1], ppt, color);
-	  fill_img_param(pos, color, rpt, ppt);
-	  ++pos[0];
-	}
+      while (pos[0] < ppt->imgwidth)
+        {
+          new_coor(vpt, cpt, ppt, pos);
+          color = get_pixel_color(rpt);
+          my_pixel_put_to_image(pos[0], pos[1], ppt, color);
+          fill_img_param(pos, color, rpt, ppt);
+          ++pos[0];
+        }
       print_i(ppt);
       ++pos[1];
     }
