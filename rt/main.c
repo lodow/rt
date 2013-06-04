@@ -45,13 +45,11 @@ int	print_i(t_par *ppt)
   return (0);
 }
 
-int	creat_win(t_par *ppt, int width, int height)
+int	creat_win(t_par *ppt)
 {
   int	y;
 
   y = 0;
-  ppt->imgwidth = width;
-  ppt->imgheight = height;
   if ((ppt->mlx_ptr = mlx_init()) == NULL)
     return (merror("Couldn't init mlx\n", -1));
   else if ((ppt->img_obj = malloc(sizeof(double*)
@@ -88,8 +86,9 @@ int		main(int ac, char **av)
   rpt.text = &text;
   rpt.ppt = &ppt;
   if (ac == 1)
-    return (merror("You need to specifie a config file in argument\n", -1));
-  if (pars(&rpt, av[1], &cpt) < 0 || creat_win(&ppt, 1650, 1024) == -1)
+    return (merror("You need to specifies at least a config file"
+                   " in argument\n", -1));
+  if (pars(&rpt, &(av[1]), &cpt) < 0 || creat_win(&ppt) == -1)
     return (-1);
   init_cos(rpt.obj);
   calc_pixel(&rpt, &cpt, &vpt, &ppt);
