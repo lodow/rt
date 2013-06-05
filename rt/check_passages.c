@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon May  6 10:09:26 2013 luc sinet
-** Last update Wed May 15 14:34:35 2013 luc sinet
+** Last update Thu Jun  6 01:26:48 2013 luc sinet
 */
 
 #include "main.h"
@@ -16,7 +16,10 @@ void	tab_set(int *tab, int size)
 
   i = 0;
   while (i < size)
-    tab[i++] = -1;
+    {
+      tab[i] = -1;
+      ++i;
+    }
 }
 
 int	find_in_tab(int *tab, int nb, int *i)

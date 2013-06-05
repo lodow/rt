@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sun May 19 18:23:43 2013 etienne debas
-** Last update Thu May 30 17:39:00 2013 luc sinet
+** Last update Thu Jun  6 01:14:08 2013 luc sinet
 */
 
 #include <stdio.h>
@@ -13,20 +13,10 @@
 #include <math.h>
 #include "main.h"
 
-static int table[512];
-static int permutation[256] = {-1};
+static int g_tab[512] = {-1};
 
 void	init_noise(int *c_unit, double *x, double *y, double *z)
 {
-  int	i;
-
-  i = 0;
-  while (i < 256)
-    {
-      table[i] = permutation[i];
-      table[256 + i] = table[i];
-      ++i;
-    }
   c_unit[0] = (int)floor(*x) & 255;
   c_unit[1] = (int)floor(*y) & 255;
   c_unit[2] = (int)floor(*z) & 255;
@@ -41,7 +31,11 @@ void	init_permutation()
 
   i = 0;
   while (i < 256)
-    permutation[i++] = rand() % 256;
+    {
+      g_tab[i] = rand() % 256;
+      g_tab[256 + i] = g_tab[i];
+      ++i;
+    }
 }
 
 double		grad(int hash, double x, double y, double z)
@@ -68,24 +62,24 @@ double		get_perlin(double x, double y, double z)
   int		c_unit[3];
   int       	coor[6];
 
-  if (permutation[0] == -1)
+  if (g_tab[0] == -1)
     init_permutation();
   init_noise(c_unit, &x, &y, &z);
   vec[0] = fade(x);
   vec[1] = fade(y);
   vec[2] = fade(z);
-  coor[0] = table[c_unit[0]] + c_unit[1];
-  coor[1] = table[coor[0]] + c_unit[2];
-  coor[2] = table[coor[0] + 1] + c_unit[2];
-  coor[3] = table[c_unit[0] + 1] + c_unit[1];
-  coor[4] = table[coor[3]] + c_unit[2];
-  coor[5] = table[coor[3] + 1] + c_unit[2];
-  return (lerp(vec[2], lerp(vec[1], lerp(vec[0], grad(table[coor[1]], x, y, z),
-					 grad(table[coor[4]], x - 1, y, z)),
-			    lerp(vec[0], grad(table[coor[2]], x, y - 1, z),
-				 grad(table[coor[5]], x - 1, y - 1, z))),
-	       lerp(vec[1], lerp(vec[0], grad(table[coor[1] + 1], x, y, z - 1),
-				 grad(table[coor[4] + 1], x-1, y  , z - 1)),
-		    lerp(vec[0], grad(table[coor[2] + 1], x  , y - 1, z - 1),
-			 grad(table[coor[5] + 1], x - 1, y - 1, z - 1)))));
+  coor[0] = g_tab[c_unit[0]] + c_unit[1];
+  coor[1] = g_tab[coor[0]] + c_unit[2];
+  coor[2] = g_tab[coor[0] + 1] + c_unit[2];
+  coor[3] = g_tab[c_unit[0] + 1] + c_unit[1];
+  coor[4] = g_tab[coor[3]] + c_unit[2];
+  coor[5] = g_tab[coor[3] + 1] + c_unit[2];
+  return (lerp(vec[2], lerp(vec[1], lerp(vec[0], grad(g_tab[coor[1]], x, y, z),
+					 grad(g_tab[coor[4]], x - 1, y, z)),
+			    lerp(vec[0], grad(g_tab[coor[2]], x, y - 1, z),
+				 grad(g_tab[coor[5]], x - 1, y - 1, z))),
+	       lerp(vec[1], lerp(vec[0], grad(g_tab[coor[1] + 1], x, y, z - 1),
+				 grad(g_tab[coor[4] + 1], x-1, y  , z - 1)),
+		    lerp(vec[0], grad(g_tab[coor[2] + 1], x  , y - 1, z - 1),
+			 grad(g_tab[coor[5] + 1], x - 1, y - 1, z - 1)))));
 }
