@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Tue Jun  4 23:28:46 2013 adrien dellamaggiora
+** Last update Wed Jun  5 13:11:52 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -29,6 +29,7 @@
 # define K_ESC 65307
 # define GMAX(y, x) (y < 0 || x < 0) ? -1 : (x > y) ? x : y
 # define K_P 112
+# define K_O 111
 
 typedef struct	s_samp	t_samp;
 typedef struct	s_lco	t_lco;
@@ -186,5 +187,8 @@ int		output_bmp(t_par *ppt);
 double		fade(double curve);
 double		lerp(double curve, double a, double b);
 unsigned int	xorus_filter(unsigned int color, t_opt *opt);
+int		output_tga(t_par *ppt);
+char		*get_file_name(char *name, char *ext);
+void		nb_to_str(char *str, int nb, int size);
 
 #endif

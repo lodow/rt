@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Tue Jun  4 14:34:48 2013 luc sinet
+** Last update Wed Jun  5 13:03:08 2013 luc sinet
 */
 
 #include <time.h>
@@ -36,6 +36,8 @@ int	key_event(int key, t_rt *rpt)
     exit(0);
   else if (key == K_P)
     output_bmp(rpt->ppt);
+  else if (key == K_O)
+    output_tga(rpt->ppt);
   return (0);
 }
 

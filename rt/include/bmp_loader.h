@@ -5,7 +5,7 @@
 ** Login   <adrien@Adrien>
 **
 ** Started on  Wed May  1 14:21:15 2013 Adrien
-** Last update Mon May 13 11:36:11 2013 Adrien Della Maggiora
+** Last update Tue Jun  4 23:23:24 2013 luc sinet
 */
 
 #ifndef BMP_LOADER_H_

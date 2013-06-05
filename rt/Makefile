@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Mon Jun  3 21:09:08 2013 etienne debas
+## Last update Wed Jun  5 12:39:30 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -98,6 +98,7 @@ SRCS	= main.c \
 	  filter.c \
 	  bump_mapping.c \
 	  bmp_output.c \
+	  tga_output.c \
 	  shadows_supersampling.c \
 	  other_filter.c \
 	  perlin_permutation.c \
@@ -109,7 +110,7 @@ OBJS	= $(SRCS:.c=.o)
 
 OPT     = -L/usr/lib64 -lmlx_x86_64-linux -L/usr/lib64/X11 -lXext -lX11 -lm
 
-CFLAGS	+= --fast-math -ffast-math
+CFLAGS	+= --fast-math -ffast-math -O3 -march=native
 
 CC	= gcc -g -Wall -Wextra -I./include/
 
