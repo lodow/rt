@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Wed Jun  5 13:11:52 2013 luc sinet
+** Last update Thu Jun  6 00:24:41 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -22,12 +22,12 @@
 
 # define ZERO 0.00000001
 # define IVAL -1000000
-# define RANG(ang) (ang < 0) ? (ang * -1) : ang
+# define RANG(ang) ((ang) < 0) ? -(ang) : ang
 # define RAD(ang) (ang * 3.1415926 / 180)
-# define ABS(val) ((val) < 0) ? -(val) : val
+# define ABS(val) (((val) < 0) ? -(val) : (val))
 # define DIST 1000
 # define K_ESC 65307
-# define GMAX(y, x) (y < 0 || x < 0) ? -1 : (x > y) ? x : y
+# define GMAX(y, x) ((y) < 0 || (x) < 0) ? -1 : ((x) > (y)) ? (x) : (y)
 # define K_P 112
 # define K_O 111
 
