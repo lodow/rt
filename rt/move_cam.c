@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Mar 12 20:29:28 2013 luc sinet
-** Last update Wed May 29 18:31:35 2013 luc sinet
+** Last update Thu Jun  6 00:38:43 2013 luc sinet
 */
 
 #include <math.h>
@@ -49,14 +49,18 @@ double		move_cam(t_rt *rpt, t_vec *vpt, t_cam *cpt, t_obj *obj)
 {
   double	cam[3];
   double	vec[3];
+  double	*ocos;
+  double	*osin;
   double	k;
 
   copy_tab(vpt->vec, vec, 3);
+  ocos = obj->apt->ocos;
+  osin = obj->apt->osin;
   cam[0] = cpt->pos[0] - obj->pos[0];
   cam[1] = cpt->pos[1] - obj->pos[1];
   cam[2] = cpt->pos[2] - obj->pos[2];
-  rotate(vec, obj->ocos, obj->osin, 0);
-  rotate(cam, obj->ocos, obj->osin, 0);
+  rotate(vec, ocos, osin, 0);
+  rotate(cam, ocos, osin, 0);
   k = rpt->eptr[obj->type](cam, vec, obj);
   return (k);
 }

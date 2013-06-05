@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Thu Jun  6 00:24:41 2013 luc sinet
+** Last update Thu Jun  6 00:32:15 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -43,6 +43,14 @@ typedef struct	s_cam
   double	ctmp[3];
 }		t_cam;
 
+typedef struct	s_angle
+{
+  double	ocos[4];
+  double	osin[4];
+  double	acos[3];
+  double	asin[3];
+}		t_angle;
+
 typedef struct	s_indice
 {
   double	indice[4];
@@ -60,10 +68,6 @@ typedef struct	s_obj
   unsigned char	color[3];
   double	size[2];
   double	bright;
-  double	ocos[4];
-  double	osin[4];
-  double	acos[3];
-  double	asin[3];
   double	limit[9];
   double	pert[6];
   double	dist;
@@ -76,6 +80,7 @@ typedef struct	s_obj
   double	normal[4];
   t_bmp		*texture;
   t_indice	*ipt;
+  t_angle	*apt;
 }		t_obj;
 
 /*

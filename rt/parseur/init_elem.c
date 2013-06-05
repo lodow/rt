@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Tue Jun  4 11:50:56 2013 luc sinet
+** Last update Thu Jun  6 00:33:35 2013 luc sinet
 */
 
 #include <stdio.h>
@@ -88,7 +88,8 @@ int    init_elem(t_obj *tab, t_pars *opt)
   i = 0;
   while (i <= opt->nb_shape)
     {
-      if ((tab[i].ipt = malloc(sizeof(t_indice))) == NULL)
+      if ((tab[i].ipt = malloc(sizeof(t_indice))) == NULL ||
+	  (tab[i].apt = malloc(sizeof(t_angle))) == NULL)
 	return (merror("Malloc error\n", -1));
       init_single_elem(&tab[i]);
       ++i;

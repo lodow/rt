@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 17:19:47 2013 luc sinet
-** Last update Sat May 18 23:54:35 2013 luc sinet
+** Last update Tue Jun  4 16:57:40 2013 luc sinet
 */
 
 #include "nb.h"
@@ -18,5 +18,4 @@ void		get_color(char *line, unsigned char *color)
   color[2] = (fullcolor & 0xFF);
   color[1] = (fullcolor >> 8) & 0xFF;
   color[0] = (fullcolor >> 16) & 0xFF;
-
 }

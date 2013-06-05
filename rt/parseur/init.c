@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 17:22:40 2013 luc sinet
-** Last update Fri May 31 13:33:30 2013 luc sinet
+** Last update Thu Jun  6 00:49:02 2013 luc sinet
 */
 
 #include <math.h>
@@ -31,27 +31,29 @@ void	init_light(t_lig *ltab, t_pars *opt)
     }
 }
 
-void	init_cos(t_obj *obj)
+void		init_cos(t_obj *obj)
 {
-  int	i;
-  int	x;
+  t_angle	*apt;
+  int		i;
+  int		x;
 
   i = 0;
   while (obj[i].type != -1)
     {
+      apt = obj[i].apt;
       x = 0;
       while (x < 3)
 	{
-	  obj[i].ocos[x] = cos(-RAD(obj[i].angle[x]));
-	  obj[i].osin[x] = sin(-RAD(obj[i].angle[x]));
-	  obj[i].acos[x] = cos(RAD(obj[i].angle[x]));
-	  obj[i].asin[x] = sin(RAD(obj[i].angle[x]));
+	  apt->ocos[x] = cos(-RAD(obj[i].angle[x]));
+	  apt->osin[x] = sin(-RAD(obj[i].angle[x]));
+	  apt->acos[x] = cos(RAD(obj[i].angle[x]));
+	  apt->asin[x] = sin(RAD(obj[i].angle[x]));
 	  ++x;
 	}
       if (obj[i].type == 2)
 	{
-	  obj[i].ocos[x] = cos(RAD(obj[i].angle[x]));
-	  obj[i].osin[x] = sin(RAD(obj[i].angle[x]));
+	  apt->ocos[x] = cos(RAD(obj[i].angle[x]));
+	  apt->osin[x] = sin(RAD(obj[i].angle[x]));
 	}
       ++i;
     }

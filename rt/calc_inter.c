@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Tue Jun  4 11:33:58 2013 luc sinet
+** Last update Thu Jun  6 00:49:50 2013 luc sinet
 */
 
 #include <math.h>
@@ -94,7 +94,7 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
 {
   t_samp	spt;
   unsigned int	color;
-  double		pos[2];
+  double	pos[2];
 
   pos[1] = 0;
   assign_function(rpt);
@@ -114,7 +114,7 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
       print_i(ppt);
       ++pos[1];
     }
-  /* exit(0); */
+  exit(0);
   detect_edge(rpt, ppt);
   apply_supersampling(rpt, ppt, &spt);
 }

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Feb 26 04:22:07 2013 luc sinet
-** Last update Sun Jun  2 12:27:57 2013 luc sinet
+** Last update Thu Jun  6 00:37:14 2013 luc sinet
 */
 
 #include <math.h>
@@ -31,7 +31,7 @@ double		cone(double *cam, double *vec, t_obj *ept)
   double	a[3];
   double	tan_pow;
 
-  tan_pow = pow(ept->osin[3] / ept->ocos[3], 2);
+  tan_pow = pow(ept->apt->osin[3] / ept->apt->ocos[3], 2);
   a[0] = vec[0] * vec[0] * tan_pow + vec[1] * vec[1] * tan_pow -
     vec[2] * vec[2];
   a[1] = 2.0 * (cam[0] * vec[0] * tan_pow + cam[1] * vec[1] * tan_pow

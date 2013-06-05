@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Mon Jun  3 20:42:55 2013 luc sinet
+** Last update Thu Jun  6 00:45:22 2013 luc sinet
 */
 
 #include <math.h>
@@ -35,20 +35,24 @@ void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
   void		(*nptr[12])(double *nvec, double *obj_coor, double *pert,
 			    t_obj *obj);
   double	vcam[6];
+  double	*ocos[4];
   t_obj		*obj;
 
+  obj = &rpt->obj[rpt->obj_num];
+  ocos[0] = obj->apt->ocos;
+  ocos[1] = obj->apt->osin;
+  ocos[2] = obj->apt->acos;
+  ocos[3] = obj->apt->asin;
   copy_tab(rpt->cpt->pos, &vcam[3], 3);
   copy_tab(vpt->vec, vcam, 3);
   init_normals_pointers(nptr);
-  obj = &rpt->obj[rpt->obj_num];
   modif_cam(&vcam[3], obj->pos);
-  rotate(&vcam[3], obj->ocos, obj->osin, 0);
-  rotate(vcam, obj->ocos, obj->osin, 0);
+  rotate(&vcam[3], ocos[0], ocos[1], 0);
+  rotate(vcam, ocos[0], ocos[1], 0);
   get_impact(lpt->obj_coor, &vcam[3], k, vcam);
-  nptr[obj->type](lpt->nvec, lpt->obj_coor, obj->pert,
-		  &(rpt->obj[rpt->obj_num]));
-  rotate(lpt->nvec, obj->acos, obj->asin, 1);
-  rotate(lpt->obj_coor, obj->acos, obj->asin, 1);
+  nptr[obj->type](lpt->nvec, lpt->obj_coor, obj->pert, obj);
+  rotate(lpt->nvec, ocos[2], ocos[3], 1);
+  rotate(lpt->obj_coor, ocos[2], ocos[3], 1);
   lpt->obj_coor[0] += obj->pos[0];
   lpt->obj_coor[1] += obj->pos[1];
   lpt->obj_coor[2] += obj->pos[2];
