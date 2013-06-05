@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jun  4 21:21:22 2013 luc sinet
-** Last update Wed Jun  5 13:09:02 2013 luc sinet
+** Last update Wed Jun  5 13:30:11 2013 adrien dellamaggiora
 */
 
 #include <fcntl.h>
@@ -45,7 +45,7 @@ void	fill_tga(t_par *ppt, int fd)
 	{
 	  if ((octet == 4 && x % 4 != 3) || octet == 3)
             {
-              my_putbyte((&(img[(y * octet * width)])), fd, 3);
+              my_putbyte((&(img[(y * octet * width) + x])), fd, 3);
               x += 3;
             }
           ++x;
