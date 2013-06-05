@@ -21,7 +21,7 @@
 int	check_header(t_info_bmp *info, int fd)
 {
   int	ret;
-  char	buffer[55];
+  char	buffer[sizeof(t_info_bmp)];
   int	size;
 
   size = 0;
@@ -49,12 +49,12 @@ int	check_bmp(t_info_bmp *info, char **img, int fd, t_bmp *image)
       || (image->texture = malloc(info->widht * (info->deep_color[0] / 8)
 				  * info->height)) == NULL)
     return (merror("BMP Loader: Malloc Failed\n", -1));
-  if (info->offset - 54 < info->height)
+  if (info->offset - sizeof(t_info_bmp) < info->height)
     {
-      while ((ret = read(fd, *img, info->offset - 54 - size)) != -1
-	     && size + ret < info->offset - 54)
+      while ((ret = read(fd, *img, info->offset - sizeof(t_info_bmp) - size)) != -1
+	     && size + ret < info->offset - sizeof(t_info_bmp))
 	size += ret;
-      if (size < info->offset - 54)
+      if (size < info->offset - sizeof(t_info_bmp))
 	return (merror("BMP Loader: Read Error\n", -1));
     }
   size = 0;

@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Wed May 22 16:27:01 2013 Adrien Della Maggiora
-** Last update Wed Jun  5 13:11:53 2013 luc sinet
+** Last update Wed Jun  5 13:28:40 2013 adrien dellamaggiora
 */
 
 #include <fcntl.h>
@@ -75,7 +75,7 @@ void	fill_bmp(char *img, int fd, t_info_bmp *info, t_par *ppt)
         {
           if ((octet == 4 && x % 4 != 3) || octet == 3)
             {
-              my_putbyte((&(img[(y * octet * width)])), fd, 3);
+              my_putbyte((&(img[(y * octet * width) + x])), fd, 3);
               x += 3;
             }
           ++x;
