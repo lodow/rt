@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 09:35:28 2013 remi
-** Last update Wed Jun  5 08:43:04 2013 remi robert
+** Last update Wed Jun  5 08:45:47 2013 remi robert
 */
 
 #include "my_func.h"
@@ -69,11 +69,13 @@ void		validate_saisie(t_param *param)
     pcourant = pcourant->next;
   if (param->saisi.type == 1)
     pcourant->z = my_getnbr(param->saisi.buff);
-  validate_buffer(param->saisi.buff);
   if (param->saisi.type == 2)
     my_strcpy(pcourant->color, 20, param->saisi.buff);
   if (param->saisi.type == 3)
-    my_strcpy(pcourant->angle, 20, param->saisi.buff);
+    {
+      validate_buffer(param->saisi.buff);
+      my_strcpy(pcourant->angle, 20, param->saisi.buff);
+    }
   param->saisi.type = 0;
 }
 

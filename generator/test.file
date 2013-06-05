@@ -9,10 +9,10 @@ Option
    AA = 3;
 }
 
-Circle
+Plan
 {
-   Center = 504,472,500
-   Color : 50505050;
-   Angle : 0,5,10;
+   Center = 0,0,0
+   Color = 0xFFFFFFFF;
+   Angle = 0,0,0;
 }
 
