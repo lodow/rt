@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Jun  4 12:58:21 2013 remi robert
-** Last update Wed Jun  5 08:19:45 2013 remi robert
+** Last update Wed Jun  5 08:21:15 2013 remi robert
 */
 
 #include "my_func.h"
@@ -29,11 +29,11 @@ void	detect_box(t_param *param, int x, int y)
   if (x >= 450 && x <= 600 && y >= 60 && y <= 90)
     param->saisi.type = 1;
   if (x >= 450 && x <= 600 && y >= 100 && y <= 130)
-    param->saisi.type = 1;
+    param->saisi.type = 2;
   if (x >= 450 && x <= 600 && y >= 140 && y <= 170)
-    param->saisi.type = 1;
+    param->saisi.type = 3;
   if (x >= 450 && x <= 600 && y >= 180 && y <= 210)
-    param->saisi.type = 1;
+    param->saisi.type = 4;
   if (param->saisi.type != 0)
     rempl_coord(param, x, y);
   else

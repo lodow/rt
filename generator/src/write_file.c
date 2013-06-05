@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Jun  3 14:25:35 2013 remi robert
-** Last update Tue Jun  4 12:54:58 2013 remi robert
+** Last update Wed Jun  5 08:30:48 2013 remi robert
 */
 
 #include "my_func.h"
@@ -46,6 +46,10 @@ void	write_struct(char *str, t_object *pcourant, int fd)
   my_putstr(str, fd, -1);
   my_putstr("\n{\n", fd, -1);
   write_center_object("   Center = ", pcourant, fd);
+  my_putstr("\n   Color : ", fd, -1);
+  my_putstr(pcourant->color, fd, -1);
+  my_putstr("\n   Angle : ", fd, -1);
+  my_putstr(pcourant->angle, fd, -1);
   my_putstr("\n}\n\n", fd, -1);
 }
 
