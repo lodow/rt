@@ -9,10 +9,11 @@ Option
    AA = 3;
 }
 
-Cylindre
+Sphere
 {
-   Center = 0,0,0
+   Center = 643,320,852
    Color = 0xFFFFFFFF;
    Angle = 0,0,0;
+   Size = 50;
 }
 

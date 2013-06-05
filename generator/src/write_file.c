@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Jun  3 14:25:35 2013 remi robert
-** Last update Wed Jun  5 10:30:11 2013 remi robert
+** Last update Wed Jun  5 11:13:25 2013 remi robert
 */
 
 #include "my_func.h"
@@ -50,6 +50,8 @@ void	write_struct(char *str, t_object *pcourant, int fd)
   my_putstr(pcourant->color, fd, -1);
   my_putstr("\n   Angle = ", fd, -1);
   my_putstr(pcourant->angle, fd, -1);
+  my_putstr("\n   Size = ", fd, -1);
+  my_putstr(pcourant->size, fd, -1);
   my_putstr("\n}\n\n", fd, -1);
 }
 

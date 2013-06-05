@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 13:36:07 2013 remi
-** Last update Wed Jun  5 08:27:28 2013 remi robert
+** Last update Wed Jun  5 11:13:01 2013 remi robert
 */
 
 #include "my_func.h"
@@ -30,6 +30,7 @@ void		init_elem_in_the_object(t_object **pobject)
   (*pobject)->x = 0;
   (*pobject)->y = 0;
   (*pobject)->z = 0;
+  my_strcpy((*pobject)->size, 20, "50;");
   my_strcpy((*pobject)->color, 20, "0xFFFFFFFF;");
   my_strcpy((*pobject)->angle, 20, "0,0,0;");
 }
