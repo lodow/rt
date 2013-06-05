@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Tue Jun  4 13:12:37 2013 remi robert
+** Last update Tue Jun  4 22:18:41 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -38,8 +38,8 @@
 typedef struct		s_object
 {
   char			type;
-  int			color;
-  int			angle;
+  char			color[20];
+  char			angle[20];
   int			z;
   int			x;
   int			y;

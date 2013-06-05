@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:51:46 2013 remi
-** Last update Tue Jun  4 10:34:47 2013 remi robert
+** Last update Wed Jun  5 08:16:16 2013 remi robert
 */
 
 #include "my_func.h"
@@ -34,6 +34,7 @@ int	init_window(t_param *param)
   param->phead = NULL;
   param->on_click = NOTHING;
   param->click_menu = 0;
+  param->saisi.type = 0;
   param->saisi.check = 0;
   param->saisi.indice = 0;
   param->saisi.buff[0] = '\0';

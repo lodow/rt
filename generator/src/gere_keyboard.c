@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 09:35:28 2013 remi
-** Last update Tue Jun  4 13:13:29 2013 remi robert
+** Last update Wed Jun  5 08:15:51 2013 remi robert
 */
 
 #include "my_func.h"
@@ -39,13 +39,16 @@ void	gere_saisi_buff(t_param *param, int keycode)
 {
   char	aff[2];
 
-  if (param->saisi.check == 1 && keycode >= 65429 && keycode <= 65438)
+  if (param->saisi.check == 1)
     {
       printf("OKOK => %d\n", param->saisi.indice);
       if (param->saisi.indice >= 11)
 	return ;
       aff[1] = '\0';
-      aff[0] = get_number_with_key(keycode);
+      if (keycode >= 65429 && keycode <= 65438)
+	aff[0] = get_number_with_key(keycode);
+      else
+	aff[0] = keycode;
       param->saisi.buff[param->saisi.indice] = aff[0];
       param->saisi.indice += 1;
       param->saisi.buff[param->saisi.indice] = '\0';
@@ -66,6 +69,7 @@ void		validate_saisie(t_param *param)
     pcourant = pcourant->next;
   if (param->saisi.type == 1)
     pcourant->z = my_getnbr(param->saisi.buff);
+  param->saisi.type = 0;
 }
 
 int	gere_keyboard(int keycode, t_param *param)

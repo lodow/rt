@@ -5,19 +5,37 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Jun  4 12:58:21 2013 remi robert
-** Last update Tue Jun  4 13:04:02 2013 remi robert
+** Last update Wed Jun  5 08:19:45 2013 remi robert
 */
 
 #include "my_func.h"
 
+void	rempl_coord(t_param *param, int x, int y)
+{
+  param->saisi.check = 1;
+  param->saisi.x = 460;
+  if (x >= 450 && x <= 600 && y >= 60 && y <= 90)
+    param->saisi.y = 80;
+  if (x >= 450 && x <= 600 && y >= 100 && y <= 130)
+    param->saisi.y = 120;
+  if (x >= 450 && x <= 600 && y >= 140 && y <= 170)
+    param->saisi.y = 160;
+  if (x >= 450 && x <= 600 && y >= 180 && y <= 210)
+    param->saisi.y = 200;
+}
+
 void	detect_box(t_param *param, int x, int y)
 {
   if (x >= 450 && x <= 600 && y >= 60 && y <= 90)
-    {
-      param->saisi.check = 1;
-      printf("First !! \n");
-      param->saisi.type = 1;
-      param->saisi.x = 460;
-      param->saisi.y = 80;
-    }
+    param->saisi.type = 1;
+  if (x >= 450 && x <= 600 && y >= 100 && y <= 130)
+    param->saisi.type = 1;
+  if (x >= 450 && x <= 600 && y >= 140 && y <= 170)
+    param->saisi.type = 1;
+  if (x >= 450 && x <= 600 && y >= 180 && y <= 210)
+    param->saisi.type = 1;
+  if (param->saisi.type != 0)
+    rempl_coord(param, x, y);
+  else
+    param->saisi.check = 0;
 }
