@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 13:29:07 2013 remi
-** Last update Wed Jun  5 13:06:09 2013 remi robert
+** Last update Wed Jun  5 13:21:01 2013 remi robert
 */
 
 #include "my_func.h"
@@ -19,7 +19,7 @@ char	check_the_object_click(t_param *param, int x, int y)
   nb = 0;
   while (indice_y <= param->window.y)
     {
-      if (y >= indice_y && y <= indice_y + (param->window.y / 12)
+      if (y >= indice_y && y <= (indice_y + (param->window.y / 12))
 	  && x <= 150)
 	return (get_type_object(nb));
       ++nb;
@@ -38,10 +38,10 @@ void	add_elem_on_click(t_param *param, int x, int y)
   mlx_put_image_to_window(param->window.p, param->window.id,
 			  param->panel_control.img,
 			  165, 10);
-  draw_conf(param);
   if ((add_object(&param->phead, type)) == 0)
     return ;
   param->on_click = type;
+  draw_conf(param);
   param->click_menu = 1;
   draw_ui(param);
 }

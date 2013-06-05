@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Wed Jun  5 13:06:46 2013 remi robert
+** Last update Wed Jun  5 13:33:51 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -127,5 +127,8 @@ void	my_strcpy(char *str, int size, char *str_rempl);
 void	validate_buffer(char *str);
 void	free_object(t_param *param);
 void	gere_cancel(t_param *param);
+void	write_struct(char *str, t_object *pcourant, int fd);
+void	write_light(char *str, t_object *pcourant, int fd);
+void	write_center_object(char *str, t_object *pcourant, int fd);
 
 #endif
