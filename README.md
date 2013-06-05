@@ -50,15 +50,19 @@ Ombres et transparence
 Absorbance
 Ombres colorées
 Objets exotiques
-torre
+Torre
+Tangle
 fichier .bmp en input
 gestion transparence et reflection sur un meme rayon
 Filtres (gray alpha sepia)
 bruit de perlin (3d) (tous les effets avec)
 bump mapping (3d)
 Output en .bmp
+Output en .tga
 Textures
 Gamma
+Contraste
+Soft Shadows
 
 en cour
 
@@ -69,5 +73,4 @@ A faire
 Reflection de la lumiere
 Lumiere directe
 Createur de fichier de conf
-Blur sur les ombres
 Flou de profondeur
