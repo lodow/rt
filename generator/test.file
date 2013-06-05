@@ -11,9 +11,9 @@ Option
 
 Sphere
 {
-   Center = 643,320,852
+   Center = 464,476,0
    Color = 0xFFFFFFFF;
    Angle = 0,0,0;
-   Size = 50;
+   Size = 852;
 }
 
