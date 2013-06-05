@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Fri May 31 09:45:06 2013 remi
-** Last update Tue Jun  4 10:16:22 2013 remi robert
+** Last update Wed Jun  5 09:42:38 2013 remi robert
 */
 
 #include "my_func.h"
@@ -29,6 +29,22 @@ int	load_texture(t_param *param)
   return (1);
 }
 
+int	load_write_and_chack(t_param *param)
+{
+  if ((param->check_ok.img =
+       mlx_xpm_file_to_image(param->window.p,
+			     "texture/check_ok.xpm",
+			     &(param->check_ok.y),
+			     &(param->check_ok.x))) == NULL ||
+      (param->write.img =
+       mlx_xpm_file_to_image(param->window.p,
+			     "texture/write.xpm",
+			     &(param->write.y),
+			     &(param->write.x))) == NULL)
+    return (0);
+  return (1);
+}
+
 int	init_texture(t_param *param)
 {
   if ((param->tab_texture_menu =
@@ -43,7 +59,8 @@ int	init_texture(t_param *param)
        mlx_xpm_file_to_image(param->window.p,
 			     "texture/textbox.xpm",
 			     &(param->textbox.y),
-			     &(param->textbox.x))) == NULL)
+			     &(param->textbox.x))) == NULL ||
+      load_write_and_chack(param) == 0)
     return (0);
   return (1);
 }
