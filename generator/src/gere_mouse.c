@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 13:29:07 2013 remi
-** Last update Wed Jun  5 08:18:27 2013 remi robert
+** Last update Wed Jun  5 13:06:09 2013 remi robert
 */
 
 #include "my_func.h"
@@ -55,7 +55,9 @@ void	gere_menu_param(t_param *param, int x, int y)
       detect_box(param, x, y);
       return ;
     }
-  if (x >= 160 && x <= 600 && y >= 450 && y <= 500)
+  if (x >= 160 && x <= 400 && y >= 450 && y <= 500)
+    gere_cancel(param);
+  if (x >= 400 && x <= 600 && y >= 450 && y <= 500)
     {
       param->click_menu = 0;
       gere_expose(param);

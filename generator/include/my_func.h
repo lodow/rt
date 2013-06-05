@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Wed Jun  5 10:48:12 2013 remi robert
+** Last update Wed Jun  5 13:06:46 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -126,5 +126,6 @@ int	my_getnbr(char *str);
 void	my_strcpy(char *str, int size, char *str_rempl);
 void	validate_buffer(char *str);
 void	free_object(t_param *param);
+void	gere_cancel(t_param *param);
 
 #endif
