@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Wed Jun  5 09:39:36 2013 remi robert
+** Last update Wed Jun  5 10:28:28 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -124,5 +124,6 @@ void	detect_box(t_param *param, int x, int y);
 int	my_getnbr(char *str);
 void	my_strcpy(char *str, int size, char *str_rempl);
 void	validate_buffer(char *str);
+void	free_object(t_param *param);
 
 #endif

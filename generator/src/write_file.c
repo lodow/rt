@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Jun  3 14:25:35 2013 remi robert
-** Last update Wed Jun  5 08:46:33 2013 remi robert
+** Last update Wed Jun  5 10:30:11 2013 remi robert
 */
 
 #include "my_func.h"
@@ -69,4 +69,5 @@ void		write_file(t_param *param)
       write_struct(get_name_file_object(pcourant->type), pcourant, fd);
       pcourant = pcourant->next;
     }
+  close(fd);
 }

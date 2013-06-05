@@ -4,7 +4,7 @@
 ## Login   <robert_r@epitech.net>
 ## 
 ## Started on  Fri Nov 30 10:59:19 2012 remi robert
-## Last update Wed Jun  5 08:37:29 2013 remi robert
+## Last update Wed Jun  5 10:27:47 2013 remi robert
 ##
 
 SRCPATH	=	src/
@@ -33,6 +33,7 @@ SRC	=	$(SRCPATH)main.c \
 		$(SRCPATH)my_getnbr.c \
 		$(SRCPATH)strcpy.c \
 		$(SRCPATH)validate_buffer.c \
+		$(SRCPATH)free.c \
 
 OBJ	=	$(SRC:.c=.o)
 
