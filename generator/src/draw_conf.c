@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Jun  3 12:44:40 2013 remi robert
-** Last update Wed Jun  5 13:15:26 2013 remi robert
+** Last update Wed Jun  5 19:07:52 2013 remi robert
 */
 
 #include "my_func.h"
@@ -22,13 +22,18 @@ void	draw_conf(t_param *param)
 {
   if (param->on_click != 11)
     {
-      draw_conf_box(param, 450, 60, "conf z :");
-      draw_conf_box(param, 450, 100, "color :");
-      draw_conf_box(param, 450, 140, "angle :");
-      draw_conf_box(param, 450, 180, "size :");
+      draw_conf_box(param, 450, 60, "Coord z :");
+      draw_conf_box(param, 450, 100, "Color :");
+      draw_conf_box(param, 450, 140, "Angle :");
+      draw_conf_box(param, 450, 180, "Size :");
+      draw_conf_box(param, 450, 220, "Alpha :");
+      draw_conf_box(param, 450, 260, "Brightness :");
+      draw_conf_box(param, 450, 300, "Bump mapping :");
+      draw_conf_box(param, 450, 340, "Perlin :");
+      draw_conf_box(param, 450, 380, "Reflexion :");
       return ;
     }
-  draw_conf_box(param, 450, 60, "conf z :");
-  draw_conf_box(param, 450, 100, "color :");
-  draw_conf_box(param, 450, 140, "intensite :");
+  draw_conf_box(param, 450, 60, "Coord z :");
+  draw_conf_box(param, 450, 100, "Color :");
+  draw_conf_box(param, 450, 140, "Intensite :");
 }

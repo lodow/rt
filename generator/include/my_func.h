@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Wed Jun  5 13:33:51 2013 remi robert
+** Last update Wed Jun  5 19:15:36 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -41,6 +41,11 @@ typedef struct		s_object
   char			color[20];
   char			angle[20];
   char			size[20];
+  char			alpha[20];
+  char			bridghtness[20];
+  char			maping[20];
+  char			perlin[20];
+  char			reflexion[20];
   int			z;
   int			x;
   int			y;
@@ -130,5 +135,6 @@ void	gere_cancel(t_param *param);
 void	write_struct(char *str, t_object *pcourant, int fd);
 void	write_light(char *str, t_object *pcourant, int fd);
 void	write_center_object(char *str, t_object *pcourant, int fd);
+void	rempl_rempl_struct(t_param *param, t_object *pcourant);
 
 #endif
