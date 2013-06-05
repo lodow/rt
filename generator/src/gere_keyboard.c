@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 09:35:28 2013 remi
-** Last update Wed Jun  5 08:45:47 2013 remi robert
+** Last update Wed Jun  5 10:22:28 2013 remi robert
 */
 
 #include "my_func.h"
@@ -41,7 +41,7 @@ void	gere_saisi_buff(t_param *param, int keycode)
 
   if (param->saisi.check == 1)
     {
-      printf("OKOK => %d\n", param->saisi.indice);
+      printf(" => %d\n", param->saisi.indice);
       if (param->saisi.indice >= 11)
 	return ;
       aff[1] = '\0';
@@ -76,6 +76,8 @@ void		validate_saisie(t_param *param)
       validate_buffer(param->saisi.buff);
       my_strcpy(pcourant->angle, 20, param->saisi.buff);
     }
+  mlx_put_image_to_window(param->window.p, param->window.id,
+			  param->check_ok.img, 426, param->saisi.y - 20);
   param->saisi.type = 0;
 }
 

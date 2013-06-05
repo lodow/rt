@@ -9,9 +9,9 @@ Option
    AA = 3;
 }
 
-Cylindre
+Plan
 {
-   Center = 0,0,0
+   Center = 0,0,852
    Color = 0xFFFFFFFF;
    Angle = 0,0,0;
 }
