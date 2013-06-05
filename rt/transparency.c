@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May  5 18:27:59 2013 luc sinet
-** Last update Tue Jun  4 11:39:21 2013 luc sinet
+** Last update Wed Jun  5 21:19:00 2013 luc sinet
 */
 
 #include <math.h>
@@ -61,14 +61,16 @@ double		transparency_loop(t_rt *rpt, t_lco *lpt, t_trans *trans,
 
   i = 0;
   obj = rpt->obj_num;
-  trans->alpha[trans->count] = rpt->obj[obj].ipt->indice[0];
   refrac = get_refrac_ratio(rpt->obj, &rpt->obj[obj],
 			    trans->pass, obj);
   calc_refrac(rpt, lpt, k, refrac);
   calc_inter(rpt, &k);
   found = find_in_tab(trans->pass, rpt->obj_num, &i);
   if (k > ZERO && rpt->obj_num != obj && !found)
-    trans->color[trans->count++] = modifie_p_color(rpt, k, 1);
+    {
+      trans->alpha[trans->count] = rpt->obj[rpt->obj_num].ipt->indice[0];
+      trans->color[trans->count++] = modifie_p_color(rpt, k, 1);
+    }
   else if (k == -1)
     trans->color[trans->count++] = 0x000000;
   ++trans->nb_obj;
