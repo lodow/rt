@@ -195,8 +195,5 @@ unsigned int	xorus_filter(unsigned int color, t_opt *opt);
 int		output_tga(t_par *ppt);
 char		*get_file_name(char *name, char *ext);
 void		nb_to_str(char *str, int nb, int size);
-void		my_perror(char *str);
-int		check_perror(char *str, int err);
-void		loading_bar(int where, int max, int clear);
 
 #endif

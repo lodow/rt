@@ -69,13 +69,13 @@ int	get_config_file(t_pars *ppt, char *conf_name)
 {
   int	fd;
 
-  if ((fd = check_perror("Open Scene", open(conf_name, O_RDONLY))) == -1)
-    return (-1);
+  if ((fd = open(conf_name, O_RDONLY)) == -1)
+    return (merror("Can't open the file\n", -1));
   if (get_file(ppt, fd) == -1)
     {
-      check_perror("Close", close(fd));
+      close(fd);
       return (-1);
     }
-  check_perror("Close", close(fd));
+  close(fd);
   return (0);
 }

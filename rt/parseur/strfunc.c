@@ -11,7 +11,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "str.h"
-#include "main.h"
 
 int	my_strncmp(char *s1, char *s2, int n)
 {
@@ -21,7 +20,7 @@ int	my_strncmp(char *s1, char *s2, int n)
   while ((s1[i] || s2[i]) && i < n)
     {
       if (s1[i] != s2[i])
-        return (s1[i] - s2[i]);
+	return (s1[i] - s2[i]);
       i++;
     }
   return (0);
@@ -35,7 +34,7 @@ int	my_strcmp(char *s1, char *s2)
   while (s1[i] || s2[i])
     {
       if (s1[i] != s2[i])
-        return (s1[i] - s2[i]);
+	return (s1[i] - s2[i]);
       i++;
     }
   return (0);
@@ -55,5 +54,7 @@ void	free_tab(char **tab)
 
 void	my_putchar(char c, int fd)
 {
-  my_putbyte(&c, fd, 1);
+  if (write(fd, &c, 1) == -1)
+    if (write(2, "Write error\n", 12) == -1)
+      return ;
 }
