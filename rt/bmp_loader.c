@@ -5,7 +5,7 @@
 ** Login   <adrien@Adrien>
 **
 ** Started on  Wed May  1 13:50:59 2013 Adrien
-** Last update Thu Jun  6 16:26:49 2013 adrien dellamaggiora
+** Last update Thu Jun  6 18:35:21 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -42,9 +42,12 @@ int	check_bmp(t_info_bmp *info, char **img, int fd, t_bmp *image)
 {
   int	ret;
   int	size;
+  int	fsize;
 
   size = 0;
-  if ((*img = malloc((info->widht * (info->deep_color[0] / 8) + (info->widht * (info->deep_color[0] / 8)) % 2) * info->height)) == NULL
+  fsize = (((info->widht * info->deep_color[0] / 8) + (info->widht % 4))
+	   * info->height);
+  if ((*img = malloc(fsize)) == NULL
       || (image->texture = malloc(info->widht * (info->deep_color[0] / 8)
                                   * info->height)) == NULL)
     return (merror("BMP Loader: Malloc Failed\n", -1));
@@ -57,11 +60,9 @@ int	check_bmp(t_info_bmp *info, char **img, int fd, t_bmp *image)
         return (merror("BMP Loader: Read Error\n", -1));
     }
   size = 0;
-  while ((ret = read(fd, &(*img)[size], (info->widht * (info->deep_color[0] / 8) + (info->widht * (info->deep_color[0] / 8)) % 2) * info->height)) > 0 &&
-         size + ret < ((info->widht + info->widht % 2) * (info->deep_color[0] / 8))
-	 * info->height)
+  while ((ret = read(fd, &(*img)[size], fsize)) > 0 && size + ret < fsize)
     size += ret;
-  if ((size + ret != ((info->widht * (info->deep_color[0] / 8) + (info->widht * (info->deep_color[0] / 8)) % 2)) * info->height))
+  if (size + ret != fsize)
     return (merror("BMP Loader: Read Error\n", -1));
   return (0);
 }
