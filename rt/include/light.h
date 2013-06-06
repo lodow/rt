@@ -11,8 +11,9 @@
 #ifndef LIG_H_
 # define LIG_H_
 
+# include "pars.h"
+
 # define MAX(x, y) (x > y) ? x : y
-# define LIMIT(x, n1, n2) (x < n1) ? n1 : (x > n2) ? n2 : x
 # define DISTP 5000
 # define SPE_SIZE 1
 # define MAX_DIST 80
