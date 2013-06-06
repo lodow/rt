@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 09:59:11 2013 remi
-** Last update Fri May 31 21:02:44 2013 remi robert
+** Last update Thu Jun  6 10:23:02 2013 remi robert
 */
 
 #include "my_func.h"
@@ -81,16 +81,18 @@ void		draw_ui(t_param *param)
   draw_ui_bothom_border(param);
   if (param->phead == NULL)
     return ;
-  indice = -1;
+  indice = 0;
   pcourant = param->phead;
   while (pcourant != NULL)
     {
-      ++indice;
+      indice += 1;
       pcourant = pcourant->next;
     }
   buff[0] = '\0';
   mlx_string_put(param->window.p, param->window.id, 155, 890,
 		 0xFFFFFFFF, "nb elem = ");
   mlx_string_put(param->window.p, param->window.id, 220, 890,
-		 0xFF00, (convert_number_char(indice + 1, buff)));
+		 0xFF00, (convert_number_char(indice, buff)));
+  mlx_string_put(param->window.p, param->window.id, 1250, 890,
+		 0xFF0000, "Press Escape for validate your generation");
 }

@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Wed Jun  5 19:15:36 2013 remi robert
+** Last update Thu Jun  6 10:23:15 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -19,8 +19,6 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-# define X		1500
-# define Y		900
 # define SPHERE		0
 # define PLAN		1
 # define CONE		2
@@ -46,6 +44,9 @@ typedef struct		s_object
   char			maping[20];
   char			perlin[20];
   char			reflexion[20];
+  char			normal[20];
+  char			checker[20];
+  char			n[20];
   int			z;
   int			x;
   int			y;

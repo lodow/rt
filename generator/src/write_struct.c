@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Wed Jun  5 13:32:41 2013 remi robert
-** Last update Wed Jun  5 19:20:48 2013 remi robert
+** Last update Thu Jun  6 08:03:17 2013 remi robert
 */
 
 #include "my_func.h"
@@ -65,6 +65,21 @@ void	write_struct_option(t_object *pcourant, int fd)
     {
       my_putstr("\n   Reflexion = ", fd, -1);
       my_putstr(pcourant->reflexion, fd, -1);
+    }
+  if (pcourant->normal[0] != '\0')
+    {
+      my_putstr("\n   Normal = ", fd, -1);
+      my_putstr(pcourant->normal, fd, -1);
+    }
+  if (pcourant->checker[0] != '\0')
+    {
+      my_putstr("\n   Checker = ", fd, -1);
+      my_putstr(pcourant->checker, fd, -1);
+    }
+  if (pcourant->n[0] != '\0')
+    {
+      my_putstr("\n   N = ", fd, -1);
+      my_putstr(pcourant->n, fd, -1);
     }
 }
 

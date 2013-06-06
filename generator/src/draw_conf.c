@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Jun  3 12:44:40 2013 remi robert
-** Last update Wed Jun  5 19:07:52 2013 remi robert
+** Last update Thu Jun  6 07:53:20 2013 remi robert
 */
 
 #include "my_func.h"
@@ -31,6 +31,9 @@ void	draw_conf(t_param *param)
       draw_conf_box(param, 450, 300, "Bump mapping :");
       draw_conf_box(param, 450, 340, "Perlin :");
       draw_conf_box(param, 450, 380, "Reflexion :");
+      draw_conf_box(param, 450, 420, "Normal :");
+      draw_conf_box(param, 450, 460, "Checker :");
+      draw_conf_box(param, 450, 500, "N :");
       return ;
     }
   draw_conf_box(param, 450, 60, "Coord z :");

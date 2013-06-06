@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:51:46 2013 remi
-** Last update Wed Jun  5 08:16:16 2013 remi robert
+** Last update Thu Jun  6 10:24:21 2013 remi robert
 */
 
 #include "my_func.h"
@@ -26,11 +26,11 @@ void    init_img(t_param *param)
 int	init_window(t_param *param)
 {
   if ((param->window.p = mlx_init()) == NULL ||
-      (param->window.id = mlx_new_window(param->window.p, X,
-					 Y, "generator rt")) == NULL)
+      (param->window.id = mlx_new_window(param->window.p, 1500,
+					 900, "generator rt")) == NULL)
     return (0);
-  param->window.x = X;
-  param->window.y = Y;
+  param->window.x = 1500;
+  param->window.y = 900;
   param->phead = NULL;
   param->on_click = NOTHING;
   param->click_menu = 0;

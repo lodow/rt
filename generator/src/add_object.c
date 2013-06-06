@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 13:36:07 2013 remi
-** Last update Wed Jun  5 19:21:24 2013 remi robert
+** Last update Thu Jun  6 08:04:49 2013 remi robert
 */
 
 #include "my_func.h"
@@ -38,6 +38,9 @@ void		init_elem_in_the_object(t_object **pobject)
   (*pobject)->maping[0] = '\0';
   (*pobject)->perlin[0] = '\0';
   (*pobject)->reflexion[0] = '\0';
+  (*pobject)->normal[0] = '\0';
+  (*pobject)->checker[0] = '\0';
+  (*pobject)->n[0] = '\0';
 }
 
 int		add_object(t_object **phead, char type)
