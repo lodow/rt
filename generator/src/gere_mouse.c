@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 13:29:07 2013 remi
-** Last update Thu Jun  6 12:06:48 2013 remi robert
+** Last update Thu Jun  6 12:50:22 2013 remi robert
 */
 
 #include "my_func.h"
@@ -37,9 +37,9 @@ void	add_elem_on_click(t_param *param, int x, int y)
     return ;
   if ((add_object(&param->phead, type)) == 0)
     return ;
-  draw_ui(param);
   param->on_click = type;
   param->click_menu = 1;
+  draw_ui(param);
   mlx_put_image_to_window(param->window.p, param->window.id,
 			  param->panel_control.img,
 			  165, 10);

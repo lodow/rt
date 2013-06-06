@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 09:59:11 2013 remi
-** Last update Thu Jun  6 11:50:49 2013 remi robert
+** Last update Thu Jun  6 12:49:55 2013 remi
 */
 
 #include "my_func.h"
@@ -76,10 +76,10 @@ void		draw_ui(t_param *param)
   t_object	*pcourant;
   int		indice;
 
+  draw_form(param);
   draw_ui_border(param);
   draw_ui_border_menu(param);
   draw_ui_bothom_border(param);
-  draw_form(param);
   if (param->phead == NULL)
     return ;
   indice = 0;
