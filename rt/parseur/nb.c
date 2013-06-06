@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "str.h"
+#include "main.h"
 
 int	my_sgetnbr(char *s1, int *i)
 {
@@ -22,13 +23,13 @@ int	my_sgetnbr(char *s1, int *i)
   while (s1[*i] == ' ' || s1[*i] == '-' || s1[*i] == '+')
     {
       if (s1[*i] == '-')
-	sign = -sign;
+        sign = -sign;
       (*i)++;
     }
   while (s1[*i] >= '0' && s1[*i] <= '9')
     {
       if (((nb * 10) / 10) != nb)
-	  return (0);
+        return (0);
       nb = nb * 10 + (s1[*i] - 48);
       (*i)++;
     }
@@ -47,13 +48,13 @@ int    	my_getnbr(char *s1)
   while (s1[i] == ' ' || s1[i] == '-' || s1[i] == '+')
     {
       if (s1[i] == '-')
-	sign = -sign;
+        sign = -sign;
       i++;
     }
   while (s1[i] >= '0' && s1[i] <= '9')
     {
       if (((nb * 10) / 10) != nb)
-	  return (0);
+        return (0);
       nb = nb * 10 + (s1[i] - 48);
       i++;
     }
@@ -77,6 +78,5 @@ void	my_put_nbr(int nb, int fd)
   if (nb >= 10)
     my_put_nbr(nb / 10, fd);
   res = nb % 10 + 48;
-  if (write(fd, &res, 1) == -1)
-    write(2, "Write error\n", 12);
+  my_putchar(res, fd);
 }
