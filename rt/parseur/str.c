@@ -8,6 +8,7 @@
 ** Last update Fri Mar 15 01:38:26 2013 luc sinet
 */
 
+#include "main.h"
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -25,8 +26,7 @@ int	my_strlen(char *str)
 
 void	my_putstr(char *s1, int fd)
 {
-  if (write(fd, s1, my_strlen(s1)) == -1)
-    write(2, "Write error\n", 12);
+  my_putbyte(s1, fd, -1);
 }
 
 char	*my_strdup(char *src)

@@ -51,6 +51,7 @@ void		apply_supersampling(t_rt *rpt, t_par *ppt, t_samp *spt)
         {
           if (img[y * ppt->imgwidth + x] == -1)
             my_pixel_put_to_image(x, y, ppt, supersampling(rpt, spt, x, y));
+          loading_bar(y * ppt->imgwidth + x, ppt->imgwidth * ppt->imgheight, 0);
           ++x;
         }
       usleep(8000);
