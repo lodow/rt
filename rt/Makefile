@@ -56,6 +56,7 @@ SRCS	= main.c \
 	  inter.c \
 	  copy.c \
 	  move_cam.c \
+	  loading_bar.c \
 	  light.c \
 	  change_color.c \
 	  math_coor.c \
@@ -105,7 +106,7 @@ SRCS	= main.c \
 	  perlin_permutation.c \
 	  solve_cubic.c \
 	  solve_quartic.c \
-	  solve_quadratic.c \
+	  solve_quadratic.c
 
 OBJS	= $(SRCS:.c=.o)
 
