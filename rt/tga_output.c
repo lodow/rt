@@ -60,8 +60,7 @@ char	*get_file_name(char *name, char *ext)
   char 	num[5];
 
   i = 0;
-  while (i == 0
-         || (i < 1000 && check_perror("Access", access(name, F_OK)) == 0))
+  while (i == 0 || (i < 1000 && access(name, F_OK)) == 0)
     {
       my_strcpy(name, "./display");
       nb_to_str(num, i, i);
