@@ -30,7 +30,7 @@ void	my_putbyte(const void *ptr, int fd, int strlen)
         {
           if (len == -1)
             {
-              my_putstr("Write error\n", 2);
+              my_perror("Write");
               return ;
             }
           str = &(str[len]);
