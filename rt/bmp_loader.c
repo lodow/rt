@@ -5,7 +5,7 @@
 ** Login   <adrien@Adrien>
 **
 ** Started on  Wed May  1 13:50:59 2013 Adrien
-** Last update Fri May 31 11:25:32 2013 adrien dellamaggiora
+** Last update Thu Jun  6 16:26:49 2013 adrien dellamaggiora
 */
 
 #include <sys/types.h>
@@ -25,10 +25,10 @@ int	check_header(t_info_bmp *info, int fd)
   int	size;
 
   size = 0;
-  while ((ret = read(fd, &buffer[size], sizeof(t_info_bmp) - size)) != -1
+  while ((ret = read(fd, &buffer[size], sizeof(t_info_bmp) - size)) > 0
          && size + ret < (int)sizeof(t_info_bmp))
     size += ret;
-  if (size + ret < (int)sizeof(t_info_bmp))
+  if (size + ret != (int)sizeof(t_info_bmp))
     return (merror("BMP Loader: Bad size of the Header in bmp file\n", -1));
   my_mem_cpy((void *)info, (void *)buffer, sizeof(t_info_bmp));
   if (info->deep_color[0] != 0x18 && info->deep_color[1] != 0)
@@ -44,26 +44,24 @@ int	check_bmp(t_info_bmp *info, char **img, int fd, t_bmp *image)
   int	size;
 
   size = 0;
-  if ((*img = malloc((info->widht + info->widht % 4) *
-                     (info->deep_color[0] / 8) * info->height)) == NULL
+  if ((*img = malloc((info->widht * (info->deep_color[0] / 8) + (info->widht * (info->deep_color[0] / 8)) % 2) * info->height)) == NULL
       || (image->texture = malloc(info->widht * (info->deep_color[0] / 8)
                                   * info->height)) == NULL)
     return (merror("BMP Loader: Malloc Failed\n", -1));
-  if (info->offset - (int)sizeof(t_info_bmp) < info->height)
+  if (info->offset - (int)sizeof(t_info_bmp) > 0)
     {
-      while ((ret = read(fd, *img, info->offset - (int)sizeof(t_info_bmp) - size)) != -1
+      while ((ret = read(fd, *img, info->offset - (int)sizeof(t_info_bmp) - size)) > 0
              && size + ret < info->offset - (int)sizeof(t_info_bmp))
         size += ret;
-      if (size < info->offset - (int)sizeof(t_info_bmp))
+      if (size + ret != info->offset - (int)sizeof(t_info_bmp))
         return (merror("BMP Loader: Read Error\n", -1));
     }
   size = 0;
-  while ((ret = read(fd, *img, (info->widht + info->widht % 4)
-                     * (info->deep_color[0] / 8) * info->height)) != -1 &&
-         size < ((info->widht + info->widht % 4) * (info->deep_color[0] / 8)))
+  while ((ret = read(fd, &(*img)[size], (info->widht * (info->deep_color[0] / 8) + (info->widht * (info->deep_color[0] / 8)) % 2) * info->height)) > 0 &&
+         size + ret < ((info->widht + info->widht % 2) * (info->deep_color[0] / 8))
+	 * info->height)
     size += ret;
-  if ((size < ((info->widht + info->widht % 4) * (info->deep_color[0] / 8)) *
-       info->height))
+  if ((size + ret != ((info->widht * (info->deep_color[0] / 8) + (info->widht * (info->deep_color[0] / 8)) % 2)) * info->height))
     return (merror("BMP Loader: Read Error\n", -1));
   return (0);
 }

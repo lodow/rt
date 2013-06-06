@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Wed May 22 16:27:01 2013 Adrien Della Maggiora
-** Last update Wed Jun  5 13:28:40 2013 adrien dellamaggiora
+** Last update Thu Jun  6 16:10:15 2013 adrien dellamaggiora
 */
 
 #include <fcntl.h>
@@ -20,7 +20,7 @@ void	init_bmp(t_info_bmp *image, t_par *ppt)
 {
   image->magic_nb[0] = 0x42;
   image->magic_nb[1] = 0x4D;
-  image->size = ((ppt->imgwidth * 3) + ((ppt->imgwidth * 3) % 4))
+  image->size = ((ppt->imgwidth * 3) + ((ppt->imgwidth * 3) % 2))
                 * ppt->imgheight + 54;
   image->reserve = 0;
   image->offset = 54;
@@ -32,7 +32,7 @@ void	init_bmp(t_info_bmp *image, t_par *ppt)
   image->deep_color[0] = 0x18;
   image->deep_color[1] = 0;
   image->compression = 0;
-  image->size_image = ((ppt->imgwidth + ppt->imgwidth % 4) * 3)
+  image->size_image = ((ppt->imgwidth + ppt->imgwidth % 2) * 3)
                       * ppt->imgheight;
   image->widht_image = 2833;
   image->height_image = 2833;
@@ -80,7 +80,7 @@ void	fill_bmp(char *img, int fd, t_info_bmp *info, t_par *ppt)
             }
           ++x;
         }
-      fill_with_zero(fd, (width * 3) % 4);
+      fill_with_zero(fd, (width * 3) % 2);
       --y;
     }
 }
