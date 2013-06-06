@@ -35,6 +35,7 @@ void	parse_win_size(char *str, t_rt *rpt)
   int	nwidht;
 
   i = 0;
+  height = "0";
   if (str == NULL)
     return ;
   while ((str[i] != 'x') && (str[i] != '\0'))

@@ -11,7 +11,7 @@
 #ifndef PARS_H_
 # define PARS_H_
 
-# define LIMIT(x, n1, n2) (x < n1) ? n1 : (x > n2) ? n2 : x
+# define LIMIT(x, n1, n2) (((x) < (n1)) ? (n1) : ((x) > (n2)) ? (n2) : (x))
 # define BOOL(x) (x >= 1) ? 1 : 0
 # define T_ACCOL(x) (x == 16) ? 1 : (x == 17) ? -1 : 0
 

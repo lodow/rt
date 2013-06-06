@@ -26,7 +26,7 @@ int	check_header(t_info_bmp *info, int fd)
 
   size = 0;
   while ((ret = read(fd, &buffer[size], sizeof(t_info_bmp) - size)) != -1
-	 && size + ret < (int)sizeof(t_info_bmp))
+         && size + ret < (int)sizeof(t_info_bmp))
     size += ret;
   if (size + ret < (int)sizeof(t_info_bmp))
     return (merror("BMP Loader: Bad size of the Header in bmp file\n", -1));
@@ -45,22 +45,22 @@ int	check_bmp(t_info_bmp *info, char **img, int fd, t_bmp *image)
 
   size = 0;
   if ((*img = malloc((info->widht + info->widht % 4) *
-		     (info->deep_color[0] / 8) * info->height)) == NULL
+                     (info->deep_color[0] / 8) * info->height)) == NULL
       || (image->texture = malloc(info->widht * (info->deep_color[0] / 8)
-				  * info->height)) == NULL)
+                                  * info->height)) == NULL)
     return (merror("BMP Loader: Malloc Failed\n", -1));
-  if (info->offset - sizeof(t_info_bmp) < info->height)
+  if (info->offset - (int)sizeof(t_info_bmp) < info->height)
     {
-      while ((ret = read(fd, *img, info->offset - sizeof(t_info_bmp) - size)) != -1
-	     && size + ret < info->offset - sizeof(t_info_bmp))
-	size += ret;
-      if (size < info->offset - sizeof(t_info_bmp))
-	return (merror("BMP Loader: Read Error\n", -1));
+      while ((ret = read(fd, *img, info->offset - (int)sizeof(t_info_bmp) - size)) != -1
+             && size + ret < info->offset - (int)sizeof(t_info_bmp))
+        size += ret;
+      if (size < info->offset - (int)sizeof(t_info_bmp))
+        return (merror("BMP Loader: Read Error\n", -1));
     }
   size = 0;
   while ((ret = read(fd, *img, (info->widht + info->widht % 4)
-		     * (info->deep_color[0] / 8) * info->height)) != -1 &&
-	 size < ((info->widht + info->widht % 4) * (info->deep_color[0] / 8)))
+                     * (info->deep_color[0] / 8) * info->height)) != -1 &&
+         size < ((info->widht + info->widht % 4) * (info->deep_color[0] / 8)))
     size += ret;
   if ((size < ((info->widht + info->widht % 4) * (info->deep_color[0] / 8)) *
        info->height))
@@ -79,16 +79,16 @@ void	fill_img(t_info_bmp *info, t_bmp *image, char *img)
   while (j >= 0)
     {
       i = 0;
-      while (i + 3 < widht)
-	{
-	  image->texture[((info->height - 1) - j) * widht + i + 2] =
-	    img[widht * j + i];
-	  image->texture[((info->height - 1) - j) * widht + i + 1] =
-	    img[widht * j + i + 1];
-	  image->texture[((info->height - 1) - j) * widht + i] =
-	    img[widht * j + i + 2];
-	  i += 3;
-	}
+      while (i + 2 < widht)
+        {
+          image->texture[((info->height - 1) - j) * widht + i + 2] =
+            img[widht * j + i + 0];
+          image->texture[((info->height - 1) - j) * widht + i + 1] =
+            img[widht * j + i + 1];
+          image->texture[((info->height - 1) - j) * widht + i + 0] =
+            img[widht * j + i + 2];
+          i += 3;
+        }
       --j;
     }
   image->height = info->height;
