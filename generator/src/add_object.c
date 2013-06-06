@@ -5,25 +5,10 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 13:36:07 2013 remi
-** Last update Thu Jun  6 11:52:59 2013 remi
+** Last update Thu Jun  6 21:33:51 2013 remi robert
 */
 
 #include "my_func.h"
-
-void	list_object(t_object *phead)
-{
-  t_object	*pcurrent;
-
-  if (phead == NULL)
-    return ;
-  pcurrent = phead;
-  while (pcurrent != NULL)
-    {
-      printf("Object : \n");
-      printf("type : %d x : %d y : %d\n", pcurrent->type, pcurrent->x, pcurrent->y);
-      pcurrent = pcurrent->next;
-    }
-}
 
 void		init_elem_in_the_object(t_object **pobject)
 {

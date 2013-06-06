@@ -5,14 +5,14 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Wed Jun  5 19:12:04 2013 remi robert
-** Last update Thu Jun  6 08:06:47 2013 remi robert
+** Last update Thu Jun  6 21:32:28 2013 remi robert
 */
 
 #include "my_func.h"
 
 void	rempl_struct_second(t_param *param, t_object *pcourant)
 {
-    if (param->saisi.type == 7)
+  if (param->saisi.type == 7)
     my_strcpy(pcourant->maping, 20, param->saisi.buff);
   if (param->saisi.type == 8)
     my_strcpy(pcourant->perlin, 20, param->saisi.buff);

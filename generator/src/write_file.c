@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Jun  3 14:25:35 2013 remi robert
-** Last update Thu Jun  6 20:37:19 2013 remi robert
+** Last update Thu Jun  6 21:32:15 2013 remi robert
 */
 
 #include "my_func.h"
@@ -30,7 +30,8 @@ void		write_file(t_param *param)
   write_struct("Option", pcourant, fd);
   while (pcourant != NULL)
     {
-      write_struct(get_name_file_object(pcourant->type), pcourant, fd);
+      write_struct(get_name_file_object(pcourant->type),
+		   pcourant, fd);
       pcourant = pcourant->next;
     }
   close(fd);

@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Thu Jun  6 20:33:52 2013 remi robert
+** Last update Thu Jun  6 21:30:32 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -141,5 +141,6 @@ void	write_center_object(char *str, t_object *pcourant, int fd);
 void	rempl_rempl_struct(t_param *param, t_object *pcourant);
 char	*get_texture_form(int nb);
 void	draw_form(t_param *param);
+void	write_struct_option_second(char *str, t_object *pcourant, int fd);
 
 #endif

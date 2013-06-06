@@ -5,32 +5,10 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Wed Jun  5 13:32:41 2013 remi robert
-** Last update Thu Jun  6 08:03:17 2013 remi robert
+** Last update Thu Jun  6 21:31:36 2013 remi robert
 */
 
 #include "my_func.h"
-
-void	write_center_object(char *str, t_object *pcourant, int fd)
-{
-  char	buff[10];
-  int	i;
-
-  my_putstr(str, fd, -1);
-  convert_number_char(pcourant->x, buff);
-  i = -1;
-  while (buff[++i] != '\0' && buff[i + 1] != '\0' &&  buff[i] == '0');
-  my_putstr(&buff[i], fd, -1);
-  my_putstr(",", fd, -1);
-  convert_number_char(pcourant->y, buff);
-  i = -1;
-  while (buff[++i] != '\0' && buff[i + 1] != '\0' && buff[i] == '0');
-  my_putstr(&buff[i], fd, -1);
-  my_putstr(",", fd, -1);
-  convert_number_char(pcourant->z, buff);
-  i = -1;
-  while (&buff[++i] != '\0' && buff[i + 1] != '\0' && buff[i] == '0');
-  my_putstr(&buff[i], fd, -1);
-}
 
 void	write_light(char *str, t_object *pcourant, int fd)
 {
@@ -39,28 +17,13 @@ void	write_light(char *str, t_object *pcourant, int fd)
   write_center_object("   Center = ", pcourant, fd);
   my_putstr("\n   Color = ", fd, -1);
   my_putstr(pcourant->color, fd, -1);
-  my_putstr("\n   Intensity = ", fd, -1);
+  my_putstr("\n   intensity = ", fd, -1);
   my_putstr(pcourant->angle, fd, -1);
   my_putstr("\n}\n\n", fd, -1);
 }
 
-void	write_struct_option(t_object *pcourant, int fd)
+void	second_write_struct_option(t_object *pcourant, int fd)
 {
-  if (pcourant->bridghtness[0] != '\0')
-    {
-      my_putstr("\n   Bridghtness = ", fd, -1);
-      my_putstr(pcourant->bridghtness, fd, -1);
-    }
-  if (pcourant->maping[0] != '\0')
-    {
-      my_putstr("\n   Bump mapping = ", fd, -1);
-      my_putstr(pcourant->maping, fd, -1);
-    }
-  if (pcourant->perlin[0] != '\0')
-    {
-      my_putstr("\n   Perlin = ", fd, -1);
-      my_putstr(pcourant->perlin, fd, -1);
-    }
   if (pcourant->reflexion[0] != '\0')
     {
       my_putstr("\n   Reflexion = ", fd, -1);
@@ -81,6 +44,26 @@ void	write_struct_option(t_object *pcourant, int fd)
       my_putstr("\n   N = ", fd, -1);
       my_putstr(pcourant->n, fd, -1);
     }
+}
+
+void	write_struct_option(t_object *pcourant, int fd)
+{
+  if (pcourant->bridghtness[0] != '\0')
+    {
+      my_putstr("\n   Bridghtness = ", fd, -1);
+      my_putstr(pcourant->bridghtness, fd, -1);
+    }
+  if (pcourant->maping[0] != '\0')
+    {
+      my_putstr("\n   Bump mapping = ", fd, -1);
+      my_putstr(pcourant->maping, fd, -1);
+    }
+  if (pcourant->perlin[0] != '\0')
+    {
+      my_putstr("\n   Perlin = ", fd, -1);
+      my_putstr(pcourant->perlin, fd, -1);
+    }
+  second_write_struct_option(pcourant, fd);
 }
 
 void	write_other_object(char *str, t_object *pcourant, int fd)

@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 09:59:11 2013 remi
-** Last update Thu Jun  6 20:30:15 2013 remi robert
+** Last update Thu Jun  6 21:34:09 2013 remi robert
 */
 
 #include "my_func.h"
@@ -38,10 +38,12 @@ void	draw_ui_border_menu(t_param *param)
     {
       if (indice == param->on_click)
 	mlx_put_image_to_window(param->window.p, param->window.id,
-				param->tab_texture_menu[indice + 12].img, 0, indice_y);
+				param->tab_texture_menu[indice + 12].img,
+				0, indice_y);
       else
 	mlx_put_image_to_window(param->window.p, param->window.id,
-				param->tab_texture_menu[indice].img, 0, indice_y);
+				param->tab_texture_menu[indice].img,
+				0, indice_y);
       indice_y += param->window.y / 12;
     }
 }
