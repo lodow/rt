@@ -69,7 +69,7 @@ int	get_config_file(t_pars *ppt, char *conf_name)
 {
   int	fd;
 
-  if ((fd = check_perror("Open Scene", open(conf_name, O_RDONLY)) == -1))
+  if ((fd = check_perror("Open Scene", open(conf_name, O_RDONLY))) == -1)
     return (-1);
   if (get_file(ppt, fd) == -1)
     {
