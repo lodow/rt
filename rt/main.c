@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Wed Jun  5 13:03:08 2013 luc sinet
+** Last update Thu Jun  6 12:19:10 2013 luc sinet
 */
 
 #include <time.h>
@@ -19,8 +19,17 @@ void	free_all(t_rt *rpt, t_par *ppt)
   int	i;
 
   i = 0;
+  while (rpt->obj[i].type != -1)
+    {
+      free(rpt->obj[i].ipt);
+      free(rpt->obj[i].apt);
+      ++i;
+    }
+  free(rpt->obj[i].ipt);
+  free(rpt->obj[i].apt);
   free(rpt->obj);
   free(rpt->light);
+  i = 0;
   while (i < ppt->imgwidth * ppt->imgheight)
     {
       free(ppt->img_obj[i]);
