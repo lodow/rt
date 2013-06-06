@@ -87,8 +87,10 @@ int	output_tga(t_par *ppt)
     return (merror("Color should be coded on 32 or 24 bits\n", -1));
   if (get_file_name(name, ".tga") == NULL)
     return (-1);
-  if ((fd = open(&name[2], O_WRONLY | O_CREAT | O_TRUNC, 0664)) == -1)
-    return (merror("Couldn’t create the file\n", -1));
+  if ((fd = check_perror("Open TGA",
+                         open(&name[2], O_WRONLY | O_CREAT | O_TRUNC, 0664)))
+      == -1)
+    return (-1);
   create_header(ppt, header);
   my_putbyte(header, fd, 18);
   fill_tga(ppt, fd);

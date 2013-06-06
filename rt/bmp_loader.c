@@ -105,8 +105,7 @@ t_bmp		*bmp_loader(char *path)
   if ((fd = open(path, O_RDONLY)) == -1)
     {
       my_putstr("BMP Loader: Open: ", 2);
-      my_putstr(path, 2);
-      my_putstr(" Failed\n", 2);
+      my_perror(path);
       return (NULL);
     }
   if ((image = malloc(sizeof(t_bmp))) == NULL)

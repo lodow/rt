@@ -116,8 +116,8 @@ t_model		*get_file_obj_model(const char *filename)
   t_model	*obj;
   int		fd;
 
-  if ((fd = open(filename, O_RDONLY)) == -1)
-    return (merrorptr("Can't open file model file\n", NULL));
+  if ((fd = check_perror("Open Model", open(filename, O_RDONLY)) == -1))
+    return (NULL);
   if ((obj = malloc(1 * sizeof(t_model))) == NULL)
     return (merrorptr("Malloc error\n", NULL));
   init_model_struct(obj);
