@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Thu Jun  6 11:49:17 2013 remi
+** Last update Thu Jun  6 20:33:52 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -89,6 +89,7 @@ typedef struct		saisi
 
 typedef struct		s_param
 {
+  char			*name_file;
   t_texture		*tab_texture_form;
   t_object		cam;
   t_saisi		saisi;

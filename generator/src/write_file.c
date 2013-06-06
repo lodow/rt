@@ -5,10 +5,17 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Jun  3 14:25:35 2013 remi robert
-** Last update Wed Jun  5 13:32:56 2013 remi robert
+** Last update Thu Jun  6 20:37:19 2013 remi robert
 */
 
 #include "my_func.h"
+
+int	open_file(char *str)
+{
+  if (str != NULL)
+    return (open(str, O_RDWR | O_CREAT | O_TRUNC));
+  return (open("test.cfg", O_RDWR | O_CREAT | O_TRUNC));
+}
 
 void		write_file(t_param *param)
 {
@@ -16,7 +23,7 @@ void		write_file(t_param *param)
   int		fd;
 
   if (param->phead == NULL ||
-      (fd = open("test.cfg", O_RDWR | O_CREAT | O_TRUNC)) == -1)
+      (fd = open_file(param->name_file)) == -1)
     return ;
   pcourant = param->phead;
   write_struct("Cam", pcourant, fd);

@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:49:52 2013 remi
-** Last update Tue Jun  4 11:14:51 2013 remi robert
+** Last update Thu Jun  6 20:35:18 2013 remi robert
 */
 
 #include "my_func.h"
@@ -17,6 +17,9 @@ int		main(int argc, char **argv, char **envp)
   (void)argc;
   (void)argv;
   (void)envp;
+  param.name_file = NULL;
+  if (argc != 1)
+    param.name_file = argv[1];
   if (init_window(&param) == 0)
     return (0);
   main_loop(&param);
