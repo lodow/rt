@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Thu Jun  6 09:52:40 2013 luc sinet
+** Last update Thu Jun  6 12:22:14 2013 luc sinet
 */
 
 #include <math.h>
@@ -116,4 +116,5 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
     }
   detect_edge(rpt, ppt);
   apply_supersampling(rpt, ppt, &spt);
+  free(spt.pixel);
 }
