@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May  5 18:27:59 2013 luc sinet
-** Last update Wed Jun  5 21:19:00 2013 luc sinet
+** Last update Thu Jun  6 10:32:09 2013 luc sinet
 */
 
 #include <math.h>
@@ -26,28 +26,26 @@ unsigned int	calc_trans(unsigned int *all_color, double *alpha, int i)
   return (res);
 }
 
-double	get_refrac_ratio(t_obj *tab, t_obj *obj, int *pass, int obj_num)
+double	get_refrac_ratio(t_obj *tab, double indice, int *pass, int obj_num)
 {
   int	i;
   int	found;
 
   i = 0;
   found = find_in_tab(pass, obj_num, &i);
-  if (obj->type != 1)
-    add_to_tab(pass, obj_num);
   if (!found)
     {
       if (i == 0)
-	return (obj->ipt->indice[1]);
+	return (indice);
       else
-	return (obj->ipt->indice[1] / tab[pass[i - 1]].ipt->indice[1]);
+	return (indice / tab[pass[i - 1]].ipt->indice[1]);
     }
   else
     {
-      if (i - 1 < 0)
-	return (AIR);
+      if (i == 0)
+	return (AIR / indice);
       else
-	return (tab[pass[i - 1]].ipt->indice[1] / obj->ipt->indice[1]);
+	return (tab[pass[i - 1]].ipt->indice[1] / indice);
     }
 }
 
@@ -61,9 +59,11 @@ double		transparency_loop(t_rt *rpt, t_lco *lpt, t_trans *trans,
 
   i = 0;
   obj = rpt->obj_num;
-  refrac = get_refrac_ratio(rpt->obj, &rpt->obj[obj],
+  refrac = get_refrac_ratio(rpt->obj, rpt->obj[obj].ipt->indice[1],
 			    trans->pass, obj);
   calc_refrac(rpt, lpt, k, refrac);
+  if (rpt->obj[obj].type != 1)
+    add_to_tab(trans->pass, obj);
   calc_inter(rpt, &k);
   found = find_in_tab(trans->pass, rpt->obj_num, &i);
   if (k > ZERO && rpt->obj_num != obj && !found)
