@@ -122,7 +122,7 @@ t_model		*get_file_obj_model(const char *filename)
     return (merrorptr("Malloc error\n", NULL));
   init_model_struct(obj);
   parse_model(obj, fd);
-  close(fd);
+  check_perror("Close", close(fd));
   free(obj->raw_vertice);
   obj->raw_vertice = NULL;
   free(obj->raw_normal);

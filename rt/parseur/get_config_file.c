@@ -73,9 +73,9 @@ int	get_config_file(t_pars *ppt, char *conf_name)
     return (merror("Can't open the file\n", -1));
   if (get_file(ppt, fd) == -1)
     {
-      close(fd);
+      check_perror("Close", close(fd));
       return (-1);
     }
-  close(fd);
+  check_perror("Close", close(fd));
   return (0);
 }
