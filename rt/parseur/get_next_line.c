@@ -9,6 +9,7 @@
 */
 
 #include "get_next_line.h"
+#include "main.h"
 
 char	*spe_strcat(char *dest, char *src, char opt)
 {
@@ -77,7 +78,7 @@ char		*get_next_line(const int fd)
   spe_strcat(line, buf, 0);
   while (check_line(line, buf) == 0)
     {
-      if ((s_read = read(fd, buf, SIZE)) <= 0)
+      if ((s_read = check_perror("Read", read(fd, buf, SIZE))) <= 0)
 	{
 	  if (s_read == 0 && line[0])
 	    {

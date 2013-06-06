@@ -25,7 +25,7 @@ int	check_header(t_info_bmp *info, int fd)
   int	size;
 
   size = 0;
-  while ((ret = read(fd, &buffer[size], sizeof(t_info_bmp) - size)) != -1
+  while ((ret = check_perror("Read", read(fd, &buffer[size], sizeof(t_info_bmp) - size))) != -1
          && size + ret < (int)sizeof(t_info_bmp))
     size += ret;
   if (size + ret < (int)sizeof(t_info_bmp))
@@ -51,15 +51,15 @@ int	check_bmp(t_info_bmp *info, char **img, int fd, t_bmp *image)
     return (merror("BMP Loader: Malloc Failed\n", -1));
   if (info->offset - (int)sizeof(t_info_bmp) < info->height)
     {
-      while ((ret = read(fd, *img, info->offset - (int)sizeof(t_info_bmp) - size)) != -1
+      while ((ret = check_perror("Read", read(fd, *img, info->offset - (int)sizeof(t_info_bmp) - size))) != -1
              && size + ret < info->offset - (int)sizeof(t_info_bmp))
         size += ret;
       if (size < info->offset - (int)sizeof(t_info_bmp))
         return (merror("BMP Loader: Read Error\n", -1));
     }
   size = 0;
-  while ((ret = read(fd, *img, (info->widht + info->widht % 4)
-                     * (info->deep_color[0] / 8) * info->height)) != -1 &&
+  while ((ret = check_perror("Read", read(fd, *img, (info->widht + info->widht % 4)
+                     * (info->deep_color[0] / 8) * info->height))) != -1 &&
          size < ((info->widht + info->widht % 4) * (info->deep_color[0] / 8)))
     size += ret;
   if ((size < ((info->widht + info->widht % 4) * (info->deep_color[0] / 8)) *
