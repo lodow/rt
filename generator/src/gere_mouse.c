@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 13:29:07 2013 remi
-** Last update Thu Jun  6 10:20:27 2013 remi robert
+** Last update Thu Jun  6 12:06:48 2013 remi robert
 */
 
 #include "my_func.h"
@@ -35,15 +35,15 @@ void	add_elem_on_click(t_param *param, int x, int y)
   if (param->on_click != NOTHING ||
       (type = check_the_object_click(param, x, y)) == NOTHING)
     return ;
+  if ((add_object(&param->phead, type)) == 0)
+    return ;
+  draw_ui(param);
+  param->on_click = type;
+  param->click_menu = 1;
   mlx_put_image_to_window(param->window.p, param->window.id,
 			  param->panel_control.img,
 			  165, 10);
-  if ((add_object(&param->phead, type)) == 0)
-    return ;
-  param->on_click = type;
   draw_conf(param);
-  param->click_menu = 1;
-  draw_ui(param);
 }
 
 void	gere_menu_param(t_param *param, int x, int y)
@@ -84,11 +84,6 @@ void		pos_elem(t_param *param, int x, int y)
   pcurrent->x = x - 151;
   pcurrent->y = y;
   param->on_click = NOTHING;
-  my_pixel_put_to_image(x, y, param, 0xFFFFFFFF);
-  my_pixel_put_to_image(x + 1, y, param, 0xFFFFFFFF);
-  my_pixel_put_to_image(x - 1, y, param, 0xFFFFFFFF);
-  my_pixel_put_to_image(x, y + 1, param, 0xFFFFFFFF);
-  my_pixel_put_to_image(x, y - 1, param, 0xFFFFFFFF);
   mlx_put_image_to_window(param->window.p, param->window.id,
 			  param->image.img, 0, 0);
   draw_ui(param);

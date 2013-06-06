@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 09:59:11 2013 remi
-** Last update Thu Jun  6 10:23:02 2013 remi robert
+** Last update Thu Jun  6 11:50:49 2013 remi robert
 */
 
 #include "my_func.h"
@@ -79,6 +79,7 @@ void		draw_ui(t_param *param)
   draw_ui_border(param);
   draw_ui_border_menu(param);
   draw_ui_bothom_border(param);
+  draw_form(param);
   if (param->phead == NULL)
     return ;
   indice = 0;

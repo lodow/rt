@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 13:36:07 2013 remi
-** Last update Thu Jun  6 08:04:49 2013 remi robert
+** Last update Thu Jun  6 11:52:59 2013 remi
 */
 
 #include "my_func.h"
@@ -27,8 +27,8 @@ void	list_object(t_object *phead)
 
 void		init_elem_in_the_object(t_object **pobject)
 {
-  (*pobject)->x = 0;
-  (*pobject)->y = 0;
+  (*pobject)->x = -1;
+  (*pobject)->y = -1;
   (*pobject)->z = 0;
   my_strcpy((*pobject)->size, 20, "50;");
   my_strcpy((*pobject)->color, 20, "0xFFFFFFFF;");

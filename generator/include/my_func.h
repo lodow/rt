@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Thu Jun  6 10:23:15 2013 remi robert
+** Last update Thu Jun  6 11:49:17 2013 remi
 */
 
 #ifndef MY_FUNC_H_
@@ -89,6 +89,7 @@ typedef struct		saisi
 
 typedef struct		s_param
 {
+  t_texture		*tab_texture_form;
   t_object		cam;
   t_saisi		saisi;
   char			click_menu;
@@ -137,5 +138,7 @@ void	write_struct(char *str, t_object *pcourant, int fd);
 void	write_light(char *str, t_object *pcourant, int fd);
 void	write_center_object(char *str, t_object *pcourant, int fd);
 void	rempl_rempl_struct(t_param *param, t_object *pcourant);
+char	*get_texture_form(int nb);
+void	draw_form(t_param *param);
 
 #endif

@@ -5,10 +5,32 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Fri May 31 09:45:06 2013 remi
-** Last update Wed Jun  5 09:42:38 2013 remi robert
+** Last update Thu Jun  6 11:30:22 2013 remi robert
 */
 
 #include "my_func.h"
+
+int	load_texture_form(t_param *param)
+{
+  int	indice;
+
+  if ((param->tab_texture_form = malloc(sizeof(t_texture) * 10)) == NULL)
+    return (0);
+  indice = -1;
+  while (++indice < 10)
+    if ((param->tab_texture_form[indice].img =
+	 mlx_xpm_file_to_image(param->window.p,
+			       get_texture_form(indice),
+			       &(param->tab_texture_form[indice].y),
+			       &(param->tab_texture_form[indice].x))) == NULL)
+      {
+	my_putstr("Error load texture : ", 2, -1);
+	my_putstr(get_texture_form(indice), 2, -1);
+	my_putstr("\n", 2, -1);
+	return (0);
+      }
+  return (1);
+}
 
 int	load_texture(t_param *param)
 {
@@ -24,6 +46,7 @@ int	load_texture(t_param *param)
       {
 	my_putstr("Error load texture : ", 2, -1);
 	my_putstr(get_texture_menu(indice), 2, -1);
+	my_putstr("\n", 2, -1);
 	return (0);
       }
   return (1);
@@ -60,7 +83,8 @@ int	init_texture(t_param *param)
 			     "texture/textbox.xpm",
 			     &(param->textbox.y),
 			     &(param->textbox.x))) == NULL ||
-      load_write_and_chack(param) == 0)
+      load_write_and_chack(param) == 0 ||
+      load_texture_form(param) == 0)
     return (0);
   return (1);
 }

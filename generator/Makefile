@@ -4,7 +4,7 @@
 ## Login   <robert_r@epitech.net>
 ## 
 ## Started on  Fri Nov 30 10:59:19 2012 remi robert
-## Last update Wed Jun  5 19:14:41 2013 remi robert
+## Last update Thu Jun  6 11:46:23 2013 remi
 ##
 
 SRCPATH	=	src/
@@ -37,6 +37,7 @@ SRC	=	$(SRCPATH)main.c \
 		$(SRCPATH)gere_cancel.c \
 		$(SRCPATH)write_struct.c \
 		$(SRCPATH)rempl_struct.c \
+		$(SRCPATH)draw_form.c \
 
 OBJ	=	$(SRC:.c=.o)
 
