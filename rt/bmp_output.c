@@ -116,9 +116,11 @@ int		output_bmp(t_par *ppt)
   if (get_file_name(name, ".bmp") == NULL)
     return (-1);
   init_bmp(&image, ppt);
-  if ((fd = open(&name[2], O_WRONLY | O_CREAT | O_TRUNC, 0664)) == -1)
-    return (merror("Couldn’t create the file\n", -1));
+  if ((fd = check_perror("Couldn't create the bmp file",
+                         open(&name[2], O_WRONLY | O_CREAT | O_TRUNC, 0664)))
+            == -1)
+    return (-1);
   fill_bmp(ppt->data, fd, &image, ppt);
-  close(fd);
+  check_perror("Close", close(fd));
   return (0);
 }

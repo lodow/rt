@@ -42,14 +42,14 @@ void	fill_tga(t_par *ppt, int fd)
     {
       x = 0;
       while (x < (width * octet))
-	{
-	  if ((octet == 4 && x % 4 != 3) || octet == 3)
+        {
+          if ((octet == 4 && x % 4 != 3) || octet == 3)
             {
               my_putbyte((&(img[(y * octet * width) + x])), fd, 3);
               x += 3;
             }
           ++x;
-	}
+        }
       --y;
     }
 }
@@ -60,7 +60,7 @@ char	*get_file_name(char *name, char *ext)
   char 	num[5];
 
   i = 0;
-  while (i == 0 || (i < 1000 && access(name, F_OK) == 0))
+  while (i == 0 || (i < 1000 && access(name, F_OK)) == 0)
     {
       my_strcpy(name, "./display");
       nb_to_str(num, i, i);
@@ -86,12 +86,14 @@ int	output_tga(t_par *ppt)
     return (merror("Color should be coded on 32 or 24 bits\n", -1));
   if (get_file_name(name, ".tga") == NULL)
     return (-1);
-  if ((fd = open(&name[2], O_WRONLY | O_CREAT | O_TRUNC, 0664)) == -1)
-    return (merror("Couldn’t create the file\n", -1));
+  if ((fd = check_perror("Open TGA",
+                         open(&name[2], O_WRONLY | O_CREAT | O_TRUNC, 0664)))
+      == -1)
+    return (-1);
   create_header(ppt, header);
   my_putbyte(header, fd, 18);
   fill_tga(ppt, fd);
   my_putbyte("\0\0\0\0\0\0\0\0TRUEVISION-XFILE.\0", fd, 26);
-  close(fd);
+  check_perror("Close", close(fd));
   return (0);
 }

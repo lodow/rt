@@ -25,7 +25,7 @@ int	check_header(t_info_bmp *info, int fd)
   int	size;
 
   size = 0;
-  while ((ret = read(fd, &buffer[size], sizeof(t_info_bmp) - size)) > 0
+  while ((ret = check_perror("Read", read(fd, &buffer[size], sizeof(t_info_bmp) - size))) > 0
          && size + ret < (int)sizeof(t_info_bmp))
     size += ret;
   if (size + ret != (int)sizeof(t_info_bmp))
@@ -46,21 +46,21 @@ int	check_bmp(t_info_bmp *info, char **img, int fd, t_bmp *image)
 
   size = 0;
   fsize = (((info->widht * info->deep_color[0] / 8) + (info->widht % 4))
-	   * info->height);
+           * info->height);
   if ((*img = malloc(fsize)) == NULL
       || (image->texture = malloc(info->widht * (info->deep_color[0] / 8)
                                   * info->height)) == NULL)
     return (merror("BMP Loader: Malloc Failed\n", -1));
   if (info->offset - (int)sizeof(t_info_bmp) > 0)
     {
-      while ((ret = read(fd, *img, info->offset - (int)sizeof(t_info_bmp) - size)) > 0
+      while ((ret = check_perror("Read", read(fd, *img, info->offset - (int)sizeof(t_info_bmp) - size))) > 0
              && size + ret < info->offset - (int)sizeof(t_info_bmp))
         size += ret;
       if (size + ret != info->offset - (int)sizeof(t_info_bmp))
         return (merror("BMP Loader: Read Error\n", -1));
     }
   size = 0;
-  while ((ret = read(fd, &(*img)[size], fsize)) > 0 && size + ret < fsize)
+  while ((ret = check_perror("Read", read(fd, &(*img)[size], fsize))) > 0 && size + ret < fsize)
     size += ret;
   if (size + ret != fsize)
     return (merror("BMP Loader: Read Error\n", -1));
@@ -104,8 +104,7 @@ t_bmp		*bmp_loader(char *path)
   if ((fd = open(path, O_RDONLY)) == -1)
     {
       my_putstr("BMP Loader: Open: ", 2);
-      my_putstr(path, 2);
-      my_putstr(" Failed\n", 2);
+      my_perror(path);
       return (NULL);
     }
   if ((image = malloc(sizeof(t_bmp))) == NULL)
