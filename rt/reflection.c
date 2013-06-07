@@ -34,7 +34,7 @@ void		calc_reflec_vector(t_rt *rpt, t_vec *vpt, t_lco *lpt, double k)
 }
 
 unsigned int	apply_indice(unsigned int color, unsigned int obj_color,
-				 double indice)
+                           double indice)
 {
   unsigned char	c[3];
   unsigned char	c_obj[3];
@@ -47,7 +47,8 @@ unsigned int	apply_indice(unsigned int color, unsigned int obj_color,
   return (recomp_color(c));
 }
 
-unsigned int	reflection(t_rt *rpt, t_lco *lpt, unsigned int color, double k)
+unsigned int	reflection(t_rt *rpt, t_lco *lpt,
+                         unsigned int color, double k)
 {
   double	indice;
   double	ctmp[6];
@@ -59,13 +60,13 @@ unsigned int	reflection(t_rt *rpt, t_lco *lpt, unsigned int color, double k)
   obj = rpt->obj_num;
   copy_tab(rpt->cpt->pos, ctmp, 3);
   while (i < MAX_R && rpt->obj[rpt->obj_num].ipt->indice[2] >= ZERO
-	 && k > ZERO)
+         && k > ZERO)
     {
       indice *= rpt->obj[rpt->obj_num].ipt->indice[2];
       calc_reflec_vector(rpt, rpt->vpt, lpt, k);
       calc_inter(rpt, &k);
       color = apply_indice(color, (k > ZERO) ?
-  			   modifie_p_color(rpt, k, 2) : 0x000000, indice);
+                           modifie_p_color(rpt, k, 2) : 0x000000, indice);
       ++i;
     }
   copy_tab(ctmp, rpt->cpt->pos, 3);

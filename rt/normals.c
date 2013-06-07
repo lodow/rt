@@ -25,7 +25,8 @@ void	perturb_normal(double *nvec, double *obj_coor, double *pert)
               * (norme_vec(nvec) / pert[5]);
 }
 
-void	sphere_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
+void	sphere_normal(double *nvec, double *obj_coor,
+                    double *pert, t_obj *obj)
 {
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];

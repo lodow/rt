@@ -11,7 +11,8 @@
 #include "mlx.h"
 #include "pp_image.h"
 
-int		my_pixel_put_to_image(int x, int y, t_par *par, unsigned int color)
+int		my_pixel_put_to_image(int x, int y, t_par *par,
+                            unsigned int color)
 {
   unsigned int	x_pos;
   unsigned int	color_val;
