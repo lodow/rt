@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 13:29:07 2013 remi
-** Last update Fri Jun  7 11:15:19 2013 remi robert
+** Last update Fri Jun  7 13:25:19 2013 remi robert
 */
 
 #include "my_func.h"
@@ -32,6 +32,13 @@ void	add_elem_on_click(t_param *param, int x, int y)
 {
   char	type;
 
+  if (param->on_click != NOTHING)
+    {
+      gere_cancel(param);
+      param->saisi.check = 0;
+      param->saisi.indice = 0;
+      param->saisi.buff[0] = '\0';
+    }
   if (param->on_click != NOTHING ||
       (type = check_the_object_click(param, x, y)) == NOTHING)
     return ;
