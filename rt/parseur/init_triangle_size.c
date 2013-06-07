@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon May 13 15:13:15 2013 luc sinet
-** Last update Fri Jun  7 20:10:24 2013 luc sinet
+** Last update Fri Jun  7 20:27:37 2013 luc sinet
 */
 
 #include "main.h"
@@ -41,8 +41,8 @@ void	init_tangle_size(t_obj *obj)
   while (obj[i].type != -1)
     {
       if (obj[i].type == PILLOW)
-	obj[i].size[1] = 0;
-      else if (obj[i].type == CHUBS)
+      	obj[i].size[1] = 0;
+      if (obj[i].type == CHUBS)
 	obj[i].size[1] = 50;
       ++i;
     }

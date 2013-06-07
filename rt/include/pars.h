@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Fri Jun  7 20:04:15 2013 luc sinet
+** Last update Fri Jun  7 20:14:31 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -26,9 +26,9 @@
 # define TRIANGLE 6
 # define PARABOLOIDE 7
 # define HYERBOLOIDE 8
-# define PILLOW 9
-# define CHUBS 10
-# define TANGLE 11
+# define TANGLE 9
+# define PILLOW 10
+# define CHUBS 11
 # define TORE 12
 # define NB_OPT 7
 
