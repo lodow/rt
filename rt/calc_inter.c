@@ -109,13 +109,11 @@ void		calc_pixel(t_rt *rpt, t_cam *cpt, t_vec *vpt, t_par *ppt)
           color = get_pixel_color(rpt);
           my_pixel_put_to_image(pos[0], pos[1], ppt, color);
           fill_img_param(pos, color, rpt, ppt);
-          loading_bar(pos[1] * ppt->imgwidth + pos[0], ppt->imgwidth * ppt->imgheight, 0);
           ++pos[0];
         }
       print_i(ppt);
       ++pos[1];
     }
-  loading_bar(pos[1] * ppt->imgwidth + pos[0], ppt->imgwidth * ppt->imgheight, 1);
   detect_edge(rpt, ppt);
   apply_supersampling(rpt, ppt, &spt);
   free(spt.pixel);
