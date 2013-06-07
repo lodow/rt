@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 17:42:09 2013 luc sinet
-** Last update Mon Jun  3 20:37:54 2013 luc sinet
+** Last update Fri Jun  7 18:33:35 2013 adrien dellamaggiora
 */
 
 #ifndef CHANGE_COLOR_H_
@@ -33,7 +33,8 @@ unsigned int	apply_light(unsigned char *c, double cosa,
 void	   	decomp_color(unsigned int color, unsigned char *ncolor);
 unsigned int	recomp_color(unsigned char *color);
 unsigned int	refrac(t_rt *rpt, t_cam *cpt, t_lco *lpt, unsigned int color);
-unsigned int	reflection(t_rt *rpt, t_lco *lpt, unsigned int color, double k);
+unsigned int	reflection(t_rt *rpt, t_lco *lpt, unsigned int color,
+			   double k);
 unsigned int	apply_fog(unsigned int color, double *fog, double distance);
 unsigned int	apply_indice(unsigned int color, unsigned int obj_color,
 			     double indice);
