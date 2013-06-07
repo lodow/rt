@@ -5,7 +5,7 @@
 ** Login   <adrien@Adrien>
 **
 ** Started on  Sat May  4 14:46:20 2013 Adrien
-** Last update Thu Jun  6 14:20:07 2013 adrien dellamaggiora
+** Last update Fri Jun  7 11:56:28 2013 adrien dellamaggiora
 */
 
 #include "main.h"
@@ -63,12 +63,12 @@ double		triangle(double *cam, double *vec, t_obj *ept)
   pt[0] = vec[0] * ret + cam[0];
   pt[1] = vec[1] * ret + cam[1];
   pt[2] = vec[2] * ret + cam[2];
-  v[0] = ept->p1[0] - ept->pos[0];
-  v[1] = ept->p1[1] - ept->pos[1];
-  v[2] = ept->p1[2] - ept->pos[2];
-  u[0] = ept->p0[0] - ept->pos[0];
-  u[1] = ept->p0[1] - ept->pos[1];
-  u[2] = ept->p0[2] - ept->pos[2];
+  v[0] = ept->pt2[0] - ept->pos[0];
+  v[1] = ept->pt2[1] - ept->pos[1];
+  v[2] = ept->pt2[2] - ept->pos[2];
+  u[0] = ept->pt1[0] - ept->pos[0];
+  u[1] = ept->pt1[1] - ept->pos[1];
+  u[2] = ept->pt1[2] - ept->pos[2];
   w[0] = pt[0] - ept->pos[0];
   w[1] = pt[1] - ept->pos[1];
   w[2] = pt[2] - ept->pos[2];

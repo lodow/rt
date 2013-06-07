@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Thu Jun  6 00:33:35 2013 luc sinet
+** Last update Fri Jun  7 11:57:07 2013 adrien dellamaggiora
 */
 
 #include <stdio.h>
@@ -69,6 +69,8 @@ void	init_single_elem(t_obj *obj)
       obj->pos[x] = IVAL;
       obj->color[x] = 0;
       obj->normal[x] = 0;
+      obj->pt1[x] = 0;
+      obj->pt2[x] = 0;
       obj->v1[x] = 0;
       obj->v2[x++] = 0;
     }

@@ -5,12 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Dec  8 18:13:16 2012 luc sinet
-** Last update Fri Mar 15 01:38:26 2013 luc sinet
+** Last update Fri Jun  7 11:58:35 2013 adrien dellamaggiora
 */
 
-#include "main.h"
 #include <stdlib.h>
 #include <unistd.h>
+#include "main.h"
 
 int	my_strlen(char *str)
 {
