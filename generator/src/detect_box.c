@@ -5,65 +5,79 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Jun  4 12:58:21 2013 remi robert
-** Last update Fri Jun  7 13:15:39 2013 remi robert
+** Last update Fri Jun  7 19:38:20 2013 remi robert
 */
 
 #include "my_func.h"
 
+void	rempl_tab_cord(int *tab)
+{
+  tab[0] = 60;
+  tab[1] = 100;
+  tab[2] = 140;
+  tab[3] = 180;
+  tab[4] = 220;
+  tab[5] = 260;
+  tab[6] = 300;
+  tab[7] = 340;
+  tab[8] = 380;
+  tab[9] = 420;
+  tab[10] = 460;
+  tab[11] = 500;
+}
+
 void	rempl_coord(t_param *param, int x, int y)
 {
-  if (x >= 450 && x <= 600 && y >= 60 && y <= 90)
-    param->saisi.y = 80;
-  if (x >= 450 && x <= 600 && y >= 100 && y <= 130)
-    param->saisi.y = 120;
-  if (x >= 450 && x <= 600 && y >= 140 && y <= 170)
-    param->saisi.y = 160;
-  if (param->on_click != 11 && x >= 450 && x <= 600 && y >= 180 && y <= 210)
-    param->saisi.y = 200;
-  if (param->on_click != 11 && x >= 450 && x <= 600 && y >= 220 && y <= 250)
-    param->saisi.y = 240;
-  if (param->on_click != 11 && x >= 450 && x <= 600 && y >= 260 && y <= 290)
-    param->saisi.y = 280;
-  if (param->on_click != 11 && x >= 450 && x <= 600 && y >= 300 && y <= 330)
-    param->saisi.y = 320;
-  if (param->on_click != 11 && x >= 450 && x <= 600 && y >= 340 && y <= 370)
-    param->saisi.y = 360;
-  if (param->on_click != 11 && x >= 450 && x <= 600 && y >= 380 && y <= 420)
-    param->saisi.y = 400;
-  if (param->on_click != 11 && x >= 450 && x <= 600 && y >= 420 && y <= 450)
-    param->saisi.y = 440;
-  if (param->on_click != 11 && x >= 450 && x <= 600 && y >= 460 && y <= 480)
-    param->saisi.y = 480;
-  if (param->on_click != 11 && x >= 450 && x <= 600 && y >= 500 && y <= 520)
-    param->saisi.y = 520;
+  int	tab[12];
+  int	indice;
+
+  rempl_tab_cord(tab);
+  indice = -1;
+  if (param->on_click == 11)
+    {
+      while (++indice < 3)
+	if (x >= 450 && x <= 600 &&
+	    y >= tab[indice] && y <= tab[indice] + 30)
+	  {
+	    param->saisi.y = (tab[indice] + 30) - 10;
+	    return ;
+	  }
+      return ;
+    }
+  while (++indice < 12)
+    if (x >= 450 && x <= 600 &&
+	y >= tab[indice] && y <= tab[indice] + 30)
+      {
+	param->saisi.y = (tab[indice] + 30) - 10;
+	return ;
+      }
 }
 
 void	get_type_saisie(t_param *param, int x, int y)
 {
-  if (x >= 450 && x <= 600 && y >= 60 && y <= 90)
-    param->saisi.type = 1;
-  if (x >= 450 && x <= 600 && y >= 100 && y <= 130)
-    param->saisi.type = 2;
-  if (x >= 450 && x <= 600 && y >= 140 && y <= 170)
-    param->saisi.type = 3;
-  if (param->on_click != 11 && x >= 450 && x <= 600 && y >= 180 && y <= 210)
-    param->saisi.type = 4;
-  if (param->on_click != 11 && x >= 450 && x <= 600 && y >= 220 && y <= 250)
-    param->saisi.type = 5;
-  if (param->on_click != 11 && x >= 450 && x <= 600 && y >= 260 && y <= 290)
-    param->saisi.type = 6;
-  if (param->on_click != 11 && x >= 450 && x <= 600 && y >= 300 && y <= 330)
-    param->saisi.type = 7;
-  if (param->on_click != 11 && x >= 450 && x <= 600 && y >= 340 && y <= 370)
-    param->saisi.type = 8;
-  if (param->on_click != 11 && x >= 450 && x <= 600 && y >= 380 && y <= 420)
-    param->saisi.type = 9;
-  if (param->on_click != 11 && x >= 450 && x <= 600 && y >= 420 && y <= 450)
-    param->saisi.type = 10;
-  if (param->on_click != 11 && x >= 450 && x <= 600 && y >= 460 && y <= 480)
-    param->saisi.type = 11;
-  if (param->on_click != 11 && x >= 450 && x <= 600 && y >= 500 && y <= 520)
-    param->saisi.type = 12;
+  int	tab[12];
+  int	indice;
+
+  rempl_tab_cord(tab);
+  indice = -1;
+  if (param->on_click == 11)
+    {
+      while (++indice < 3)
+	if (x >= 450 && x <= 600 &&
+	    y >= tab[indice] && y <= tab[indice] + 30)
+	  {
+	    param->saisi.type = indice + 1;
+	    return ;
+	  }
+      return ;
+    }
+  while (++indice < 12)
+    if (x >= 450 && x <= 600 &&
+	y >= tab[indice] && y <= tab[indice] + 30)
+      {
+	param->saisi.type = indice + 1;
+	return ;
+      }
 }
 
 void	detect_box(t_param *param, int x, int y)
