@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 09:35:28 2013 remi
-** Last update Wed Jun  5 19:16:12 2013 remi robert
+** Last update Fri Jun  7 11:15:09 2013 remi robert
 */
 
 #include "my_func.h"
@@ -41,7 +41,6 @@ void	gere_saisi_buff(t_param *param, int keycode)
 
   if (param->saisi.check == 1)
     {
-      printf(" => %d\n", param->saisi.indice);
       if (param->saisi.indice >= 11)
 	return ;
       aff[1] = '\0';
@@ -62,7 +61,7 @@ void		validate_saisie(t_param *param)
 {
   t_object	*pcourant;
 
-  if (param->phead == NULL)
+  if (param->phead == NULL || param->saisi.buff[0] == '\0')
     return ;
   pcourant = param->phead;
   while (pcourant->next != NULL)
@@ -77,7 +76,6 @@ int	gere_keyboard(int keycode, t_param *param)
 {
   if ((keycode == 65293 || keycode == 65421) && param->saisi.check == 1)
     {
-      printf("saisi accepted : %s\n", param->saisi.buff);
       validate_saisie(param);
       param->saisi.check = 0;
       param->saisi.indice = 0;

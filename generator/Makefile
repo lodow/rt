@@ -4,7 +4,7 @@
 ## Login   <robert_r@epitech.net>
 ## 
 ## Started on  Fri Nov 30 10:59:19 2012 remi robert
-## Last update Thu Jun  6 21:30:59 2013 remi robert
+## Last update Fri Jun  7 11:16:25 2013 remi robert
 ##
 
 SRCPATH	=	src/
@@ -39,6 +39,9 @@ SRC	=	$(SRCPATH)main.c \
 		$(SRCPATH)rempl_struct.c \
 		$(SRCPATH)draw_form.c \
 		$(SRCPATH)write_center.c \
+		$(SRCPATH)actu_textbox.c \
+		$(SRCPATH)validate_saisi.c \
+		$(SRCPATH)get_new_type.c \
 
 OBJ	=	$(SRC:.c=.o)
 

@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 13:29:07 2013 remi
-** Last update Thu Jun  6 12:50:22 2013 remi robert
+** Last update Fri Jun  7 11:15:19 2013 remi robert
 */
 
 #include "my_func.h"
@@ -49,7 +49,10 @@ void	add_elem_on_click(t_param *param, int x, int y)
 void	gere_menu_param(t_param *param, int x, int y)
 {
   if (param->saisi.check == 1)
-    return ;
+    {
+      validate_saisi(param, x, y);
+      return ;
+    }
   if (x >= 450 && x <= 600 && y >= 60 && y <= 520)
     {
       detect_box(param, x, y);

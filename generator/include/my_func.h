@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Thu Jun  6 21:30:32 2013 remi robert
+** Last update Fri Jun  7 11:16:48 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -142,5 +142,8 @@ void	rempl_rempl_struct(t_param *param, t_object *pcourant);
 char	*get_texture_form(int nb);
 void	draw_form(t_param *param);
 void	write_struct_option_second(char *str, t_object *pcourant, int fd);
+void	actu_texbox(t_param *param, int y);
+void    validate_saisi(t_param *param, int x, int y);
+int	get_new_type(t_param *param, int x, int y);
 
 #endif
