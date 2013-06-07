@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Mon Jun  3 20:41:57 2013 etienne debas
-** Last update Mon Jun  3 21:04:35 2013 etienne debas
+** Last update Fri Jun  7 11:06:38 2013 adrien dellamaggiora
 */
 
 # include "solve.h"
@@ -22,11 +22,11 @@ void		delta_neg(double p, double q, double *res, double trans)
   nb_sol = 0;
   while (nb_sol <= 2)
     {
-      res[nb_sol] = (2.0 * sqrt(- p / 3.0) *
-		       cos((1.0 / 3.0) *
-			   acos((-q / 2.0) *
-				sqrt(27.0 / (- p * p * p))) +
-			   (2.0 * nb_sol * M_PI) / 3.0)) - trans;
+      res[nb_sol] = (2.0 * sqrt(- p / 3.0)
+		     * cos((1.0 / 3.0)
+			   * acos((-q / 2.0)
+				  * sqrt(27.0 / (- p * p * p)))
+			   + (2.0 * nb_sol * M_PI) / 3.0)) - trans;
       nb_sol++;
     }
 }
@@ -38,8 +38,8 @@ int		cardan_method(double p, double q, double *res, double trans)
   delta = q * q + (4.0 / 27.0) * p * p * p;
   if (delta > 0)
     {
-      res[0] = (cbrt((-q + sqrt(delta)) / 2.0) +
-		cbrt((-q - sqrt(delta)) / 2.0)) - trans;
+      res[0] = (cbrt((-q + sqrt(delta)) / 2.0)
+		+ cbrt((-q - sqrt(delta)) / 2.0)) - trans;
       return (1);
     }
   if (delta == 0.0)
