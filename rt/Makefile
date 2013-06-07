@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Wed Jun  5 12:39:30 2013 luc sinet
+## Last update Fri Jun  7 18:55:30 2013 etienne debas
 ##
 
 SRCS	= main.c \
@@ -80,13 +80,11 @@ SRCS	= main.c \
 	  limit_sides.c \
 	  limit_depth.c \
 	  supersampling.c \
-	  inter_third.c \
 	  limited_plan.c \
 	  mem.c \
 	  exotique.c \
 	  transform_vec.c \
 	  bmp_loader.c \
-	  solve_cube.c \
 	  tangle.c \
 	  texture.c \
 	  tore.c \
