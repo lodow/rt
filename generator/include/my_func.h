@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Fri Jun  7 12:29:41 2013 remi robert
+** Last update Fri Jun  7 13:14:28 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -146,5 +146,6 @@ void	write_struct_option_second(char *str, t_object *pcourant, int fd);
 void	actu_texbox(t_param *param, int y);
 void    validate_saisi(t_param *param, int x, int y);
 int	get_new_type(t_param *param, int x, int y);
+void	erease_textbox(t_param *param, int x, int y);
 
 #endif

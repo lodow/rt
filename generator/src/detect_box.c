@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Tue Jun  4 12:58:21 2013 remi robert
-** Last update Fri Jun  7 11:15:19 2013 remi robert
+** Last update Fri Jun  7 13:15:39 2013 remi robert
 */
 
 #include "my_func.h"
@@ -74,6 +74,7 @@ void	detect_box(t_param *param, int x, int y)
       param->saisi.check = 1;
       param->saisi.x = 460;
       rempl_coord(param, x, y);
+      erease_textbox(param, 450, param->saisi.y - 20);
       mlx_put_image_to_window(param->window.p, param->window.id,
 			      param->write.img, 429, param->saisi.y - 20);
     }
