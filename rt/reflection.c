@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Tue Apr  2 18:25:49 2013 etienne debas
-** Last update Fri Jun  7 11:45:20 2013 luc sinet
+** Last update Fri Jun  7 11:49:21 2013 luc sinet
 */
 
 #include <math.h>
@@ -58,8 +58,8 @@ unsigned int	reflection(t_rt *rpt, t_lco *lpt, unsigned int color, double k)
   indice = 1;
   obj = rpt->obj_num;
   copy_tab(rpt->cpt->pos, ctmp, 3);
-  while (i < MAX_R && rpt->obj[rpt->obj_num].ipt->indice[2]
-	 >= ZERO && k > ZERO)
+  while (i < MAX_R && rpt->obj[rpt->obj_num].ipt->indice[2] >= ZERO
+	 && k > ZERO)
     {
       indice *= rpt->obj[rpt->obj_num].ipt->indice[2];
       calc_reflec_vector(rpt, rpt->vpt, lpt, k);

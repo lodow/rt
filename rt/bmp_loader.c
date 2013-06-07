@@ -5,7 +5,7 @@
 ** Login   <adrien@Adrien>
 **
 ** Started on  Wed May  1 13:50:59 2013 Adrien
-** Last update Fri Jun  7 11:42:44 2013 luc sinet
+** Last update Fri Jun  7 11:53:09 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -43,16 +43,16 @@ int	check_offset(t_info_bmp *info, char **img, int fd)
 {
   int	ret;
   int	size;
-  int	size_read;
+  int	offsize;
 
   size = 0;
-  size_read = info->offset - (int)sizeof(t_info_bmp);
-  if (size_read > 0)
+  offsize = info->offset - (int)sizeof(t_info_bmp);
+  if (offsize > 0)
     {
-      while ((ret = check_perror("Read", read(fd, *img, size_read - size))) > 0
-             && size + ret < size_read)
+      while ((ret = check_perror("Read", read(fd, *img, offsize - size))) > 0
+             && size + ret < offsize)
         size += ret;
-      if (size + ret != size_read)
+      if (size + ret != offsize)
         return (merror("BMP Loader: Read Error\n", -1));
     }
   return (0);
@@ -64,9 +64,9 @@ int	check_bmp(t_info_bmp *info, char **img, int fd, t_bmp *image)
   int	size;
   int	fsize;
 
-  size = 0;
   fsize = (((info->widht * info->deep_color[0] / 8) + (info->widht % 4))
            * info->height);
+  size = 0;
   if ((*img = malloc(fsize)) == NULL
       || (image->texture = malloc(info->widht * (info->deep_color[0] / 8)
                                   * info->height)) == NULL)
