@@ -5,11 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Thu Jun  6 12:22:14 2013 luc sinet
+** Last update Fri Jun  7 19:32:38 2013 luc sinet
 */
 
 #include <math.h>
 #include "main.h"
+#include "pars.h"
 #include "inter.h"
 #include "change_color.h"
 #include "light.h"
@@ -25,7 +26,7 @@ void		calc_inter(t_rt *rpt, double *kmin)
   obj = &(rpt->obj[i]);
   *kmin = -1;
   rpt->obj_num = 0;
-  while (obj->type >= 0 && obj->type < 12)
+  while (obj->type >= 0 && obj->type < NB_OBJ)
     {
       k = move_cam(rpt, rpt->vpt->vec, rpt->cpt->pos, obj);
       if (k > ZERO && (k < *kmin || *kmin == -1))
