@@ -105,7 +105,7 @@ SRCS	= main.c \
 	  perlin_permutation.c \
 	  solve_cubic.c \
 	  solve_quartic.c \
-	  solve_quadratic.c \
+	  solve_quadratic.c
 
 OBJS	= $(SRCS:.c=.o)
 
