@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 09:35:28 2013 remi
-** Last update Fri Jun  7 11:15:09 2013 remi robert
+** Last update Fri Jun  7 12:32:35 2013 remi robert
 */
 
 #include "my_func.h"
@@ -62,7 +62,11 @@ void		validate_saisie(t_param *param)
   t_object	*pcourant;
 
   if (param->phead == NULL || param->saisi.buff[0] == '\0')
-    return ;
+    {
+      mlx_put_image_to_window(param->window.p, param->window.id,
+			      param->cache.img, 410, param->saisi.y - 20);
+      return ;
+    }
   pcourant = param->phead;
   while (pcourant->next != NULL)
     pcourant = pcourant->next;
