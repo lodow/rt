@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu May 16 10:51:03 2013 luc sinet
-** Last update Tue Jun  4 11:30:29 2013 luc sinet
+** Last update Fri Jun  7 22:32:19 2013 luc sinet
 */
 
 #include "main.h"
@@ -23,7 +23,7 @@ void	pars_refraction(char *line, t_obj *ept, UNUSED t_text *text)
 
 void	pars_reflection(char *line, t_obj *ept, UNUSED t_text *text)
 {
-  ept->ipt->indice[2] = LIMIT(my_fgetnbr(line), 0, 1);
+  ept->ipt->indice[2] = LIMIT(my_fgetnbr(line), 0, 0.99);
 }
 
 void	pars_cst(char *line, t_obj *ept, UNUSED t_text *text)
