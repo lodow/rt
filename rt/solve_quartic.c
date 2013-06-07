@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Mon Jun  3 20:50:18 2013 etienne debas
-** Last update Mon Jun  3 20:55:59 2013 etienne debas
+** Last update Fri Jun  7 19:04:47 2013 etienne debas
 */
 
 # include "solve.h"
@@ -15,7 +15,8 @@ void		set_pqr_quartic(double *pqr, double *coef)
 {
   pqr[0] = -3.0 * (coef[1] * coef[1]) / (8.0 * coef[0] * coef[0])
     + (coef[2] / coef[0]);
-  pqr[1] = (pow(coef[1] / 2.0, 3) / pow(coef[0], 3)) - (0.5 * coef[1] * coef[2])
+  pqr[1] = (pow(coef[1] / 2.0, 3) / pow(coef[0], 3))
+    - (0.5 * coef[1] * coef[2])
     / pow(coef[0], 2) + coef[3] / coef[0];
   pqr[2] = -3.0 * pow((coef[1] / 4.0) / coef[0], 4)
     + coef[2] * (pow(coef[1] / 4.0, 2) / pow(coef[0], 3))

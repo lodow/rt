@@ -14,8 +14,8 @@
 #include "change_color.h"
 #include "light.h"
 
-void		init_normals_pointers(void (**nptr)(double *nvec, double *obj_coor,
-						    double *pert, t_obj *obj))
+void		init_normals_pointers(void (**nptr)(double *nvec,
+                              double *obj_coor, double *pert, t_obj *obj))
 {
   nptr[0] = &sphere_normal;
   nptr[1] = &plan_normal;
@@ -34,8 +34,8 @@ void		init_normals_pointers(void (**nptr)(double *nvec, double *obj_coor,
 
 void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
 {
-  void		(*nptr[NB_OBJ])(double *nvec, double *obj_coor, double *pert,
-				t_obj *obj);
+  void		(*nptr[NB_OBJ])(double * nvec, double * obj_coor,
+                          double * pert, t_obj * obj);
   double	vcam[6];
   double	*ocos[4];
   t_obj		*obj;
@@ -100,12 +100,12 @@ unsigned int	get_light(t_rt *rpt, double k, t_obj *obj, t_lco *lpt)
       lpt->light = &rpt->light[i];
       copy_light(&tlight, &rpt->light[i]);
       if (rpt->light[i].ambient == 0)
-	{
-	  if ((state = shadows(rpt, rpt->cpt->pos, &tlight,
-			       lpt)) < 1.0)
-	    get_light_color(&tlight, lpt, rpt, 1.0 - state);
-	  nb_shadow += state;
-	}
+        {
+          if ((state = shadows(rpt, rpt->cpt->pos, &tlight,
+                               lpt)) < 1.0)
+            get_light_color(&tlight, lpt, rpt, 1.0 - state);
+          nb_shadow += state;
+        }
       ++i;
     }
   return (apply_light(lpt->c_color, lpt->mx_cos, nb_shadow / (double)i));
