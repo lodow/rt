@@ -5,7 +5,7 @@
 ** Login   <adrien@Adrien>
 **
 ** Started on  Wed May  1 13:50:59 2013 Adrien
-** Last update Thu Jun  6 18:35:21 2013 luc sinet
+** Last update Fri Jun  7 11:42:44 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -25,8 +25,9 @@ int	check_header(t_info_bmp *info, int fd)
   int	size;
 
   size = 0;
-  while ((ret = check_perror("Read", read(fd, &buffer[size], sizeof(t_info_bmp) - size))) > 0
-         && size + ret < (int)sizeof(t_info_bmp))
+  while ((ret = check_perror("Read", read(fd, &buffer[size],
+					  sizeof(t_info_bmp) - size))) > 0
+	 && size + ret < (int)sizeof(t_info_bmp))
     size += ret;
   if (size + ret != (int)sizeof(t_info_bmp))
     return (merror("BMP Loader: Bad size of the Header in bmp file\n", -1));
@@ -35,6 +36,25 @@ int	check_header(t_info_bmp *info, int fd)
     return (merror("BMP Loader: Bad Number of bit per Color\n", -1));
   if (info->magic_nb[0] != 'B' && info->magic_nb[1] != 'M')
     return (merror("BMP Loader: Bad Magic Number\n", -1));
+  return (0);
+}
+
+int	check_offset(t_info_bmp *info, char **img, int fd)
+{
+  int	ret;
+  int	size;
+  int	size_read;
+
+  size = 0;
+  size_read = info->offset - (int)sizeof(t_info_bmp);
+  if (size_read > 0)
+    {
+      while ((ret = check_perror("Read", read(fd, *img, size_read - size))) > 0
+             && size + ret < size_read)
+        size += ret;
+      if (size + ret != size_read)
+        return (merror("BMP Loader: Read Error\n", -1));
+    }
   return (0);
 }
 
@@ -51,16 +71,10 @@ int	check_bmp(t_info_bmp *info, char **img, int fd, t_bmp *image)
       || (image->texture = malloc(info->widht * (info->deep_color[0] / 8)
                                   * info->height)) == NULL)
     return (merror("BMP Loader: Malloc Failed\n", -1));
-  if (info->offset - (int)sizeof(t_info_bmp) > 0)
-    {
-      while ((ret = check_perror("Read", read(fd, *img, info->offset - (int)sizeof(t_info_bmp) - size))) > 0
-             && size + ret < info->offset - (int)sizeof(t_info_bmp))
-        size += ret;
-      if (size + ret != info->offset - (int)sizeof(t_info_bmp))
-        return (merror("BMP Loader: Read Error\n", -1));
-    }
-  size = 0;
-  while ((ret = check_perror("Read", read(fd, &(*img)[size], fsize))) > 0 && size + ret < fsize)
+  if (check_offset(info, img, fd) == -1)
+    return (-1);
+  while ((ret = check_perror("Read", read(fd, &(*img)[size], fsize))) > 0
+	 && size + ret < fsize)
     size += ret;
   if (size + ret != fsize)
     return (merror("BMP Loader: Read Error\n", -1));
