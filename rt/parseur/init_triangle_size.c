@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon May 13 15:13:15 2013 luc sinet
-** Last update Mon May 13 17:39:58 2013 luc sinet
+** Last update Fri Jun  7 20:10:24 2013 luc sinet
 */
 
 #include "main.h"
@@ -29,6 +29,21 @@ void	init_triangle_size(t_obj *obj)
 	      ++x;
 	    }
 	}
+      ++i;
+    }
+}
+
+void	init_tangle_size(t_obj *obj)
+{
+  int	i;
+
+  i = 0;
+  while (obj[i].type != -1)
+    {
+      if (obj[i].type == PILLOW)
+	obj[i].size[1] = 0;
+      else if (obj[i].type == CHUBS)
+	obj[i].size[1] = 50;
       ++i;
     }
 }

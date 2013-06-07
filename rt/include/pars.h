@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Fri Jun  7 19:24:45 2013 luc sinet
+** Last update Fri Jun  7 20:04:15 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -26,8 +26,10 @@
 # define TRIANGLE 6
 # define PARABOLOIDE 7
 # define HYERBOLOIDE 8
-# define MOEBIUS 9
-# define TANGLE 10
+# define PILLOW 9
+# define CHUBS 10
+# define TANGLE 11
+# define TORE 12
 # define NB_OPT 7
 
 typedef struct	s_obj	t_obj;
@@ -66,6 +68,7 @@ void	fill_limits(char *line, double *limit);
 void	get_color(char *line, unsigned char *color);
 void	init_shapes(char **shape);
 void	init_triangle_size(t_obj *obj);
+void	init_tangle_size(t_obj *obj);
 void	init_cam(t_cam *cpt);
 void	skip_adds(char *line, int *i);
 int	light_carac(char *line, t_lig *ltab, int i);

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 18:33:58 2013 luc sinet
-** Last update Fri Jun  7 19:25:16 2013 luc sinet
+** Last update Fri Jun  7 19:52:31 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -67,6 +67,7 @@ int	check_size(t_obj *tab)
 
   obj = 0;
   init_triangle_size(tab);
+  init_tangle_size(tab);
   while (tab[obj].type != -1)
     {
       i = 0;
