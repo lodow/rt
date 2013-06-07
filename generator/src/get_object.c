@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Thu May 30 15:01:57 2013 remi
-** Last update Mon Jun  3 14:55:20 2013 remi robert
+** Last update Fri Jun  7 20:13:26 2013 remi
 */
 
 #include "my_func.h"
@@ -23,7 +23,7 @@ char	*get_name_object(int nb)
   tab[6] = "triangle";
   tab[7] = "paraboloid";
   tab[8] = "hyperboloid";
-  tab[9] = "moebuis";
+  tab[9] = "tore";
   tab[10] = "tangle";
   tab[11] = "light";
   if (nb >= 0 && nb < 12)

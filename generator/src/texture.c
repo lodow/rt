@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Fri May 31 09:45:06 2013 remi
-** Last update Fri Jun  7 12:30:32 2013 remi robert
+** Last update Fri Jun  7 20:15:31 2013 remi robert
 */
 
 #include "my_func.h"
@@ -14,10 +14,10 @@ int	load_texture_form(t_param *param)
 {
   int	indice;
 
-  if ((param->tab_texture_form = malloc(sizeof(t_texture) * 10)) == NULL)
+  if ((param->tab_texture_form = malloc(sizeof(t_texture) * 11)) == NULL)
     return (0);
   indice = -1;
-  while (++indice < 10)
+  while (++indice < 11)
     if ((param->tab_texture_form[indice].img =
 	 mlx_xpm_file_to_image(param->window.p,
 			       get_texture_form(indice),

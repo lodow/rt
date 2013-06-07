@@ -5,23 +5,25 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu Jun  6 11:31:18 2013 remi robert
-** Last update Thu Jun  6 12:04:14 2013 remi robert
+** Last update Fri Jun  7 20:22:19 2013 remi robert
 */
 
 #include "my_func.h"
 
 int	get_indice_texture_form(char type)
 {
-  if (type < 0 || type > 11 || type == MOEBIUS || type == PLAN)
+  if (type < 0 || type > 11 || type == PLAN)
     return (-1);
   if (type == SPHERE)
     return (SPHERE);
   if (type > SPHERE && type <= HYERBOLOIDE)
     return (type - 1);
-  if (type == LIGHT)
-    return (9);
-  if (type == TANGLE)
+  if (type == MOEBIUS)
     return (8);
+  if (type == LIGHT)
+    return (10);
+  if (type == TANGLE)
+    return (9);
   return (type);
 }
 

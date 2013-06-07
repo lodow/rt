@@ -5,14 +5,14 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Fri May 31 09:50:05 2013 remi
-** Last update Thu Jun  6 11:24:58 2013 remi robert
+** Last update Fri Jun  7 20:16:26 2013 remi robert
 */
 
 #include "my_func.h"
 
 char	*get_texture_form(int nb)
 {
-  char	*tab[10];
+  char	*tab[11];
 
   tab[0] = "texture/forme/sphere.xpm";
   tab[1] = "texture/forme/cone.xpm";
@@ -22,9 +22,10 @@ char	*get_texture_form(int nb)
   tab[5] = "texture/forme/triangle.xpm";
   tab[6] = "texture/forme/paraboloid.xpm";
   tab[7] = "texture/forme/hyperboloid.xpm";
-  tab[8] = "texture/forme/tangle.xpm";
-  tab[9] = "texture/forme/light.xpm";
-  if (nb >= 0 && nb < 10)
+  tab[8] = "texture/forme/tore.xpm";
+  tab[9] = "texture/forme/tangle.xpm";
+  tab[10] = "texture/forme/light.xpm";
+  if (nb >= 0 && nb < 11)
     return (tab[nb]);
   return ("");
 }
