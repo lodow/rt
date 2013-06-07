@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed May  8 18:39:21 2013 luc sinet
-** Last update Tue Jun  4 11:41:15 2013 luc sinet
+** Last update Fri Jun  7 11:44:02 2013 luc sinet
 */
 
 #include <math.h>
@@ -13,7 +13,8 @@
 #include "include/light.h"
 #include "include/change_color.h"
 
-void		filter_light_color(unsigned char *lcolor, t_obj *obj, double distance)
+void		filter_light_color(unsigned char *lcolor, t_obj *obj,
+				   double distance)
 {
   double	ratio;
   double	ratio_distance;
