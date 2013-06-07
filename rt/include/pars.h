@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Thu Jun  6 12:15:58 2013 luc sinet
+** Last update Fri Jun  7 19:24:45 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -13,7 +13,9 @@
 
 # define LIMIT(x, n1, n2) (((x) < (n1)) ? (n1) : ((x) > (n2)) ? (n2) : (x))
 # define BOOL(x) (x >= 1) ? 1 : 0
-# define T_ACCOL(x) (x == 16) ? 1 : (x == 17) ? -1 : 0
+# define PARAM 19
+# define NB_OBJ 13
+# define T_ACCOL(x) (x == PARAM - 2) ? 1 : (x == PARAM - 1) ? -1 : 0
 
 # define SPHERE 0
 # define PLAN 1
