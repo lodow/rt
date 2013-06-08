@@ -5,15 +5,15 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Fri Jun  7 19:54:06 2013 etienne debas
-** Last update Fri Jun  7 19:55:30 2013 etienne debas
+** Last update Sat Jun  8 16:02:23 2013 maxime lavandier
 */
 
 #include <math.h>
 #include "main.h"
 #include "light.h"
 
-void		tangle_normal(double *nvec, double *obj_coor,
-			      double *pert, t_obj *obj)
+void	tangle_normal(double *nvec, double *obj_coor,
+		      double *pert, t_obj *obj)
 {
   nvec[0] = 4 * pow(obj_coor[0], 3) - 20 * pow(obj->size[0], 2) * obj_coor[0];
   nvec[1] = 4 * pow(obj_coor[1], 3) - 20 * pow(obj->size[0], 2) * obj_coor[1];

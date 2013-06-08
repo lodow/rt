@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Mar 31 13:20:23 2013 luc sinet
-** Last update Fri Jun  7 19:54:27 2013 etienne debas
+** Last update Sat Jun  8 16:03:06 2013 maxime lavandier
 */
 
 #include <math.h>
@@ -26,7 +26,7 @@ void	perturb_normal(double *nvec, double *obj_coor, double *pert)
 }
 
 void	sphere_normal(double *nvec, double *obj_coor,
-                    double *pert, t_obj *obj)
+		      double *pert, t_obj *obj)
 {
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];
@@ -47,7 +47,7 @@ void	plan_normal(double *nvec, double *obj_coor, double *pert, t_obj *obj)
 }
 
 void	cone_normal(double *nvec, double *obj_coor,
-                  double *pert, UNUSED t_obj *obj)
+		    double *pert, UNUSED t_obj *obj)
 {
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];
@@ -56,7 +56,7 @@ void	cone_normal(double *nvec, double *obj_coor,
 }
 
 void	cylinder_normal(double *nvec, double *obj_coor, double *pert,
-                      UNUSED t_obj *obj)
+			UNUSED t_obj *obj)
 {
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May 19 22:41:07 2013 luc sinet
-** Last update Fri Jun  7 19:26:47 2013 luc sinet
+** Last update Sat Jun  8 16:00:42 2013 maxime lavandier
 */
 
 #include "main.h"
@@ -28,7 +28,7 @@ void	assign_function(t_rt *rpt)
   rpt->eptr[12] = &tore;
 }
 
-void		new_coor(t_vec *vpt, t_cam *cpt, t_par *ppt, double *pos)
+void	new_coor(t_vec *vpt, t_cam *cpt, t_par *ppt, double *pos)
 {
   vpt->vec[0] = DIST - cpt->pos[0];
   vpt->vec[1] = (ppt->imgwidth / 2.0 - pos[0]) - cpt->pos[1];
