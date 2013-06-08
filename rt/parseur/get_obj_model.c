@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Sun May  5 14:22:04 2013 Hugues
-** Last update Thu May 16 15:27:39 2013 luc sinet
+** Last update Sat Jun  8 18:04:28 2013 luc sinet
 */
 
 #include <unistd.h>
@@ -29,7 +29,7 @@ void		fill_model_tab(double **tab, int *size, char *line)
   tsize = *size * 3;
   tmp = *tab;
   if ((tmp = adjust_mem_size((void*)tmp, tsize * sizeof(double),
-                             (tsize + 3) * sizeof(double), 1)) == NULL)
+			     (tsize + 3) * sizeof(double), 1)) == NULL)
     {
       my_putstr("Malloc error\n", 2);
       return ;
@@ -46,7 +46,7 @@ void		fill_model_tab(double **tab, int *size, char *line)
 }
 
 void		parse_model_indice_line(char *line, int *vert,
-                                int *uvs, int *norm)
+					int *uvs, int *norm)
 {
   int		*indice[3];
   int		i;
