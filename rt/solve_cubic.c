@@ -5,15 +5,11 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Mon Jun  3 20:41:57 2013 etienne debas
-** Last update Fri Jun  7 11:06:38 2013 adrien dellamaggiora
+** Last update Sat Jun  8 12:08:25 2013 etienne debas
 */
 
-# include "solve.h"
-# include "include/main.h"
-
-/*
-** Methode de Cardan pour résoudre les équations du troisième degré
-*/
+#include "solve.h"
+#include "include/main.h"
 
 void		delta_neg(double p, double q, double *res, double trans)
 {
@@ -55,12 +51,6 @@ int		cardan_method(double p, double q, double *res, double trans)
     }
   return (0);
 }
-
-/*
-** résoud équations du troisième degré
-** calcul du p et du q, utilise méthode de Cardan
-** stocke dans res les solutions et retourne le nombre de solutions
-*/
 
 int		solve_cubic(double *coef, double *res)
 {
