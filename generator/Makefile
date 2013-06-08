@@ -4,7 +4,7 @@
 ## Login   <robert_r@epitech.net>
 ## 
 ## Started on  Fri Nov 30 10:59:19 2012 remi robert
-## Last update Fri Jun  7 13:14:49 2013 remi robert
+## Last update Sat Jun  8 18:16:34 2013 remi robert
 ##
 
 SRCPATH	=	src/
@@ -43,6 +43,7 @@ SRC	=	$(SRCPATH)main.c \
 		$(SRCPATH)validate_saisi.c \
 		$(SRCPATH)get_new_type.c \
 		$(SRCPATH)erease_textbox.c \
+		$(SRCPATH)check_saisi.c \
 
 OBJ	=	$(SRC:.c=.o)
 

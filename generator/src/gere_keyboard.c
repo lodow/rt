@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 09:35:28 2013 remi
-** Last update Sat Jun  8 18:02:11 2013 remi
+** Last update Sat Jun  8 18:18:03 2013 remi robert
 */
 
 #include "my_func.h"
@@ -48,6 +48,8 @@ void	gere_saisi_buff(t_param *param, int keycode)
 	aff[0] = get_number_with_key(keycode);
       else
 	aff[0] = keycode;
+      if (check_saisi(param, aff[0]) == 0)
+	printf("False\n");
       param->saisi.buff[param->saisi.indice] = aff[0];
       param->saisi.indice += 1;
       param->saisi.buff[param->saisi.indice] = '\0';

@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Sat Jun  8 18:03:00 2013 remi
+** Last update Sat Jun  8 18:17:02 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -148,5 +148,6 @@ void    validate_saisi(t_param *param, int x, int y);
 int	get_new_type(t_param *param, int x, int y);
 void	erease_textbox(t_param *param, int x, int y);
 void	rempl_tab_cord(int *tab);
+int	check_saisi(t_param *param, char caractere);
 
 #endif
