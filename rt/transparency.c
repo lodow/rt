@@ -36,21 +36,21 @@ double	get_refrac_ratio(t_obj *tab, double indice, int *pass, int obj_num)
   if (!found)
     {
       if (i == 0)
-	return (indice);
+        return (indice);
       else
-	return (indice / tab[pass[i - 1]].ipt->indice[1]);
+        return (indice / tab[pass[i - 1]].ipt->indice[1]);
     }
   else
     {
       if (i == 0)
-	return (AIR / indice);
+        return (AIR / indice);
       else
-	return (tab[pass[i - 1]].ipt->indice[1] / indice);
+        return (tab[pass[i - 1]].ipt->indice[1] / indice);
     }
 }
 
 double		transparency_loop(t_rt *rpt, t_lco *lpt, t_trans *trans,
-				  double k)
+                            double k)
 {
   double	refrac;
   int		obj;
@@ -60,10 +60,9 @@ double		transparency_loop(t_rt *rpt, t_lco *lpt, t_trans *trans,
   i = 0;
   obj = rpt->obj_num;
   refrac = get_refrac_ratio(rpt->obj, rpt->obj[obj].ipt->indice[1],
-			    trans->pass, obj);
+                            trans->pass, obj);
   calc_refrac(rpt, lpt, k, refrac);
-  if (rpt->obj[obj].type != 1)
-    add_to_tab(trans->pass, obj);
+  add_to_tab(trans->pass, obj);
   calc_inter(rpt, &k);
   found = find_in_tab(trans->pass, rpt->obj_num, &i);
   if (k > ZERO && rpt->obj_num != obj && !found)
@@ -78,7 +77,7 @@ double		transparency_loop(t_rt *rpt, t_lco *lpt, t_trans *trans,
 }
 
 unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
-			     double k)
+                             double k)
 {
   int		save_obj;
   double	vec[3];
@@ -94,7 +93,7 @@ unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
   copy_tab(rpt->vpt->vec, vec, 3);
   copy_tab(rpt->cpt->pos, ctmp, 3);
   while (trans.nb_obj < MAX_R &&
-	 rpt->obj[rpt->obj_num].ipt->indice[0] > ZERO && k > ZERO)
+         rpt->obj[rpt->obj_num].ipt->indice[0] > ZERO && k > ZERO)
     k = transparency_loop(rpt, lpt, &trans, k);
   copy_tab(ctmp, rpt->cpt->pos, 3);
   copy_tab(vec, rpt->vpt->vec, 3);
