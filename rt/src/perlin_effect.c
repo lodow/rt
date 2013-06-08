@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 18 22:44:56 2013 etienne debas
-** Last update Sat Jun  8 16:01:23 2013 maxime lavandier
+** Last update Sun Jun  9 00:40:54 2013 luc sinet
 */
 
 #include <math.h>
@@ -36,10 +36,10 @@ unsigned int	perlin_cloud(double *inter, unsigned char *color_obj,
 {
   fill_tab_from_str(ppt->sval, "0.01, 0.4, 0.6", 3);
   fill_tab_from_str(ppt->col,
-		    "100, 100, 200, 255, 255, 255, 100, 100, 200", 9);
-  ppt->pn = (get_perlin(0.01 * inter[0],
-			0.01 * inter[1],
-			0.01 * inter[2]));
+  		    "255, 255, 255, 198, 229, 255, 255, 255, 255", 9);
+  ppt->pn = (get_perlin(0.5 * inter[0] * frequency,
+			0.5 * inter[1] * frequency,
+			0.5 * inter[2] * frequency));
   interpolation(color_obj, ppt->pn, ppt->sval, ppt->col);
   return (recomp_color(color_obj));
 }
