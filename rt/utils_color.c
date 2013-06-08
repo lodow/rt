@@ -5,19 +5,19 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 18 20:12:40 2013 etienne debas
-** Last update Sat May 18 20:17:59 2013 etienne debas
+** Last update Sat Jun  8 15:58:16 2013 maxime lavandier
 */
 
-void		save_color_obj(unsigned char *color,
-			       unsigned char *save)
+void	save_color_obj(unsigned char *color,
+		       unsigned char *save)
 {
   save[0] = color[0];
   save[1] = color[1];
   save[2] = color[2];
 }
 
-void		reinit_color(unsigned char *color,
-			     unsigned char *save)
+void	reinit_color(unsigned char *color,
+		     unsigned char *save)
 {
   color[0] = save[0];
   color[1] = save[1];

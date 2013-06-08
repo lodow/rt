@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Apr  8 17:01:54 2013 luc sinet
-** Last update Sat Jun  1 14:57:31 2013 luc sinet
+** Last update Sat Jun  8 16:05:38 2013 maxime lavandier
 */
 
 #include "main.h"
@@ -37,7 +37,7 @@ void	check_y_value(double **img, int *timg, t_par *ppt)
 }
 
 void		fill_img_param(double *dpos, unsigned int color,
-                       UNUSED t_rt *rpt, t_par *ppt)
+			       UNUSED t_rt *rpt, t_par *ppt)
 {
   int		pos[2];
 

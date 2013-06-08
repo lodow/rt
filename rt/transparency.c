@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May  5 18:27:59 2013 luc sinet
-** Last update Sat Jun  8 15:30:15 2013 luc sinet
+** Last update Sat Jun  8 15:58:48 2013 maxime lavandier
 */
 
 #include <math.h>
@@ -41,7 +41,7 @@ double	get_refrac_ratio(t_obj *tab, double indice, int *pass, int obj_num)
 }
 
 double		transparency_loop(t_rt *rpt, t_lco *lpt, t_trans *trans,
-                            double k)
+				  double k)
 {
   double	refrac;
   int		obj;

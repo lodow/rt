@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 18 22:44:56 2013 etienne debas
-** Last update Fri Jun  7 11:46:28 2013 luc sinet
+** Last update Sat Jun  8 16:01:23 2013 maxime lavandier
 */
 
 #include <math.h>
@@ -16,7 +16,7 @@
 #include "change_color.h"
 
 unsigned int	perlin_fire(double *inter, unsigned char *color_obj,
-			     t_perl *ppt, double frequency)
+			    t_perl *ppt, double frequency)
 {
   fill_tab_from_str(ppt->col, "192, 15, 5, 255, 180, 0", 6);
   ppt->pn = fabs(get_perlin(frequency * inter[0],

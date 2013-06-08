@@ -5,13 +5,13 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Mon Jun  3 20:50:18 2013 etienne debas
-** Last update Sat Jun  8 12:08:24 2013 etienne debas
+** Last update Sat Jun  8 15:59:48 2013 maxime lavandier
 */
 
 #include "solve.h"
 #include "include/main.h"
 
-void		set_pqr_quartic(double *pqr, double *coef)
+void	set_pqr_quartic(double *pqr, double *coef)
 {
   pqr[0] = -3.0 * (coef[1] * coef[1]) / (8.0 * coef[0] * coef[0])
     + (coef[2] / coef[0]);
@@ -24,7 +24,7 @@ void		set_pqr_quartic(double *pqr, double *coef)
     + (coef[4] / coef[0]);
 }
 
-void		init_to_send_cubic(double p, double q,
+void	init_to_send_cubic(double p, double q,
 				   double r, double *coef)
 {
   coef[0] = 8.0;
