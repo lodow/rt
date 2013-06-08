@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Mon May 13 10:15:38 2013 Adrien Della Maggiora
-** Last update Sat Jun  8 18:16:28 2013 maxime lavandier
+** Last update Sat Jun  8 18:33:13 2013 luc sinet
 */
 
 #include <math.h>
@@ -53,11 +53,6 @@ void		texture_plan(t_obj *obj, double k, t_rt *rpt)
   double	pt[3];
   double        vcam[6];
 
-  copy_tab(rpt->vpt->vec, vcam, 3);
-  copy_tab(rpt->cpt->pos, &vcam[3], 3);
-  modif_cam(&vcam[3], obj->pos);
-  rotate(&vcam[3], obj->apt->ocos, obj->apt->osin, 0);
-  rotate(vcam, obj->apt->ocos, obj->apt->osin, 0);
   get_impact(pt, &vcam[3], k, vcam);
   u = pt[1];
   if (u < ZERO)
