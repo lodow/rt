@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Sat Jun  8 18:23:04 2013 etienne debas
+** Last update Sat Jun  8 18:30:00 2013 adrien dellamaggiora
 */
 
 #ifndef MAIN_H_
@@ -194,5 +194,6 @@ char		*get_file_name(char *name, char *ext);
 void		nb_to_str(char *str, int nb, int size);
 void		my_perror(char *str);
 int		check_perror(char *str, int err);
+void		free_texture(t_text *text);
 
 #endif /* !MAIN_H_ */

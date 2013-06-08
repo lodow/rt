@@ -5,11 +5,25 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May 19 22:41:07 2013 luc sinet
-** Last update Sat Jun  8 16:00:42 2013 maxime lavandier
+** Last update Sat Jun  8 18:29:13 2013 adrien dellamaggiora
 */
 
 #include "main.h"
 #include "inter.h"
+
+void	free_texture(t_text *text)
+{
+  int	i;
+
+  i = 0;
+  while (text->name && text->name[i] != 0)
+    {
+      free(text->name[i]);
+      free(text->text[i++]);
+    }
+  free(text->name);
+  free(text->text);
+}
 
 void	assign_function(t_rt *rpt)
 {
