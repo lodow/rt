@@ -94,29 +94,31 @@ void		face_t_objtri(t_obj *obj, t_model *model, int i)
 
 void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj)
 {
-  int		nb_tri;
   int		sizeobj;
   int		i;
 
-  nb_tri = model->fin_size_vertice / 9;
+  i = model->fin_size_vertice / 9;
   sizeobj = 0;
   while ((*objtab)[sizeobj].type != -1)
     sizeobj++;
-  if (((*objtab) = adjust_mem_size((void*)*objtab, sizeobj * sizeof(t_obj),
-                                   (sizeobj + nb_tri + 1) * sizeof(t_obj), 1))
-      == NULL)
+  if (((*objtab) = AMS((void*)*objtab, sizeobj * sizeof(t_obj),
+                       (sizeobj + i + 1) * sizeof(t_obj), 1)) == NULL)
     {
       my_putstr("Malloc error\n", 2);
       return ;
     }
-  i = 0;
-  while (i < nb_tri)
+  (*objtab)[i + sizeobj].type = -1;
+  i -= 1;
+  while (i >= 0)
     {
       (*objtab)[i + sizeobj] = *baseobj;
+      ((*objtab)[i + sizeobj]).ipt = AMS(baseobj->ipt, sizeof(t_indice),
+                                         sizeof(t_indice), 0);
+      ((*objtab)[i + sizeobj]).apt = AMS(baseobj->apt, sizeof(t_angle),
+                                         sizeof(t_angle), 0);
       face_t_objtri(&((*objtab)[i + sizeobj]), model, i);
-      i++;
+      --i;
     }
-  (*objtab)[i + sizeobj].type = -1;
 }
 
 void		init_model_struct(t_model *model)

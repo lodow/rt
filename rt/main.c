@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 10:36:59 2013 luc sinet
-** Last update Fri Jun  7 13:04:24 2013 luc sinet
+** Last update Sat Jun  8 12:58:38 2013 adrien dellamaggiora
 */
 
 #include <time.h>
@@ -18,6 +18,14 @@ void	free_all(t_rt *rpt, t_par *ppt)
 {
   int	i;
 
+  i = 0;
+  while (rpt->text->name && rpt->text->name[i] != 0)
+    {
+      free(rpt->text->name[i]);
+      free(rpt->text->text[i++]);
+    }
+  free(rpt->text->name);
+  free(rpt->text->text);
   i = 0;
   while (rpt->obj[i].type != -1)
     {

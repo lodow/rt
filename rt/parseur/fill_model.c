@@ -63,6 +63,8 @@ int		fill_model_struct(t_pars *opt, t_obj **tab, int *i)
   free(file_name);
   raw_model_t_obj(tab, obj, &model);
   free_obj_model(obj);
+  free(model.ipt);
+  free(model.apt);
   return (0);
 }
 
