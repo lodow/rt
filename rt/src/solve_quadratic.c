@@ -5,11 +5,11 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Mon Jun  3 20:46:13 2013 etienne debas
-** Last update Sat Jun  8 18:09:24 2013 etienne debas
+** Last update Sun Jun  9 01:09:11 2013 Hugues
 */
 
 #include "solve.h"
-#include "include/main.h"
+#include "main.h"
 
 int		solve_quadratic(double *coef, double *res)
 {

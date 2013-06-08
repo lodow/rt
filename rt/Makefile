@@ -1,133 +1,54 @@
 ##
-## Makefile for copylib in /home/sinet_l//jour11
+## Makefile for copylib in /home/sinet_l//jour58
 ##
 ## Made by luc sinet
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sat Jun  8 18:36:26 2013 luc sinet
+## Last update Sun Jun  9 01:23:46 2013 Hugues
 ##
 
-SRCS	= main.c \
-	  parseur/pars.c \
-	  parseur/get_config_file.c \
-	  parseur/fill_obj_color.c \
-	  parseur/fill_elem.c \
-	  parseur/fill_light.c \
-	  parseur/fill_cam.c \
-	  parseur/fill_opt.c \
-	  parseur/fill_model.c \
-	  parseur/init.c \
-	  parseur/init_elem.c \
-	  parseur/init_elem_indice.c \
-	  parseur/init_cam.c \
-	  parseur/get_carac.c \
-	  parseur/get_obj_model.c \
-	  parseur/get_obj_model_indice_exp.c \
-	  parseur/get_pert.c \
-	  parseur/get_limit.c \
-	  parseur/get_next_line.c \
-	  parseur/my_getnbr_base.c \
-	  parseur/error.c \
-	  parseur/strfunc.c \
-	  parseur/str.c \
-	  parseur/nb.c \
-	  parseur/my_atof.c \
-	  parseur/light_carac.c \
-	  parseur/convert_model_tri.c \
-	  parseur/fill_texture.c \
-	  parseur/init_triangle_size.c \
-	  parseur/init_pars.c \
-	  parseur/pars_color.c \
-	  parseur/pars_disformations.c \
-	  parseur/pars_indice.c \
-	  parseur/pars_size.c \
-	  parseur/pars_perlin.c \
-	  parseur/pars_other_indice.c \
-	  parseur/pars_opt.c \
-	  parseur/pars_seed.c \
-	  parseur/pars_contrast.c \
-	  parseur/init_opt.c \
-	  parseur/parse_argv.c \
-	  error.c \
-	  calc_inter.c \
-	  reset_calc.c \
-	  pp_image.c \
-	  inter.c \
-	  copy.c \
-	  move_cam.c \
-	  light.c \
-	  change_color.c \
-	  math_coor.c \
-	  math_vec.c \
-	  math_coef.c \
-	  normals.c \
-	  normals_exotique.c \
-	  modif_cam.c \
-	  refraction.c \
-	  reflection.c \
-	  transparency.c \
-	  antialiasing.c \
-	  ambient_light.c \
-	  shadows.c \
-	  init_shadows.c \
-	  shadows_transparency.c \
-	  light_calcul.c \
-	  check_passages.c \
-	  detect_edge.c \
-	  detect_shadows.c \
-	  solve_second.c \
-	  limit.c \
-	  limit_sides.c \
-	  limit_depth.c \
-	  supersampling.c \
-	  limited_plan.c \
-	  mem.c \
-	  exotique.c \
-	  transform_vec.c \
-	  bmp_loader.c \
-	  tangle.c \
-	  texture.c \
-	  init_texture_surface.c \
-	  tore.c \
-	  utils_color.c \
-	  perlin.c \
-	  perlin_effect.c \
-	  other_perlin_effect.c \
-	  interpolation.c \
-	  checkerboard.c \
-	  filter.c \
-	  bump_mapping.c \
-	  bmp_output.c \
-	  tga_output.c \
-	  shadows_supersampling.c \
-	  other_filter.c \
-	  perlin_permutation.c \
-	  solve_cubic.c \
-	  solve_quartic.c \
-	  solve_quadratic.c
+CC = gcc
 
-OBJS	= $(SRCS:.c=.o)
+RM = rm -f
 
-OPT     = -L/usr/lib64 -lmlx_x86_64-linux -L/usr/lib64/X11 -lXext -lX11 -lm
+NAME = rt
 
-CFLAGS	+= --fast-math -ffast-math -O3 -march=native
+OBJDIR = obj/
+SRCDIR = src/
+INCDIR = inc/
 
-CC	= gcc -g -Wall -Wextra -I./include/
+CFLAGS	+=  -O3 -march=native
+CFLAGS	+= --fast-math -ffast-math
+CFLAGS	+= -Wall -Wextra
+CFLAGS	+= -I${INCDIR}
 
-RM	= rm -f
+LDFLAGS += -L/usr/lib64 -lmlx_x86_64-linux -L/usr/lib64/X11 -lXext -lX11 -lm
 
-NAME	= rt
+VPATH = ${SRCDIR}
 
-$(NAME): 	$(OBJS)
-	$(CC) $(OBJS) -o $(NAME) $(OPT)
+SRC = $(wildcard ${SRCDIR}*.c)
 
-all: $(NAME)
+OBJ = $(patsubst ${SRCDIR}%.c,${OBJDIR}%.o,$(SRC))
+
+$(OBJDIR)%.o:	%.c
+		@echo "\033[33mCompiling $*\033[00m"
+		@$(CC) $(CFLAGS) -o $@ -c $<
+
+$(NAME):	$(OBJ)
+		@echo "\033[34mLinking $@ !\033[00m"
+		@$(CC) $(OBJ) -o $(NAME) $(LDFLAGS)
+
+all:	$(NAME)
 
 clean:
-	$(RM) $(OBJS)
+	@echo "\033[35mRemoving object !\033[00m"
+	@$(RM) $(OBJ)
 
-fclean: clean
-	$(RM) $(NAME)
+fclean:	clean
+	@echo "\033[36mRemoving ${NAME} !\033[00m"
+	@$(RM) $(NAME)
 
-re: fclean all clean
+re:	fclean all
+
+.PHONY:	all clean fclean re

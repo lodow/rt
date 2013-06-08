@@ -5,11 +5,11 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Mon Jun  3 20:41:57 2013 etienne debas
-** Last update Sat Jun  8 16:00:08 2013 maxime lavandier
+** Last update Sun Jun  9 01:09:29 2013 Hugues
 */
 
 #include "solve.h"
-#include "include/main.h"
+#include "main.h"
 
 void	delta_neg(double p, double q, double *res, double trans)
 {
