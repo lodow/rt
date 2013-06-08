@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Mon Jun  3 20:50:18 2013 etienne debas
-** Last update Sat Jun  8 15:59:48 2013 maxime lavandier
+** Last update Sat Jun  8 18:04:33 2013 maxime lavandier
 */
 
 #include "solve.h"
@@ -25,7 +25,7 @@ void	set_pqr_quartic(double *pqr, double *coef)
 }
 
 void	init_to_send_cubic(double p, double q,
-				   double r, double *coef)
+			   double r, double *coef)
 {
   coef[0] = 8.0;
   coef[1] = -4.0 * p;

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Apr  9 18:33:23 2013 luc sinet
-** Last update Wed May 22 16:50:37 2013 luc sinet
+** Last update Sat Jun  8 18:11:24 2013 maxime lavandier
 */
 
 #include "main.h"
@@ -13,7 +13,7 @@
 double		test_up_limit(double *cam, double *vec,
 			      double *k, double *limit)
 {
-  double       	mk[2];
+  double	mk[2];
   double	inter[3];
 
   mk[0] = get_min(k, 2);
@@ -33,7 +33,7 @@ double		test_up_limit(double *cam, double *vec,
 double		test_down_limit(double *cam, double *vec,
 				double *k, double *limit)
 {
-  double       	mk[2];
+  double	mk[2];
   double	inter[3];
 
   mk[0] = get_min(k, 2);

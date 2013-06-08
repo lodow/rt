@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Wed May 22 16:27:01 2013 Adrien Della Maggiora
-** Last update Thu Jun  6 18:10:21 2013 luc sinet
+** Last update Sat Jun  8 18:15:02 2013 maxime lavandier
 */
 
 #include <fcntl.h>
@@ -59,9 +59,9 @@ void	fill_with_zero(int fd, int rest)
 
 void	fill_bmp(char *img, int fd, t_info_bmp *info, t_par *ppt)
 {
-  int  	x;
-  int  	y;
-  int  	octet;
+  int	x;
+  int	y;
+  int	octet;
   int	width;
 
   width = ppt->imgwidth;
