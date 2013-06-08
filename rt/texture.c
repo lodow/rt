@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Mon May 13 10:15:38 2013 Adrien Della Maggiora
-** Last update Sat Jun  8 16:38:12 2013 adrien dellamaggiora
+** Last update Sat Jun  8 16:53:50 2013 etienne debas
 */
 
 #include <math.h>
@@ -46,7 +46,7 @@ void		texture_sphere(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
   texture_color(obj, u, v);
 }
 
-void		texture_plan(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
+void		texture_plan(t_obj *obj, double k, t_rt *rpt)
 {
   double	u;
   double	v;
@@ -103,7 +103,7 @@ void	get_color_texture(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
   if (obj->texture == NULL)
     return ;
   if (obj->type == 1)
-    texture_plan(obj, lpt, k, rpt);
+    texture_plan(obj, k, rpt);
   else if (obj->type == 0)
     texture_sphere(obj, lpt, k, rpt);
   else if (obj->type == 3)
