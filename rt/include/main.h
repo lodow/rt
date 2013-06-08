@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Fri Jun  7 23:47:41 2013 adrien dellamaggiora
+** Last update Sat Jun  8 18:18:12 2013 etienne debas
 */
 
 #ifndef MAIN_H_
@@ -187,7 +187,7 @@ unsigned int	apply_contrast(unsigned int color, t_opt *opt);
 void		apply_bump(double *nvec, double *obj_coor, double ratio);
 int		output_bmp(t_par *ppt);
 double		fade(double curve);
-double		lerp(double curve, double a, double b);
+double		perl(double curve, double a, double b);
 unsigned int	xorus_filter(unsigned int color, t_opt *opt);
 int		output_tga(t_par *ppt);
 char		*get_file_name(char *name, char *ext);

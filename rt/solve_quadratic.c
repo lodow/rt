@@ -5,16 +5,11 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Mon Jun  3 20:46:13 2013 etienne debas
-** Last update Mon Jun  3 20:56:00 2013 etienne debas
+** Last update Sat Jun  8 18:09:24 2013 etienne debas
 */
 
-# include "solve.h"
-# include "include/main.h"
-
-/*
-** résoud les équations du second degré
-** stocke dans res les solutions et retourne le nombre de solutions
-*/
+#include "solve.h"
+#include "include/main.h"
 
 int		solve_quadratic(double *coef, double *res)
 {

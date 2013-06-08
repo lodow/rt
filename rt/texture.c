@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Mon May 13 10:15:38 2013 Adrien Della Maggiora
-** Last update Sat Jun  8 16:53:50 2013 etienne debas
+** Last update Sat Jun  8 18:13:05 2013 etienne debas
 */
 
 #include <math.h>
@@ -51,7 +51,7 @@ void		texture_plan(t_obj *obj, double k, t_rt *rpt)
   double	u;
   double	v;
   double	pt[3];
-  double        vcam[6];
+  double	vcam[6];
 
   copy_tab(rpt->vpt->vec, vcam, 3);
   copy_tab(rpt->cpt->pos, &vcam[3], 3);
