@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Fri Jun  7 19:31:41 2013 luc sinet
+** Last update Sat Jun  8 16:04:53 2013 maxime lavandier
 */
 
 #include <math.h>
@@ -15,7 +15,8 @@
 #include "light.h"
 
 void		init_normals_pointers(void (**nptr)(double *nvec,
-                              double *obj_coor, double *pert, t_obj *obj))
+						    double *obj_coor,
+						    double *pert, t_obj *obj))
 {
   nptr[0] = &sphere_normal;
   nptr[1] = &plan_normal;
@@ -35,7 +36,7 @@ void		init_normals_pointers(void (**nptr)(double *nvec,
 void		get_inter_normal(t_rt *rpt, t_vec *vpt, double k, t_lco *lpt)
 {
   void		(*nptr[NB_OBJ])(double * nvec, double * obj_coor,
-                          double * pert, t_obj * obj);
+				double * pert, t_obj * obj);
   double	vcam[6];
   double	*ocos[4];
   t_obj		*obj;

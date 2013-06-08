@@ -38,8 +38,10 @@ Lumière speculaire
 Effect de distance sur les lumières
 Brouillard
 Damier
+Objets 2d
 Triangles
 Antialiasing (Adaptatif supersampling)
+Detection des contours
 Objets limités
 Perturbation de la normale
 Fichier de conf
@@ -51,6 +53,8 @@ Absorbance
 Ombres colorées
 Objets exotiques
 Torre
+Chubs
+Pillow
 Tangle
 fichier .bmp en input
 gestion transparence et reflection sur un meme rayon

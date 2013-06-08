@@ -5,14 +5,14 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Fri May 10 21:28:51 2013 etienne debas
-** Last update Wed May 22 09:53:53 2013 etienne debas
+** Last update Sat Jun  8 16:06:31 2013 maxime lavandier
 */
 
 # include "solve_cube.h"
 # include "include/main.h"
 
-void		get_pq_and_disc(double *coef, double *res,
-				double *pq, double *discriminant)
+void	get_pq_and_disc(double *coef, double *res,
+			double *pq, double *discriminant)
 {
   pq[0] = (3 * coef[2] / coef[0] - pow(coef[1], 2) / pow(coef[0], 2)) / 3;
   pq[1] = (2 * pow(coef[1], 3) / pow(coef[0], 3) - 9 * coef[1]

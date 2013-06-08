@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May 19 09:59:16 2013 luc sinet
-** Last update Sun May 19 20:14:18 2013 luc sinet
+** Last update Sat Jun  8 16:05:09 2013 maxime lavandier
 */
 
 #include "main.h"
@@ -29,7 +29,7 @@ void	fill_tab_from_str(double *tab, char *str, int size)
 }
 
 void	lower_interpol(unsigned char *color_obj, double pn,
-                     double *sval, double *col)
+		       double *sval, double *col)
 {
   color_obj[2] = LIMIT(C1_B * ((pn - sval[0]) / (sval[1] - sval[0]))
                        + C2_B * ((sval[1] - pn) / (sval[1] - sval[0]))
@@ -43,7 +43,7 @@ void	lower_interpol(unsigned char *color_obj, double pn,
 }
 
 void	middle_interpol(unsigned char *color_obj, double pn,
-                      double *sval, double *col)
+			double *sval, double *col)
 {
   color_obj[2] = LIMIT(C2_B * ((pn - sval[1]) / (sval[2] - sval[1]))
                        + C3_B * ((sval[2] - pn) / (sval[2] - sval[1]))
@@ -57,7 +57,7 @@ void	middle_interpol(unsigned char *color_obj, double pn,
 }
 
 void	upper_interpol(unsigned char *color_obj, UNUSED double pn,
-                     UNUSED double *sval, double *col)
+		       UNUSED double *sval, double *col)
 {
   color_obj[2] = C1_B;
   color_obj[1] = C1_G;
@@ -65,7 +65,7 @@ void	upper_interpol(unsigned char *color_obj, UNUSED double pn,
 }
 
 void	interpolation(unsigned char *color_obj, double pn,
-                    double *sval, double *col)
+		      double *sval, double *col)
 {
   if (pn < 0.4)
     lower_interpol(color_obj, pn, sval, col);

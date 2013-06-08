@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Mon May 13 10:15:38 2013 Adrien Della Maggiora
-** Last update Sat Jun  8 16:35:11 2013 adrien dellamaggiora
+** Last update Sat Jun  8 16:38:12 2013 adrien dellamaggiora
 */
 
 #include <math.h>
@@ -14,12 +14,12 @@
 #include "bmp_loader.h"
 #include "change_color.h"
 
-void		texture_color(t_obj *obj, double u, double v)
+void	texture_color(t_obj *obj, double u, double v)
 {
-  int		color;
-  int		x;
-  int		y;
-  int		len;
+  int	color;
+  int	x;
+  int	y;
+  int	len;
 
   len = obj->texture->widht * obj->texture->height;
   if (len <= 0)
@@ -78,7 +78,7 @@ void		texture_plan(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
   		/ obj->texture->height);
 }
 
-void	texture_cylinder(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
+void		texture_cylinder(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
 {
   double	u;
   double	v;

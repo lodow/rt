@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Tue Apr  2 18:25:49 2013 etienne debas
-** Last update Fri Jun  7 11:49:21 2013 luc sinet
+** Last update Sat Jun  8 16:00:56 2013 maxime lavandier
 */
 
 #include <math.h>
@@ -48,7 +48,7 @@ unsigned int	apply_indice(unsigned int color, unsigned int obj_color,
 }
 
 unsigned int	reflection(t_rt *rpt, t_lco *lpt,
-                         unsigned int color, double k)
+			   unsigned int color, double k)
 {
   double	indice;
   double	ctmp[6];

@@ -5,13 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 22:20:26 2013 luc sinet
-** Last update Mon May 20 20:17:52 2013 luc sinet
+** Last update Sat Jun  8 16:03:57 2013 maxime lavandier
 */
 
 #include "main.h"
 
 double		test_left_limit(double *cam, double *vec,
-			      double *k, double *limit)
+				double *k, double *limit)
 {
   double       	mk[2];
   double	inter[3];
@@ -31,7 +31,7 @@ double		test_left_limit(double *cam, double *vec,
 }
 
 double		test_right_limit(double *cam, double *vec,
-				double *k, double *limit)
+				 double *k, double *limit)
 {
   double       	mk[2];
   double	inter[3];
@@ -51,7 +51,7 @@ double		test_right_limit(double *cam, double *vec,
 }
 
 double		test_side_limit(double *cam, double *vec,
-				 double *limit, double *k)
+				double *limit, double *k)
 {
   double	min;
   double	current;
