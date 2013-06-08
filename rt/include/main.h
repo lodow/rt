@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Fri Jun  7 23:47:41 2013 adrien dellamaggiora
+** Last update Sat Jun  8 17:57:42 2013 adrien dellamaggiora
 */
 
 #ifndef MAIN_H_
@@ -54,7 +54,7 @@ typedef struct	s_angle
 typedef struct	s_indice
 {
   double	indice[4];
-  double       	perlin[2];
+  double	perlin[2];
   double	bump;
   int		checker;
   int		rate;
@@ -101,7 +101,7 @@ typedef struct	s_opt
   int		aa;
   double	fog[2];
   int		filter;
-  double       	gamma;
+  double	gamma;
   double	contrast;
   int		shadows_type;
 }		t_opt;
@@ -195,4 +195,4 @@ void		nb_to_str(char *str, int nb, int size);
 void		my_perror(char *str);
 int		check_perror(char *str, int err);
 
-#endif
+#endif /* !MAIN_H_ */

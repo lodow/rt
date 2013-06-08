@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Tue May  7 14:55:53 2013 Hugues
-** Last update Thu May 16 14:53:07 2013 luc sinet
+** Last update Sat Jun  8 17:56:43 2013 adrien dellamaggiora
 */
 
 #ifndef MODEL_H_
@@ -39,4 +39,4 @@ void		free_obj_model(t_model *model);
 void		convert_model_t_obj(double *vert, double *normal,
                             double *uvs, t_obj *obj);
 
-#endif
+#endif /* !MODEL_H_ */
