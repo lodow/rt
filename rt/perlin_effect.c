@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 18 22:44:56 2013 etienne debas
-** Last update Sun Jun  9 00:37:07 2013 luc sinet
+** Last update Sun Jun  9 00:40:54 2013 luc sinet
 */
 
 #include <math.h>
@@ -35,8 +35,6 @@ unsigned int	perlin_cloud(double *inter, unsigned char *color_obj,
 			     t_perl *ppt, UNUSED double frequency)
 {
   fill_tab_from_str(ppt->sval, "0.01, 0.4, 0.6", 3);
-  /* fill_tab_from_str(ppt->col, */
-  /* 		    "100, 100, 200, 255, 255, 255, 100, 100, 200", 9); */
   fill_tab_from_str(ppt->col,
   		    "255, 255, 255, 198, 229, 255, 255, 255, 255", 9);
   ppt->pn = (get_perlin(0.5 * inter[0] * frequency,
