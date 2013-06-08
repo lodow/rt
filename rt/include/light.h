@@ -5,11 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Sat Jun  8 14:34:57 2013 luc sinet
+** Last update Sat Jun  8 17:59:12 2013 adrien dellamaggiora
 */
 
-#ifndef LIG_H_
-# define LIG_H_
+#ifndef LIGHT_H_
+# define LIGHT_H_
 
 # include "pars.h"
 
@@ -38,7 +38,7 @@ typedef struct	s_lco
   unsigned char	c_color[3];
 }		t_lco;
 
-typedef struct	s_shadow
+typedef	struct	s_shadow
 {
   t_lco		*slpt;
   t_lig		*light;
@@ -104,7 +104,7 @@ void		filter_light_color(unsigned char *lcolor, t_obj *obj,
 void		invert_vec(double *vec);
 void		add_to_coor(double *tab, double *coor);
 void		remove_from_coor(double *tab);
-void	   	init_shadows(t_shadow *spt, t_rt *rpt,
+void		init_shadows(t_shadow *spt, t_rt *rpt,
 			     double *cpos, t_lco *lpt);
 int		find_in_tab(int *tab, int nb, int *i);
 void		handle_transparency(t_shadow *spt, t_rt *rpt,
@@ -114,4 +114,4 @@ void		calc_refrac(t_rt *rpt, t_lco *lpt,
 			    double k, double n);
 double		shadow_supersampling(t_rt *rpt, double *cpos, t_shadow *spt);
 
-#endif
+#endif /* !LIGHT_H_ */

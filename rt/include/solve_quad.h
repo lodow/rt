@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 11 14:24:18 2013 etienne debas
-** Last update Sat May 11 16:14:57 2013 etienne debas
+** Last update Sat Jun  8 17:52:48 2013 adrien dellamaggiora
 */
 
 #ifndef SOLVEQUAD_H_
@@ -26,4 +26,4 @@
 # define Z (value[10])
 # define DECAL (value[11])
 
-#endif /* SOLVEQUAD_H_ */
+#endif /* !SOLVEQUAD_H_ */

@@ -5,11 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Nov 14 20:45:42 2012 luc sinet
-** Last update Tue Apr 16 00:25:57 2013 luc sinet
+** Last update Sat Jun  8 17:53:50 2013 adrien dellamaggiora
 */
 
-#ifndef PP_H_
-# define PP_H_
+#ifndef PP_IMAGE_H_
+# define PP_IMAGE_H_
 
 typedef struct	s_par
 {
@@ -29,4 +29,4 @@ typedef struct	s_par
 
 int	my_pixel_put_to_image(int x, int y, t_par *par, unsigned int color);
 
-#endif
+#endif /* !PP_IMAGE_H_ */

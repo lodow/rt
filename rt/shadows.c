@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Tue Apr  9 10:14:18 2013 Adrien Della Maggiora
-** Last update Tue Jun  4 11:39:54 2013 luc sinet
+** Last update Sat Jun  8 16:36:55 2013 luc sinet
 */
 
 #include <math.h>
@@ -72,6 +72,6 @@ double		shadows(t_rt *rpt, double *cpos, t_lig *light, t_lco *lpt)
   copy_tab(spt.cam, cpos, 3);
   copy_tab(spt.vec, spt.vpos, 3);
   rpt->obj_num = spt.obj[0];
-  spt.sdw_coef = LIMIT(1.1 * spt.sdw_coef, 0.2, 1);
+  spt.sdw_coef = LIMIT(spt.sdw_coef, 0.2, 1);
   return (1.0 - spt.sdw_coef);
 }

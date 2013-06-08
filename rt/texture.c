@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Mon May 13 10:15:38 2013 Adrien Della Maggiora
-** Last update Sat Jun  8 18:15:01 2013 maxime lavandier
+** Last update Sat Jun  8 18:16:28 2013 maxime lavandier
 */
 
 #include <math.h>
@@ -46,20 +46,27 @@ void		texture_sphere(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
   texture_color(obj, u, v);
 }
 
-void		texture_plan(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
+void		texture_plan(t_obj *obj, double k, t_rt *rpt)
 {
   double	u;
   double	v;
+  double	pt[3];
+  double        vcam[6];
 
-  get_inter_normal(rpt, rpt->vpt, k, lpt);
-  u = lpt->obj_coor[1];
+  copy_tab(rpt->vpt->vec, vcam, 3);
+  copy_tab(rpt->cpt->pos, &vcam[3], 3);
+  modif_cam(&vcam[3], obj->pos);
+  rotate(&vcam[3], obj->apt->ocos, obj->apt->osin, 0);
+  rotate(vcam, obj->apt->ocos, obj->apt->osin, 0);
+  get_impact(pt, &vcam[3], k, vcam);
+  u = pt[1];
   if (u < ZERO)
     while (u < ZERO)
       u += obj->texture->widht;
   if (u >= obj->texture->widht)
     while (u >= obj->texture->widht)
       u -= obj->texture->widht;
-  v = lpt->obj_coor[0];
+  v = pt[0];
   if (v < ZERO)
     while (v < ZERO)
       v += obj->texture->height;
@@ -67,8 +74,8 @@ void		texture_plan(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
     while (v >= obj->texture->height)
       v -= obj->texture->height;
   texture_color(obj, (u + obj->texture->widht / 2) / obj->texture->widht,
-		((obj->texture->height - v) + obj->texture->height / 2)
-		/ obj->texture->height);
+  		((obj->texture->height - v) + obj->texture->height / 2)
+  		/ obj->texture->height);
 }
 
 void		texture_cylinder(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
@@ -96,7 +103,7 @@ void	get_color_texture(t_obj *obj, t_lco *lpt, double k, t_rt *rpt)
   if (obj->texture == NULL)
     return ;
   if (obj->type == 1)
-    texture_plan(obj, lpt, k, rpt);
+    texture_plan(obj, k, rpt);
   else if (obj->type == 0)
     texture_sphere(obj, lpt, k, rpt);
   else if (obj->type == 3)

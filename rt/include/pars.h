@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Fri Jun  7 20:14:31 2013 luc sinet
+** Last update Sat Jun  8 17:55:03 2013 adrien dellamaggiora
 */
 
 #ifndef PARS_H_
@@ -72,8 +72,8 @@ void	init_tangle_size(t_obj *obj);
 void	init_cam(t_cam *cpt);
 void	skip_adds(char *line, int *i);
 int	light_carac(char *line, t_lig *ltab, int i);
-int     file_error(char *line, int lnb, int ret);
-int     get_config_file(t_pars *ppt, char *conf_name);
+int	file_error(char *line, int lnb, int ret);
+int	get_config_file(t_pars *ppt, char *conf_name);
 int	indice(char *line, t_obj *ept, t_text *text);
 int	deformation(char *line, t_obj *ept, t_text *text);
 int	shape_carac(char *line, t_obj *ept, t_text *text);
@@ -107,13 +107,13 @@ void	get_seed(t_opt *opt, char *line, int l);
 void	init_objptr(void (**objptr)(char *line, t_obj *ept, t_text *text));
 void	get_opt_filter(t_opt *opt, char *line, int l);
 void	get_opt_fog(t_opt *opt, char *line, int l);
-void   	get_gamma_coef(t_opt *opt, char *line, int l);
-void   	get_aa_coef(t_opt *opt, char *line, int l);
-void   	get_shadows_type(t_opt *opt, char *line, int l);
-void   	get_contrast(t_opt *opt, char *line, int l);
+void	get_gamma_coef(t_opt *opt, char *line, int l);
+void	get_aa_coef(t_opt *opt, char *line, int l);
+void	get_shadows_type(t_opt *opt, char *line, int l);
+void	get_contrast(t_opt *opt, char *line, int l);
 void	init_opt(t_opt *opt);
 void	init_opt_carac(char **tab);
 void	init_opt_pt(void (**fptr)(t_opt *opt, char *line, int l));
-int   	link_text(t_obj *ept, char *line, t_text *text);
+int	link_text(t_obj *ept, char *line, t_text *text);
 
-#endif
+#endif /* !PARS_H_ */

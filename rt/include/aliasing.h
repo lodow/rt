@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Apr  2 19:58:47 2013 luc sinet
-** Last update Wed Apr  3 15:08:03 2013 luc sinet
+** Last update Sat Jun  8 18:01:17 2013 adrien dellamaggiora
 */
 
 # ifndef ALIASING_H_
@@ -27,4 +27,4 @@ typedef struct	s_ali
 
 unsigned int	recomp_color(unsigned char *color);
 
-#endif
+#endif /* !ALIASING_H_ */
