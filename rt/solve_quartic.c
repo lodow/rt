@@ -5,11 +5,11 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Mon Jun  3 20:50:18 2013 etienne debas
-** Last update Fri Jun  7 19:04:47 2013 etienne debas
+** Last update Sat Jun  8 12:08:24 2013 etienne debas
 */
 
-# include "solve.h"
-# include "include/main.h"
+#include "solve.h"
+#include "include/main.h"
 
 void		set_pqr_quartic(double *pqr, double *coef)
 {
@@ -56,12 +56,6 @@ int		init_and_send_second(double *pqr, double y0, double *res)
   nb_sol += solve_quadratic(coef, &(res[nb_sol]));
   return (nb_sol);
 }
-
-/*
-** Résoud les équations du quatrième degrée
-** Prend un pointeur sur les tableau de res
-** Renvoi le nombre de solution de trouvé
-*/
 
 int		solve_quartic(double *coef, double *res)
 {
