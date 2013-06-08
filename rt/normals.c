@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun Mar 31 13:20:23 2013 luc sinet
-** Last update Fri Jun  7 19:54:27 2013 etienne debas
+** Last update Fri Jun  7 22:02:41 2013 etienne debas
 */
 
 #include <math.h>
@@ -52,6 +52,8 @@ void	cone_normal(double *nvec, double *obj_coor,
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];
   nvec[2] = -0.6 * obj_coor[2];
+  if (obj->ipt->bump > ZERO)
+    apply_bump(nvec, obj_coor, obj->ipt->bump);
   perturb_normal(nvec, obj_coor, pert);
 }
 
@@ -61,5 +63,7 @@ void	cylinder_normal(double *nvec, double *obj_coor, double *pert,
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];
   nvec[2] = 0;
+  if (obj->ipt->bump > ZERO)
+    apply_bump(nvec, obj_coor, obj->ipt->bump);
   perturb_normal(nvec, obj_coor, pert);
 }

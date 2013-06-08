@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Fri Jun  7 19:54:06 2013 etienne debas
-** Last update Fri Jun  7 19:55:30 2013 etienne debas
+** Last update Fri Jun  7 22:02:42 2013 etienne debas
 */
 
 #include <math.h>
@@ -18,6 +18,8 @@ void		tangle_normal(double *nvec, double *obj_coor,
   nvec[0] = 4 * pow(obj_coor[0], 3) - 20 * pow(obj->size[0], 2) * obj_coor[0];
   nvec[1] = 4 * pow(obj_coor[1], 3) - 20 * pow(obj->size[0], 2) * obj_coor[1];
   nvec[2] = 4 * pow(obj_coor[2], 3) - 20 * pow(obj->size[0], 2) * obj_coor[2];
+  if (obj->ipt->bump > ZERO)
+    apply_bump(nvec, obj_coor, obj->ipt->bump);
   perturb_normal(nvec, obj_coor, pert);
 }
 
@@ -34,5 +36,7 @@ void		tore_normal(double *nvec, double *obj_coor,
   nvec[0] = obj_coor[0] * k - 8.0 * pow(obj->size[0], 2) * obj_coor[0];
   nvec[1] = obj_coor[1] * k - 8.0 * pow(obj->size[0], 2) * obj_coor[1];
   nvec[2] = obj_coor[2] * k;
+  if (obj->ipt->bump > ZERO)
+    apply_bump(nvec, obj_coor, obj->ipt->bump);
   perturb_normal(nvec, obj_coor, pert);
 }
