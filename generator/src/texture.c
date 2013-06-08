@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Fri May 31 09:45:06 2013 remi
-** Last update Fri Jun  7 20:15:31 2013 remi robert
+** Last update Sat Jun  8 18:47:09 2013 remi
 */
 
 #include "my_func.h"
@@ -68,7 +68,12 @@ int	load_write_and_chack(t_param *param)
        mlx_xpm_file_to_image(param->window.p,
 			     "texture/cache.xpm",
 			     &(param->cache.y),
-			     &(param->cache.x))) == NULL)
+			     &(param->cache.x))) == NULL ||
+      (param->wrong.img =
+       mlx_xpm_file_to_image(param->window.p,
+			     "texture/wrong.xpm",
+			     &(param->wrong.y),
+			     &(param->wrong.x))) == NULL)
     return (0);
   return (1);
 }
