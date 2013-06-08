@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Fri Jun  7 19:32:38 2013 luc sinet
+** Last update Fri Jun  7 22:34:20 2013 luc sinet
 */
 
 #include <math.h>
@@ -59,9 +59,12 @@ unsigned int	modifie_p_color(t_rt *rpt, double k, char opt)
   t_lco		lpt;
   t_obj		*obj;
 
-  if (pass == 10 && opt > 0)
-    return (0xFFFFFF);
-  pass = (opt > 0) ? pass + 1 : 0;
+  if (pass == 50 && opt > 0)
+    return (0x000000);
+  if (opt > 0)
+    ++pass;
+  else
+    pass = 0;
   distance = 200 * FOG_DIST;
   obj = &rpt->obj[rpt->obj_num];
   get_obj_color(rpt, obj, k, &lpt);
