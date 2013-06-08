@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 14 13:09:39 2013 luc sinet
-** Last update Mon Jun  3 20:41:38 2013 luc sinet
+** Last update Sat Jun  8 14:34:57 2013 luc sinet
 */
 
 #ifndef LIG_H_
@@ -20,7 +20,7 @@
 # define PLAN_SIZE 10
 # define AIR 1.0
 # define SDW_SS 64
-# define RAY_DIST 16
+# define RAY_DIST 22
 
 typedef struct	s_lig	t_lig;
 
