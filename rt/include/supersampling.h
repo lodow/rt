@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Fri Apr  5 11:07:49 2013 luc sinet
-** Last update Tue Apr 16 20:41:14 2013 luc sinet
+** Last update Sat Jun  8 17:53:06 2013 adrien dellamaggiora
 */
 
 #ifndef SUPERSAMPLING_H_
@@ -22,4 +22,4 @@ typedef struct	s_samp
 
 unsigned int	supersampling(t_rt *rpt, t_samp *spt, int x, int y);
 
-#endif
+#endif /* !SUPERSAMPLING_H_ */

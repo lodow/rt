@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Fri Jun  7 23:47:41 2013 adrien dellamaggiora
+** Last update Sat Jun  8 18:07:30 2013 adrien dellamaggiora
 */
 
 #ifndef MAIN_H_
@@ -54,7 +54,7 @@ typedef struct	s_angle
 typedef struct	s_indice
 {
   double	indice[4];
-  double       	perlin[2];
+  double	perlin[2];
   double	bump;
   int		checker;
   int		rate;
@@ -101,7 +101,7 @@ typedef struct	s_opt
   int		aa;
   double	fog[2];
   int		filter;
-  double       	gamma;
+  double	gamma;
   double	contrast;
   int		shadows_type;
 }		t_opt;
@@ -159,28 +159,28 @@ int		get_color_diff(unsigned int pixel1, unsigned int pixel2);
 double		point_distance(double *p1, double *p2);
 double		test_limit(double *cam, double *vec, double *k, double *limit);
 double		test_side_limit(double *cam, double *vec,
-                          double *limit, double *k);
+				double *limit, double *k);
 double		test_depth_limit(double *cam, double *vec,
-                           double *limit, double *k);
+				 double *limit, double *k);
 unsigned int	get_pixel_color(t_rt *rpt);
 void		get_impact(double *imp, double *cam, double k, double *vec);
 void		get_inter(double *cam, double *vec, double k, double *inter);
 void		detect_edge(t_rt *rpt, t_par *ppt);
 void		apply_supersampling(t_rt *rpt, t_par *ppt, t_samp *spt);
 void		fill_img_param(double *dpos, unsigned int color,
-                       UNUSED t_rt *rpt, t_par *ppt);
+			       UNUSED t_rt *rpt, t_par *ppt);
 void		delta_neg_third(double *k, double delta, double *pq);
 void		delta_nul_third(double *k, double *pq);
 void		delta_pos_third(double *k, double *pq);
 unsigned int	transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
-                           double k);
+			     double k);
 void		my_putbyte(const void *ptr, int fd, int strlen);
 void		my_mem_cpy(void *dest, void *src, int size);
 void		*adjust_mem_size(void *mem, int size, int nsize, int dfree);
 double		get_pow(double nb);
 void		my_memset(void *elem, int val, int size);
 unsigned int	perlin(double *inter, unsigned char *color_obj,
-                     double *carac);
+		       double *carac);
 unsigned int	filter_color(unsigned int color, t_opt *opt);
 unsigned int	revers_filter(unsigned int color, t_opt *opt);
 unsigned int	apply_contrast(unsigned int color, t_opt *opt);
@@ -195,4 +195,4 @@ void		nb_to_str(char *str, int nb, int size);
 void		my_perror(char *str);
 int		check_perror(char *str, int err);
 
-#endif
+#endif /* !MAIN_H_ */

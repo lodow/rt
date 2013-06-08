@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sun May 19 18:23:43 2013 etienne debas
-** Last update Thu Jun  6 01:14:08 2013 luc sinet
+** Last update Sat Jun  8 18:08:11 2013 maxime lavandier
 */
 
 #include <stdio.h>
@@ -13,7 +13,7 @@
 #include <math.h>
 #include "main.h"
 
-static int g_tab[512] = {-1};
+static int	g_tab[512] = {-1};
 
 void	init_noise(int *c_unit, double *x, double *y, double *z)
 {

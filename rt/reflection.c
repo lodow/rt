@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Tue Apr  2 18:25:49 2013 etienne debas
-** Last update Sat Jun  8 16:00:56 2013 maxime lavandier
+** Last update Sat Jun  8 18:06:44 2013 maxime lavandier
 */
 
 #include <math.h>
@@ -34,7 +34,7 @@ void		calc_reflec_vector(t_rt *rpt, t_vec *vpt, t_lco *lpt, double k)
 }
 
 unsigned int	apply_indice(unsigned int color, unsigned int obj_color,
-                           double indice)
+			     double indice)
 {
   unsigned char	c[3];
   unsigned char	c_obj[3];

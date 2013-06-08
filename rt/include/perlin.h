@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May 19 10:03:06 2013 luc sinet
-** Last update Wed May 22 12:00:33 2013 luc sinet
+** Last update Sat Jun  8 17:54:05 2013 adrien dellamaggiora
 */
 
 #ifndef PERLIN_H_
@@ -39,4 +39,4 @@ double		get_perlin(double x, double y, double z);
 void		interpolation(unsigned char *color_obj, double pn,
 			      double *sval, double *col);
 
-#endif
+#endif /* !PERLIN_H_ */

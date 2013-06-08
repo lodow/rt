@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jun  4 21:21:22 2013 luc sinet
-** Last update Wed Jun  5 13:30:11 2013 adrien dellamaggiora
+** Last update Sat Jun  8 18:03:17 2013 maxime lavandier
 */
 
 #include <fcntl.h>
@@ -57,7 +57,7 @@ void	fill_tga(t_par *ppt, int fd)
 char	*get_file_name(char *name, char *ext)
 {
   int	i;
-  char 	num[5];
+  char	num[5];
 
   i = 0;
   while (i == 0 || (i < 1000 && access(name, F_OK)) == 0)

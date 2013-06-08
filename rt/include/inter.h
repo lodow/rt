@@ -5,11 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Feb 26 05:58:41 2013 luc sinet
-** Last update Tue May 14 18:21:32 2013 etienne debas
+** Last update Sat Jun  8 17:59:53 2013 adrien dellamaggiora
 */
 
-#ifndef REND_H_
-# define REND_H_
+#ifndef INTER_H_
+# define INTER_H_
 
 double	sphere(double *cam, double *vec, t_obj *ept);
 double	cone(double *cam, double *vec, t_obj *ept);
@@ -26,4 +26,4 @@ double	tore(double *cam, double *vec, t_obj *obj);
 double	solve_quad(double *coef, double *res);
 double	solve_cube(double *coef, double *res);
 
-#endif
+#endif /* !INTER_H_ */
