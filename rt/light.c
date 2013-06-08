@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 15:37:38 2013 luc sinet
-** Last update Sat Jun  8 16:04:53 2013 maxime lavandier
+** Last update Sat Jun  8 18:42:25 2013 Hugues
 */
 
 #include <math.h>
@@ -73,7 +73,7 @@ double		get_light_vector(t_lco *lpt, double *spot_pos)
   return (cosa < ZERO ? 0.0 : cosa);
 }
 
-void   	copy_light(t_lig *tlight, t_lig *light)
+void	copy_light(t_lig *tlight, t_lig *light)
 {
   tlight->pos[0] = light->pos[0];
   tlight->pos[1] = light->pos[1];
