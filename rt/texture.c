@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Mon May 13 10:15:38 2013 Adrien Della Maggiora
-** Last update Sat Jun  8 18:34:35 2013 luc sinet
+** Last update Sat Jun  8 18:37:43 2013 luc sinet
 */
 
 #include <math.h>
@@ -53,6 +53,7 @@ void		texture_plan(t_obj *obj, double k, t_rt *rpt)
   double	pt[3];
   double	vcam[6];
 
+  init_texture_surface(rpt, obj, vcam);
   get_impact(pt, &vcam[3], k, vcam);
   u = pt[1];
   if (u < ZERO)
