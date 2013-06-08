@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Tue May  7 14:55:53 2013 Hugues
-** Last update Sat Jun  8 17:56:43 2013 adrien dellamaggiora
+** Last update Sat Jun  8 18:06:26 2013 adrien dellamaggiora
 */
 
 #ifndef MODEL_H_
@@ -32,11 +32,11 @@ typedef struct	s_model
 t_model		*get_file_obj_model(const char *filename);
 void		model_sizeup_fin_tab(t_model *obj);
 void		fill_model_tabs(int* indice_tab, int *size,
-                        double *fin_tab, double *raw_tab);
+				double *fin_tab, double *raw_tab);
 void		raw_model_t_obj(t_obj **objtab, t_model *model, t_obj *baseobj);
 void		init_model_struct(t_model *model);
 void		free_obj_model(t_model *model);
 void		convert_model_t_obj(double *vert, double *normal,
-                            double *uvs, t_obj *obj);
+				    double *uvs, t_obj *obj);
 
 #endif /* !MODEL_H_ */
