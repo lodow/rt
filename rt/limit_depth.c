@@ -5,13 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 22:20:26 2013 luc sinet
-** Last update Mon May 20 20:19:06 2013 luc sinet
+** Last update Sat Jun  8 16:04:08 2013 maxime lavandier
 */
 
 #include "main.h"
 
 double		test_forw_limit(double *cam, double *vec,
-			      double *k, double *limit)
+				double *k, double *limit)
 {
   double       	mk[2];
   double	inter[3];

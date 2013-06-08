@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Thu Mar 21 23:31:20 2013 etienne debas
-** Last update Sun May 19 20:11:45 2013 luc sinet
+** Last update Sat Jun  8 16:03:16 2013 maxime lavandier
 */
 
 #include "main.h"
@@ -34,7 +34,7 @@ void	get_impact(double *imp, double *cam, double k, double *vec)
   imp[2] = cam[2] + k * vec[2];
 }
 
-void		modif_cam(double *c_pos, double *o_pos)
+void	modif_cam(double *c_pos, double *o_pos)
 {
   c_pos[0] -= o_pos[0];
   c_pos[1] -= o_pos[1];

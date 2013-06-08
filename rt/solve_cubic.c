@@ -5,15 +5,15 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Mon Jun  3 20:41:57 2013 etienne debas
-** Last update Sat Jun  8 12:08:25 2013 etienne debas
+** Last update Sat Jun  8 16:00:08 2013 maxime lavandier
 */
 
 #include "solve.h"
 #include "include/main.h"
 
-void		delta_neg(double p, double q, double *res, double trans)
+void	delta_neg(double p, double q, double *res, double trans)
 {
-  int		nb_sol;
+  int	nb_sol;
 
   nb_sol = 0;
   while (nb_sol <= 2)

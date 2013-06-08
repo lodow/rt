@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Thu May  9 10:16:03 2013 Adrien Della Maggiora
-** Last update Tue Jun  4 11:29:30 2013 luc sinet
+** Last update Sat Jun  8 13:33:41 2013 adrien dellamaggiora
 */
 
 #include <stdlib.h>
@@ -95,6 +95,7 @@ int	fill_texture(t_pars *opt, t_rt *rpt)
 
   opt->text = rpt->text;
   rpt->text->name = NULL;
+  rpt->text->text = NULL;
   i = 0;
   while (opt->file[i] && my_strcmp(opt->file[i], "Texture") != 0)
     ++i;
