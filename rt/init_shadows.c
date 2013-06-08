@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 14 17:09:58 2013 luc sinet
-** Last update Wed May 15 16:47:42 2013 luc sinet
+** Last update Sat Jun  8 18:12:31 2013 maxime lavandier
 */
 
 #include "main.h"
@@ -32,7 +32,7 @@ void	remove_from_coor(double *tab)
     tab[x++] = -1;
 }
 
-void   	init_shadows(t_shadow *spt, t_rt *rpt, double *cpos, t_lco *lpt)
+void	init_shadows(t_shadow *spt, t_rt *rpt, double *cpos, t_lco *lpt)
 {
   spt->slpt = lpt;
   spt->sdw_coef = 1.0;

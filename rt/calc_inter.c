@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 20 16:55:47 2013 luc sinet
-** Last update Fri Jun  7 22:34:20 2013 luc sinet
+** Last update Sat Jun  8 18:13:51 2013 maxime lavandier
 */
 
 #include <math.h>
@@ -41,7 +41,7 @@ void		calc_inter(t_rt *rpt, double *kmin)
 
 void		get_obj_color(t_rt *rpt, t_obj *obj, double k, t_lco *lpt)
 {
-  double       	inter[3];
+  double	inter[3];
 
   get_impact(inter, rpt->cpt->pos, k, rpt->vpt->vec);
   if (obj->ipt->checker != 0)

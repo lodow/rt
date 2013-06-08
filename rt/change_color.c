@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Mar 21 16:50:09 2013 luc sinet
-** Last update Tue Jun  4 11:08:24 2013 luc sinet
+** Last update Sat Jun  8 18:13:32 2013 maxime lavandier
 */
 
 #include <math.h>
@@ -36,7 +36,7 @@ unsigned int	apply_light(unsigned char *c, double cosa,
   return (darken_color(c, sdw_coef));
 }
 
-void   	decomp_color(unsigned int color, unsigned char *ncolor)
+void	decomp_color(unsigned int color, unsigned char *ncolor)
 {
   ncolor[2] = color & 0xFF;
   ncolor[1] = (color >> 8) & 0xFF;

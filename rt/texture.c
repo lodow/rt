@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Mon May 13 10:15:38 2013 Adrien Della Maggiora
-** Last update Sat Jun  8 15:59:29 2013 maxime lavandier
+** Last update Sat Jun  8 18:15:01 2013 maxime lavandier
 */
 
 #include <math.h>
