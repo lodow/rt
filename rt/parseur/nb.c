@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Oct 20 11:27:34 2012 luc sinet
-** Last update Thu May  9 13:43:24 2013 luc sinet
+** Last update Sat Jun  8 18:14:00 2013 luc sinet
 */
 
 #include <stdlib.h>
@@ -36,11 +36,11 @@ int	my_sgetnbr(char *s1, int *i)
   return (nb * sign);
 }
 
-int    	my_getnbr(char *s1)
+int	my_getnbr(char *s1)
 {
   int	nb;
-  int  	i;
-  int  	sign;
+  int	i;
+  int	sign;
 
   nb = 0;
   i = 0;

@@ -5,13 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat May 18 20:10:33 2013 luc sinet
-** Last update Tue Jun  4 11:31:10 2013 luc sinet
+** Last update Sat Jun  8 18:18:35 2013 luc sinet
 */
 
 #include "main.h"
 #include "pars.h"
 
-void   	pars_perlin_frequency(char *line, double *frequency)
+void	pars_perlin_frequency(char *line, double *frequency)
 {
   int	i;
 

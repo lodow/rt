@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Mar 11 18:33:58 2013 luc sinet
-** Last update Fri Jun  7 19:52:31 2013 luc sinet
+** Last update Sat Jun  8 18:16:04 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -87,7 +87,7 @@ int	check_size(t_obj *tab)
   return (0);
 }
 
-int		check_blocks(t_pars *opt)
+int	check_blocks(t_pars *opt)
 {
   if (opt->nb_shape == 0 && opt->nb_model == 0)
     return (merror("Enter at least one shape or a model\n", -1));
@@ -101,7 +101,7 @@ int		check_blocks(t_pars *opt)
 int		pars(t_rt *rpt, char **av, t_cam *cpt)
 {
   t_pars	opt;
-  char	*config_file;
+  char		*config_file;
 
   init_nb_obj(&opt);
   init_cam(cpt);

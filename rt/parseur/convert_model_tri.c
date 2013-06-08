@@ -5,7 +5,7 @@
 ** Login   <adrien@mint>
 **
 ** Started on  Wed May  8 18:10:25 2013 Adrien Della Maggiora
-** Last update Fri Jun  7 23:41:16 2013 adrien dellamaggiora
+** Last update Sat Jun  8 17:36:12 2013 luc sinet
 */
 
 #include "main.h"
@@ -28,7 +28,7 @@ void	convert_model_t_obj(double *vert, double *normal,
   obj->normal[2] = (normal[2] + normal[5] + normal[8]) / 3;
 }
 
-void		free_obj_model(t_model *model)
+void	free_obj_model(t_model *model)
 {
   if (model != NULL)
     {

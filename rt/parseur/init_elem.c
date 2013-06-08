@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Apr 10 23:01:41 2013 luc sinet
-** Last update Fri Jun  7 23:48:09 2013 adrien dellamaggiora
+** Last update Sat Jun  8 18:10:28 2013 luc sinet
 */
 
 #include <stdio.h>
@@ -83,9 +83,9 @@ void	init_single_elem(t_obj *obj)
   init_elem_indices(obj->ipt);
 }
 
-int    init_elem(t_obj *tab, t_pars *opt)
+int	init_elem(t_obj *tab, t_pars *opt)
 {
-  int   i;
+  int	i;
 
   i = 0;
   while (i <= opt->nb_shape)

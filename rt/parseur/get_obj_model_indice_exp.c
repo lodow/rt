@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu May 16 15:27:40 2013 luc sinet
+** Last update Sat Jun  8 18:07:30 2013 luc sinet
 */
 
 #include "str.h"
@@ -72,7 +72,7 @@ void		model_sizeup_fin_tab(t_model *obj)
 void		face_t_objtri(t_obj *obj, t_model *model, int i)
 {
   double	empty_array[9];
-  int	j;
+  int		j;
   double	*vert;
   double	*norm;
   double	*uvs;
