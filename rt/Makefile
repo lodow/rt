@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Fri Jun  7 19:54:45 2013 etienne debas
+## Last update Sat Jun  8 18:36:26 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -88,6 +88,7 @@ SRCS	= main.c \
 	  bmp_loader.c \
 	  tangle.c \
 	  texture.c \
+	  init_texture_surface.c \
 	  tore.c \
 	  utils_color.c \
 	  perlin.c \
