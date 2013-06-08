@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Fri Jun  7 19:33:58 2013 remi robert
+** Last update Sat Jun  8 18:03:00 2013 remi
 */
 
 #ifndef MY_FUNC_H_
@@ -124,7 +124,7 @@ char	get_type_object(int nb);
 char	*get_name_object(int nb);
 int	init_texture(t_param *param);
 char	*get_texture_menu(int nb);
-char	*convert_number_char(int number, char *tab);
+char	*convert_number_char(int number, char *tab, int indice);
 int	my_strlen(char *str);
 void	draw_conf(t_param *param);
 char	*get_name_file_object(int nb);

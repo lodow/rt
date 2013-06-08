@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 09:35:28 2013 remi
-** Last update Fri Jun  7 13:26:16 2013 remi robert
+** Last update Sat Jun  8 18:02:11 2013 remi
 */
 
 #include "my_func.h"
@@ -59,7 +59,7 @@ void	gere_saisi_buff(t_param *param, int keycode)
 
 void		validate_saisie(t_param *param)
 {
-  t_object	*pcourant;
+  t_object	*pcurrent;
 
   if (param->phead == NULL || param->saisi.buff[0] == '\0')
     {
@@ -67,10 +67,10 @@ void		validate_saisie(t_param *param)
 			      param->cache.img, 410, param->saisi.y - 20);
       return ;
     }
-  pcourant = param->phead;
-  while (pcourant->next != NULL)
-    pcourant = pcourant->next;
-  rempl_rempl_struct(param, pcourant);
+  pcurrent = param->phead;
+  while (pcurrent->next != NULL)
+    pcurrent = pcurrent->next;
+  rempl_rempl_struct(param, pcurrent);
   mlx_put_image_to_window(param->window.p, param->window.id,
 			  param->check_ok.img, 426, param->saisi.y - 20);
   param->saisi.type = 0;
@@ -78,7 +78,8 @@ void		validate_saisie(t_param *param)
 
 int	gere_keyboard(int keycode, t_param *param)
 {
-  if ((keycode == 65293 || keycode == 65421) && param->saisi.check == 1)
+  if ((keycode == 65293 || keycode == 65421) &&
+      param->saisi.check == 1)
     {
       validate_saisie(param);
       param->saisi.check = 0;

@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Mon Mar 18 09:28:48 2013 remi
-** Last update Fri May 31 17:08:34 2013 remi robert
+** Last update Sat Jun  8 18:03:11 2013 remi
 */
 
 #include "my_func.h"
@@ -31,10 +31,8 @@ void	return_buff(char *buff)
     }
 }
 
-char		*convert_number_char(int number, char *tab)
+char		*convert_number_char(int number, char *tab, int indice)
 {
-  static int	indice;
-
   if (indice >= 49 || number / 10 == 0)
     {
       tab[indice] = number + '0';
@@ -52,6 +50,6 @@ char		*convert_number_char(int number, char *tab)
   tab[indice] = number % 10 + '0';
   tab[indice + 1] = '\0';
   indice = indice + 1;
-  tab = convert_number_char(number / 10, tab);
+  tab = convert_number_char(number / 10, tab, indice);
   return (tab);
 }

@@ -5,88 +5,88 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Wed Jun  5 13:32:41 2013 remi robert
-** Last update Thu Jun  6 21:31:36 2013 remi robert
+** Last update Sat Jun  8 17:52:03 2013 remi
 */
 
 #include "my_func.h"
 
-void	write_light(char *str, t_object *pcourant, int fd)
+void	write_light(char *str, t_object *pcurrent, int fd)
 {
   my_putstr(str, fd, -1);
   my_putstr("\n{\n", fd, -1);
-  write_center_object("   Center = ", pcourant, fd);
+  write_center_object("   Center = ", pcurrent, fd);
   my_putstr("\n   Color = ", fd, -1);
-  my_putstr(pcourant->color, fd, -1);
+  my_putstr(pcurrent->color, fd, -1);
   my_putstr("\n   intensity = ", fd, -1);
-  my_putstr(pcourant->angle, fd, -1);
+  my_putstr(pcurrent->angle, fd, -1);
   my_putstr("\n}\n\n", fd, -1);
 }
 
-void	second_write_struct_option(t_object *pcourant, int fd)
+void	second_write_struct_option(t_object *pcurrent, int fd)
 {
-  if (pcourant->reflexion[0] != '\0')
+  if (pcurrent->reflexion[0] != '\0')
     {
       my_putstr("\n   Reflexion = ", fd, -1);
-      my_putstr(pcourant->reflexion, fd, -1);
+      my_putstr(pcurrent->reflexion, fd, -1);
     }
-  if (pcourant->normal[0] != '\0')
+  if (pcurrent->normal[0] != '\0')
     {
       my_putstr("\n   Normal = ", fd, -1);
-      my_putstr(pcourant->normal, fd, -1);
+      my_putstr(pcurrent->normal, fd, -1);
     }
-  if (pcourant->checker[0] != '\0')
+  if (pcurrent->checker[0] != '\0')
     {
       my_putstr("\n   Checker = ", fd, -1);
-      my_putstr(pcourant->checker, fd, -1);
+      my_putstr(pcurrent->checker, fd, -1);
     }
-  if (pcourant->n[0] != '\0')
+  if (pcurrent->n[0] != '\0')
     {
       my_putstr("\n   N = ", fd, -1);
-      my_putstr(pcourant->n, fd, -1);
+      my_putstr(pcurrent->n, fd, -1);
     }
 }
 
-void	write_struct_option(t_object *pcourant, int fd)
+void	write_struct_option(t_object *pcurrent, int fd)
 {
-  if (pcourant->bridghtness[0] != '\0')
+  if (pcurrent->bridghtness[0] != '\0')
     {
       my_putstr("\n   Bridghtness = ", fd, -1);
-      my_putstr(pcourant->bridghtness, fd, -1);
+      my_putstr(pcurrent->bridghtness, fd, -1);
     }
-  if (pcourant->maping[0] != '\0')
+  if (pcurrent->maping[0] != '\0')
     {
       my_putstr("\n   Bump mapping = ", fd, -1);
-      my_putstr(pcourant->maping, fd, -1);
+      my_putstr(pcurrent->maping, fd, -1);
     }
-  if (pcourant->perlin[0] != '\0')
+  if (pcurrent->perlin[0] != '\0')
     {
       my_putstr("\n   Perlin = ", fd, -1);
-      my_putstr(pcourant->perlin, fd, -1);
+      my_putstr(pcurrent->perlin, fd, -1);
     }
-  second_write_struct_option(pcourant, fd);
+  second_write_struct_option(pcurrent, fd);
 }
 
-void	write_other_object(char *str, t_object *pcourant, int fd)
+void	write_other_object(char *str, t_object *pcurrent, int fd)
 {
   my_putstr(str, fd, -1);
   my_putstr("\n{\n", fd, -1);
-  write_center_object("   Center = ", pcourant, fd);
+  write_center_object("   Center = ", pcurrent, fd);
   my_putstr("\n   Color = ", fd, -1);
-  my_putstr(pcourant->color, fd, -1);
+  my_putstr(pcurrent->color, fd, -1);
   my_putstr("\n   Angle = ", fd, -1);
-  my_putstr(pcourant->angle, fd, -1);
+  my_putstr(pcurrent->angle, fd, -1);
   my_putstr("\n   Size = ", fd, -1);
-  my_putstr(pcourant->size, fd, -1);
-  if (pcourant->alpha[0] != '\0')
+  my_putstr(pcurrent->size, fd, -1);
+  if (pcurrent->alpha[0] != '\0')
     {
       my_putstr("\n   Alpha = ", fd, -1);
-      my_putstr(pcourant->alpha, fd, -1);
+      my_putstr(pcurrent->alpha, fd, -1);
     }
-  write_struct_option(pcourant, fd);
+  write_struct_option(pcurrent, fd);
   my_putstr("\n}\n\n", fd, -1);
 }
 
-void	write_struct(char *str, t_object *pcourant, int fd)
+void	write_struct(char *str, t_object *pcurrent, int fd)
 {
   if (str_cmp(str, "Option") == 1 || str_cmp(str, "Cam") == 1)
     {
@@ -99,8 +99,8 @@ void	write_struct(char *str, t_object *pcourant, int fd)
     }
   if (str_cmp(str, "Light") == 1)
     {
-      write_light(str, pcourant, fd);
+      write_light(str, pcurrent, fd);
       return ;
     }
-  write_other_object(str, pcourant, fd);
+  write_other_object(str, pcurrent, fd);
  }

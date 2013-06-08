@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Jun  3 14:25:35 2013 remi robert
-** Last update Fri Jun  7 20:13:54 2013 remi
+** Last update Sat Jun  8 17:52:54 2013 remi
 */
 
 #include "my_func.h"
@@ -19,20 +19,20 @@ int	open_file(char *str)
 
 void		write_file(t_param *param)
 {
-  t_object	*pcourant;
+  t_object	*pcurrent;
   int		fd;
 
   if (param->phead == NULL ||
       (fd = open_file(param->name_file)) == -1)
     return ;
-  pcourant = param->phead;
-  write_struct("Cam", pcourant, fd);
-  write_struct("Option", pcourant, fd);
-  while (pcourant != NULL)
+  pcurrent = param->phead;
+  write_struct("Cam", pcurrent, fd);
+  write_struct("Option", pcurrent, fd);
+  while (pcurrent != NULL)
     {
-      write_struct(get_name_file_object(pcourant->type),
-		   pcourant, fd);
-      pcourant = pcourant->next;
+      write_struct(get_name_file_object(pcurrent->type),
+		   pcurrent, fd);
+      pcurrent = pcurrent->next;
     }
   close(fd);
 }

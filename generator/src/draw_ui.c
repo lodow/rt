@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 09:59:11 2013 remi
-** Last update Thu Jun  6 21:34:09 2013 remi robert
+** Last update Sat Jun  8 18:03:26 2013 remi
 */
 
 #include "my_func.h"
@@ -75,7 +75,7 @@ void	draw_ui_border(t_param *param)
 void		draw_ui(t_param *param)
 {
   char		buff[512];
-  t_object	*pcourant;
+  t_object	*pcurrent;
   int		indice;
 
   draw_form(param);
@@ -85,17 +85,17 @@ void		draw_ui(t_param *param)
   if (param->phead == NULL)
     return ;
   indice = 0;
-  pcourant = param->phead;
-  while (pcourant != NULL)
+  pcurrent = param->phead;
+  while (pcurrent != NULL)
     {
       indice += 1;
-      pcourant = pcourant->next;
+      pcurrent = pcurrent->next;
     }
   buff[0] = '\0';
   mlx_string_put(param->window.p, param->window.id, 155, 890,
 		 0xFFFFFFFF, "nb elem = ");
   mlx_string_put(param->window.p, param->window.id, 220, 890,
-		 0xFF00, (convert_number_char(indice, buff)));
+		 0xFF00, (convert_number_char(indice, buff, 0)));
   mlx_string_put(param->window.p, param->window.id, 1250, 890,
-		 0xFF0000, "Press Escape for validate your generation");
+		 0xFF0000, "Press Escape to validate your generation");
 }
