@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May  5 18:27:59 2013 luc sinet
-** Last update Sat Jun  8 18:15:00 2013 maxime lavandier
+** Last update Sat Jun  8 18:21:21 2013 etienne debas
 */
 
 #include <math.h>
@@ -46,13 +46,12 @@ double		transparency_loop(t_rt *rpt, t_lco *lpt, t_trans *trans,
   double	refrac;
   int		obj;
   int		found;
-
   int		i;
 
   i = 0;
   obj = rpt->obj_num;
   refrac = get_refrac_ratio(rpt->obj, rpt->obj[obj].ipt->indice[1],
-                            trans->pass, obj);
+			    trans->pass, obj);
   calc_refrac(rpt, lpt, k, refrac);
   add_to_tab(trans->pass, obj);
   calc_inter(rpt, &k);
@@ -69,7 +68,7 @@ double		transparency_loop(t_rt *rpt, t_lco *lpt, t_trans *trans,
 }
 
 unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
-                             double k)
+			     double k)
 {
   int		save_obj;
   double	vec[3];
@@ -85,7 +84,7 @@ unsigned int    transparency(t_rt *rpt, t_lco *lpt, unsigned int color,
   copy_tab(rpt->vpt->vec, vec, 3);
   copy_tab(rpt->cpt->pos, ctmp, 3);
   while (trans.nb_obj < MAX_R &&
-         rpt->obj[rpt->obj_num].ipt->indice[0] > ZERO && k > ZERO)
+	 rpt->obj[rpt->obj_num].ipt->indice[0] > ZERO && k > ZERO)
     k = transparency_loop(rpt, lpt, &trans, k);
   copy_tab(ctmp, rpt->cpt->pos, 3);
   copy_tab(vec, rpt->vpt->vec, 3);

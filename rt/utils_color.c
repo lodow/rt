@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Sat May 18 20:12:40 2013 etienne debas
-** Last update Sat Jun  8 15:58:16 2013 maxime lavandier
+** Last update Sat Jun  8 18:13:04 2013 etienne debas
 */
 
 void	save_color_obj(unsigned char *color,

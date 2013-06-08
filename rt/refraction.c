@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Mon Apr  1 12:31:29 2013 Adrien Della Maggiora
-** Last update Wed May 29 19:30:13 2013 luc sinet
+** Last update Sat Jun  8 18:13:06 2013 etienne debas
 */
 
 #include <math.h>
@@ -29,9 +29,9 @@ double		get_positive_scalar(double *vec1, double *vec2)
 void		calc_refrac(t_rt *rpt, t_lco *lpt,
 			    double k, double n)
 {
-  double        cvec[3];
+  double	cvec[3];
   double	*vec;
-  double        scal;
+  double	scal;
   double	tmp;
 
   vec = rpt->vpt->vec;

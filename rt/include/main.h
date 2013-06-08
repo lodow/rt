@@ -5,18 +5,18 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Sat Jun  8 18:07:30 2013 adrien dellamaggiora
+** Last update Sat Jun  8 18:30:00 2013 adrien dellamaggiora
 */
 
 #ifndef MAIN_H_
 # define MAIN_H_
 
-#include <stdlib.h>
-#include <stdio.h>
-#include "mlx.h"
-#include "pp_image.h"
-#include "str.h"
-#include "nb.h"
+# include <stdlib.h>
+# include <stdio.h>
+# include "mlx.h"
+# include "pp_image.h"
+# include "str.h"
+# include "nb.h"
 
 # define UNUSED __attribute__((unused))
 
@@ -187,12 +187,13 @@ unsigned int	apply_contrast(unsigned int color, t_opt *opt);
 void		apply_bump(double *nvec, double *obj_coor, double ratio);
 int		output_bmp(t_par *ppt);
 double		fade(double curve);
-double		lerp(double curve, double a, double b);
+double		perl(double curve, double a, double b);
 unsigned int	xorus_filter(unsigned int color, t_opt *opt);
 int		output_tga(t_par *ppt);
 char		*get_file_name(char *name, char *ext);
 void		nb_to_str(char *str, int nb, int size);
 void		my_perror(char *str);
 int		check_perror(char *str, int err);
+void		free_texture(t_text *text);
 
 #endif /* !MAIN_H_ */

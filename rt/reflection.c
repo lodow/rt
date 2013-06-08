@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Tue Apr  2 18:25:49 2013 etienne debas
-** Last update Sat Jun  8 18:06:44 2013 maxime lavandier
+** Last update Sat Jun  8 18:23:50 2013 etienne debas
 */
 
 #include <math.h>
