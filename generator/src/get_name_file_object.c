@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Jun  3 14:35:50 2013 remi robert
-** Last update Fri Jun  7 20:13:18 2013 remi
+** Last update Sun Jun  9 10:54:24 2013 remi robert
 */
 
 #include "my_func.h"
@@ -17,7 +17,7 @@ char	*get_name_file_object(int nb)
   tab[0] = "Sphere";
   tab[1] = "Plan";
   tab[2] = "Cone";
-  tab[3] = "Cylindre";
+  tab[3] = "Cylinder";
   tab[4] = "Circle";
   tab[5] = "Square";
   tab[6] = "Triangle";
