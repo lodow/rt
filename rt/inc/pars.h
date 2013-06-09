@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 13 15:55:16 2013 luc sinet
-** Last update Sat Jun  8 17:55:03 2013 adrien dellamaggiora
+** Last update Sun Jun  9 03:34:01 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -30,7 +30,7 @@
 # define PILLOW 10
 # define CHUBS 11
 # define TORE 12
-# define NB_OPT 7
+# define NB_OPT 8
 
 typedef struct	s_obj	t_obj;
 typedef struct	s_lig	t_lig;
@@ -111,6 +111,7 @@ void	get_gamma_coef(t_opt *opt, char *line, int l);
 void	get_aa_coef(t_opt *opt, char *line, int l);
 void	get_shadows_type(t_opt *opt, char *line, int l);
 void	get_contrast(t_opt *opt, char *line, int l);
+void	get_saturation(t_opt *opt, char *line, int l);
 void	init_opt(t_opt *opt);
 void	init_opt_carac(char **tab);
 void	init_opt_pt(void (**fptr)(t_opt *opt, char *line, int l));

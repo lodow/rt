@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 21 13:57:11 2013 luc sinet
-** Last update Sun Jun  2 16:56:25 2013 luc sinet
+** Last update Sun Jun  9 03:39:39 2013 luc sinet
 */
 
 #include <math.h>
@@ -75,5 +75,7 @@ unsigned int	filter_color(unsigned int color, t_opt *opt)
     color = revers_filter(color, opt);
   if (opt->contrast != 1.0)
     color = apply_contrast(color, opt);
+  if (opt->saturation != 1.0)
+    color = saturation(color, opt->saturation);
   return (color);
 }

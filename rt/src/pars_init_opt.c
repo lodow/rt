@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue May 21 16:49:47 2013 luc sinet
-** Last update Sun Jun  2 16:50:51 2013 luc sinet
+** Last update Sun Jun  9 03:36:47 2013 luc sinet
 */
 
 #include "main.h"
@@ -20,6 +20,7 @@ void	init_opt(t_opt *opt)
   opt->gamma = -1;
   opt->shadows_type = 1;
   opt->contrast = 1.0;
+  opt->saturation = 1.0;
 }
 
 void	init_opt_carac(char **tab)
@@ -31,6 +32,7 @@ void	init_opt_carac(char **tab)
   tab[4] = "Seed = ";
   tab[5] = "Shadows = ";
   tab[6] = "Contrast = ";
+  tab[7] = "Saturation = ";
 }
 
 void	init_opt_pt(void (**fptr)(t_opt *opt, char *line, int l))
@@ -42,4 +44,5 @@ void	init_opt_pt(void (**fptr)(t_opt *opt, char *line, int l))
   fptr[4] = &get_seed;
   fptr[5] = &get_shadows_type;
   fptr[6] = &get_contrast;
+  fptr[7] = &get_saturation;
 }
