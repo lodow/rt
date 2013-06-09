@@ -5,13 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed May  8 18:39:21 2013 luc sinet
-** Last update Fri Jun  7 11:49:40 2013 luc sinet
+** Last update Sun Jun  9 01:08:05 2013 Hugues
 */
 
 #include <math.h>
-#include "include/main.h"
-#include "include/light.h"
-#include "include/change_color.h"
+#include "main.h"
+#include "light.h"
+#include "change_color.h"
 
 void		filter_light_color(unsigned char *lcolor, t_obj *obj,
 				   double distance)

@@ -5,11 +5,11 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Mon Jun  3 20:50:18 2013 etienne debas
-** Last update Sat Jun  8 18:04:33 2013 maxime lavandier
+** Last update Sun Jun  9 01:08:33 2013 Hugues
 */
 
 #include "solve.h"
-#include "include/main.h"
+#include "main.h"
 
 void	set_pqr_quartic(double *pqr, double *coef)
 {
