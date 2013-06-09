@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sun Jun  9 03:48:19 2013 luc sinet
+## Last update Sun Jun  9 03:54:59 2013 luc sinet
 ##
 
 SRC = 	ambient_light.c \
@@ -131,6 +131,8 @@ endif
 CFLAGS	+= -Wall -Wextra
 CFLAGS	+= -I${INCDIR}
 
+CFLAGS += -MD -MP
+
 LDFLAGS += -L/usr/lib64 -lmlx_x86_64-linux -L/usr/lib64/X11 -lXext -lX11 -lm
 
 VPATH = ${SRCDIR}
@@ -140,9 +142,6 @@ OBJ = $(patsubst %.c,${OBJDIR}%.o,$(SRC))
 dummy:=	$(shell test -d $(OBJDIR) || mkdir -p $(OBJDIR))
 dummy:= $(shell test -d $(INCDIR) || mkdir -p $(INCDIR))
 dummy:= $(shell test -d $(SRCDIR) || mkdir -p $(SRCDIR))
-
-%.depends:	%.c
-		$(CC) -M $(CFLAGS) $< > $@
 
 $(OBJDIR)%.o:	%.c
 		@echo -e "\033[33mCompiling $*\033[00m"
