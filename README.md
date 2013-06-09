@@ -1,9 +1,7 @@
 Bonus:
 
 Lumière ambiente
-
 Lumière speculaire
-
 Effect de distance sur les lumières
 
 Brouillard
