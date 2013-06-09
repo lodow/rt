@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Mon Jun  3 14:25:35 2013 remi robert
-** Last update Sat Jun  8 17:52:54 2013 remi
+** Last update Sun Jun  9 12:59:47 2013 remi robert
 */
 
 #include "my_func.h"
@@ -13,8 +13,8 @@
 int	open_file(char *str)
 {
   if (str != NULL)
-    return (open(str, O_RDWR | O_CREAT | O_TRUNC));
-  return (open("test.cfg", O_RDWR | O_CREAT | O_TRUNC));
+    return (open(str, O_RDWR | O_CREAT | O_TRUNC, 0666));
+  return (open("test.cfg", O_RDWR | O_CREAT | O_TRUNC, 0666));
 }
 
 void		write_file(t_param *param)
