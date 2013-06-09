@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sun Jun  9 02:11:08 2013 Hugues
+## Last update Sun Jun  9 02:24:22 2013 Hugues
 ##
 
 SRC = 	ambient_light.c \
@@ -113,12 +113,21 @@ RM = rm -f
 
 NAME = rt
 
+TARGET = opti2
+
 OBJDIR = obj/
 SRCDIR = src/
 INCDIR = inc/
 
-CFLAGS	+= -O3 -march=native
+ifeq ($(TARGET), debug)
+CFLAGS	+= -ggdb3 -pg
+endif
+ifeq ($(TARGET), opti2)
+CFLAGS	+= -O3 -march=native --fast-math -ffast-math
+endif
+ifeq ($(TARGET), opti1)
 CFLAGS	+= --fast-math -ffast-math
+endif
 CFLAGS	+= -Wall -Wextra
 CFLAGS	+= -I${INCDIR}
 
