@@ -5,18 +5,15 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:49:52 2013 remi
-** Last update Thu Jun  6 20:35:18 2013 remi robert
+** Last update Sun Jun  9 11:09:55 2013 remi robert
 */
 
 #include "my_func.h"
 
-int		main(int argc, char **argv, char **envp)
+int		main(int argc, char **argv)
 {
   t_param	param;
 
-  (void)argc;
-  (void)argv;
-  (void)envp;
   param.name_file = NULL;
   if (argc != 1)
     param.name_file = argv[1];
