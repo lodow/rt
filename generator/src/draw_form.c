@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Thu Jun  6 11:31:18 2013 remi robert
-** Last update Sat Jun  8 17:59:29 2013 remi
+** Last update Sun Jun  9 11:04:58 2013 remi robert
 */
 
 #include "my_func.h"
@@ -16,7 +16,7 @@ int	get_indice_texture_form(char type)
     return (-1);
   if (type == SPHERE)
     return (SPHERE);
-  if (type > SPHERE && type <= HYERBOLOIDE)
+  if (type > SPHERE && type <= HYPERBOLOIDE)
     return (type - 1);
   if (type == MOEBIUS)
     return (8);

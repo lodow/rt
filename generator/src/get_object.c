@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Thu May 30 15:01:57 2013 remi
-** Last update Fri Jun  7 20:13:26 2013 remi
+** Last update Sun Jun  9 11:04:35 2013 remi robert
 */
 
 #include "my_func.h"
@@ -43,7 +43,7 @@ char	get_type_object(int nb)
   tab[5] = SQUARE;
   tab[6] = TRIANGLE;
   tab[7] = PARABOLOIDE;
-  tab[8] = HYERBOLOIDE;
+  tab[8] = HYPERBOLOIDE;
   tab[9] = MOEBIUS;
   tab[10] = TANGLE;
   tab[11] = LIGHT;

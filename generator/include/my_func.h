@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Sun Jun  9 10:51:27 2013 remi robert
+** Last update Sun Jun  9 11:04:20 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -27,7 +27,7 @@
 # define SQUARE		5
 # define TRIANGLE	6
 # define PARABOLOIDE	7
-# define HYERBOLOIDE	8
+# define HYPERBOLOIDE	8
 # define MOEBIUS	9
 # define TANGLE		10
 # define LIGHT		11

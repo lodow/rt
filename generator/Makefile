@@ -4,7 +4,7 @@
 ## Login   <robert_r@epitech.net>
 ## 
 ## Started on  Fri Nov 30 10:59:19 2012 remi robert
-## Last update Sun Jun  9 10:56:47 2013 remi robert
+## Last update Sun Jun  9 11:05:58 2013 remi robert
 ##
 
 SRCPATH	=	src/
@@ -52,7 +52,7 @@ LIB	=	-L/usr/lib64 -lmlx_$$HOSTTYPE -L/usr/lib64/X11 -lXext -lX11
 
 NAME	=	generator
 
-CFLAGS	=	-g -Iinclude -Wall -Wextra
+CFLAGS	=	-Iinclude -Wall -Wextra
 
 $(NAME):	$(OBJ)
 		cc  -o $(NAME) $(OBJ) $(LIB) -lm
