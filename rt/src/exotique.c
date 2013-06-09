@@ -5,7 +5,7 @@
 ** Login   <adrien@adrien>
 **
 ** Started on  Fri Mar 15 16:19:57 2013 Adrien
-** Last update Mon May 27 09:28:19 2013 adrien dellamaggiora
+** Last update Sun Jun  9 08:07:32 2013 adrien dellamaggiora
 */
 
 #include "main.h"
@@ -32,6 +32,8 @@ void	paraboloide_normal(double *nvec, double *obj_coor, double *pert,
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];
   nvec[2] = (-obj->cst);
+  if (obj->ipt->bump > ZERO)
+    apply_bump(nvec, obj_coor, obj->ipt->bump);
   perturb_normal(nvec, obj_coor, pert);
 }
 
@@ -57,5 +59,7 @@ void	hyperboloide_normal(double *nvec, double *obj_coor, double *pert,
   nvec[0] = obj_coor[0];
   nvec[1] = obj_coor[1];
   nvec[2] = ((-obj->cst) * obj_coor[2]);
+  if (obj->ipt->bump > ZERO)
+    apply_bump(nvec, obj_coor, obj->ipt->bump);
   perturb_normal(nvec, obj_coor, pert);
 }
