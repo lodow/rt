@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 09:35:28 2013 remi
-** Last update Sat Jun  8 19:43:10 2013 remi robert
+** Last update Sun Jun  9 10:43:52 2013 remi robert
 */
 
 #include "my_func.h"
@@ -81,6 +81,11 @@ void		validate_saisie(t_param *param)
 
 int	gere_keyboard(int keycode, t_param *param)
 {
+  if (param->saisi.check == 1 && keycode == 65288)
+    {
+      gere_delete(param);
+      return (0);
+    }
   if ((keycode == 65293 || keycode == 65421) &&
       param->saisi.check == 1)
     {
@@ -92,5 +97,5 @@ int	gere_keyboard(int keycode, t_param *param)
   gere_saisi_buff(param, keycode);
   if (keycode == 65307)
     fct_exit(param);
-  return (0);
+  return (1);
 }
