@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Mon Feb 25 11:18:51 2013 luc sinet
-** Last update Sat Jun  8 18:30:00 2013 adrien dellamaggiora
+** Last update Sun Jun  9 03:34:48 2013 luc sinet
 */
 
 #ifndef MAIN_H_
@@ -103,6 +103,7 @@ typedef struct	s_opt
   int		filter;
   double	gamma;
   double	contrast;
+  double	saturation;
   int		shadows_type;
 }		t_opt;
 
@@ -184,6 +185,7 @@ unsigned int	perlin(double *inter, unsigned char *color_obj,
 unsigned int	filter_color(unsigned int color, t_opt *opt);
 unsigned int	revers_filter(unsigned int color, t_opt *opt);
 unsigned int	apply_contrast(unsigned int color, t_opt *opt);
+unsigned int	saturation(unsigned int color, double val);
 void		apply_bump(double *nvec, double *obj_coor, double ratio);
 int		output_bmp(t_par *ppt);
 double		fade(double curve);

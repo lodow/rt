@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sun Jun  9 02:24:22 2013 Hugues
+## Last update Sun Jun  9 03:54:59 2013 luc sinet
 ##
 
 SRC = 	ambient_light.c \
@@ -123,13 +123,15 @@ ifeq ($(TARGET), debug)
 CFLAGS	+= -ggdb3 -pg
 endif
 ifeq ($(TARGET), opti2)
-CFLAGS	+= -O3 -march=native --fast-math -ffast-math
+CFLAGS	+= -O3 -march=native
 endif
 ifeq ($(TARGET), opti1)
-CFLAGS	+= --fast-math -ffast-math
+CFLAGS	+= -ffast-math
 endif
 CFLAGS	+= -Wall -Wextra
 CFLAGS	+= -I${INCDIR}
+
+CFLAGS += -MD -MP
 
 LDFLAGS += -L/usr/lib64 -lmlx_x86_64-linux -L/usr/lib64/X11 -lXext -lX11 -lm
 
@@ -140,9 +142,6 @@ OBJ = $(patsubst %.c,${OBJDIR}%.o,$(SRC))
 dummy:=	$(shell test -d $(OBJDIR) || mkdir -p $(OBJDIR))
 dummy:= $(shell test -d $(INCDIR) || mkdir -p $(INCDIR))
 dummy:= $(shell test -d $(SRCDIR) || mkdir -p $(SRCDIR))
-
-%.depends:	%.c
-		$(CC) -M $(CFLAGS) $< > $@
 
 $(OBJDIR)%.o:	%.c
 		@echo -e "\033[33mCompiling $*\033[00m"
