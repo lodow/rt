@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ##
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sun Jun  9 01:51:24 2013 Hugues
+## Last update Sun Jun  9 02:03:52 2013 adrien dellamaggiora
 ##
 
 CC = gcc
@@ -36,26 +36,26 @@ dummy:= $(shell test -d $(INCDIR) || mkdir -p $(INCDIR))
 dummy:= $(shell test -d $(SRCDIR) || mkdir -p $(SRCDIR))
 
 $(OBJDIR)%.o:	%.c
-		@echo "\033[33mCompiling $*\033[00m"
+		@echo -e "\033[33mCompiling $*\033[00m"
 		@$(CC) $(CFLAGS) -o $@ -c $<
 
 $(NAME):	$(OBJ)
-		@echo "\033[34mLinking $@ !\033[00m"
+		@echo -e "\033[34mLinking $@ !\033[00m"
 		@$(CC) $(OBJ) -o $(NAME) $(LDFLAGS)
 
 all:	$(NAME)
 
 clean:
-	@echo "\033[35mRemoving object !\033[00m"
+	@echo -e "\033[35mRemoving object !\033[00m"
 	@$(RM) $(OBJ)
 
 fclean:	clean
-	@echo "\033[36mRemoving ${NAME} !\033[00m"
+	@echo -e "\033[36mRemoving ${NAME} !\033[00m"
 	@$(RM) $(NAME)
 
 re:	fclean all
 
 help:
-	@echo "\033[37mTarget available: all, install, clean, fclean\033[00m"
+	@echo -e "\033[37mTarget available: all, $(NAME), clean, fclean\033[00m"
 
 .PHONY:	all clean fclean re help
