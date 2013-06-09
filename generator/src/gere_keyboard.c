@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 09:35:28 2013 remi
-** Last update Sun Jun  9 10:51:57 2013 remi robert
+** Last update Sun Jun  9 11:14:57 2013 remi robert
 */
 
 #include "my_func.h"
@@ -48,6 +48,8 @@ void	gere_saisi_buff(t_param *param, int keycode)
 	aff[0] = get_number_with_key(keycode);
       else
 	aff[0] = keycode;
+      if (keycode == 65439 || keycode == 65506)
+	aff[0] = '.';
       if (check_saisi(param, aff[0]) == 0)
 	mlx_put_image_to_window(param->window.p, param->window.id,
 				param->wrong.img, 400, param->saisi.y - 15);
