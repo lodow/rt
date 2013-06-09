@@ -5,21 +5,25 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Wed Jun  5 13:32:41 2013 remi robert
-** Last update Sat Jun  8 17:52:03 2013 remi
+** Last update Sun Jun  9 12:28:50 2013 remi robert
 */
 
 #include "my_func.h"
 
-void	write_light(char *str, t_object *pcurrent, int fd)
+void	write_sup_struct(t_object *pcurrent, int fd)
 {
-  my_putstr(str, fd, -1);
-  my_putstr("\n{\n", fd, -1);
-  write_center_object("   Center = ", pcurrent, fd);
-  my_putstr("\n   Color = ", fd, -1);
-  my_putstr(pcurrent->color, fd, -1);
-  my_putstr("\n   intensity = ", fd, -1);
-  my_putstr(pcurrent->angle, fd, -1);
-  my_putstr("\n}\n\n", fd, -1);
+  if (pcurrent->n[0] != '\0')
+    {
+      if (pcurrent->type != 7 && pcurrent->type != 8 &&
+	  pcurrent->type != 5 && pcurrent->type != 6)
+	my_putstr("\n   N = ", fd, -1);
+      if (pcurrent->type != 7 && pcurrent->type != 8 &&
+	  (pcurrent->type == 5 || pcurrent->type == 6))
+	my_putstr("\n   v2 = ", fd, -1);
+      else
+	my_putstr("\n   CST = ", fd, -1);
+      my_putstr(pcurrent->n, fd, -1);
+    }
 }
 
 void	second_write_struct_option(t_object *pcurrent, int fd)
@@ -36,14 +40,13 @@ void	second_write_struct_option(t_object *pcurrent, int fd)
     }
   if (pcurrent->checker[0] != '\0')
     {
-      my_putstr("\n   Checker = ", fd, -1);
+      if (pcurrent->type != 5 && pcurrent->type != 6)
+	my_putstr("\n   Checker = ", fd, -1);
+      else
+	my_putstr("\n   V1 = ", fd, -1);
       my_putstr(pcurrent->checker, fd, -1);
     }
-  if (pcurrent->n[0] != '\0')
-    {
-      my_putstr("\n   N = ", fd, -1);
-      my_putstr(pcurrent->n, fd, -1);
-    }
+  write_sup_struct(pcurrent, fd);
 }
 
 void	write_struct_option(t_object *pcurrent, int fd)

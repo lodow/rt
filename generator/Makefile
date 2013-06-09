@@ -4,7 +4,7 @@
 ## Login   <robert_r@epitech.net>
 ## 
 ## Started on  Fri Nov 30 10:59:19 2012 remi robert
-## Last update Sun Jun  9 11:05:58 2013 remi robert
+## Last update Sun Jun  9 12:29:23 2013 remi robert
 ##
 
 SRCPATH	=	src/
@@ -45,6 +45,7 @@ SRC	=	$(SRCPATH)main.c \
 		$(SRCPATH)erease_textbox.c \
 		$(SRCPATH)check_saisi.c \
 		$(SRCPATH)gere_delete.c \
+		$(SRCPATH)write_light.c \
 
 OBJ	=	$(SRC:.c=.o)
 

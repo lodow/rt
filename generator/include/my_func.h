@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Sun Jun  9 11:04:20 2013 remi robert
+** Last update Sun Jun  9 12:29:52 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -152,5 +152,6 @@ void	rempl_tab_cord(int *tab);
 int	check_saisi(t_param *param, char caractere);
 void	gere_delete(t_param *param);
 void	aff_text_box(t_param *param);
+void	write_light(char *str, t_object *pcurrent, int fd);
 
 #endif

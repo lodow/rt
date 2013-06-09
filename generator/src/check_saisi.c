@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Sat Jun  8 18:11:42 2013 remi robert
-** Last update Sun Jun  9 11:00:49 2013 remi robert
+** Last update Sun Jun  9 12:34:54 2013 remi robert
 */
 
 #include "my_func.h"
@@ -23,8 +23,23 @@ int	check_string_format(char *str, char c)
   return (ret);
 }
 
+int	spe_check_saisi(t_param *param, char c)
+{
+  if (param->on_click == TRIANGLE || param->on_click == SQUARE)
+    if (param->saisi.type == 11 || param->saisi.type == 12)
+      return (check_string_format("0123456789-.,", c));
+  if (param->on_click == HYPERBOLOIDE || param->on_click == PARABOLOIDE)
+    if (param->saisi.type == 12)
+      return (check_string_format("0123456789-.", c));
+  return (2);
+}
+
 int	check_saisi(t_param *param, char c)
 {
+  int	ret;
+
+  if ((ret = spe_check_saisi(param, c)) != 2)
+    return (ret);
   if (param->saisi.type == 1 || param->saisi.type == 4 ||
       param->saisi.type == 11 || param->saisi.type == 12)
     return (check_string_format("0123456789-", c));
