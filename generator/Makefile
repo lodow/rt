@@ -4,7 +4,7 @@
 ## Login   <robert_r@epitech.net>
 ## 
 ## Started on  Fri Nov 30 10:59:19 2012 remi robert
-## Last update Sun Jun  9 10:42:50 2013 remi robert
+## Last update Sun Jun  9 10:56:47 2013 remi robert
 ##
 
 SRCPATH	=	src/
@@ -50,7 +50,7 @@ OBJ	=	$(SRC:.c=.o)
 
 LIB	=	-L/usr/lib64 -lmlx_$$HOSTTYPE -L/usr/lib64/X11 -lXext -lX11
 
-NAME	=	rtv1
+NAME	=	generator
 
 CFLAGS	=	-g -Iinclude -Wall -Wextra
 
