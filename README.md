@@ -60,6 +60,7 @@ fichier .bmp en input
 gestion transparence et reflection sur un meme rayon
 Filtres (gray alpha sepia)
 bruit de perlin (3d) (tous les effets avec)
+Choix de la seed avec phrase :D
 bump mapping (3d)
 Output en .bmp
 Output en .tga
