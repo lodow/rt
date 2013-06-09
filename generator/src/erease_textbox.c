@@ -5,7 +5,7 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Jun  7 13:09:57 2013 remi robert
-** Last update Sat Jun  8 19:32:58 2013 remi robert
+** Last update Sun Jun  9 10:53:09 2013 remi robert
 */
 
 #include "my_func.h"
@@ -13,9 +13,9 @@
 void	ecrase_wrong(t_param *param, int y)
 {
   mlx_put_image_to_window(param->window.p, param->window.id,
-			  param->cache.img, 375, y);
+			  param->hide.img, 375, y);
   mlx_put_image_to_window(param->window.p, param->window.id,
-			  param->cache.img, 400, y);
+			  param->hide.img, 400, y);
 }
 
 void	erease_textbox(t_param *param, int x, int y)

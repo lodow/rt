@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Wed May 29 08:50:28 2013 remi
-** Last update Sun Jun  9 10:43:23 2013 remi robert
+** Last update Sun Jun  9 10:51:27 2013 remi robert
 */
 
 #ifndef MY_FUNC_H_
@@ -95,7 +95,7 @@ typedef struct		s_param
   t_saisi		saisi;
   char			click_menu;
   t_texture		wrong;
-  t_texture		cache;
+  t_texture		hide;
   t_texture		check_ok;
   t_texture		write;
   t_texture		panel_control;

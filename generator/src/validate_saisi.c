@@ -5,12 +5,12 @@
 ** Login   <robert_r@epitech.net>
 **
 ** Started on  Fri Jun  7 10:48:59 2013 remi robert
-** Last update Fri Jun  7 11:16:07 2013 remi robert
+** Last update Sun Jun  9 10:50:17 2013 remi robert
 */
 
 #include "my_func.h"
 
-void	gere_second_validatation(t_param *param, int x, int y)
+void	manage_second_validatation(t_param *param, int x, int y)
 {
   if (x >= 160 && x <= 400 && y >= 600 && y <= 650)
     {
@@ -41,5 +41,5 @@ void	validate_saisi(t_param *param, int x, int y)
       gere_mouse(0, x, y, param);
       return ;
     }
-  gere_second_validatation(param, x, y);
+  manage_second_validatation(param, x, y);
 }
