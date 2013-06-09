@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sun May 19 18:38:43 2013 luc sinet
-** Last update Sat Jun  8 16:02:08 2013 maxime lavandier
+** Last update Sun Jun  9 04:00:01 2013 etienne debas
 */
 
 #include <math.h>
@@ -32,9 +32,9 @@ unsigned int	perlin_disco(double *inter, unsigned char *color_obj,
   pn_b = get_perlin(inter[0] * 0.5 * frequency * 7,
                     inter[1] * 0.5 * frequency * 7,
                     inter[2] * 0.5 * frequency * 7);
-  color_obj[0] = LIMIT(pn_r * 200 + 100, 0, 255);
+  color_obj[0] = LIMIT(pn_r * 200 + 50, 0, 255);
   color_obj[1] = LIMIT(pn_v * 200 + 50, 0, 255);
-  color_obj[2] = LIMIT(pn_b * 200 + 50, 0, 255);
+  color_obj[2] = LIMIT(pn_b * 200 + 100, 0, 255);
   return (recomp_color(color_obj));
 }
 
@@ -45,15 +45,15 @@ unsigned int	perlin_marble(double *inter, unsigned char *color_obj,
 
   level = 1;
   ppt->pn = 0;
-  while (level < 5)
+  while (level < 10)
     {
       ppt->pn += (1.0f / level)
-                 * fabs(get_perlin(level * inter[0],
-                                   level * inter[1],
-                                   level * inter[2]));
+                 * (get_perlin(level * 0.2 * inter[0],
+			       level * 0.2 * inter[1],
+			       level * 0.2 * inter[2]));
       level++;
     }
-  ppt->pn = 0.5f * sinf((inter[0] + inter[1]) * 0.05f + ppt->pn) + 0.5f;
+  ppt->pn = 0.5 * sin((inter[0] + inter[1]) * 0.1 + ppt->pn) + 0.5;
   color_obj[0] = LIMIT(255 * (1 - ppt->pn), 0, 255);
   color_obj[1] = LIMIT(255 * (1 - ppt->pn), 0, 255);
   color_obj[2] = LIMIT(255 * (1 - ppt->pn), 0, 255);
