@@ -131,9 +131,7 @@ endif
 CFLAGS	+= -Wall -Wextra
 CFLAGS	+= -I${INCDIR}
 
-CFLAGS += -MD -MP
-
-LDFLAGS += -L/usr/lib64 -lmlx_x86_64-linux -L/usr/lib64/X11 -lXext -lX11 -lm
+LDFLAGS += -L/usr/lib64 -lmlx_$$HOSTTYPE -L/usr/lib64/X11 -lXext -lX11 -lm
 
 VPATH = ${SRCDIR}
 
