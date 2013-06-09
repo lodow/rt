@@ -5,7 +5,7 @@
 ** Login   <debas_e@epitech.net>
 **
 ** Started on  Tue Apr  2 18:25:49 2013 etienne debas
-** Last update Sat Jun  8 18:23:50 2013 etienne debas
+** Last update Sun Jun  9 06:46:08 2013 adrien dellamaggiora
 */
 
 #include <math.h>
@@ -47,29 +47,45 @@ unsigned int	apply_indice(unsigned int color, unsigned int obj_color,
   return (recomp_color(c));
 }
 
+unsigned int	apply_reflec_color(t_reflec *reflec)
+{
+  unsigned int	res;
+
+  res = reflec->color[--reflec->count];
+  --reflec->count;
+  while (reflec->count >= 0)
+    {
+      res = apply_indice(reflec->color[reflec->count], res,
+			 reflec->alpha[reflec->count]);
+      --reflec->count;
+    }
+  return (res);
+}
+
 unsigned int	reflection(t_rt *rpt, t_lco *lpt,
 			   unsigned int color, double k)
 {
-  double	indice;
+  t_reflec	reflec;
   double	ctmp[6];
   int		i;
   int		obj;
 
   i = 0;
-  indice = 1;
+  reflec.count = 0;
   obj = rpt->obj_num;
   copy_tab(rpt->cpt->pos, ctmp, 3);
+  reflec.alpha[reflec.count] = rpt->obj[rpt->obj_num].ipt->indice[2];
+  reflec.color[reflec.count++] = color;
   while (i < MAX_R && rpt->obj[rpt->obj_num].ipt->indice[2] >= ZERO
          && k > ZERO)
     {
-      indice *= rpt->obj[rpt->obj_num].ipt->indice[2];
       calc_reflec_vector(rpt, rpt->vpt, lpt, k);
       calc_inter(rpt, &k);
-      color = apply_indice(color, (k > ZERO) ?
-                           modifie_p_color(rpt, k, 2) : 0x000000, indice);
+      reflec.alpha[reflec.count] = rpt->obj[rpt->obj_num].ipt->indice[2];
+      reflec.color[reflec.count++] = modifie_p_color(rpt, k, 2);
       ++i;
     }
   copy_tab(ctmp, rpt->cpt->pos, 3);
   rpt->obj_num = obj;
-  return (color);
+  return (apply_reflec_color(&reflec));
 }

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 17:42:09 2013 luc sinet
-** Last update Sat Jun  8 18:36:02 2013 luc sinet
+** Last update Sun Jun  9 06:44:12 2013 adrien dellamaggiora
 */
 
 #ifndef CHANGE_COLOR_H_
@@ -27,6 +27,13 @@ typedef	struct	s_trans
   int		nb_obj;
   int		count;
 }		t_trans;
+
+typedef	struct	s_reflec
+{
+  unsigned int	color[MAX_R + 1];
+  double	alpha[MAX_R + 1];
+  int		count;
+}		t_reflec;
 
 unsigned int	apply_light(unsigned char *c, double cosa,
 			    double sdw_coef);
