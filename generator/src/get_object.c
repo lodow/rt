@@ -5,7 +5,7 @@
 ** Login   <remi@epitech.net>
 **
 ** Started on  Thu May 30 15:01:57 2013 remi
-** Last update Sun Jun  9 11:04:35 2013 remi robert
+** Last update Sun Jun  9 11:11:24 2013 remi robert
 */
 
 #include "my_func.h"
@@ -33,21 +33,7 @@ char	*get_name_object(int nb)
 
 char	get_type_object(int nb)
 {
-  char	tab[12];
-
-  tab[0] = SPHERE;
-  tab[1] = PLAN;
-  tab[2] = CONE;
-  tab[3] = CYLINDER;
-  tab[4] = CIRCLE;
-  tab[5] = SQUARE;
-  tab[6] = TRIANGLE;
-  tab[7] = PARABOLOIDE;
-  tab[8] = HYPERBOLOIDE;
-  tab[9] = MOEBIUS;
-  tab[10] = TANGLE;
-  tab[11] = LIGHT;
   if (nb >= 0 && nb < 12)
-    return (tab[nb]);
+    return (nb);
   return (NOTHING);
 }
