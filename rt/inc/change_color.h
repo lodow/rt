@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Mar 27 17:42:09 2013 luc sinet
-** Last update Sun Jun  9 06:44:12 2013 adrien dellamaggiora
+** Last update Sun Jun  9 08:44:45 2013 adrien dellamaggiora
 */
 
 #ifndef CHANGE_COLOR_H_
@@ -21,8 +21,8 @@ typedef	struct	s_lco	t_lco;
 
 typedef	struct	s_trans
 {
-  unsigned int	color[MAX_R];
-  double	alpha[MAX_R];
+  unsigned int	color[MAX_R + 1];
+  double	alpha[MAX_R + 1];
   int		pass[256];
   int		nb_obj;
   int		count;
